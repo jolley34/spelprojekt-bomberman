@@ -16,7 +16,7 @@ function preload() {
   music = {
     mystery: loadSound("../assets/music/mystery.mp3"),
   };
-  backgroundImage = loadImage("../assets/background/cruel_nature_bg1.png");
+  backgroundImage = loadImage("../assets/background/Map1 - blurred.png");
 }
 
 /**
@@ -27,11 +27,11 @@ function preload() {
  */
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  frameRate(60);
+  //frameRate(60);
   music.mystery.setVolume(0.8);
 
   game = new Game();
-  gamebackground = new GameBackground(backgroundImage);
+  //gamebackground = new GameBackground(backgroundImage);
   gameboard = new Gameboard();
   currentPage = new StartPage();
 }
@@ -44,11 +44,11 @@ function setup() {
 function draw() {
   game.update();
   game.draw();
-  gamebackground.drawGameBackground();
+  //gamebackground.drawGameBackground();
   drawBackgroundImage(backgroundImage, 150);
   currentPage.draw();
   gameboard.update();
-  //  gameboard.drawGameboard();
+  //gameboard.drawGameboard();
 }
 
 /**

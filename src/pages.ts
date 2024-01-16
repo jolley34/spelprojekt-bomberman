@@ -9,11 +9,13 @@ class StartPage implements IGamePage {
   private startButton?: p5.Element;
   private title: string;
   private instructions: string;
+  private highScore: string;
 
   constructor() {
     this.title = "Cruel Nature";
     this.instructions =
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.   Press START to begin";
+      "Lorem ipsum dolor sit amet,  sed do eiusmod \n \n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim sint\n \n  ea commodo consequat. Duis aute irure dolor in reprehenderit in \n \n voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur\n \n Press START GAME to begin";
+    this.highScore = "High Score - 35:00";
     this.createStartButton();
   }
 
@@ -40,6 +42,7 @@ class StartPage implements IGamePage {
     this.drawBackground();
     this.drawTitle();
     this.drawInstructions();
+    this.drawScore();
   }
 
   private drawBackground(): void {}
@@ -65,19 +68,28 @@ class StartPage implements IGamePage {
 
     fill(0);
     noStroke();
-    rect(rectX, rectY, rectWidth, rectHeight);
+    rect(rectX, rectY, rectWidth, rectHeight, 10);
 
+    push();
     fill("#B3D917");
     textAlign(CENTER, CENTER);
     textFont("Minecraft");
     text(this.title, width / 2, height / 4 - 120);
+    pop();
+  }
+  private drawScore() {
+    fill("#CA0305");
+    textSize(40);
+    textAlign(CENTER, CENTER);
+    textFont("Minecraft");
+    text(this.highScore, width / 2, height / 2 - 200);
   }
 
   private drawInstructions(): void {
     let rectPositionX = width / 2;
     let rectPositionY = height / 2;
     let rectWidth = width / 2;
-    let rectHeight = 250;
+    let rectHeight = 270;
 
     let padding = 10;
     let textX = rectPositionX;
