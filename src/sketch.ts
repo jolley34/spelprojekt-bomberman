@@ -15,7 +15,6 @@ function preload() {
   music = {
     mystery: loadSound("/assets/music/mystery.mp3"),
   };
-  
 }
 
 /**
@@ -25,13 +24,14 @@ function preload() {
  * in the draw function belows
  */
 function setup() {
+  createCanvas(windowWidth, windowHeight);
   frameRate(60);
+
   music.mystery.setVolume(0.8);
 
   game = new Game();
   gamebackground = new GameBackground();
   gameboard = new Gameboard();
-
 }
 
 /**
@@ -45,7 +45,6 @@ function draw() {
   gamebackground.drawGameBackground();
   gameboard.update();
   gameboard.drawGameboard();
-  
 }
 
 /**
@@ -54,6 +53,3 @@ function draw() {
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
-
-
-
