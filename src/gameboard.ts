@@ -17,6 +17,12 @@ class GameBackground {
 }
 
 class Gameboard {
+  entity: {
+    posX: number;
+    posY: number;
+    width: number;
+    height: number;
+  };
   positionX: number;
   positionY: number;
   private rektangleWidth: number;
@@ -26,20 +32,26 @@ class Gameboard {
   private player2: Player;
 
   constructor() {
+    this.entity = {
+      posX: 1030,
+      posY: 350,
+      width: 50,
+      height: 50,
+    };
     //default value till position
     this.positionX = 800;
     this.positionY = 100;
     this.rektangleWidth = 500;
     this.rektangleHeight = 500;
 
-    this.player1 = new Player("black", 100, 100, {
+    this.player1 = new Player("black", 850, 200, {
       up: 87, // w
       left: 65, // a
       down: 83, // s
       right: 68, // d
     });
 
-    this.player2 = new Player("yellow", 200, 100, {
+    this.player2 = new Player("yellow", 1200, 500, {
       up: 38,
       left: 37,
       down: 40,
@@ -49,23 +61,32 @@ class Gameboard {
   public update() {
     this.player1.update();
     this.player2.update();
+    this.checkCollision();
   }
-
-  public setupGameboard() {}
-
-  public preloadGameboard() {}
 
   public drawGameboard() {
     background("red");
     push();
+    fill("blue");
     rect(
       this.positionX,
       this.positionY,
       this.rektangleWidth,
       this.rektangleHeight
     );
-    fill("white");
+
     pop();
+    push();
+    fill("green");
+    rect(
+      this.entity.posX,
+      this.entity.posY,
+      this.entity.width,
+      this.entity.height
+    );
+
+    pop();
+
     // let d = dist(
     //this.player1.x, this.player1.y, this.player2.x, this.player2.y;
     //);
@@ -74,4 +95,5 @@ class Gameboard {
     this.player2.drawPlayer();
     this.update();
   }
+  private checkCollision() {}
 }

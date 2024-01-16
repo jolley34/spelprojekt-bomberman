@@ -10,6 +10,7 @@ class Player {
   public x: number;
   public y: number;
   private size: number;
+  public radius: number;
   private controls: Controls;
 
   constructor(color: string, x: number, y: number, controls: Controls) {
@@ -17,6 +18,7 @@ class Player {
     this.y = y;
     this.x = x;
     this.size = 50;
+    this.radius = this.size / 2;
     this.controls = controls;
   }
   public update() {
@@ -43,7 +45,7 @@ class Player {
   public drawPlayer() {
     push();
     fill(this.color);
-    circle(this.x, this.y, this.size * 1.15);
+    circle(this.x, this.y, this.size);
     pop();
   }
 }
