@@ -37,6 +37,7 @@ function draw() {
   gameboardbackground.draw();
   gameboard.draw();
   dynamics.draw();
+  
 }
 
 /**

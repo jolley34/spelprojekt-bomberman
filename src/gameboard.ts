@@ -8,8 +8,8 @@ let clouds: {
 
 class Clouds {
   public preload() {
-     //Våg 1 av moln
-     clouds.push({
+    //Våg 1 av moln
+    clouds.push({
       image: loadImage("./assets/clouds/smoke2.png"),
       x: 400,
       y: 550,
@@ -115,27 +115,49 @@ class GameboardBackground {
 }
 
 class Gameboard {
-  private tileSize: number = 52;
-  private numRows: number = 11;
-  private numCols: number = 15; 
+  public entities = [];
+  // Define numbers array
+  public numbers = [
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  ];
 
-  public setup() {
-    createCanvas(windowWidth, windowHeight);
-  }
+  // Define blockSize
+  public blockSize = 38;
+
+  // Setup function for initializing variables
+  public setup() {}
 
   public draw() {
-    const startX = (width - this.numCols * this.tileSize) / 2;
-    const startY = (height - this.numRows * this.tileSize) / 2;
+    // Calculate the center of the canvas
+    const centerX = width / 2 - (this.numbers[0].length * this.blockSize) / 2;
+    const centerY = height / 2 - (this.numbers.length * this.blockSize) / 2;
 
-    for (let row = 0; row < this.numRows; row++) {
-      for (let col = 0; col < this.numCols; col++) {
+    for (let i = 0; i < this.numbers.length; i++) {
+      for (let j = 0; j < this.numbers[i].length; j++) {
+        const x = centerX + j * this.blockSize;
+        const y = centerY + i * this.blockSize;
 
-        const x = startX + col * this.tileSize;
-        const y = startY + row * this.tileSize;
-
-        fill(255); 
-        stroke(0);
-        rect(x, y, this.tileSize, this.tileSize);
+        if (this.numbers[i][j] === 1) {
+          fill("green"); // Set color for filled cells
+          rect(x, y, this.blockSize, this.blockSize);
+        } if (this.numbers[i][j] === 0) {
+          fill("lightgreen"); // Set color for filled cells
+          rect(x, y, this.blockSize, this.blockSize);
+        } 
       }
     }
   }
