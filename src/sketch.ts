@@ -2,6 +2,7 @@
 let gameboard: Gameboard;
 let gamebackground: GameBackground;
 let game: Game;
+let currentPage: IGamePage;
 let music: {
   mystery: p5.SoundFile;
 };
@@ -13,9 +14,9 @@ let music: {
  */
 function preload() {
   music = {
-    mystery: loadSound("/assets/music/mystery.mp3"),
+    mystery: loadSound("../assets/music/mystery.mp3"),
   };
-  
+  backgroundImage = loadImage("../assets/background/Map1 - blurred.png");
 }
 
 /**
@@ -25,13 +26,14 @@ function preload() {
  * in the draw function belows
  */
 function setup() {
+  createCanvas(windowWidth, windowHeight);
   frameRate(60);
   music.mystery.setVolume(0.8);
 
   game = new Game();
-  gamebackground = new GameBackground();
+  gamebackground = new GameBackground(backgroundImage);
   gameboard = new Gameboard();
-
+  currentPage = new StartPage();
 }
 
 /**
@@ -43,9 +45,9 @@ function draw() {
   game.update();
   game.draw();
   gamebackground.drawGameBackground();
+  currentPage.draw();
   gameboard.update();
-  gameboard.drawGameboard();
-  
+  //  gameboard.drawGameboard();
 }
 
 /**
@@ -54,6 +56,3 @@ function draw() {
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
-
-
-

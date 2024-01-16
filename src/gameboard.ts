@@ -3,8 +3,8 @@ let backgroundImage: p5.Image;
 class GameBackground {
   backgroundImage: p5.Image;
 
-  constructor() {
-    this.backgroundImage = loadImage("./assets/background/map1-blurred.png");
+  constructor(img: p5.Image) {
+    this.backgroundImage = img;
   }
 
   public setupGameBackground() {
@@ -12,7 +12,7 @@ class GameBackground {
   }
 
   public drawGameBackground() {
-    background(this.backgroundImage);
+    image(this.backgroundImage, 0, 0, width, height);
   }
 }
 
@@ -42,17 +42,11 @@ class Gameboard {
 
   public preloadGameboard() {}
 
-  public drawGameboard() {
-    createCanvas(1000, 1000);
-    background("red");
-    push();
-    this.player1.drawPlayer();
-    this.update(); 
-
-  }
-
+  // public drawGameboard() {
+  //   createCanvas(1000, 1000);
+  //   background("red");
+  //   push();
+  //   this.player1.drawPlayer();
+  //   this.update();
+  // }
 }
-
-
-
-

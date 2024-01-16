@@ -5,16 +5,11 @@ class Game {
   constructor() {
     this.position = createVector(width * 0.5, height * 0.5);
     this.isCircleVisible = false;
-    
   }
 
-  public update() {
+  public update() {}
 
-  }
-
-  public draw() {
-   
-  }
+  public draw() {}
 
   public drawText() {}
 
