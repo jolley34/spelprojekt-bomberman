@@ -25,11 +25,12 @@ class Gameboard {
   };
   positionX: number;
   positionY: number;
-  private rektangleWidth: number;
-  private rektangleHeight: number;
+  public rektangleWidth: number;
+  public rektangleHeight: number;
 
   private player1: Player;
   private player2: Player;
+  isGameOver: boolean;
 
   constructor() {
     this.entity = {
@@ -38,6 +39,7 @@ class Gameboard {
       width: 50,
       height: 50,
     };
+    this.isGameOver = false;
     //default value till position
     this.positionX = 800;
     this.positionY = 100;
@@ -62,6 +64,17 @@ class Gameboard {
     this.player1.update();
     this.player2.update();
     this.checkCollision();
+  }
+
+  private checkCollision() {
+    const distance = Math.hypot(
+      this.player2.getX() - this.player1.getX(),
+      this.player2.getY() - this.player1.getY()
+    );
+    const limit = this.player1.getSize() + this.player2.getSize();
+    if (distance < limit) {
+      this.isGameOver = true;
+    }
   }
 
   public drawGameboard() {
