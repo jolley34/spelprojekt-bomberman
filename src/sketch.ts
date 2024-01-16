@@ -46,6 +46,9 @@ function draw() {
   gameboard.update();
   gameboard.drawGameboard();
   
+
+
+  
 }
 
 /**

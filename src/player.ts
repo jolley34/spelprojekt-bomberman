@@ -3,6 +3,7 @@ type Controls = {
   left: number;
   down: number;
   right: number;
+  bombDrop: number;
 };
 
 
@@ -13,6 +14,7 @@ class Player {
   private y: number;
   private size: number;
   private controls: Controls;
+  
   
   constructor( color: string, x: number, y: number, controls: Controls) {
     this.color = color
@@ -39,7 +41,16 @@ class Player {
       if (keyCode === this.controls.right) {
         this.x += 10;
       }
+      if (keyCode === this.controls.bombDrop) {
+        this.dropBomb();
+      }
     }
+  }
+ 
+
+  private dropBomb(){
+    const bomb = new Bomb(this.x, this.y);
+    bomb.drawBomb();
   }
   
   public drawPlayer() {
@@ -49,3 +60,30 @@ class Player {
     pop();
   }
 }
+
+class Bomb{
+  private x: number;
+  private y: number;
+  public isDropped:boolean;
+
+  constructor(x: number, y: number){
+    this.x = x;
+    this.y = y;
+    this.isDropped = false;
+  }
+
+  public drawBomb(){
+    if (!this.isDropped){
+    push();
+    fill("green");
+    circle(this.x, this.y, 20)
+    pop();
+    }
+  }
+  public drop(){
+    this.isDropped = true;
+  }
+
+}
+
+
