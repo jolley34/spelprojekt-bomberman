@@ -71,4 +71,19 @@ class Player {
     circle(this.x, this.y, this.size);
     pop();
   }
+
+// kollision mellan player1 och player 2
+// Dist = p5 funktion för att räkna ut avståndent mellan positionerna
+
+  public checkCollisionWithPlayer(player1: Player, player2: Player) {
+    const distance = dist(player1.x, player1.y, player2.x, player2.y);
+    const minDistance = player1.radius + player2.radius;  //minDistance= minimal distance som anses vara en kollision
+
+    if (distance < minDistance) {
+      // Kollision upptäckt, hantera den här
+      console.log("KOLLISION");
+    }
+  }
+
+
 }

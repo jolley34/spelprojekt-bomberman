@@ -64,8 +64,11 @@ class Gameboard {
     this.player2.update();
     this.checkCollision();
   }
+// kollar kollisionen mellan spelarna
+  private checkCollision() {
+    this.player1.checkCollisionWithPlayer(this.player1, this.player2);
 
-  private checkCollision() {}
+  }
 
   public drawGameboard() {
     background("red");
@@ -98,4 +101,5 @@ class Gameboard {
     this.player2.drawPlayer();
     this.update();
   }
+  
 }
