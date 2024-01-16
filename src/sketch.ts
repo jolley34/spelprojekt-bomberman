@@ -1,4 +1,6 @@
 //---- GLOBAL VARIABLES ----//
+let gameboard: Gameboard;
+let gamebackground: GameBackground;
 let game: Game;
 let music: {
   mystery: p5.SoundFile;
@@ -13,6 +15,7 @@ function preload() {
   music = {
     mystery: loadSound("/assets/music/mystery.mp3"),
   };
+  
 }
 
 /**
@@ -22,11 +25,13 @@ function preload() {
  * in the draw function belows
  */
 function setup() {
-  createCanvas(windowWidth, windowHeight);
   frameRate(60);
   music.mystery.setVolume(0.8);
 
   game = new Game();
+  gamebackground = new GameBackground();
+  gameboard = new Gameboard();
+
 }
 
 /**
@@ -37,6 +42,10 @@ function setup() {
 function draw() {
   game.update();
   game.draw();
+  gamebackground.drawGameBackground();
+  gameboard.update();
+  gameboard.drawGameboard();
+  
 }
 
 /**
@@ -45,3 +54,6 @@ function draw() {
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
+
+
+
