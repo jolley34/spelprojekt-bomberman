@@ -116,7 +116,7 @@ class GameboardBackground {
 
 class Gameboard {
   public entities = [];
-  // Define numbers array
+
   public numbers = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
@@ -135,16 +135,14 @@ class Gameboard {
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
   ];
 
-  // Define blockSize
   public blockSize = 37;
 
-  // Setup function for initializing variables
   public setup() {}
 
   public preload() {}
 
   public draw() {
-    // Calculate the center of the canvas
+
     const centerX = width / 2 - (this.numbers[0].length * this.blockSize) / 2;
     const centerY = height / 2 - (this.numbers.length * this.blockSize) / 2;
 
@@ -154,10 +152,10 @@ class Gameboard {
         const y = centerY + i * this.blockSize;
 
         if (this.numbers[i][j] === 1) {
-          fill("green"); // Set color for filled cells
+          fill("green"); 
           rect(x, y, this.blockSize, this.blockSize);
         } if (this.numbers[i][j] === 0) {
-          fill("lightgreen"); // Set color for filled cells
+          fill("lightgreen"); 
           rect(x, y, this.blockSize, this.blockSize);
         } 
       }
