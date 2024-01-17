@@ -23,22 +23,17 @@ class StartPage {
   }
 
   private createStartButton(): void {
-    let startButton = createButton("START GAME");
-    startButton.addClass("my-button");
-    startButton.position(windowWidth / 2, windowHeight / 2 + 200);
-    startButton.style("transform", "translate(-50%, -50%)");
-    // this.startButton.style("padding", "10px 20px");
-    // this.startButton.style("font-size", "16px");
-    // this.startButton.style("font-family", "Minecraft");
-    // this.startButton.style("background-color", "black");
-    // this.startButton.style("color", "white");
-    // this.startButton.style("border", "solid white");
-    // this.startButton.style("border-radius", "8px");
-
-    startButton.mousePressed(() => {
-      console.log("I was pressed");
-      this.changePage("Game");
-    });
+    let startButton = new Button(
+      width / 2 - 100,
+      height / 2 + 200,
+      250,
+      50,
+      "START GAME"
+    );
+    startButton.isButtonPressed = () => {
+      console.log("I am pressed");
+    };
+    startButton.update();
   }
 
   public draw(): void {
@@ -51,10 +46,11 @@ class StartPage {
     textSize(64);
     let padding = 100;
     let rectHeight = 100;
+    let offsetY = 140;
     let rectWidth = textWidth(this.title) + padding * 2;
 
     let rectX = width / 2 - rectWidth / 2;
-    let rectY = height / 4 - rectHeight / 2 - 120;
+    let rectY = height / 4 - rectHeight / 2 - offsetY;
 
     fill(0);
     noStroke();
@@ -64,7 +60,7 @@ class StartPage {
     fill("#B3D917");
     textAlign(CENTER, CENTER);
     textFont("Minecraft");
-    text(this.title, width / 2, height / 4 - 120);
+    text(this.title, width / 2, height / 4 - offsetY);
     pop();
   }
   private drawHighScore() {
@@ -99,11 +95,7 @@ class StartPage {
     pop();
   }
 
-  public update(): void {
-    if (this.buttons) {
-      //this.drawButtons();
-    }
-  }
+  public update(): void {}
 
   public changePage(page: string): void {
     if (page === "Game") {
