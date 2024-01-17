@@ -101,16 +101,21 @@ class Clouds {
 }
 
 class GameboardBackground {
+  private image: p5.Image;
+
+  constructor(image: p5.Image) {
+    this.image = image;
+  }
+
   public preload() {
-    backgroundImage = loadImage("./assets/background/Map1-blurred.png");
+    this.image = loadImage("./assets/background/Map1-blurred.png");
   }
 
   public setup() {
-    createCanvas(windowWidth, windowHeight);
   }
 
   public draw() {
-    background(backgroundImage);
+    background(this.image);
   }
 }
 
@@ -142,7 +147,6 @@ class Gameboard {
   public preload() {}
 
   public draw() {
-
     const centerX = width / 2 - (this.numbers[0].length * this.blockSize) / 2;
     const centerY = height / 2 - (this.numbers.length * this.blockSize) / 2;
 
@@ -152,12 +156,13 @@ class Gameboard {
         const y = centerY + i * this.blockSize;
 
         if (this.numbers[i][j] === 1) {
-          fill("green"); 
+          fill("green");
           rect(x, y, this.blockSize, this.blockSize);
-        } if (this.numbers[i][j] === 0) {
-          fill("lightgreen"); 
+        }
+        if (this.numbers[i][j] === 0) {
+          fill("lightgreen");
           rect(x, y, this.blockSize, this.blockSize);
-        } 
+        }
       }
     }
   }

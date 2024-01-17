@@ -1,18 +1,12 @@
 //---- GLOBAL VARIABLES ----//
-let gameboardbackground: GameboardBackground;
-let dynamics: Clouds;
-let gameboard: Gameboard;
+let game: Game;
+
 /**
  * Built in preload function in P5
  * This is a good place to load assets such as
  * sound files, images etc...
  */
 function preload() {
-  gameboardbackground = new GameboardBackground();
-  gameboard = new Gameboard();
-  dynamics = new Clouds();
-  dynamics.preload();
-  gameboardbackground.preload();
 }
 
 /**
@@ -23,9 +17,8 @@ function preload() {
  */
 function setup() {
   frameRate(120)
-  gameboardbackground.setup();
-  dynamics.setup();
-  gameboard.setup();
+  createCanvas(windowWidth, windowHeight);
+  game = new Game();
 }
 
 /**
@@ -34,10 +27,8 @@ function setup() {
  * you created in the setup function above
  */
 function draw() {
-  gameboardbackground.draw();
-  gameboard.draw();
-  dynamics.draw();
-  
+  game.update();
+  game.draw();
 }
 
 /**
