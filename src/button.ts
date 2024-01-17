@@ -5,10 +5,6 @@ class Button {
   private height: number;
   private text: string;
   private image?: p5.Image;
-  private opacity: number;
-  private opacityChange: number;
-  private hoverTextColor: string = "#ffffff";
-
   constructor(
     positionX: number,
     positionY: number,
@@ -21,8 +17,6 @@ class Button {
     this.width = width;
     this.height = height;
     this.text = text;
-    this.opacity = 255;
-    this.opacityChange = -10;
   }
 
   public drawButton(): void {
