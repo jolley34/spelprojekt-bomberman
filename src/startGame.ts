@@ -4,53 +4,45 @@ interface IGamePage {
   update(): void;
 }
 
-//Implement the interface
-class StartPage {
-  private game: IGamePage;
+class StartPage implements IGamePage {
   private buttons: Boolean;
   private title: string;
   private instructions: string;
   private highScore: string;
+  private startButton: Button;
 
-  constructor(game: IGamePage) {
+  constructor() {
     this.title = "Cruel Nature";
     this.instructions =
-      "INSTRUCTIONS  \n \n Lorem ipsum dolor sit amet,  sed do eiusmod \n \n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim sint\n \n  ea commodo consequat. Duis aute irure dolor in reprehenderit in \n \n voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur\n \n Press START GAME to begin";
-    this.highScore = "High Score - 35:00";
+      "HOW TO PLAY  \n \n Lorem ipsum dolor sit amet,  sed do eiusmod \n \n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim sint\n \n  ea commodo consequat. Duis aute irure dolor in reprehenderit in \n \n voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur\n \n Press START GAME to begin";
+    this.highScore = "High Score \n Player 1\n 35:00";
     this.buttons = false;
-    this.createStartButton();
-    this.game = game;
-  }
 
-  private createStartButton(): void {
-    let startButton = new Button(
-      width / 2 - 100,
+    this.startButton = new Button(
+      width / 2,
       height / 2 + 200,
       250,
       50,
       "START GAME"
     );
-    startButton.isButtonPressed = () => {
-      console.log("I am pressed");
-    };
-    startButton.update();
   }
 
   public draw(): void {
     this.drawTitle();
     this.drawInstructions();
     this.drawHighScore();
+    this.startButton.update();
   }
 
   private drawTitle(): void {
     textSize(64);
-    let padding = 100;
-    let rectHeight = 100;
-    let offsetY = 140;
-    let rectWidth = textWidth(this.title) + padding * 2;
+    const padding = 100;
+    const rectHeight = 100;
+    const offsetY = 140;
+    const rectWidth = textWidth(this.title) + padding * 2;
 
-    let rectX = width / 2 - rectWidth / 2;
-    let rectY = height / 4 - rectHeight / 2 - offsetY;
+    const rectX = width / 2 - rectWidth / 2;
+    const rectY = height / 4 - rectHeight / 2 - offsetY;
 
     fill(0);
     noStroke();
@@ -64,22 +56,39 @@ class StartPage {
     pop();
   }
   private drawHighScore() {
-    fill("#CA0305");
-    textSize(40);
+    const rectPositionX = 250;
+    const rectPositionY = 130;
+    const rectWidth = 200;
+    const rectHeight = 130;
+
+    const padding = 2;
+    const textX = rectPositionX;
+    const textY = rectPositionY + padding;
+
+    push();
+    fill(0);
+    strokeWeight(4);
+    stroke("#B3D917");
+    rectMode(CENTER);
+    rect(rectPositionX, rectPositionY, rectWidth, rectHeight, 10);
+    pop();
+
+    fill("#B3D917");
+    textSize(20);
     textAlign(CENTER, CENTER);
     textFont("Minecraft");
-    text(this.highScore, width / 2, height / 2 - 200);
+    text(this.highScore, textX, textY);
   }
 
   private drawInstructions(): void {
-    let rectPositionX = width / 2;
-    let rectPositionY = height / 2;
-    let rectWidth = width / 2;
-    let rectHeight = 270;
+    const rectPositionX = width / 2;
+    const rectPositionY = height / 2;
+    const rectWidth = width / 2;
+    const rectHeight = 270;
 
-    let padding = 10;
-    let textX = rectPositionX;
-    let textY = rectPositionY + padding;
+    const padding = 10;
+    const textX = rectPositionX;
+    const textY = rectPositionY + padding;
 
     push();
     fill(0);
@@ -95,7 +104,11 @@ class StartPage {
     pop();
   }
 
-  public update(): void {}
+  public update(): void {
+    if (this.startButton.isButtonPressed()) {
+      console.log("Start button is pressed");
+    }
+  }
 
   public changePage(page: string): void {
     if (page === "Game") {
@@ -118,12 +131,12 @@ function drawBorder(borderSize: number) {
 }
 
 function drawBackgroundImage(img: p5.Image, borderSize: number) {
-  let { innerWidth, innerHeight, offsetX, offsetY } = drawBorder(borderSize);
+  const { innerWidth, innerHeight, offsetX, offsetY } = drawBorder(borderSize);
 
   // Calculate scale factor to fit the image inside the border
-  let scaleFactor = calculateScaleFactor(img, innerWidth, innerHeight);
-  let scaledWidth = img.width * scaleFactor;
-  let scaledHeight = img.height * scaleFactor;
+  const scaleFactor = calculateScaleFactor(img, innerWidth, innerHeight);
+  const scaledWidth = img.width * scaleFactor;
+  const scaledHeight = img.height * scaleFactor;
 
   // Center the image inside the border
   image(
@@ -154,4 +167,8 @@ function calculateScaleFactor(
   }
 
   return scaleFactor;
+}
+// handle the mouse press event
+function mousePressed() {
+  currentPage.update();
 }

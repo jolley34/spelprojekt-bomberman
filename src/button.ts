@@ -5,6 +5,9 @@ class Button {
   private height: number;
   private text: string;
   private image?: p5.Image;
+  private opacity: number;
+  private opacityChange: number;
+  private hoverTextColor: string = "#ffffff";
 
   constructor(
     positionX: number,
@@ -18,18 +21,37 @@ class Button {
     this.width = width;
     this.height = height;
     this.text = text;
+    this.opacity = 255;
+    this.opacityChange = -10;
   }
 
   public drawButton(): void {
-    let button = createButton(this.text);
+    push();
+    fill(0);
+    noStroke();
+    rectMode(CENTER);
+    rect(this.positionX, this.positionY, this.width, this.height, 10);
 
-    button.addClass("my-button");
-    button.position(this.positionX, this.positionY);
-    button.size(this.width, this.height);
-    button.mousePressed(this.isButtonPressed);
+    fill("#B3D917");
+    textSize(20);
+    textFont("Minecraft");
+    textAlign(CENTER, CENTER);
+    text(this.text, this.positionX, this.positionY);
+
+    pop();
   }
 
-  public isButtonPressed() {}
+  public isButtonPressed() {
+    if (
+      mouseX > this.positionX - this.width / 2 &&
+      mouseX < this.positionX + this.width / 2 &&
+      mouseY > this.positionY - this.height / 2 &&
+      mouseY < this.positionY + this.height / 2
+    ) {
+      return true;
+    }
+    return false;
+  }
 
   public update(): void {
     this.drawButton();

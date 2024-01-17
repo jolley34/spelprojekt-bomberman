@@ -16,7 +16,7 @@ function preload() {
   music = {
     mystery: loadSound("../assets/music/mystery.mp3"),
   };
-  backgroundImage = loadImage("../assets/background/Map1 - blurred.png");
+  backgroundImage = loadImage("../assets/background/cruel_nature_bg1.png");
 }
 
 /**
