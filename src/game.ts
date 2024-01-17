@@ -1,8 +1,10 @@
 class Game {
-  private gameboard: Gameboard;
+  private gameBoard: GameBoard;
+  private gameBoardFactory: GameBoardFactory;
 
   constructor() {
-    this.gameboard = new Gameboard();
+    this.gameBoardFactory = new GameBoardFactory();
+    this.gameBoard = this.gameBoardFactory.generateGameBoard(1);
   }
 
   public update() {
@@ -10,6 +12,6 @@ class Game {
   }
 
   public draw() {
-    this.gameboard.draw();
+    this.gameBoard.draw();
   }
 }
