@@ -1,18 +1,29 @@
 //---- GLOBAL VARIABLES ----//
-let gameboardbackground: GameboardBackground;
-let dynamics: Clouds;
-let gameboard: Gameboard;
+let game: Game;
+let assets: {
+  images: {
+    background: p5.Image;
+    clouds: p5.Image[];
+  };
+};
+
 /**
  * Built in preload function in P5
  * This is a good place to load assets such as
  * sound files, images etc...
  */
 function preload() {
-  gameboardbackground = new GameboardBackground();
-  gameboard = new Gameboard();
-  dynamics = new Clouds();
-  dynamics.preload();
-  gameboardbackground.preload();
+  assets = {
+    images: {
+      background: loadImage("./assets/background/Map1-blurred.png"),
+      clouds: [
+        loadImage("./assets/clouds/smoke1.png"),
+        loadImage("./assets/clouds/smoke2.png"),
+        loadImage("./assets/clouds/smoke3.png"),
+        loadImage("./assets/clouds/smoke4.png"),
+      ],
+    },
+  };
 }
 
 /**
@@ -22,10 +33,9 @@ function preload() {
  * in the draw function belows
  */
 function setup() {
-  frameRate(120)
-  gameboardbackground.setup();
-  dynamics.setup();
-  gameboard.setup();
+  createCanvas(windowWidth, windowHeight);
+  frameRate(120);
+  game = new Game();
 }
 
 /**
@@ -34,10 +44,8 @@ function setup() {
  * you created in the setup function above
  */
 function draw() {
-  gameboardbackground.draw();
-  gameboard.draw();
-  dynamics.draw();
-  
+  game.update();
+  game.draw();
 }
 
 /**
@@ -46,6 +54,3 @@ function draw() {
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
-
-
-
