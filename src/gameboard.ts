@@ -136,10 +136,12 @@ class Gameboard {
   ];
 
   // Define blockSize
-  public blockSize = 38;
+  public blockSize = 37;
 
   // Setup function for initializing variables
   public setup() {}
+
+  public preload() {}
 
   public draw() {
     // Calculate the center of the canvas
