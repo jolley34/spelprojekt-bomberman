@@ -26,6 +26,8 @@ class Gameboard {
   private player2: Player;
   isGameOver: boolean
 
+  private rectangles: { x: number; y: number; width: number; height: number }[];
+
   constructor() {
     this.isGameOver = false;
     //default value till position
@@ -33,6 +35,15 @@ class Gameboard {
     this.positionY = 100;
     this.rektangleWidth = 500;
     this.rektangleHeight = 500;
+
+    // array med fyrkanter som ligger som hinder för tillfället. hindret ligger i checkCollissonWithSquares
+    this.rectangles = [
+      { x: 950, y: 250, width: 50, height: 50 },
+      { x: 1050, y: 250, width: 50, height: 50 },
+      { x: 1115, y: 250, width: 50, height: 50 },
+      { x: 1050, y: 310, width: 50, height: 50 },
+      { x:1050, y: 370, width: 50, height: 50 },
+    ];
 
     this.player1 = new Player("black", 100, 100, {
       up: 87, // w
@@ -52,6 +63,8 @@ class Gameboard {
     this.player1.update();
     this.player2.update();
     this.checkCollision();
+    this.checkCollisionWithRectangles(this.player1);
+    this.checkCollisionWithRectangles(this.player2);
   }
 
   private checkCollision (){
@@ -63,7 +76,28 @@ class Gameboard {
     if (distance < limit) {
       this.isGameOver = true;
     }
+  }
+  //kollar så att spelarna inte kan gå igenom fyrkanterna från rectangle array
+  private checkCollisionWithRectangles(player: Player) {
+    for (const rectangle of this.rectangles) {
+      const distanceToRectangle = dist(
+        player.getX(),
+        player.getY(),
+        rectangle.x + rectangle.width / 2,
+        rectangle.y + rectangle.height / 2
+      );
 
+      const limitToRectangle = player.getSize() / 2 + Math.max(rectangle.width, rectangle.height) / 2;
+
+      if (distanceToRectangle < limitToRectangle) {
+        const angle = atan2(
+          player.getY() - (rectangle.y + rectangle.height / 2),
+          player.getX() - (rectangle.x + rectangle.width / 2)
+        );
+        player.setX(rectangle.x + rectangle.width / 2 + cos(angle) * limitToRectangle);
+        player.setY(rectangle.y + rectangle.height / 2 + sin(angle) * limitToRectangle);
+      }
+    }
   }
 
   public setupGameboard() {}
@@ -81,6 +115,13 @@ class Gameboard {
     );
     fill("white");
     pop();
+    push();
+    for (const rectangle of this.rectangles) {
+      fill("black");
+      rect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
+    }
+    pop();
+
     // let d = dist(
     //this.player1.x, this.player1.y, this.player2.x, this.player2.y;
     //);

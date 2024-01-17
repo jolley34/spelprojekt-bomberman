@@ -28,10 +28,18 @@ class Player {
   public getSize() {
     return this.size;
   }
+  public setX(newX: number) {
+    this.x = newX;
+  }
+
+  public setY(newY: number) {
+    this.y = newY;
+  }
 
   public update() {
     this.move();
   }
+  
 
   private move() {
     if (keyIsPressed) {
@@ -49,7 +57,9 @@ class Player {
       }
     }
     this.checkCollisionWithRectangle();
+    
   }
+  
   private checkCollisionWithRectangle() {
     const minX = gameboard.positionX + this.size / 2;
     const minY = gameboard.positionY + this.size / 2;
@@ -62,7 +72,7 @@ class Player {
     if (this.y < minY) this.y = minY;
     if (this.y > maxY) this.y = maxY;
   }
-
+  
   public drawPlayer() {
     push();
     fill(this.color);
