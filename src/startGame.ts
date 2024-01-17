@@ -4,26 +4,29 @@ interface IGamePage {
   update(): void;
 }
 
-// Implement the interface
-class StartPage implements IGamePage {
-  private startButton?: p5.Element;
+//Implement the interface
+class StartPage {
+  private game: IGamePage;
+  private buttons: Boolean;
   private title: string;
   private instructions: string;
   private highScore: string;
 
-  constructor() {
+  constructor(game: IGamePage) {
     this.title = "Cruel Nature";
     this.instructions =
-      "Lorem ipsum dolor sit amet,  sed do eiusmod \n \n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim sint\n \n  ea commodo consequat. Duis aute irure dolor in reprehenderit in \n \n voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur\n \n Press START GAME to begin";
+      "INSTRUCTIONS  \n \n Lorem ipsum dolor sit amet,  sed do eiusmod \n \n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim sint\n \n  ea commodo consequat. Duis aute irure dolor in reprehenderit in \n \n voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur\n \n Press START GAME to begin";
     this.highScore = "High Score - 35:00";
+    this.buttons = false;
     this.createStartButton();
+    this.game = game;
   }
 
   private createStartButton(): void {
-    this.startButton = createButton("START GAME");
-    this.startButton.addClass("my-button");
-    this.startButton.position(windowWidth / 2, windowHeight / 2 + 200);
-    this.startButton.style("transform", "translate(-50%, -50%)");
+    let startButton = createButton("START GAME");
+    startButton.addClass("my-button");
+    startButton.position(windowWidth / 2, windowHeight / 2 + 200);
+    startButton.style("transform", "translate(-50%, -50%)");
     // this.startButton.style("padding", "10px 20px");
     // this.startButton.style("font-size", "16px");
     // this.startButton.style("font-family", "Minecraft");
@@ -32,34 +35,21 @@ class StartPage implements IGamePage {
     // this.startButton.style("border", "solid white");
     // this.startButton.style("border-radius", "8px");
 
-    this.startButton.mousePressed(() => {
+    startButton.mousePressed(() => {
       console.log("I was pressed");
       this.changePage("Game");
     });
   }
 
   public draw(): void {
-    this.drawBackground();
     this.drawTitle();
     this.drawInstructions();
-    this.drawScore();
+    this.drawHighScore();
   }
-
-  private drawBackground(): void {}
-
-  //   private drawTitle(): void {
-  //     push();
-  //     fill("255");
-  //     textSize(64);
-  //     textFont("Minecraft");
-  //     textAlign(CENTER, CENTER);
-  //     text(this.title, width / 2, height / 4 - 50);
-  //     pop();
-  //   }
 
   private drawTitle(): void {
     textSize(64);
-    let padding = 50;
+    let padding = 100;
     let rectHeight = 100;
     let rectWidth = textWidth(this.title) + padding * 2;
 
@@ -77,7 +67,7 @@ class StartPage implements IGamePage {
     text(this.title, width / 2, height / 4 - 120);
     pop();
   }
-  private drawScore() {
+  private drawHighScore() {
     fill("#CA0305");
     textSize(40);
     textAlign(CENTER, CENTER);
@@ -109,30 +99,17 @@ class StartPage implements IGamePage {
     pop();
   }
 
-  public update(): void {}
-
-  public changePage(page: string): void {
-    // switch between pages
-    if (page === "Game") {
-      // changePage(page);
+  public update(): void {
+    if (this.buttons) {
+      //this.drawButtons();
     }
   }
-}
 
-class ChooseBoard implements IGamePage {
-  changePage(page: string, board?: number): void {}
-
-  draw(): void {}
-
-  update(): void {}
-}
-
-class EndOfGame implements IGamePage {
-  changePage(page: string, board?: number): void {}
-
-  draw(): void {}
-
-  update(): void {}
+  public changePage(page: string): void {
+    if (page === "Game") {
+      //currentPage = new ChooseBoard();
+    }
+  }
 }
 
 function drawBorder(borderSize: number) {

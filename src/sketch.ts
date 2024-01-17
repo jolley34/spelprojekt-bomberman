@@ -47,7 +47,7 @@ function draw() {
   //gamebackground.drawGameBackground();
   drawBackgroundImage(backgroundImage, 150);
   currentPage.draw();
-  gameboard.update();
+  // gameboard.update();
   //gameboard.drawGameboard();
 }
 
