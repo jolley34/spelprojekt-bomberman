@@ -40,16 +40,21 @@ class GameBoardFactory {
         const y = centerY + i * blockSize;
 
         if (board[i][j] === 1) {
-          // Skapa rätt entitet
-          // new Obstacle(x, y)
+          entities.push(new Obstacle(x, y));
         }
         if (board[i][j] === 9) {
-          // Skapa rätt entitet
-          // new Player(x, y)
+          entities.push(new Player(x, y));
+          this.player1 = new Player("black", 100, 100, {
+            up: 87, // w
+            left: 65, // a
+            down: 83, // s
+            right: 68, // d
+          });
         }
       }
     }
 
     return new GameBoard(entities);
   }
+  public update() {}
 }
