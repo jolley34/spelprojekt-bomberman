@@ -39,14 +39,19 @@ class GameBoardFactory {
         const x = centerX + j * blockSize;
         const y = centerY + i * blockSize;
 
-        if (board[i][j] === 1) {
-          // Skapa rätt entitet
-          // new Obstacle(x, y)
+        // Set the fill color based on the value of the cell
+        if (board[i][j] === 0) {
+          fill("lightgreen");
+        } else if (board[i][j] === 1) {
+          fill("gray"); // Change to the color you want for obstacles
+          // entities.push(new Obstacle(x, y));
+        } else if (board[i][j] === 9) {
+          fill("blue"); // Change to the color you want for the player
+          // entities.push(new Player(x, y));
         }
-        if (board[i][j] === 9) {
-          // Skapa rätt entitet
-          // new Player(x, y)
-        }
+
+        // Draw the cell
+        rect(x, y, blockSize, blockSize);
       }
     }
 
