@@ -5,3 +5,5 @@ class Obstacle extends GameEntity {
     // Additional setup for obstacles
   }
 }
+
+
