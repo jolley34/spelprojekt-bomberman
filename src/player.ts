@@ -6,7 +6,7 @@ class Player extends GameEntity {
 
   constructor(x: number, y: number, blockSize: number) {
     super(x, y);
-    this.speed = 2;
+    this.speed = 7;
     this.blockSize = blockSize; // Store blockSize as an instance variable
   }
 
