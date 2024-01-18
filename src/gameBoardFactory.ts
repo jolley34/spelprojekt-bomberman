@@ -3,7 +3,6 @@ class GameBoardFactory {
   // private board2: number[][];
 
   constructor() {
-    // 0 = Golv
     // 1 = Statiskt hinder
     // 9 = Spelare
     // Se till att den här innehåller fler siffror
@@ -26,6 +25,22 @@ class GameBoardFactory {
     ];
   }
 
+  public drawFloor() {
+    const blockSize = 37;
+    const centerX = width / 2 - (this.board1[0].length * blockSize) / 2;
+    const centerY = height / 2 - (this.board1.length * blockSize) / 2;
+
+    for (let i = 0; i < this.board1.length; i++) {
+      for (let j = 0; j < this.board1[i].length; j++) {
+        const x = centerX + j * blockSize;
+        const y = centerY + i * blockSize;
+
+        fill(144, 238, 144); // Sätter färg på golv (ljusgrön)
+        rect(x, y, blockSize, blockSize); // skapar storleken på blocket.
+      }
+    }
+  }
+
   public generateGameBoard(boardNumber: number): GameBoard {
     const board = this.board1;
     const entities: GameEntity[] = [];
@@ -40,11 +55,9 @@ class GameBoardFactory {
         const y = centerY + i * blockSize;
 
         if (board[i][j] === 1) {
-          // Skapa rätt entitet
-          // new Obstacle(x, y)
+          entities.push(new Obstacle(x, y, blockSize));
         }
         if (board[i][j] === 9) {
-          // Skapa rätt entitet
           // new Player(x, y)
         }
       }

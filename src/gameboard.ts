@@ -11,9 +11,11 @@ class GameBoard {
   // Define blockSize
   public draw() {
     background(assets.images.background);
-    // Loopa över alla entiteter och rita ut doms
     this.clouds.draw();
-  }
 
-  // Draw floor
+    // Loop over all entities and draw them
+    for (let i = 0; i < this.entities.length; i++) {
+      this.entities[i].draw();
+    }
+  }
 }
