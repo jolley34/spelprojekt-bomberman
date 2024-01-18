@@ -1,11 +1,14 @@
 //---- GLOBAL VARIABLES ----//
 
 let game: Game;
-let currentPage: IGamePage;
-let music: {
-  mystery: p5.SoundFile;
+let assets: {
+  images: {
+    backgroundImages: p5.Image[];
+    clouds: p5.Image[];
+  };
 };
-let currentScreen = "StartPage"; // Or however you are managing the current screen
+
+let currentScreen = "StartPage";
 let startPage: StartPage;
 /**
  * Built in preload function in P5
@@ -13,10 +16,19 @@ let startPage: StartPage;
  * sound files, images etc...
  */
 function preload() {
-  music = {
-    mystery: loadSound("../assets/music/mystery.mp3"),
+  assets = {
+    images: {
+      backgroundImages: [
+        loadImage("../assets/background/cruel_nature_bg1.png"),
+      ],
+      clouds: [
+        loadImage("./assets/clouds/smoke1.png"),
+        loadImage("./assets/clouds/smoke2.png"),
+        loadImage("./assets/clouds/smoke3.png"),
+        loadImage("./assets/clouds/smoke4.png"),
+      ],
+    },
   };
-  backgroundImage = loadImage("../assets/background/cruel_nature_bg1.png");
 }
 
 /**
@@ -27,7 +39,7 @@ function preload() {
  */
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  music.mystery.setVolume(0.8);
+  frameRate(120);
   game = new Game();
   startPage = new StartPage(game);
 }
@@ -39,7 +51,7 @@ function setup() {
  */
 function draw() {
   game.update();
-  drawBackgroundImage(backgroundImage, 150);
+  drawBackgroundImage(assets.images.backgroundImages[0], 150);
   game.draw();
 }
 
