@@ -1,6 +1,6 @@
 //---- GLOBAL VARIABLES ----//
 let gameboard: Gameboard;
-let gamebackground: GameBackground;
+//let gamebackground: GameBackground;
 let game: Game;
 let currentPage: IGamePage;
 let music: {
@@ -27,13 +27,12 @@ function preload() {
  */
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  //frameRate(60);
   music.mystery.setVolume(0.8);
 
   game = new Game();
   //gamebackground = new GameBackground(backgroundImage);
   gameboard = new Gameboard();
-  currentPage = new StartPage();
+  //currentPage = new StartPage();
 }
 
 /**
@@ -43,12 +42,12 @@ function setup() {
  */
 function draw() {
   game.update();
-  game.draw();
-  //gamebackground.drawGameBackground();
   drawBackgroundImage(backgroundImage, 150);
-  currentPage.draw();
+  game.draw();
+  // currentPage.draw();
   // gameboard.update();
   //gameboard.drawGameboard();
+  //
 }
 
 /**

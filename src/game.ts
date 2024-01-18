@@ -1,17 +1,33 @@
 class Game {
-  private position: p5.Vector;
-  private isCircleVisible: boolean;
+  private gameboard: Gameboard;
+  private startPage: StartPage;
+  private chooseBoard: ChooseBoard;
+  //private endOfGame: EndOfGame;
+  private currentPage: "StartPage" | "ChooseBoard" | "EndOfGame";
 
   constructor() {
-    this.position = createVector(width * 0.5, height * 0.5);
-    this.isCircleVisible = false;
+    this.gameboard = new Gameboard();
+    this.startPage = new StartPage();
+    this.chooseBoard = new ChooseBoard();
+    //this.endOfGame = new EndOfGame();
+    this.currentPage = "StartPage" || "ChooseBoard" || "EndOfGame";
   }
 
-  public update() {}
+  public update() {
+    if (keyIsDown(32)) {
+      this.currentPage = "StartPage";
+    } else if (keyIsDown(13)) {
+      this.currentPage = "ChooseBoard";
+    }
+  }
 
-  public draw() {}
-
-  public drawText() {}
-
-  public drawCircle() {}
+  public draw() {
+    if (this.currentPage === "StartPage") {
+      console.log("Welcome to the start page");
+      this.startPage.draw();
+    } else if (this.currentPage === "ChooseBoard") {
+      console.log("Welcome to the choose board page");
+      this.chooseBoard.draw();
+    }
+  }
 }

@@ -105,15 +105,11 @@ class StartPage implements IGamePage {
   }
 
   public update(): void {
-    if (this.startButton.isButtonPressed()) {
-      console.log("Start button is pressed");
-    }
+    this.startButton.update();
   }
 
   public changePage(page: string): void {
-    if (page === "Game") {
-      //currentPage = new ChooseBoard();
-    }
+    console.log("Changing page to: ", page);
   }
 }
 
@@ -167,8 +163,4 @@ function calculateScaleFactor(
   }
 
   return scaleFactor;
-}
-// handle the mouse press event
-function mousePressed() {
-  currentPage.update();
 }
