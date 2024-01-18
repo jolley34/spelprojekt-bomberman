@@ -51,6 +51,7 @@ class GameBoardFactory {
     }
 
     return new GameBoard(entities);
+    
   }
   public update() {}
 }

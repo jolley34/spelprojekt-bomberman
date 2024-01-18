@@ -7,4 +7,5 @@ class GameEntity {
     this.positionX = positionX;
     this.positionY = positionY;
   }
+  public draw() {}
 }

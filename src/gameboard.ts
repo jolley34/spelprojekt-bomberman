@@ -12,6 +12,9 @@ class GameBoard {
 
   public draw() {
     background(assets.images.background);
+    for (const entity of this.entities) {
+      entity.draw(); // Assuming GameEntity has a draw method
+    }
     // Loopa över alla entiteter och rita ut doms
     this.clouds.draw();
   }

@@ -2,6 +2,7 @@
 class Obstacle extends GameEntity {
   private size: number;
   private color: string;
+
   constructor(
     color: string,
     positionX: number,
