@@ -2,6 +2,7 @@
 //   private position: p5.Vector;
 //   private isCircleVisible: boolean;
 
+<<<<<<< HEAD
 //   constructor() {
 //     this.position = createVector(width * 0.5, height * 0.5);
 //     this.isCircleVisible = false;
@@ -118,6 +119,25 @@ class Grid {
   public getTileSize(): number {
     return this.tileSize;
   }
+=======
+  constructor() {
+    this.position = createVector(width * 0.5, height * 0.5);
+    this.isCircleVisible = false;
+    
+  }
+
+  public update() {
+
+  }
+
+  public draw() {
+   
+  }
+
+  public drawText() {}
+
+  public drawCircle() {}
+>>>>>>> ad3db33c9108b5d495ddb3dd65595250c163b0dc
 }
 
 
