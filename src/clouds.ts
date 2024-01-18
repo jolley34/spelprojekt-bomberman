@@ -85,7 +85,7 @@ class Clouds {
   }
 
   public draw() {
-    for (let i = 0; i < length; i++) {
+    for (let i = 0; i < this.clouds.length; i++) {
       let cloud = this.clouds[i];
       image(cloud.image, cloud.x, cloud.y, 300, 300);
 
