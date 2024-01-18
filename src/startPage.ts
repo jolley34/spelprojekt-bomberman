@@ -1,8 +1,4 @@
-interface IGamePage {
-  changePage(page: string, board?: number): void;
-  draw(): void;
-  update(): void;
-}
+///<reference path="iGamePage.ts" />
 
 class StartPage implements IGamePage {
   private buttons: Boolean;
@@ -10,12 +6,21 @@ class StartPage implements IGamePage {
   private instructions: string;
   private highScore: string;
   private startButton: Button;
+  private game: Game;
+  private playerName: string;
+  private playerScore: number;
 
-  constructor() {
+  constructor(game: Game) {
+    this.game = game;
+    this.playerName = "Player 1";
+    this.playerScore = 0;
     this.title = "Cruel Nature";
+
     this.instructions =
       "HOW TO PLAY  \n \n Lorem ipsum dolor sit amet,  sed do eiusmod \n \n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim sint\n \n  ea commodo consequat. Duis aute irure dolor in reprehenderit in \n \n voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur\n \n Press START GAME to begin";
-    this.highScore = "High Score \n Player 1\n 35:00";
+
+    this.highScore = `High Score\n${this.playerName}\n${this.playerScore}`;
+
     this.buttons = false;
 
     this.startButton = new Button(
@@ -25,6 +30,13 @@ class StartPage implements IGamePage {
       50,
       "START GAME"
     );
+  }
+
+  public changePage(page: string): void {}
+
+  public setHighScore(playerName: string, playerScore: number): void {
+    this.playerName = playerName;
+    this.playerScore = playerScore;
   }
 
   public draw(): void {
@@ -106,10 +118,6 @@ class StartPage implements IGamePage {
 
   public update(): void {
     this.startButton.update();
-  }
-
-  public changePage(page: string): void {
-    console.log("Changing page to: ", page);
   }
 }
 

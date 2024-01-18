@@ -7,8 +7,8 @@ class Game {
 
   constructor() {
     this.gameboard = new Gameboard();
-    this.startPage = new StartPage();
-    this.chooseBoard = new ChooseBoard();
+    this.startPage = new StartPage(this);
+    this.chooseBoard = new ChooseBoard(this);
     //this.endOfGame = new EndOfGame();
     this.currentPage = "StartPage" || "ChooseBoard" || "EndOfGame";
   }

@@ -32,8 +32,6 @@ class ChooseBoard {
   public chooseIceBoard() {}
 
   public draw() {
-    //background(this.gardenBoard);
-    // Set the dimensions and position for the image and its border
     push();
     textSize(64);
     const padding = 100;

@@ -1,6 +1,5 @@
 //---- GLOBAL VARIABLES ----//
-let gameboard: Gameboard;
-//let gamebackground: GameBackground;
+
 let game: Game;
 let currentPage: IGamePage;
 let music: {
@@ -28,11 +27,7 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   music.mystery.setVolume(0.8);
-
   game = new Game();
-  //gamebackground = new GameBackground(backgroundImage);
-  gameboard = new Gameboard();
-  //currentPage = new StartPage();
 }
 
 /**
@@ -44,10 +39,6 @@ function draw() {
   game.update();
   drawBackgroundImage(backgroundImage, 150);
   game.draw();
-  // currentPage.draw();
-  // gameboard.update();
-  //gameboard.drawGameboard();
-  //
 }
 
 /**
