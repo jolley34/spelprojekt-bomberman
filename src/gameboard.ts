@@ -50,7 +50,7 @@ class Gameboard {
       left: 65, // a
       down: 83, // s
       right: 68, // d
-      placeBomb: 66, // // "B" for custom bomb placement
+      placeBomb: 32, // // "B" for custom bomb placement
     });
 
     this.player2 = new Player("yellow", 200, 100, {
