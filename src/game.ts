@@ -8,7 +8,7 @@ class Game {
   }
 
   public update() {
-    // this.gameboard.update();
+    this.gameBoard.update();
   }
 
   public draw() {
