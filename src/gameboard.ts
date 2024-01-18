@@ -1,5 +1,3 @@
-//let backgroundImage: p5.Image;
-
 class GameBoard {
   private clouds: Clouds;
   private entities: GameEntity[];

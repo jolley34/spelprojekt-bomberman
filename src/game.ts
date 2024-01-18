@@ -8,11 +8,11 @@ class Game {
   private currentPage: "StartPage" | "ChooseBoard" | "EndOfGame";
 
   constructor() {
-    this.gameBoard = new GameBoard();
+    //this.gameBoard = new GameBoard();
     this.startPage = new StartPage(this);
     this.chooseBoard = new ChooseBoard(this);
     this.gameBoardFactory = new GameBoardFactory();
-
+    this.gameBoard = this.gameBoardFactory.generateGameBoard(1);
     //this.endOfGame = new EndOfGame();
     this.currentPage = "StartPage" || "ChooseBoard" || "EndOfGame";
   }

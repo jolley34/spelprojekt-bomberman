@@ -1,51 +1,29 @@
-type Controls = {
-  up: number;
-  left: number;
-  down: number;
-  right: number;
-};
+/// <reference path="gameEntity.ts" />
 
+class Player extends GameEntity {
+  public speed: number;
+  public blockSize: number;
 
-class Player {
- 
-  private color: string;
-  private x: number;
-  private y: number;
-  private size: number;
-  private controls: Controls;
-  
-  constructor( color: string, x: number, y: number, controls: Controls) {
-    this.color = color
-    this.y = y;
-    this.x = x;
-    this.size = 50;
-    this.controls = controls;
-  }
-  public update(){
-    this.move()
+  constructor(x: number, y: number, blockSize: number) {
+    super(x, y);
+    this.speed = 7;
+    this.blockSize = blockSize;
   }
 
-  private move() {
-    if (keyIsPressed) {
-      if (keyCode === this.controls.up) {
-        this.y -= 10;
-      }
-      if (keyCode === this.controls.down) {
-        this.y += 10;
-      }
-      if (keyCode === this.controls.left) {
-        this.x -= 10;
-      }
-      if (keyCode === this.controls.right) {
-        this.x += 10;
-      }
+  public update(): void {
+    if (keyIsDown(LEFT_ARROW)) {
+      this.x -= this.speed;
+    } else if (keyIsDown(RIGHT_ARROW)) {
+      this.x += this.speed;
+    } else if (keyIsDown(UP_ARROW)) {
+      this.y -= this.speed;
+    } else if (keyIsDown(DOWN_ARROW)) {
+      this.y += this.speed;
     }
   }
-  
-  public drawPlayer() {
-    push()
-    fill(this.color);
-    circle(this.x,this.y, this.size*1.15);
-    pop();
+
+  public draw(): void {
+    fill(255, 0, 0);
+    rect(this.x, this.y, this.blockSize, this.blockSize);
   }
 }
