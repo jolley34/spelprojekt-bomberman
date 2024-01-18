@@ -50,20 +50,8 @@ class Player {
         this.x += 10;
       }
     }
-    this.checkCollisionWithRectangle();
   }
-  private checkCollisionWithRectangle() {
-    const minX = gameboard.positionX + this.size / 2;
-    const minY = gameboard.positionY + this.size / 2;
-    const maxX = gameboard.positionX + gameboard.rektangleWidth - this.size / 2;
-    const maxY = gameboard.positionY + gameboard.rektangleHeight - this.size / 2;
-
-    
-    if (this.x < minX) this.x = minX;
-    if (this.x > maxX) this.x = maxX;
-    if (this.y < minY) this.y = minY;
-    if (this.y > maxY) this.y = maxY;
-  }
+  
 
   public drawPlayer() {
     push();
@@ -84,6 +72,4 @@ class Player {
       console.log("KOLLISION");
     }
   }
-
-
 }
