@@ -1,4 +1,6 @@
+//sketch.ts
 //---- GLOBAL VARIABLES ----//
+
 let gameboard: Gameboard;
 let gamebackground: GameBackground;
 let game: Game;
