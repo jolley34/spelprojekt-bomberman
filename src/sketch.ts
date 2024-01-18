@@ -5,7 +5,8 @@ let currentPage: IGamePage;
 let music: {
   mystery: p5.SoundFile;
 };
-
+let currentScreen = "StartPage"; // Or however you are managing the current screen
+let startPage: StartPage;
 /**
  * Built in preload function in P5
  * This is a good place to load assets such as
@@ -28,6 +29,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   music.mystery.setVolume(0.8);
   game = new Game();
+  startPage = new StartPage(game);
 }
 
 /**
@@ -41,6 +43,11 @@ function draw() {
   game.draw();
 }
 
+function mouseClicked() {
+  if (currentScreen === "StartPage") {
+    startPage.mousePressed();
+  }
+}
 /**
  *  Built in windowResize listener function in P5
  */

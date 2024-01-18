@@ -13,6 +13,10 @@ class Game {
     this.currentPage = "StartPage" || "ChooseBoard" || "EndOfGame";
   }
 
+  public changePage(newPage: "StartPage" | "ChooseBoard" | "EndOfGame"): void {
+    this.currentPage = newPage;
+  }
+
   public update() {
     if (keyIsDown(32)) {
       this.currentPage = "StartPage";

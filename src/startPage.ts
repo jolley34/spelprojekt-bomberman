@@ -116,6 +116,13 @@ class StartPage implements IGamePage {
     pop();
   }
 
+  public mousePressed(): void {
+    if (this.startButton.isButtonPressed()) {
+      console.log("I was pressed");
+      this.game.changePage("ChooseBoard");
+    }
+  }
+
   public update(): void {
     this.startButton.update();
   }
