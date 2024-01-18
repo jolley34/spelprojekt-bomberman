@@ -18,7 +18,7 @@ function preload() {
   assets = {
     images: {
       playeranimation: loadImage("./assets/playeranimations/george.png"),
-      background: loadImage("./assets/background/Map-1-blurred-shadow-v2.png"),
+      background: loadImage("./assets/background/Map-1-blurred-shadow-v3.png"),
       clouds: [
         loadImage("./assets/clouds/smoke1.png"),
         loadImage("./assets/clouds/smoke2.png"),
