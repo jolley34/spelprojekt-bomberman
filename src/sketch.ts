@@ -16,6 +16,7 @@ function preload() {
   assets = {
     images: {
       background: loadImage("./assets/background/Map1-blurred.png"),
+      obstacle: loadImage("./assets/maptextures/brick_block.png"),
       clouds: [
         loadImage("./assets/clouds/smoke1.png"),
         loadImage("./assets/clouds/smoke2.png"),
