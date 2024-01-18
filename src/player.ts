@@ -2,17 +2,15 @@
 
 class Player extends GameEntity {
   public speed: number;
-  public blockSize: number; // Define blockSize as an instance variable
+  public blockSize: number;
 
   constructor(x: number, y: number, blockSize: number) {
     super(x, y);
     this.speed = 7;
-    this.blockSize = blockSize; // Store blockSize as an instance variable
+    this.blockSize = blockSize;
   }
 
   public update(): void {
-    // Implement player movement logic here
-    // For example, you can use key presses to move the player
     if (keyIsDown(LEFT_ARROW)) {
       this.x -= this.speed;
     } else if (keyIsDown(RIGHT_ARROW)) {
@@ -26,6 +24,6 @@ class Player extends GameEntity {
 
   public draw(): void {
     fill(255, 0, 0);
-    rect(this.x, this.y, this.blockSize, this.blockSize); // Use this.blockSize
+    rect(this.x, this.y, this.blockSize, this.blockSize);
   }
 }
