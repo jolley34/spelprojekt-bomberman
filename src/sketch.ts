@@ -2,6 +2,8 @@
 let game: Game;
 let assets: {
   images: {
+    maptextures: p5.Image[];
+    playeranimation: p5.Image;
     background: p5.Image;
     clouds: p5.Image[];
   };
@@ -15,13 +17,15 @@ let assets: {
 function preload() {
   assets = {
     images: {
-      background: loadImage("./assets/background/Map1-blurred.png"),
+      playeranimation: loadImage("./assets/playeranimations/george.png"),
+      background: loadImage("./assets/background/Map-1-blurred-shadow-v2.png"),
       clouds: [
         loadImage("./assets/clouds/smoke1.png"),
         loadImage("./assets/clouds/smoke2.png"),
         loadImage("./assets/clouds/smoke3.png"),
         loadImage("./assets/clouds/smoke4.png"),
       ],
+      maptextures: [loadImage("./assets/maptextures/bush.png")],
     },
   };
 }
