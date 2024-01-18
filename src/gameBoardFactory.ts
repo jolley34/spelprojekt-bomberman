@@ -46,7 +46,7 @@ class GameBoardFactory {
     const entities: GameEntity[] = [];
 
     const blockSize = 33;
-    const centerX = width / 2 - (board[0].length * blockSize) / 2.14;
+    const centerX = width / 2 - (board[0].length * blockSize) / 2.136;
     const centerY = height / 2 - (board.length * blockSize) / 1.88;
 
     for (let i = 0; i < board.length; i++) {
