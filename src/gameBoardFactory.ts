@@ -26,7 +26,7 @@ class GameBoardFactory {
   }
 
   public drawFloor() {
-    const blockSize = 37;
+    const blockSize = 33;
     const centerX = width / 2 - (this.board1[0].length * blockSize) / 2;
     const centerY = height / 2 - (this.board1.length * blockSize) / 2;
 
