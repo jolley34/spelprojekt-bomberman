@@ -8,8 +8,8 @@ class ChooseBoard {
 
   constructor(game: Game) {
     this.image = loadImage("../assets/background/Controls.svg");
-    this.gardenBoard = loadImage("../assets/background/cruel_nature_bg1.png"); //  Change the image for the garden board
-    this.iceBoard = loadImage("../assets/background/cruel_nature_bg1.png"); //  Change the image for the ice board
+    this.gardenBoard = loadImage("../assets/background/cruel_nature_bg1.png"); //  use the appropriate image for the garden board
+    this.iceBoard = loadImage("../assets/background/cruel_nature_bg1.png"); //  use the appropriate image for the ice board
     this.game = game;
     this.gardenBoardButton = new Button(
       width / 4 + 130,
@@ -27,9 +27,13 @@ class ChooseBoard {
     );
   }
 
-  public chooseGardenBoard() {}
+  public chooseGardenBoard() {
+    return 1; // Return the number of the garden board
+  }
 
-  public chooseIceBoard() {}
+  public chooseIceBoard(): number {
+    return 2; // Return the number of the ice board
+  }
 
   public draw() {
     push();

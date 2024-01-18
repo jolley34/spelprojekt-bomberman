@@ -1,14 +1,17 @@
 class Game {
-  private gameboard: Gameboard;
+  private gameBoard: GameBoard;
   private startPage: StartPage;
   private chooseBoard: ChooseBoard;
+  private gameBoardFactory: GameBoardFactory;
+
   //private endOfGame: EndOfGame;
   private currentPage: "StartPage" | "ChooseBoard" | "EndOfGame";
 
   constructor() {
-    this.gameboard = new Gameboard();
+    this.gameBoard = new GameBoard();
     this.startPage = new StartPage(this);
     this.chooseBoard = new ChooseBoard(this);
+    this.gameBoardFactory = new GameBoardFactory();
     //this.endOfGame = new EndOfGame();
     this.currentPage = "StartPage" || "ChooseBoard" || "EndOfGame";
   }

@@ -16,7 +16,7 @@ class GameBackground {
   }
 }
 
-class Gameboard {
+class GameBoard {
   positionX: number;
   positionY: number;
 
