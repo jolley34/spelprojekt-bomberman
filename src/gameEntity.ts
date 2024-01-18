@@ -1,19 +1,10 @@
 class GameEntity {
-  private positionX: number;
-  private positionY: number;
-  private size: number;
-  private color: string;
+  public positionX: number;
+  public positionY: number;
+  static this: any;
 
-  constructor(positionX: number, positionY: number, size: number) {
+  constructor(positionX: number, positionY: number) {
     this.positionX = positionX;
     this.positionY = positionY;
-    this.size = size;
-    this.color = "red";
-  }
-  public draw() {
-    push();
-    fill(this.color);
-    square(this.positionX, this.positionY, this.size);
-    pop();
   }
 }

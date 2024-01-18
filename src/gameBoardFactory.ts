@@ -40,16 +40,12 @@ class GameBoardFactory {
         const y = centerY + i * blockSize;
 
         if (board[i][j] === 1) {
-          entities.push(new Obstacle(x, y));
+          entities.push(new Obstacle("green",centerX, centerY, blockSize));
         }
         if (board[i][j] === 9) {
-          entities.push(new Player(x, y));
-          this.player1 = new Player("black", 100, 100, {
-            up: 87, // w
-            left: 65, // a
-            down: 83, // s
-            right: 68, // d
-          });
+          entities.push(new Obstacle("blue", centerX, centerY,blockSize));
+          
+          };
         }
       }
     }
