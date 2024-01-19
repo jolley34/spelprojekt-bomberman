@@ -1,8 +1,13 @@
 //---- GLOBAL VARIABLES ----//
 let game: Game;
-let music: {
-  mystery: p5.SoundFile;
+let assets: {
+  images: {
+    backgroundImages: p5.Image[];
+    clouds: p5.Image[];
+  };
 };
+
+let customFont: p5.Font;
 
 /**
  * Built in preload function in P5
@@ -10,8 +15,21 @@ let music: {
  * sound files, images etc...
  */
 function preload() {
-  music = {
-    mystery: loadSound("/assets/music/mystery.mp3"),
+  customFont = loadFont("../Fonts/MinecraftBold-nMK1.otf");
+  assets = {
+    images: {
+      backgroundImages: [
+        loadImage("../assets/background/cruel_nature_bg1.png"),
+        loadImage("../assets/background/Map1 - blurred.png"),
+        loadImage("../assets/background/winter_background.png"),
+      ],
+      clouds: [
+        loadImage("./assets/clouds/smoke1.png"),
+        loadImage("./assets/clouds/smoke2.png"),
+        loadImage("./assets/clouds/smoke3.png"),
+        loadImage("./assets/clouds/smoke4.png"),
+      ],
+    },
   };
 }
 
@@ -23,9 +41,8 @@ function preload() {
  */
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  frameRate(60);
-  music.mystery.setVolume(0.8);
-
+  textFont(customFont);
+  frameRate(120);
   game = new Game();
 }
 

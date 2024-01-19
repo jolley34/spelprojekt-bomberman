@@ -1,50 +1,53 @@
+type PageName = "StartPage" | "ChooseBoardPage" | "GameBoard";
+
 class Game {
-  private position: p5.Vector;
-  private isCircleVisible: boolean;
+  private gameBoard: GameBoard;
+  private gameBoardFactory: GameBoardFactory;
+  private startPage: StartPage;
+  private chooseBoard: ChooseBoard;
+  private currentPage: PageName;
 
   constructor() {
-    this.position = createVector(width * 0.5, height * 0.5);
-    this.isCircleVisible = false;
+    this.gameBoardFactory = new GameBoardFactory();
+    this.gameBoard = this.gameBoardFactory.generateGameBoard(1);
+    this.startPage = new StartPage(this);
+    this.chooseBoard = new ChooseBoard(this);
+    this.currentPage = "StartPage";
+  }
+
+  public changePage(page: PageName, board?: number) {
+    this.currentPage = page;
+    if (board) {
+      this.gameBoard = this.gameBoardFactory.generateGameBoard(board);
+    }
   }
 
   public update() {
-    this.position.set(mouseX, mouseY);
-    this.isCircleVisible = mouseIsPressed;
-
-    if (mouseIsPressed) {
-      if (!music.mystery.isPlaying()) {
-        music.mystery.loop();
-      }
-    } else {
-      music.mystery.pause();
+    switch (this.currentPage) {
+      case "StartPage":
+        this.startPage.update();
+        break;
+      case "ChooseBoardPage":
+        this.chooseBoard.update();
+        break;
+      case "GameBoard":
+        this.gameBoard.update();
+        break;
     }
   }
 
   public draw() {
     background("black");
-    this.drawText();
-
-    if (this.isCircleVisible) {
-      this.drawCircle();
+    switch (this.currentPage) {
+      case "StartPage":
+        this.startPage.draw();
+        break;
+      case "ChooseBoardPage":
+        this.chooseBoard.draw();
+        break;
+      case "GameBoard":
+        this.gameBoard.draw();
+        break;
     }
-  }
-
-  public drawText() {
-    push();
-    fill("white");
-    textSize(width * 0.1);
-    textStyle("bold");
-    textAlign("center");
-    text("Click & Drag", width * 0.5, height * 0.5);
-    pop();
-  }
-
-  public drawCircle() {
-    push();
-    fill(0, 255, 0, 200);
-    stroke("white");
-    strokeWeight(width * 0.01);
-    circle(this.position.x, this.position.y, width * 0.2);
-    pop();
   }
 }
