@@ -9,7 +9,7 @@ class ChooseBoard {
   constructor(game: Game) {
     this.image = loadImage("../assets/background/Controls.svg");
     this.gardenBoard = loadImage("../assets/background/cruel_nature_bg1.png"); //  use the appropriate image for the garden board
-    this.iceBoard = loadImage("../assets/background/cruel_nature_bg1.png"); //  use the appropriate image for the ice board
+    this.iceBoard = loadImage("../assets/background/winter_background.png"); //  use the appropriate image for the ice board
     this.game = game;
     this.gardenBoardButton = new Button(
       width / 4 + 130,

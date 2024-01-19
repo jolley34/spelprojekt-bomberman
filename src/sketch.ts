@@ -21,6 +21,7 @@ function preload() {
       backgroundImages: [
         loadImage("../assets/background/cruel_nature_bg1.png"),
         loadImage("../assets/background/Map1 - blurred.png"),
+        loadImage("../assets/background/winter_background.png"),
       ],
       clouds: [
         loadImage("./assets/clouds/smoke1.png"),
