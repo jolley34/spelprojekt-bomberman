@@ -1,71 +1,86 @@
 class GameBoardFactory {
   private board1: number[][];
-  //private board2: number[][];
+  // private board2: number[][];
 
   constructor() {
-    // Initialize board layouts
+    // 1 = Statiskt hinder
+    // 9 = Spelare
+    // Se till att den här innehåller fler siffror
+    // prettier-ignore
     this.board1 = [
       [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      [1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+      [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
       [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+      [1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1],
+      [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
       [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
       [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
       [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+      [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+      [1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
       [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
       [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
-      [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-      [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
-      [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-      [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
-      [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-      [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
-      [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 1],
+      [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 9, 1],
       [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     ];
   }
 
-  public generateGameBoard(boardNumber: number): GameBoard {
-    let boardLayout;
-    let backgroundIndex;
+  // public playInGameMusic() {
+  //   assets.music.ingamemusic.play(); // Spela musik ingame, kallas ej någonstans
+  // }
 
-    switch (boardNumber) {
-      case 1:
-        boardLayout = this.board1;
-        backgroundIndex = 1; // or 1
-        break;
-      // case 2:
-      //   boardLayout = this.board2;
-      //   backgroundIndex = 2;
-      //   break;
-      default:
-        boardLayout = this.board1;
-        backgroundIndex = 0;
-    }
+  public drawFloor() {
+    const numRows = this.board1.length;
+    const numCols = this.board1[0].length;
 
-    const entities = this.createEntitiesFromLayout(boardLayout);
+    // Adjust the scaling (0.6 for 60% size)
+    const scalingGameboard = 0.6;
+    const blockSize = min(width / numCols, height / numRows) * scalingGameboard;
 
-    return new GameBoard(entities, backgroundIndex);
-  }
+    const centerX = width / 2 - (numCols * blockSize) / 2.142;
+    const centerY = height / 2 - (numRows * blockSize) / 1.89;
 
-  private createEntitiesFromLayout(layout: number[][]): GameEntity[] {
-    const entities: GameEntity[] = [];
-    const blockSize = 37;
-    const centerX = width / 2 - (layout[0].length * blockSize) / 2;
-    const centerY = height / 2 - (layout.length * blockSize) / 2;
-
-    for (let i = 0; i < layout.length; i++) {
-      for (let j = 0; j < layout[i].length; j++) {
+    for (let i = 0; i < numRows; i++) {
+      for (let j = 0; j < numCols; j++) {
         const x = centerX + j * blockSize;
         const y = centerY + i * blockSize;
 
-        if (layout[i][j] === 1) {
+        fill(144, 238, 144);
+        rect(x, y, blockSize, blockSize);
+      }
+    }
+  }
+
+  public generateGameBoard(boardNumber: number): GameBoard {
+    const board = this.board1;
+    const entities: GameEntity[] = [];
+
+    const numRows = board.length;
+    const numCols = board[0].length;
+
+    // Adjust the scaling (0.6 for 60% size)
+    const scalingGameboard = 0.6;
+    const blockSize = min(width / numCols, height / numRows) * scalingGameboard;
+
+    const centerX = width / 2 - (numCols * blockSize) / 2.142;
+    const centerY = height / 2 - (numRows * blockSize) / 1.89;
+
+    for (let i = 0; i < numRows; i++) {
+      for (let j = 0; j < numCols; j++) {
+        const x = centerX + j * blockSize;
+        const y = centerY + i * blockSize;
+
+        if (board[i][j] === 1) {
           entities.push(new Obstacle(x, y, blockSize));
         }
-        if (layout[i][j] === 9) {
-          entities.push(new Player(x, y, blockSize));
+        if (board[i][j] === 9) {
+          const player = new Player(x, y, blockSize);
+          entities.push(player);
         }
       }
     }
 
-    return entities;
+    return new GameBoard(entities, 1);
   }
 }
