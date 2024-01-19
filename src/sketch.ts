@@ -53,6 +53,20 @@ function setup() {
  */
 function draw() {
   game.update();
+  // drawBackgroundImage(assets.images.backgroundImages[0], 150);
+
+  switch (currentScreen) {
+    case "StartPage":
+      drawBackgroundImage(assets.images.backgroundImages[0], 150);
+      break;
+    case "ChooseBoard":
+      drawBackgroundImage(assets.images.backgroundImages[0], 150);
+      break;
+    case "GameBoardPage":
+      drawBackgroundImage(assets.images.backgroundImages[1], 100);
+
+      break;
+  }
   game.draw();
 }
 
