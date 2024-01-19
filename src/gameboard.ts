@@ -13,6 +13,10 @@ class GameBoard {
     for (let i = 0; i < this.entities.length; i++) {
       this.entities[i].update();
     }
+
+    // for (const entity of this.entities) {
+    //   entity.update();
+    // }
   }
 
   // Define blockSize
@@ -27,3 +31,8 @@ class GameBoard {
     this.clouds.draw();
   }
 }
+
+// const entitet = new Obstacle(0,0,10);
+// if (entitet instanceof Obstacle) {
+//   // reagera baserat på att entiteten är ett hinder...
+// }
