@@ -8,6 +8,8 @@ let assets: {
   };
 };
 
+let customFont: p5.Font;
+
 let currentScreen = "StartPage";
 let startPage: StartPage;
 /**
@@ -16,6 +18,7 @@ let startPage: StartPage;
  * sound files, images etc...
  */
 function preload() {
+  customFont = loadFont("../Fonts/MinecraftBold-nMK1.otf");
   assets = {
     images: {
       backgroundImages: [
@@ -41,6 +44,7 @@ function preload() {
  */
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  textFont(customFont);
   frameRate(120);
   game = new Game();
   startPage = new StartPage(game);

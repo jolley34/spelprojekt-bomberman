@@ -63,7 +63,7 @@ class StartPage implements IGamePage {
     push();
     fill("#B3D917");
     textAlign(CENTER, CENTER);
-    textFont("Minecraft");
+    // textFont("Minecraft");
     text(this.title, width / 2, height / 4 - offsetY);
     pop();
   }
@@ -88,7 +88,7 @@ class StartPage implements IGamePage {
     fill("#B3D917");
     textSize(20);
     textAlign(CENTER, CENTER);
-    textFont("Minecraft");
+    //textFont("Minecraft");
     text(this.highScore, textX, textY);
   }
 
@@ -110,7 +110,7 @@ class StartPage implements IGamePage {
 
     fill(255);
     textSize(16);
-    textFont("Minecraft");
+    // textFont("Minecraft");
     textAlign(CENTER, CENTER);
     text(this.instructions, textX, textY, rectWidth - padding * 2);
     pop();
