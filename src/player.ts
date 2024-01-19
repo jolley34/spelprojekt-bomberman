@@ -23,7 +23,7 @@ class Player extends GameEntity {
   }
 
   public draw(): void {
-    fill(255, 0, 0);
+    fill(255, 100, 140);
     rect(this.x, this.y, this.blockSize, this.blockSize);
   }
 }
