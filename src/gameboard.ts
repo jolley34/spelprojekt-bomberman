@@ -14,13 +14,7 @@ class GameBoard {
   }
 
   public drawGameBackground() {
-    image(
-      assets.images.backgroundImages[this.backgroundIndex],
-      0,
-      0,
-      width,
-      height
-    );
+    image(assets.images.background[this.backgroundIndex], 0, 0, width, height);
   }
   public update() {
     for (let i = 0; i < this.entities.length; i++) {
