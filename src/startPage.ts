@@ -40,7 +40,7 @@ class StartPage implements IGamePage {
   }
 
   public draw(): void {
-    drawBackgroundImage(assets.images.backgroundImages[0], 150);
+    drawBackgroundImage(assets.images.background[0], 150);
     this.drawTitle();
     this.drawInstructions();
     this.drawHighScore();
