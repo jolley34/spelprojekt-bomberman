@@ -26,7 +26,7 @@ class GameBoardFactory {
   }
 
   public playInGameMusic() {
-    assets.music.ingame.play(); // Spela musik, kallas ej någonstans
+    assets.music.ingamemusic.play(); // Spela musik ingame, kallas ej någonstans
   }
 
   public drawFloor() {
