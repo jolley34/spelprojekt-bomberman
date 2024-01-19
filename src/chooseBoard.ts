@@ -27,6 +27,32 @@ class ChooseBoard {
     );
   }
 
+  public update() {
+    if (this.gardenBoardButton.isButtonPressed()) {
+      this.handleGardenBoardSelection();
+    }
+
+    if (this.iceBoardButton.isButtonPressed()) {
+      this.handleIceBoardSelection();
+    }
+  }
+
+  private handleGardenBoardSelection() {
+    const gardenBoardNumber = this.chooseGardenBoard();
+    const gardenBoard =
+      this.game.gameBoardFactory.generateGameBoard(gardenBoardNumber);
+    this.game.setGameBoard(gardenBoard);
+    this.game.changePage("GameBoardPage"); // Update this to your actual game board page
+  }
+
+  private handleIceBoardSelection() {
+    const iceBoardNumber = this.chooseIceBoard();
+    const iceBoard =
+      this.game.gameBoardFactory.generateGameBoard(iceBoardNumber);
+    this.game.setGameBoard(iceBoard);
+    this.game.changePage("GameBoardPage"); // Update this to your actual game board page
+  }
+
   public chooseGardenBoard() {
     return 1; // Return the number of the garden board
   }

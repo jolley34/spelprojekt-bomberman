@@ -1,10 +1,12 @@
 class GameBoard {
   private clouds: Clouds;
   private entities: GameEntity[];
+  private backgroundIndex: number;
 
-  constructor(entities: GameEntity[]) {
+  constructor(entities: GameEntity[], backgroundIndex: number) {
     this.clouds = new Clouds();
     this.entities = entities;
+    this.backgroundIndex = backgroundIndex;
   }
 
   public setupGameBackground() {
@@ -12,7 +14,13 @@ class GameBoard {
   }
 
   public drawGameBackground() {
-    image(assets.images.backgroundImages[0], 0, 0, width, height);
+    image(
+      assets.images.backgroundImages[this.backgroundIndex],
+      0,
+      0,
+      width,
+      height
+    );
   }
   public update() {
     for (let i = 0; i < this.entities.length; i++) {

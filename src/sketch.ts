@@ -20,6 +20,7 @@ function preload() {
     images: {
       backgroundImages: [
         loadImage("../assets/background/cruel_nature_bg1.png"),
+        loadImage("../assets/background/Map1 - blurred.png"),
       ],
       clouds: [
         loadImage("./assets/clouds/smoke1.png"),
@@ -51,13 +52,34 @@ function setup() {
  */
 function draw() {
   game.update();
-  drawBackgroundImage(assets.images.backgroundImages[0], 150);
+  // drawBackgroundImage(assets.images.backgroundImages[0], 150);
+
+  switch (currentScreen) {
+    case "StartPage":
+      drawBackgroundImage(assets.images.backgroundImages[0], 150);
+      break;
+    case "ChooseBoard":
+      drawBackgroundImage(assets.images.backgroundImages[0], 150);
+      break;
+    case "GameBoardPage":
+      drawBackgroundImage(assets.images.backgroundImages[1], 100);
+
+      break;
+  }
   game.draw();
 }
 
 function mouseClicked() {
   if (currentScreen === "StartPage") {
     startPage.mousePressed();
+  }
+
+  if (currentScreen === "ChooseBoard") {
+    game.chooseBoard.update();
+  }
+
+  if (currentScreen === "GameBoardPage") {
+    game.gameBoard.update();
   }
 }
 /**

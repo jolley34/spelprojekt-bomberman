@@ -1,11 +1,15 @@
 class Game {
-  private gameBoard: GameBoard;
+  public gameBoard: GameBoard;
   private startPage: StartPage;
-  private chooseBoard: ChooseBoard;
-  private gameBoardFactory: GameBoardFactory;
+  public chooseBoard: ChooseBoard;
+  public gameBoardFactory: GameBoardFactory;
 
   //private endOfGame: EndOfGame;
-  private currentPage: "StartPage" | "ChooseBoard" | "EndOfGame";
+  private currentPage:
+    | "StartPage"
+    | "ChooseBoard"
+    | "GameBoardPage"
+    | "EndOfGame";
 
   constructor() {
     //this.gameBoard = new GameBoard();
@@ -17,8 +21,15 @@ class Game {
     this.currentPage = "StartPage" || "ChooseBoard" || "EndOfGame";
   }
 
-  public changePage(newPage: "StartPage" | "ChooseBoard" | "EndOfGame"): void {
+  public setGameBoard(gameBoard: GameBoard): void {
+    this.gameBoard = gameBoard;
+  }
+
+  public changePage(
+    newPage: "StartPage" | "ChooseBoard" | "GameBoardPage" | "EndOfGame"
+  ): void {
     this.currentPage = newPage;
+    currentScreen = newPage;
   }
 
   public update() {
@@ -36,6 +47,10 @@ class Game {
     } else if (this.currentPage === "ChooseBoard") {
       console.log("Welcome to the choose board page");
       this.chooseBoard.draw();
+    } else if (this.currentPage === "GameBoardPage") {
+      console.log("Welcome to the game board page");
+      this.gameBoard.update();
+      this.gameBoard.draw();
     }
   }
 }
