@@ -40,10 +40,11 @@ class StartPage implements IGamePage {
   }
 
   public draw(): void {
+    drawBackgroundImage(assets.images.backgroundImages[0], 150);
     this.drawTitle();
     this.drawInstructions();
     this.drawHighScore();
-    this.startButton.update();
+    this.startButton.draw();
   }
 
   private drawTitle(): void {
@@ -116,18 +117,19 @@ class StartPage implements IGamePage {
     pop();
   }
 
-  public mousePressed(): void {
+  private mousePressed(): void {
     if (this.startButton.isButtonPressed()) {
       console.log("I was pressed");
-      this.game.changePage("ChooseBoard");
+      this.game.changePage("ChooseBoardPage");
     }
   }
 
   public update(): void {
-    this.startButton.update();
+    this.mousePressed();
   }
 }
 
+// todo: move these loose functions into the corret class
 function drawBorder(borderSize: number) {
   fill(0);
   rect(0, 0, windowWidth, windowHeight);

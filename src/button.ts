@@ -19,7 +19,22 @@ class Button {
     this.text = text;
   }
 
-  public drawButton(): void {
+  public isButtonPressed() {
+    const isHovering =
+      mouseX > this.positionX - this.width / 2 &&
+      mouseX < this.positionX + this.width / 2 &&
+      mouseY > this.positionY - this.height / 2 &&
+      mouseY < this.positionY + this.height / 2;
+
+    if (isHovering && mouseIsPressed) {
+      return true;
+    }
+    return false;
+  }
+
+  public update(): void {}
+
+  public draw(): void {
     push();
     fill(0);
     noStroke();
@@ -33,21 +48,5 @@ class Button {
     text(this.text, this.positionX, this.positionY);
 
     pop();
-  }
-
-  public isButtonPressed() {
-    if (
-      mouseX > this.positionX - this.width / 2 &&
-      mouseX < this.positionX + this.width / 2 &&
-      mouseY > this.positionY - this.height / 2 &&
-      mouseY < this.positionY + this.height / 2
-    ) {
-      return true;
-    }
-    return false;
-  }
-
-  public update(): void {
-    this.drawButton();
   }
 }

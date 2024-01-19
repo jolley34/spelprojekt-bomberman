@@ -30,7 +30,7 @@ class GameBoardFactory {
     switch (boardNumber) {
       case 1:
         boardLayout = this.board1;
-        backgroundIndex = 0; // or 1
+        backgroundIndex = 1; // or 1
         break;
       // case 2:
       //   boardLayout = this.board2;

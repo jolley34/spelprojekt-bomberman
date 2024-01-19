@@ -39,18 +39,12 @@ class ChooseBoard {
 
   private handleGardenBoardSelection() {
     const gardenBoardNumber = this.chooseGardenBoard();
-    const gardenBoard =
-      this.game.gameBoardFactory.generateGameBoard(gardenBoardNumber);
-    this.game.setGameBoard(gardenBoard);
-    this.game.changePage("GameBoardPage"); // Update this to your actual game board page
+    this.game.changePage("GameBoard", gardenBoardNumber); // Update this to your actual game board page
   }
 
   private handleIceBoardSelection() {
     const iceBoardNumber = this.chooseIceBoard();
-    const iceBoard =
-      this.game.gameBoardFactory.generateGameBoard(iceBoardNumber);
-    this.game.setGameBoard(iceBoard);
-    this.game.changePage("GameBoardPage"); // Update this to your actual game board page
+    this.game.changePage("GameBoard", iceBoardNumber); // Update this to your actual game board page
   }
 
   public chooseGardenBoard() {
@@ -62,6 +56,7 @@ class ChooseBoard {
   }
 
   public draw() {
+    drawBackgroundImage(assets.images.backgroundImages[0], 150);
     push();
     textSize(64);
     const padding = 100;
@@ -84,7 +79,7 @@ class ChooseBoard {
 
     image(this.image, width / 4, height / 4, width / 2, height / 2);
 
-    this.gardenBoardButton.update();
-    this.iceBoardButton.update();
+    this.gardenBoardButton.draw();
+    this.iceBoardButton.draw();
   }
 }

@@ -1,7 +1,7 @@
 class GameBoard {
   private clouds: Clouds;
   private entities: GameEntity[];
-  private backgroundIndex: number;
+  private backgroundIndex: number; // todo: change index to the actual image
 
   constructor(entities: GameEntity[], backgroundIndex: number) {
     this.clouds = new Clouds();
