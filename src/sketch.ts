@@ -4,6 +4,11 @@
 let gameboard: Gameboard;
 let gamebackground: GameBackground;
 let game: Game;
+
+//
+let player1: Player;
+let player2: Player;
+
 let music: {
   mystery: p5.SoundFile;
 };
@@ -34,6 +39,15 @@ function setup() {
   game = new Game();
   gamebackground = new GameBackground();
   gameboard = new Gameboard();
+  //
+  player1 = new Player("black", 100, 100, {
+    up: 87, left: 65, down: 83, right: 68, placeBomb: 16
+  });
+
+  player2 = new Player("yellow", 200, 100, {
+    up: 38, left: 37, down: 40, right: 39, placeBomb: 32
+  });
+
 }
 
 /**

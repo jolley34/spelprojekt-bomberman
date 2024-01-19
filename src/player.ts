@@ -17,6 +17,7 @@ class Player {
   private bombs: Bomb[] = [];
   private maxBombs: number = 40; // The maximum number of bombs that can be placed
   private placedBomb: Bomb | null;
+
   constructor(color: string, x: number, y: number, controls: Controls) {
     this.color = color;
     this.y = y;
@@ -51,26 +52,45 @@ class Player {
   }
 
   private move() {
-    if (keyIsPressed) {
-      if (keyCode === this.controls.up && this.y > 0) {
+      // Player 1 controls
+      if (keyIsDown(player1.controls.up) && this.y > 0) {
         this.y -= 10;
       }
-      if (keyCode === this.controls.down && this.y < windowHeight) {
+      if (keyIsDown(player1.controls.down) && this.y < windowHeight) {
         this.y += 10;
       }
-      if (keyCode === this.controls.left && this.x > 0) {
+      if (keyIsDown(player1.controls.left) && this.x > 0) {
         this.x -= 10;
       }
-      if (keyCode === this.controls.right && this.x < windowWidth) {
+      if (keyIsDown(player1.controls.right) && this.x < windowWidth) {
         this.x += 10;
       }
-      if (keyCode === this.controls.placeBomb) { // Bomb mode key
+      if (keyIsDown(player1.controls.placeBomb)) { // Bomb mode key
         this.placeBomb();
       }
-    }
+
+      // Player 2 controls
+      if (keyIsDown(player2.controls.up) && player2.y > 0) {
+        player2.y -= 10;
+      }
+      if (keyIsDown(player2.controls.down) && player2.y < windowHeight) {
+        player2.y += 10;
+      }
+      if (keyIsDown(player2.controls.left) && player2.x > 0) {
+        player2.x -= 10;
+      }
+      if (keyIsDown(player2.controls.right) && player2.x < windowWidth) {
+        player2.x += 10;
+      }
+      if (keyIsDown(player2.controls.placeBomb)) { // Bomb mode key
+        player2.placeBomb();
+      }
+    
+
     this.checkCollisionWithRectangle();
     this.updateBombs();
   }
+    
 
   private placeBomb() {
     if (this.bombs.length < this.maxBombs) {
@@ -118,11 +138,6 @@ class Player {
   }
 }
 
-// type GameState = "play" | "gameover";
-
-// let gameboard: Gameboard;
-// let players: Player[] = [];
-// let gameState: GameState = "play";
 
 
 

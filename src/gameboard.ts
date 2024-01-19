@@ -24,6 +24,7 @@ class Gameboard {
 
   private player1: Player;
   private player2: Player;
+  
   isGameOver: boolean
 
   private rectangles: { x: number; y: number; width: number; height: number }[];
