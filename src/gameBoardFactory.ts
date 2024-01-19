@@ -30,17 +30,23 @@ class GameBoardFactory {
   }
 
   public drawFloor() {
-    const blockSize = 33;
-    const centerX = width / 2 - (this.board1[0].length * blockSize) / 2;
-    const centerY = height / 2 - (this.board1.length * blockSize) / 2;
+    const numRows = this.board1.length;
+    const numCols = this.board1[0].length;
 
-    for (let i = 0; i < this.board1.length; i++) {
-      for (let j = 0; j < this.board1[i].length; j++) {
+    // Adjust the scaling factor as needed (e.g., 0.8 for 80% size)
+    const scalingFactor = 0.6;
+    const blockSize = min(width / numCols, height / numRows) * scalingFactor;
+
+    const centerX = width / 2 - (numCols * blockSize) / 2;
+    const centerY = height / 2 - (numRows * blockSize) / 2;
+
+    for (let i = 0; i < numRows; i++) {
+      for (let j = 0; j < numCols; j++) {
         const x = centerX + j * blockSize;
         const y = centerY + i * blockSize;
 
-        fill(144, 238, 144); // Sätter färg på golv (ljusgrön)
-        rect(x, y, blockSize, blockSize); // skapar storleken på blocket.
+        fill(144, 238, 144);
+        rect(x, y, blockSize, blockSize);
       }
     }
   }
@@ -49,12 +55,18 @@ class GameBoardFactory {
     const board = this.board1;
     const entities: GameEntity[] = [];
 
-    const blockSize = 33;
-    const centerX = width / 2 - (board[0].length * blockSize) / 2.136;
-    const centerY = height / 2 - (board.length * blockSize) / 1.88;
+    const numRows = board.length;
+    const numCols = board[0].length;
 
-    for (let i = 0; i < board.length; i++) {
-      for (let j = 0; j < board[i].length; j++) {
+    // Adjust the scaling factor as needed (e.g., 0.8 for 80% size)
+    const scalingFactor = 0.6;
+    const blockSize = min(width / numCols, height / numRows) * scalingFactor;
+
+    const centerX = width / 2 - (numCols * blockSize) / 2.142;
+    const centerY = height / 2 - (numRows * blockSize) / 1.89;
+
+    for (let i = 0; i < numRows; i++) {
+      for (let j = 0; j < numCols; j++) {
         const x = centerX + j * blockSize;
         const y = centerY + i * blockSize;
 
