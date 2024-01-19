@@ -33,9 +33,9 @@ class GameBoardFactory {
     const numRows = this.board1.length;
     const numCols = this.board1[0].length;
 
-    // Adjust the scaling factor as needed (e.g., 0.8 for 80% size)
-    const scalingFactor = 0.6;
-    const blockSize = min(width / numCols, height / numRows) * scalingFactor;
+    // Adjust the scaling (0.6 for 60% size)
+    const scalingGameboard = 0.6;
+    const blockSize = min(width / numCols, height / numRows) * scalingGameboard;
 
     const centerX = width / 2 - (numCols * blockSize) / 2.142;
     const centerY = height / 2 - (numRows * blockSize) / 1.89;
@@ -58,9 +58,9 @@ class GameBoardFactory {
     const numRows = board.length;
     const numCols = board[0].length;
 
-    // Adjust the scaling factor as needed (e.g., 0.8 for 80% size)
-    const scalingFactor = 0.6;
-    const blockSize = min(width / numCols, height / numRows) * scalingFactor;
+    // Adjust the scaling (0.6 for 60% size)
+    const scalingGameboard = 0.6;
+    const blockSize = min(width / numCols, height / numRows) * scalingGameboard;
 
     const centerX = width / 2 - (numCols * blockSize) / 2.142;
     const centerY = height / 2 - (numRows * blockSize) / 1.89;
