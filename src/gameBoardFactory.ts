@@ -6,6 +6,7 @@ class GameBoardFactory {
     // 1 = Statiskt hinder
     // 9 = Spelare
     // Se till att den här innehåller fler siffror
+    // prettier-ignore
     this.board1 = [
       [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
       [1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],

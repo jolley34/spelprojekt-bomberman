@@ -1,13 +1,11 @@
 /// <reference path="gameEntity.ts" />
 
 class Player extends GameEntity {
-  public speed: number;
-  public blockSize: number;
+  private speed: number;
 
-  constructor(x: number, y: number, blockSize: number) {
-    super(x, y);
+  constructor(x: number, y: number, size: number) {
+    super(assets.images.clouds[0], x, y, size);
     this.speed = 4;
-    this.blockSize = blockSize;
   }
 
   public update(): void {
@@ -20,10 +18,5 @@ class Player extends GameEntity {
     } else if (keyIsDown(DOWN_ARROW)) {
       this.y += this.speed;
     }
-  }
-
-  public draw(): void {
-    fill(255, 100, 140);
-    rect(this.x, this.y, this.blockSize, this.blockSize);
   }
 }
