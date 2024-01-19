@@ -37,8 +37,8 @@ class GameBoardFactory {
     const scalingFactor = 0.6;
     const blockSize = min(width / numCols, height / numRows) * scalingFactor;
 
-    const centerX = width / 2 - (numCols * blockSize) / 2;
-    const centerY = height / 2 - (numRows * blockSize) / 2;
+    const centerX = width / 2 - (numCols * blockSize) / 2.142;
+    const centerY = height / 2 - (numRows * blockSize) / 1.89;
 
     for (let i = 0; i < numRows; i++) {
       for (let j = 0; j < numCols; j++) {
