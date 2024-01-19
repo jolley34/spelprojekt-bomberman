@@ -25,6 +25,10 @@ class GameBoardFactory {
     ];
   }
 
+  public playInGameMusic() {
+    assets.music.ingame.play(); // Spela musik, kallas ej någonstans
+  }
+
   public drawFloor() {
     const blockSize = 33;
     const centerX = width / 2 - (this.board1[0].length * blockSize) / 2;

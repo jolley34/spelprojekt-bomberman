@@ -1,6 +1,9 @@
 //---- GLOBAL VARIABLES ----//
 let game: Game;
 let assets: {
+  music: {
+    ingame: p5.SoundFile;
+  };
   images: {
     maptextures: p5.Image[];
     playeranimation: p5.Image;
@@ -16,6 +19,9 @@ let assets: {
  */
 function preload() {
   assets = {
+    music: {
+      ingame: loadSound("/assets/music/spelprojekt-ingame-v6.mp3"),
+    },
     images: {
       playeranimation: loadImage("./assets/playeranimations/george.png"),
       background: loadImage("./assets/background/Map-1-blurred-shadow-v3.png"),
