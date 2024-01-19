@@ -1,13 +1,27 @@
 class GameBoard {
   private clouds: Clouds;
   private entities: GameEntity[];
-  // Define numbers array
+  private backgroundIndex: number; // todo: change index to the actual image
 
-  constructor(entities: GameEntity[]) {
+  constructor(entities: GameEntity[], backgroundIndex: number) {
     this.clouds = new Clouds();
     this.entities = entities;
+    this.backgroundIndex = backgroundIndex;
   }
 
+  public setupGameBackground() {
+    createCanvas(windowWidth, windowHeight);
+  }
+
+  public drawGameBackground() {
+    image(
+      assets.images.backgroundImages[this.backgroundIndex],
+      0,
+      0,
+      width,
+      height
+    );
+  }
   public update() {
     // Loop over all entities and update them
     for (let i = 0; i < this.entities.length; i++) {
@@ -19,15 +33,11 @@ class GameBoard {
     // }
   }
 
-  // Define blockSize
   public draw() {
-    background(assets.images.background);
-
-    // Loop over all entities and draw them
+    this.drawGameBackground();
     for (let i = 0; i < this.entities.length; i++) {
       this.entities[i].draw();
     }
-
     this.clouds.draw();
   }
 }

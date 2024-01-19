@@ -13,6 +13,8 @@ let assets: {
   };
 };
 
+let customFont: p5.Font;
+
 /**
  * Built in preload function in P5
  * This is a good place to load assets such as
@@ -46,6 +48,7 @@ function preload() {
  */
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  textFont(customFont);
   frameRate(120);
   game = new Game();
 }

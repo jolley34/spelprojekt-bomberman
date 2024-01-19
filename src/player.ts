@@ -17,6 +17,15 @@ class Player extends GameEntity {
       this.y -= this.speed;
     } else if (keyIsDown(DOWN_ARROW)) {
       this.y += this.speed;
+  public update(): void {
+    if (keyIsDown(LEFT_ARROW)) {
+      this.x -= this.speed;
+    } else if (keyIsDown(RIGHT_ARROW)) {
+      this.x += this.speed;
+    } else if (keyIsDown(UP_ARROW)) {
+      this.y -= this.speed;
+    } else if (keyIsDown(DOWN_ARROW)) {
+      this.y += this.speed;
     }
   }
 }
