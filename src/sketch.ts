@@ -1,7 +1,13 @@
 //---- GLOBAL VARIABLES ----//
 let game: Game;
 let assets: {
+  music: {
+    ingamemusic: p5.SoundFile;
+    menumusic: p5.SoundFile;
+  };
   images: {
+    maptextures: p5.Image[];
+    playeranimation: p5.Image;
     backgroundImages: p5.Image[];
     clouds: p5.Image[];
   };
@@ -17,7 +23,13 @@ let customFont: p5.Font;
 function preload() {
   customFont = loadFont("../Fonts/MinecraftBold-nMK1.otf");
   assets = {
+    music: {
+      ingamemusic: loadSound("../assets/music/ingamemusic.mp3"),
+      menumusic: loadSound("../assets/music/menumusic.mp3"),
+    },
     images: {
+      playeranimation: loadImage("./assets/playeranimations/george.png"),
+      maptextures: [loadImage("./assets/maptextures/bush.png")],
       backgroundImages: [
         loadImage("../assets/background/cruel_nature_bg1.png"),
         loadImage("../assets/background/Map1 - blurred.png"),

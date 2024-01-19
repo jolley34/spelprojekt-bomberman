@@ -73,7 +73,6 @@ class ChooseBoard {
 
     fill("#B3D917");
     textAlign(CENTER, CENTER);
-    textFont("Minecraft");
     text("Cruel Nature", width / 2, height / 4 - offsetY);
     pop();
 

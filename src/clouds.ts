@@ -89,7 +89,13 @@ class Clouds {
       let cloud = this.clouds[i];
       image(cloud.image, cloud.x, cloud.y, 300, 300);
 
+      let opacity = 180;
+
+      tint(255, opacity);
+
       cloud.x += cloud.speed;
+
+      noTint();
 
       if (cloud.x > width) {
         cloud.x = -100;
