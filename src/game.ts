@@ -12,7 +12,6 @@ class Game {
     | "EndOfGame";
 
   constructor() {
-    //this.gameBoard = new GameBoard();
     this.startPage = new StartPage(this);
     this.chooseBoard = new ChooseBoard(this);
     this.gameBoardFactory = new GameBoardFactory();
