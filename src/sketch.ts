@@ -1,8 +1,14 @@
 //---- GLOBAL VARIABLES ----//
 let game: Game;
 let assets: {
+  music: {
+    ingamemusic: p5.SoundFile;
+    menumusic: p5.SoundFile;
+  };
   images: {
-    backgroundImages: p5.Image[];
+    maptextures: p5.Image[];
+    playeranimation: p5.Image;
+    background: p5.Image;
     clouds: p5.Image[];
   };
 };
@@ -15,20 +21,21 @@ let customFont: p5.Font;
  * sound files, images etc...
  */
 function preload() {
-  customFont = loadFont("../Fonts/MinecraftBold-nMK1.otf");
   assets = {
+    music: {
+      ingamemusic: loadSound("/assets/music/spelprojekt-ingame-v6.mp3"),
+      menumusic: loadSound("/assets/music/spelprojekt-menu.mp3"),
+    },
     images: {
-      backgroundImages: [
-        loadImage("../assets/background/cruel_nature_bg1.png"),
-        loadImage("../assets/background/Map1 - blurred.png"),
-        loadImage("../assets/background/winter_background.png"),
-      ],
+      playeranimation: loadImage("./assets/playeranimations/george.png"),
+      background: loadImage("./assets/background/Map-1-blurred-shadow-v4.png"),
       clouds: [
         loadImage("./assets/clouds/smoke1.png"),
         loadImage("./assets/clouds/smoke2.png"),
         loadImage("./assets/clouds/smoke3.png"),
         loadImage("./assets/clouds/smoke4.png"),
       ],
+      maptextures: [loadImage("./assets/maptextures/bush.png")],
     },
   };
 }
