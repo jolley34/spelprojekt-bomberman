@@ -29,9 +29,10 @@ function preload() {
     // },
     images: {
       backgroundImages: [
-        loadImage("../assets/background/cruel_nature_bg1.png"),
+        loadImage("../assets/background/Controls.svg"),
         loadImage("../assets/background/Map1 - blurred.png"),
         loadImage("../assets/background/winter_background.png"),
+        loadImage("../assets/background/cruel_nature_bg1.png"),
       ],
       clouds: [
         loadImage("./assets/clouds/smoke1.png"),

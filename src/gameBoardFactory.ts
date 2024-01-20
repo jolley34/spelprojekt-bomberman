@@ -81,6 +81,6 @@ class GameBoardFactory {
       }
     }
 
-    return new GameBoard(entities, boardNumber);
+    return new GameBoard(entities, assets.images.backgroundImages[boardNumber]);
   }
 }

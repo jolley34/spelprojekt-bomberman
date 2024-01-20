@@ -1,15 +1,12 @@
 class ChooseBoard {
   private image: p5.Image;
-  private gardenBoard: p5.Image;
-  private iceBoard: p5.Image;
   private game: Game;
   private gardenBoardButton: Button;
   private iceBoardButton: Button;
 
   constructor(game: Game) {
-    this.image = loadImage("../assets/background/Controls.svg");
-    this.gardenBoard = loadImage("../assets/background/cruel_nature_bg1.png");
-    this.iceBoard = loadImage("../assets/background/winter_background.png");
+    this.image = assets.images.backgroundImages[0];
+
     this.game = game;
     this.gardenBoardButton = new Button(
       width / 4 + 130,
@@ -56,7 +53,7 @@ class ChooseBoard {
   }
 
   public draw() {
-    drawBackgroundImage(assets.images.backgroundImages[0], 150);
+    Utility.drawBackgroundImage(assets.images.backgroundImages[3], 150);
     push();
     textSize(64);
     const padding = 100;

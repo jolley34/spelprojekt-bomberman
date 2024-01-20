@@ -40,7 +40,7 @@ class StartPage implements IGamePage {
   }
 
   public draw(): void {
-    drawBackgroundImage(assets.images.backgroundImages[0], 150);
+    Utility.drawBackgroundImage(assets.images.backgroundImages[3], 150);
     this.drawTitle();
     this.drawInstructions();
     this.drawHighScore();
@@ -127,57 +127,4 @@ class StartPage implements IGamePage {
   public update(): void {
     this.mousePressed();
   }
-}
-
-// todo: move these loose functions into the corret class
-function drawBorder(borderSize: number) {
-  fill(0);
-  rect(0, 0, windowWidth, windowHeight);
-
-  // Adjust canvas size for the border
-  return {
-    innerWidth: windowWidth - 2 * borderSize,
-    innerHeight: windowHeight - 2 * borderSize,
-    offsetX: borderSize,
-    offsetY: borderSize,
-  };
-}
-
-function drawBackgroundImage(img: p5.Image, borderSize: number) {
-  const { innerWidth, innerHeight, offsetX, offsetY } = drawBorder(borderSize);
-
-  // Calculate scale factor to fit the image inside the border
-  const scaleFactor = calculateScaleFactor(img, innerWidth, innerHeight);
-  const scaledWidth = img.width * scaleFactor;
-  const scaledHeight = img.height * scaleFactor;
-
-  // Center the image inside the border
-  image(
-    img,
-    offsetX + innerWidth / 2 - scaledWidth / 2,
-    offsetY + innerHeight / 2 - scaledHeight / 2,
-    scaledWidth,
-    scaledHeight
-  );
-}
-
-// Function to calculate the scale factor for the image
-function calculateScaleFactor(
-  img: p5.Image,
-  targetWidth: number,
-  targetHeight: number
-) {
-  let imgAspectRatio = img.width / img.height;
-  let targetAspectRatio = targetWidth / targetHeight;
-
-  let scaleFactor;
-  if (imgAspectRatio > targetAspectRatio) {
-    // Image is wider relative to target dimensions
-    scaleFactor = targetHeight / img.height;
-  } else {
-    // Image is taller relative to target dimensions
-    scaleFactor = targetWidth / img.width;
-  }
-
-  return scaleFactor;
 }
