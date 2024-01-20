@@ -81,6 +81,6 @@ class GameBoardFactory {
       }
     }
 
-    return new GameBoard(entities, 1);
+    return new GameBoard(entities, boardNumber);
   }
 }
