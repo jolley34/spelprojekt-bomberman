@@ -39,7 +39,8 @@ function setup() {
   game = new Game();
   gamebackground = new GameBackground();
   gameboard = new Gameboard();
-  //
+  
+  // Definerar players in global scope
   player1 = new Player("black", 100, 100, {
     up: 87, left: 65, down: 83, right: 68, placeBomb: 16
   });

@@ -89,6 +89,7 @@ class Player {
 
     this.checkCollisionWithRectangle();
     this.updateBombs();
+    
   }
     
 
