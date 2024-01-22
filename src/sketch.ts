@@ -45,6 +45,7 @@ function preload() {
         loadImage("../assets/maptextures/ice1.png"),
         loadImage("../assets/maptextures/brick.png"),
         loadImage("../assets/maptextures/grass.jpeg"),
+        loadImage("../assets/maptextures/grassywall.png"),
       ],
       entities: [
         loadImage("../assets/entities_img/image1.png"),
