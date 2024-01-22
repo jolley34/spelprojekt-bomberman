@@ -73,10 +73,10 @@ class GameBoardFactory {
         const y = centerY + i * blockSize;
 
         if (board[i][j] === 1) {
-          entities.push(new staticObstacle(x, y, blockSize));
+          entities.push(new StaticObstacle(x, y, blockSize));
         }
         if (board[i][j] === 2){
-          entities.push(new removebleObstacle(x,y, blockSize));
+          entities.push(new RemovebleObstacle(x, y, blockSize));
         }
         if (board[i][j] === 9) {
           const player = new Player(x, y, blockSize);

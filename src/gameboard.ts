@@ -21,10 +21,10 @@ class GameBoard {
     image(this.backgroundImage, 0, 0, width, height);
   }
 
-  /*private checkCollision(){
-    //Här vill vi ha en funktioooooon!!!
+  private checkCollision(){
+    // for () {}
 
-  }*/
+  }
 
 
 
