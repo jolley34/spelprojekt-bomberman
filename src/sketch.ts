@@ -30,7 +30,7 @@ function preload() {
     images: {
       backgroundImages: [
         loadImage("../assets/background/Controls.svg"),
-        loadImage("../assets/background/Map-1-blurred-shadow-v4.png"),
+        loadImage("../assets/background/Map-1-blurred-shadow-v4-copy.png"),
         loadImage("../assets/background/winter_background.png"),
         loadImage("../assets/background/cruel_nature_bg1.png"),
       ],
@@ -46,6 +46,8 @@ function preload() {
         loadImage("../assets/maptextures/brick.png"),
         loadImage("../assets/maptextures/grass.jpeg"),
         loadImage("../assets/maptextures/grassywall.png"),
+        loadImage("../assets/maptextures/log.png"),
+        loadImage("../assets/maptextures/grass-figma.png"),
       ],
       entities: [
         loadImage("../assets/entities_img/image1.png"),
