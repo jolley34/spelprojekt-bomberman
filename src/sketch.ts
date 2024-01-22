@@ -1,6 +1,9 @@
 //---- GLOBAL VARIABLES ----//
 let game: Game;
 let assets: {
+  playerSoundEffects: {
+    walkingsound: p5.SoundFile;
+  };
   music: {
     ingamemusic: p5.SoundFile;
     menumusic: p5.SoundFile;
@@ -67,6 +70,11 @@ function preload() {
     music: {
       ingamemusic: loadSound("../assets/music/spelprojekt-ingame-v6.mp3"),
       menumusic: loadSound("..//assets/music/spelprojekt-menu.mp3"),
+    },
+    playerSoundEffects: {
+      walkingsound: loadSound(
+        "../assets/player-sound-effects/sfx_step_grass_l.mp3"
+      ),
     },
   };
 }
