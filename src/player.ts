@@ -16,10 +16,10 @@ class Player extends GameEntity {
     this.animationSpeed = 0.8;
 
     // Vilka bilder jag loopar igenom när jag trycker vänster
-    this.leftAnimationLoop = [7, 6, 8];
-    this.rightAnimationLoop = [10, 9, 11];
-    this.upAnimationLoop = [4, 3, 5];
-    this.downAnimationLoop = [1, 0, 2];
+    this.leftAnimationLoop = [7, 6, 8, 6];
+    this.rightAnimationLoop = [10, 9, 11, 9];
+    this.upAnimationLoop = [4, 3, 5, 3];
+    this.downAnimationLoop = [1, 0, 2, 0];
   }
 
   public update(): void {

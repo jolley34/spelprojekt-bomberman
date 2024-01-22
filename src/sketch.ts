@@ -58,10 +58,10 @@ function preload() {
         loadImage("../assets/player-1-animations/idle-back-rf.png"), // 5
         loadImage("../assets/player-1-animations/idle-left.png"), // 6
         loadImage("../assets/player-1-animations/left-foot-left.png"), // 7
-        loadImage("../assets/player-1-animations/left-foot-right.png"), // 8
+        loadImage("../assets/player-1-animations/right-foot-left.png"), // 8
         loadImage("../assets/player-1-animations/idle-right.png"), // 9
-        loadImage("../assets/player-1-animations/right-foot-left.png"), // 10
-        loadImage("../assets/player-1-animations/right-foot-right.png"), // 11
+        loadImage("../assets/player-1-animations/right-foot-right.png"), // 10
+        loadImage("../assets/player-1-animations/left-foot-right.png"), // 11
       ],
     },
     music: {
