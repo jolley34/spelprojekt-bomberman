@@ -7,7 +7,7 @@ class Player extends GameEntity {
     super(assets.images.entities[2], x, y, size);
     this.speed = 4;
   }
-
+  
   public update(): void {
     if (keyIsDown(LEFT_ARROW)) {
       this.x -= this.speed;

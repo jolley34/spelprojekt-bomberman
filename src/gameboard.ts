@@ -11,6 +11,8 @@ class GameBoard {
     this.backgroundImage = backgroundImage;
   }
 
+
+
   public setupGameBackground() {
     createCanvas(windowWidth, windowHeight);
   }
@@ -18,6 +20,14 @@ class GameBoard {
   public drawGameBackground() {
     image(this.backgroundImage, 0, 0, width, height);
   }
+
+  /*private checkCollision(){
+    //Här vill vi ha en funktioooooon!!!
+
+  }*/
+
+
+
   public update() {
     for (let i = 0; i < this.entities.length; i++) {
       this.entities[i].update();
