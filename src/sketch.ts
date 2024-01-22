@@ -29,7 +29,7 @@ function preload() {
   customFont = loadFont("../Fonts/MinecraftBold-nMK1.otf");
   assets = {
     images: {
-      powerups: [loadImage("../assets/powerup/banana.gif")],
+      powerups: [loadImage("../assets/powerup/yy3.gif")],
       backgroundImages: [
         loadImage("../assets/background/Controls.svg"),
         loadImage("../assets/background/Map-1-blurred-shadow-v4-copy.png"),
