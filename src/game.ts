@@ -16,9 +16,17 @@ class Game {
   }
 
   public changePage(page: PageName, board?: number) {
+    if (this.currentPage === "GameBoard") {
+      // this.gameBoard.endGame();
+    }
+
     this.currentPage = page;
-    if (board) {
-      this.gameBoard = this.gameBoardFactory.generateGameBoard(board);
+
+    if (page === "GameBoard") {
+      if (board) {
+        this.gameBoard = this.gameBoardFactory.generateGameBoard(board);
+      }
+      this.gameBoard.startGame();
     }
   }
 

@@ -3,12 +3,14 @@ class GameBoard {
   private entities: GameEntity[];
   //private backgroundIndex: number; // todo: change index to the actual image
   private backgroundImage: p5.Image;
+  private timer: Timer;
 
   constructor(entities: GameEntity[], backgroundImage: p5.Image) {
     this.clouds = new Clouds();
     this.entities = entities;
     //this.backgroundIndex = backgroundIndex;
     this.backgroundImage = backgroundImage;
+    this.timer = new Timer();
   }
 
   public setupGameBackground() {
@@ -65,14 +67,24 @@ class GameBoard {
     this.checkCollision();
   }
 
+  public startGame() {
+    this.timer.start();
+  }
+
+  public endGame() {
+    this.timer.stop();
+  }
+
   public draw() {
     this.drawGameBackground();
     for (let i = 0; i < this.entities.length; i++) {
       this.entities[i].draw();
+      this.timer.drawTimer();
     }
     this.clouds.draw();
   }
 }
+
 // const entitet = new Obstacle(0,0,10);
 // if (entitet instanceof Obstacle) {
 //   // reagera baserat på att entiteten är ett hinder...
