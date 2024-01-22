@@ -30,7 +30,7 @@ function preload() {
     images: {
       backgroundImages: [
         loadImage("../assets/background/Controls.svg"),
-        loadImage("../assets/background/Map1 - blurred.png"),
+        loadImage("../assets/background/Map-1-blurred-shadow-v4.png"),
         loadImage("../assets/background/winter_background.png"),
         loadImage("../assets/background/cruel_nature_bg1.png"),
       ],
@@ -80,5 +80,5 @@ function draw() {
  *  Built in windowResize listener function in P5
  */
 function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
+  /*   resizeCanvas(windowWidth, windowHeight); */
 }
