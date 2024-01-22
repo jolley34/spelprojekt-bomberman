@@ -27,10 +27,6 @@ class GameBoard {
     for (let i = 0; i < this.entities.length; i++) {
       this.entities[i].update();
     }
-
-    // for (const entity of this.entities) {
-    //   entity.update();
-    // }
   }
 
   public draw() {

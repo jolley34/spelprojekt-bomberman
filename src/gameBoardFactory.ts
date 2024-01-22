@@ -1,6 +1,5 @@
 class GameBoardFactory {
   private board1: number[][];
-  // private board2: number[][];
 
   constructor() {
     // 1 = Statiskt hinder
