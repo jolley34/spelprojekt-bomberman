@@ -5,11 +5,11 @@ class Player extends GameEntity {
   public speedY: number;
 
   constructor(x: number, y: number, size: number) {
-    super(assets.images.entities[2], x, y, size);
+    super(assets.images.playeranimations[0], x, y, size);
     this.speedX = 0;
     this.speedY = 0;
   }
-  
+
   public update(): void {
     // Sätter hastigheten utifrån vad spelar trycker på för knapp
     if (keyIsDown(LEFT_ARROW)) {
@@ -24,7 +24,7 @@ class Player extends GameEntity {
       this.speedX = 0;
       this.speedY = 0;
     }
-    
+
     // Ändra position utifrån hastighet
     this.x += this.speedX;
     this.y += this.speedY;

@@ -10,6 +10,7 @@ let assets: {
     backgroundImages: p5.Image[];
     clouds: p5.Image[];
     entities: p5.Image[];
+    playeranimations: p5.Image[];
   };
 };
 
@@ -55,6 +56,9 @@ function preload() {
         loadImage("../assets/entities_img/image1.png"),
         loadImage("../assets/entities_img/image2.png"),
         loadImage("../assets/entities_img/image3.png"),
+      ],
+      playeranimations: [
+        loadImage("../assets/playeranimations/idle-front.png"),
       ],
     },
   };
