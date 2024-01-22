@@ -9,7 +9,7 @@ class Player extends GameEntity {
     this.speedX = 0;
     this.speedY = 0;
   }
-  
+
   public update(): void {
     // Sätter hastigheten utifrån vad spelar trycker på för knapp
     if (keyIsDown(LEFT_ARROW)) {
@@ -20,13 +20,19 @@ class Player extends GameEntity {
       this.speedY = -4;
     } else if (keyIsDown(DOWN_ARROW)) {
       this.speedY = 4;
+    } else if (keyIsDown(80)) {
+      console.log("du tryckte på mig!");
+      this.dropBomb();
     } else if (!keyIsPressed) {
       this.speedX = 0;
       this.speedY = 0;
     }
-    
+
     // Ändra position utifrån hastighet
     this.x += this.speedX;
     this.y += this.speedY;
+  }
+  public dropBomb() {
+    console.log("DROPP BOMB");
   }
 }
