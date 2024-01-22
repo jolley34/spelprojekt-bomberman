@@ -31,7 +31,6 @@ class GameBoardFactory {
     assets.music.ingamemusic.play(); // Spela musik ingame, kallas ej någonstans
   } */
 
-
   public drawFloor() {
     const numRows = this.board1.length;
     const numCols = this.board1[0].length;
@@ -76,11 +75,11 @@ class GameBoardFactory {
         if (board[i][j] === 1) {
           entities.push(new StaticObstacle(x, y, blockSize));
         }
-        if (board[i][j] === 2){
+        if (board[i][j] === 2) {
           entities.push(new RemovebleObstacle(x, y, blockSize));
         }
         if (board[i][j] === 9) {
-          const player = new Player(x, y, blockSize * 0.6);
+          const player = new Player(x, y, blockSize * 1);
           entities.push(player);
         }
       }
@@ -89,5 +88,3 @@ class GameBoardFactory {
     return new GameBoard(entities, assets.images.backgroundImages[boardNumber]);
   }
 }
-
-

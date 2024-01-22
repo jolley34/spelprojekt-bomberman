@@ -1,7 +1,7 @@
 class GameEntity {
   public x: number;
   public y: number;
-  private image: p5.Image;
+  public image: p5.Image;
   public size: number;
 
   constructor(image: p5.Image, x: number, y: number, size: number) {

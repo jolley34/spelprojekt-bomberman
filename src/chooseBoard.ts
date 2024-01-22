@@ -37,6 +37,8 @@ class ChooseBoard {
   private handleGardenBoardSelection() {
     const gardenBoardNumber = this.chooseGardenBoard();
     this.game.changePage("GameBoard", gardenBoardNumber);
+    assets.music.ingamemusic.play();
+    assets.music.menumusic.stop();
   }
 
   private handleIceBoardSelection() {

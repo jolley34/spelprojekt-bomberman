@@ -30,13 +30,13 @@ class GameBoard {
           // 1. Identifiera faktiska krockar
           // Definera höger och vänster sida för varje entitet
           const l1 = entity1.x;
-          const r1 = entity1.x + entity1.size;
+          const r1 = entity1.x + entity1.size / 1.75;
           const l2 = entity2.x;
-          const r2 = entity2.x + entity2.size;
+          const r2 = entity2.x + entity2.size / 1.75;
           const t1 = entity1.y;
-          const b1 = entity1.y + entity1.size;
+          const b1 = entity1.y + entity1.size / 1.25;
           const t2 = entity2.y;
-          const b2 = entity2.y + entity2.size;
+          const b2 = entity2.y + entity2.size / 1.75;
           if (l2 < r1 && l1 < r2 && t2 < b1 && t1 < b2) {
             entity1.x -= entity1.speedX;
             entity1.y -= entity1.speedY;

@@ -121,6 +121,7 @@ class StartPage implements IGamePage {
     if (this.startButton.isButtonPressed()) {
       console.log("I was pressed");
       this.game.changePage("ChooseBoardPage");
+      assets.music.menumusic.play();
     }
   }
 
