@@ -27,9 +27,10 @@ class GameBoardFactory {
     ];
   }
 
-  // public playInGameMusic() {
-  //   assets.music.ingamemusic.play(); // Spela musik ingame, kallas ej någonstans
-  // }
+  /* public playInGameMusic() {
+    assets.music.ingamemusic.play(); // Spela musik ingame, kallas ej någonstans
+  } */
+
 
   public drawFloor() {
     const numRows = this.board1.length;
