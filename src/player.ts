@@ -1,22 +1,32 @@
 /// <reference path="gameEntity.ts" />
 
 class Player extends GameEntity {
-  private speed: number;
+  public speedX: number;
+  public speedY: number;
 
   constructor(x: number, y: number, size: number) {
     super(assets.images.entities[2], x, y, size);
-    this.speed = 4;
+    this.speedX = 0;
+    this.speedY = 0;
   }
-
+  
   public update(): void {
+    // Sätter hastigheten utifrån vad spelar trycker på för knapp
     if (keyIsDown(LEFT_ARROW)) {
-      this.x -= this.speed;
+      this.speedX = -4;
     } else if (keyIsDown(RIGHT_ARROW)) {
-      this.x += this.speed;
+      this.speedX = 4;
     } else if (keyIsDown(UP_ARROW)) {
-      this.y -= this.speed;
+      this.speedY = -4;
     } else if (keyIsDown(DOWN_ARROW)) {
-      this.y += this.speed;
+      this.speedY = 4;
+    } else if (!keyIsPressed) {
+      this.speedX = 0;
+      this.speedY = 0;
     }
+    
+    // Ändra position utifrån hastighet
+    this.x += this.speedX;
+    this.y += this.speedY;
   }
 }

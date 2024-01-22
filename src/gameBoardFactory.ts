@@ -4,8 +4,9 @@ class GameBoardFactory {
 
   constructor() {
     // 1 = Statiskt hinder
+    // 2 = borttagbara hinder
     // 9 = Spelare
-    // Se till att den här innehåller fler siffror
+    // Se till att den här innehåller fler si
     // prettier-ignore
     this.board1 = [
       [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -17,8 +18,8 @@ class GameBoardFactory {
       [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
       [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
       [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
-      [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-      [1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+      [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 2, 2, 2, 2, 1],
+      [1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2, 1],
       [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
       [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
       [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 9, 1],
@@ -73,10 +74,13 @@ class GameBoardFactory {
         const y = centerY + i * blockSize;
 
         if (board[i][j] === 1) {
-          entities.push(new Obstacle(x, y, blockSize));
+          entities.push(new StaticObstacle(x, y, blockSize));
+        }
+        if (board[i][j] === 2){
+          entities.push(new RemovebleObstacle(x, y, blockSize));
         }
         if (board[i][j] === 9) {
-          const player = new Player(x, y, blockSize);
+          const player = new Player(x, y, blockSize * 0.6);
           entities.push(player);
         }
       }
@@ -85,3 +89,5 @@ class GameBoardFactory {
     return new GameBoard(entities, assets.images.backgroundImages[boardNumber]);
   }
 }
+
+
