@@ -1,6 +1,6 @@
 class GameBoardFactory {
   private board1: number[][];
-  // private board2: number[][];
+  private board2: number[][];
 
   constructor() {
     // 1 = Statiskt hinder
@@ -9,6 +9,24 @@ class GameBoardFactory {
     // Se till att den här innehåller fler si
     // prettier-ignore
     this.board1 = [
+      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      [1, 0, 0, 0, 0, 2, 2, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+      [1, 0, 1, 0, 1, 0, 1, 2, 1, 0, 1, 0, 1, 0, 1, 2, 1, 0, 1, 0, 1],
+      [1, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 2, 2, 2, 2, 0, 0, 0, 0, 1],
+      [1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1],
+      [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 1],
+      [1, 0, 1, 2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+      [1, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+      [1, 0, 1, 2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+      [1, 0, 0, 2, 2, 2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 2, 2, 2, 2, 1],
+      [1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2, 1],
+      [1, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+      [1, 0, 1, 0, 1, 2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+      [1, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 9, 1],
+      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    ];
+
+    this.board2 = [
       [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
       [1, 0, 0, 0, 0, 2, 2, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
       [1, 0, 1, 0, 1, 0, 1, 2, 1, 0, 1, 0, 1, 0, 1, 2, 1, 0, 1, 0, 1],
@@ -54,8 +72,12 @@ class GameBoardFactory {
   }
 
   public generateGameBoard(boardNumber: number): GameBoard {
-    const board = this.board1;
+    const board = boardNumber === 1 ? this.board1 : this.board2;
     const entities: GameEntity[] = [];
+
+    // Choose the correct texture index for the board
+    const staticObstacleTextureIndex = boardNumber === 1 ? 0 : 8;
+    const removableObstacleTextureIndex = boardNumber === 1 ? 6 : 7;
 
     const numRows = board.length;
     const numCols = board[0].length;
@@ -73,10 +95,19 @@ class GameBoardFactory {
         const y = centerY + i * blockSize;
 
         if (board[i][j] === 1) {
-          entities.push(new StaticObstacle(x, y, blockSize));
+          entities.push(
+            new StaticObstacle(x, y, blockSize, staticObstacleTextureIndex)
+          );
         }
         if (board[i][j] === 2) {
-          entities.push(new RemovebleObstacle(x, y, blockSize));
+          entities.push(
+            new RemovebleObstacle(
+              x,
+              y,
+              blockSize,
+              removableObstacleTextureIndex
+            )
+          );
         }
         if (board[i][j] === 9) {
           const player = new Player(x, y, blockSize * 1);

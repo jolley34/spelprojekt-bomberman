@@ -7,9 +7,9 @@ class Game {
   private chooseBoard: ChooseBoard;
   private currentPage: PageName;
 
-  constructor() {
+  constructor(board: number) {
     this.gameBoardFactory = new GameBoardFactory();
-    this.gameBoard = this.gameBoardFactory.generateGameBoard(1);
+    this.gameBoard = this.gameBoardFactory.generateGameBoard(board);
     this.startPage = new StartPage(this);
     this.chooseBoard = new ChooseBoard(this);
     this.currentPage = "StartPage";
