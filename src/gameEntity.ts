@@ -14,7 +14,7 @@ class GameEntity {
   public update(): void {}
 
   public draw(): void {
-    push;
+    push();
     image(this.image, this.x, this.y, this.size, this.size);
     pop();
   }
