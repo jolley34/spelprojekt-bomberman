@@ -80,7 +80,7 @@ class GameBoardFactory {
           entities.push(new RemovebleObstacle(x, y, blockSize));
         }
         if (board[i][j] === 9) {
-          const player = new Player(x, y, blockSize);
+          const player = new Player(x, y, blockSize * 0.6);
           entities.push(player);
         }
       }
@@ -89,3 +89,5 @@ class GameBoardFactory {
     return new GameBoard(entities, assets.images.backgroundImages[boardNumber]);
   }
 }
+
+

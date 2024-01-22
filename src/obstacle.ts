@@ -1,6 +1,6 @@
 class StaticObstacle extends GameEntity {
   constructor(x: number, y: number, size: number) {
-    super(assets.images.maptextures[4], x, y, size);
+    super(assets.images.maptextures[0], x, y, size);
   }
 }
 class RemovebleObstacle extends GameEntity {
