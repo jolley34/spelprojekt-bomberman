@@ -122,6 +122,7 @@ class StartPage implements IGamePage {
       console.log("I was pressed");
       this.game.changePage("ChooseBoardPage");
       assets.music.menumusic.play();
+      assets.music.menumusic.loop();
     }
   }
 
