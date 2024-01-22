@@ -69,7 +69,6 @@ function preload() {
         loadImage("../assets/player-1-animations/idle-right.png"), // 9
         loadImage("../assets/player-1-animations/right-foot-right.png"), // 10
         loadImage("../assets/player-1-animations/left-foot-right.png"), // 11
-        loadImage("../assets/player-1-animations/speed.gif"), // 12
       ],
     },
     music: {
