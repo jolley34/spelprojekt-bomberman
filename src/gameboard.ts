@@ -19,7 +19,7 @@ class GameBoard {
     image(this.backgroundImage, 0, 0, width, height);
   }
 
-  private checkCollision(){
+  private checkCollision() {
     for (const entity1 of this.entities) {
       // Identifiera om det är en spelare
       if (entity1 instanceof Player) {
@@ -45,14 +45,12 @@ class GameBoard {
         }
       }
     }
-
   }
-// om R1 är mindre än L2 så är det ingen krock men om L2 är mindre än R1 har vi KANSKE en krock.
-// R2 är mindre än L1 = ingen krock, men L1 är mindre än R2 är en krock
-// R = x + w
-// L = x
-// en if sats med 4 rader VILL VI HAA, 2 med x och 2 med y
-
+  // om R1 är mindre än L2 så är det ingen krock men om L2 är mindre än R1 har vi KANSKE en krock.
+  // R2 är mindre än L1 = ingen krock, men L1 är mindre än R2 är en krock
+  // R = x + w
+  // L = x
+  // en if sats med 4 rader VILL VI HAA, 2 med x och 2 med y
 
   public update() {
     // Loop over all entities and update them

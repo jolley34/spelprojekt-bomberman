@@ -55,7 +55,7 @@ function preload() {
         loadImage("../assets/entities_img/image1.png"),
         loadImage("../assets/entities_img/image2.png"),
         loadImage("../assets/entities_img/image3.png"),
-        loadImage("../assets/entities_img/bömb.png"),
+        loadImage("../assets/entities_img/bomb.png"),
       ],
     },
   };
