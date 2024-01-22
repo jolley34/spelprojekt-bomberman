@@ -21,7 +21,6 @@ class ChooseBoard {
     this.iceBoard = loadImage("../assets/background/winter_background.png");
     
     this.countdownImages[0] = loadImage("../assets/background/countdown 1.png");
-    console.log("image", image)
     this.countdownImages[1] = loadImage("../assets/background/countdown 2.png");
     this.countdownImages[2] = loadImage("../assets/background/countdown 3.png");
     this.countdownImages[3] = loadImage("../assets/background/countdown fight.png");
