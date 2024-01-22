@@ -30,6 +30,7 @@ class GameBoardFactory {
     assets.music.ingamemusic.play(); // Spela musik ingame, kallas ej någonstans
   } */
 
+
   public drawFloor() {
     const numRows = this.board1.length;
     const numCols = this.board1[0].length;
