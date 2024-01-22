@@ -52,6 +52,8 @@ class GameBoard {
   // L = x
   // en if sats med 4 rader VILL VI HAA, 2 med x och 2 med y
 
+  private pickUpPowerUp() {}
+
   public update() {
     // Loop over all entities and update them
     for (let i = 0; i < this.entities.length; i++) {

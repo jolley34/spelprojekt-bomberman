@@ -9,6 +9,7 @@ let assets: {
     menumusic: p5.SoundFile;
   };
   images: {
+    powerups: p5.Image[];
     maptextures: p5.Image[];
     backgroundImages: p5.Image[];
     clouds: p5.Image[];
@@ -28,6 +29,7 @@ function preload() {
   customFont = loadFont("../Fonts/MinecraftBold-nMK1.otf");
   assets = {
     images: {
+      powerups: [loadImage("../assets/powerup/banana.gif")],
       backgroundImages: [
         loadImage("../assets/background/Controls.svg"),
         loadImage("../assets/background/Map-1-blurred-shadow-v4-copy.png"),

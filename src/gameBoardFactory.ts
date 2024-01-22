@@ -5,6 +5,7 @@ class GameBoardFactory {
   constructor() {
     // 1 = Statiskt hinder
     // 2 = borttagbara hinder
+    // 3 = powerups
     // 9 = Spelare
     // Se till att den här innehåller fler si
     // prettier-ignore
@@ -18,7 +19,7 @@ class GameBoardFactory {
       [1, 0, 1, 2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
       [1, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
       [1, 0, 1, 2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
-      [1, 0, 0, 2, 2, 2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 2, 2, 2, 2, 1],
+      [1, 0, 0, 2, 2, 2, 0, 0, 3, 0, 1, 0, 0, 0, 0, 0, 2, 2, 2, 2, 1],
       [1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2, 1],
       [1, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
       [1, 0, 1, 0, 1, 2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
@@ -77,6 +78,9 @@ class GameBoardFactory {
         }
         if (board[i][j] === 2) {
           entities.push(new RemovebleObstacle(x, y, blockSize));
+        }
+        if (board[i][j] === 3) {
+          entities.push(new Powerups(x, y, blockSize));
         }
         if (board[i][j] === 9) {
           const player = new Player(x, y, blockSize * 1);
