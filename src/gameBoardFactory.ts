@@ -26,9 +26,10 @@ class GameBoardFactory {
     ];
   }
 
-  public playInGameMusic() {
+  /* public playInGameMusic() {
     assets.music.ingamemusic.play(); // Spela musik ingame, kallas ej någonstans
-  }
+  } */
+
 
   public drawFloor() {
     const numRows = this.board1.length;
@@ -81,6 +82,6 @@ class GameBoardFactory {
       }
     }
 
-    return new GameBoard(entities);
+    return new GameBoard(entities, assets.images.backgroundImages[boardNumber]);
   }
 }

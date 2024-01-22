@@ -1,15 +1,12 @@
 class ChooseBoard {
   private image: p5.Image;
-  private gardenBoard: p5.Image;
-  private iceBoard: p5.Image;
   private game: Game;
   private gardenBoardButton: Button;
   private iceBoardButton: Button;
 
   constructor(game: Game) {
-    this.image = loadImage("../assets/background/Controls.svg");
-    this.gardenBoard = loadImage("../assets/background/cruel_nature_bg1.png"); //  use the appropriate image for the garden board
-    this.iceBoard = loadImage("../assets/background/winter_background.png"); //  use the appropriate image for the ice board
+    this.image = assets.images.backgroundImages[0];
+
     this.game = game;
     this.gardenBoardButton = new Button(
       width / 4 + 130,
@@ -39,24 +36,24 @@ class ChooseBoard {
 
   private handleGardenBoardSelection() {
     const gardenBoardNumber = this.chooseGardenBoard();
-    this.game.changePage("GameBoard", gardenBoardNumber); // Update this to your actual game board page
+    this.game.changePage("GameBoard", gardenBoardNumber);
   }
 
   private handleIceBoardSelection() {
     const iceBoardNumber = this.chooseIceBoard();
-    this.game.changePage("GameBoard", iceBoardNumber); // Update this to your actual game board page
+    this.game.changePage("GameBoard", iceBoardNumber);
   }
 
   public chooseGardenBoard() {
-    return 1; // Return the number of the garden board
+    return 1;
   }
 
   public chooseIceBoard(): number {
-    return 2; // Return the number of the ice board
+    return 2;
   }
 
   public draw() {
-    drawBackgroundImage(assets.images.backgroundImages[0], 150);
+    Utility.drawBackgroundImage(assets.images.backgroundImages[3], 150);
     push();
     textSize(64);
     const padding = 100;
@@ -73,7 +70,6 @@ class ChooseBoard {
 
     fill("#B3D917");
     textAlign(CENTER, CENTER);
-    textFont("Minecraft");
     text("Cruel Nature", width / 2, height / 4 - offsetY);
     pop();
 

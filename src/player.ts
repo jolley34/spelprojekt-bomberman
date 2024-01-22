@@ -4,7 +4,7 @@ class Player extends GameEntity {
   private speed: number;
 
   constructor(x: number, y: number, size: number) {
-    super(assets.images.clouds[0], x, y, size);
+    super(assets.images.entities[2], x, y, size);
     this.speed = 4;
   }
 

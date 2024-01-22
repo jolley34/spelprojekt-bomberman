@@ -1,15 +1,16 @@
 //---- GLOBAL VARIABLES ----//
 let game: Game;
 let assets: {
-  music: {
+  /*   music: {
     ingamemusic: p5.SoundFile;
     menumusic: p5.SoundFile;
-  };
+  }; */
   images: {
     maptextures: p5.Image[];
-    playeranimation: p5.Image;
-    background: p5.Image;
+    backgroundImages: p5.Image[];
+
     clouds: p5.Image[];
+    entities: p5.Image[];
   };
 };
 
@@ -22,20 +23,36 @@ let customFont: p5.Font;
  */
 function preload() {
   assets = {
+    /*   music: {
+      ingamemusic: loadSound("/assets/music/spelprojekt-ingame-v6.mp3"),
+      menumusic: loadSound("/assets/music/spelprojekt-menu.mp3"),
+    }, */
+    images: {
+      backgroundImages: [
+        loadImage("../assets/background/Controls.svg"),
+        loadImage("../assets/background/Map-1-blurred-shadow-v4.png"),
+        loadImage("../assets/background/winter_background.png"),
+        loadImage("../assets/background/cruel_nature_bg1.png"),
+      ], /*
     music: {
       ingamemusic: loadSound("/assets/music/spelprojekt-ingame-v6.mp3"),
       menumusic: loadSound("/assets/music/spelprojekt-menu.mp3"),
-    },
-    images: {
-      playeranimation: loadImage("./assets/playeranimations/george.png"),
-      background: loadImage("./assets/background/Map-1-blurred-shadow-v4.png"),
+    }, */
       clouds: [
         loadImage("./assets/clouds/smoke1.png"),
         loadImage("./assets/clouds/smoke2.png"),
         loadImage("./assets/clouds/smoke3.png"),
         loadImage("./assets/clouds/smoke4.png"),
       ],
-      maptextures: [loadImage("./assets/maptextures/bush.png")],
+      maptextures: [
+        loadImage("../assets/maptextures/bush.png"),
+        loadImage("../assets/maptextures/ice1.png"),
+      ],
+      entities: [
+        loadImage("../assets/entities_img/image1.png"),
+        loadImage("../assets/entities_img/image2.png"),
+        loadImage("../assets/entities_img/image3.png"),
+      ],
     },
   };
 }
@@ -67,5 +84,5 @@ function draw() {
  *  Built in windowResize listener function in P5
  */
 function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
+  /*   resizeCanvas(windowWidth, windowHeight); */
 }
