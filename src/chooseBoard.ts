@@ -37,8 +37,8 @@ class ChooseBoard {
   private handleGardenBoardSelection() {
     const gardenBoardNumber = this.chooseGardenBoard();
     this.game.changePage("GameBoard", gardenBoardNumber);
-    assets.music.ingamemusic.setVolume(0.5);
-    assets.music.ingamemusic.play();
+    /*     assets.music.ingamemusic.setVolume(0.5);
+    assets.music.ingamemusic.play(); */
     assets.music.menumusic.stop();
   }
 
