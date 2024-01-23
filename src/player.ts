@@ -21,7 +21,6 @@ class Player extends GameEntity {
 
   private wasKeyPressed: boolean;
 
-
   constructor(x: number, y: number, size: number, controls: Controls) {
     super(assets.images.player1Animations[0], x, y, size);
     this.controls = controls;
@@ -36,7 +35,6 @@ class Player extends GameEntity {
 
     this.wasKeyPressed = false;
 
-
     // Vilka bilder jag loopar igenom när jag trycker vänster
     this.leftAnimationLoop = [7, 6, 8, 6];
     this.rightAnimationLoop = [10, 9, 11, 9];
@@ -47,7 +45,7 @@ class Player extends GameEntity {
   public update(): void {
     // Sätter hastigheten utifrån vad spelaren trycker på för knapp
 
-    if (keyIsDown(this.controls.left) {
+    if (keyIsDown(this.controls.left)) {
       this.speedX = -this.getEffectiveSpeed();
       this.animateLeft();
     } else if (keyIsDown(this.controls.right)) {
@@ -67,11 +65,10 @@ class Player extends GameEntity {
     this.x += this.speedX;
     this.y += this.speedY;
 
-
     //kollar om power up är tagen och om tiden runnit ut
-    if (this.powerUpTimer > 0){
+    if (this.powerUpTimer > 0) {
       this.powerUpTimer -= deltaTime;
-      if (this.powerUpTimer <= 0){
+      if (this.powerUpTimer <= 0) {
         this.resetPowerUp();
       }
     }
@@ -87,7 +84,6 @@ class Player extends GameEntity {
   public dropBomb(positionX: number, positionY: number): void {
     const bomb = new Bomb(positionX, positionY, 50);
     this.addBomb(bomb);
-
   }
 
   private animateLeft(): void {
@@ -144,7 +140,9 @@ class Player extends GameEntity {
 
   // powerup "increaseSpeed" gör att spelaren ökar farten efter den har plockat upp powerup, "getEffectiveSpeed" ligger under kontrollerna högre upp i koden
   private getEffectiveSpeed(): number {
-    return this.increasedSpeed > 0 && this.powerUpTimer > 0 ? this.increasedSpeed : 4;
+    return this.increasedSpeed > 0 && this.powerUpTimer > 0
+      ? this.increasedSpeed
+      : 4;
   }
 
   // hur mycket farten skall öka för spelaren efter powerup

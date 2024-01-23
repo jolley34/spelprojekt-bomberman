@@ -88,18 +88,18 @@ class GameBoard {
             const r1 = player.x + player.size;
             const t1 = player.y;
             const b1 = player.y + player.size;
-  
+
             const l2 = entity.x;
-            const r2 = entity.x + entity.size; 
+            const r2 = entity.x + entity.size;
             const t2 = entity.y;
-            const b2 = entity.y + entity.size; 
-  
+            const b2 = entity.y + entity.size;
+
             if (l2 < r1 && l1 < r2 && t2 < b1 && t1 < b2) {
               // om spelaren krockar så....
               player.increaseSpeed(); // metod som ökar hastigheten i class player
               // sen ta bort power upen från spelplanen
               this.entities.splice(this.entities.indexOf(entity), 1);
-              // vill lägga till en timer för hur lång tid man har denna power up!!! 
+              // vill lägga till en timer för hur lång tid man har denna power up!!!
             }
           }
         }
@@ -117,7 +117,7 @@ class GameBoard {
     //   entity.update();
     // }
 
-    this.pickUpPowerUp();// uppdatera powerup
+    this.pickUpPowerUp(); // uppdatera powerup
 
     this.checkCollision();
   }
