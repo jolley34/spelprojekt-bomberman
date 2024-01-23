@@ -76,7 +76,36 @@ class GameBoard {
   // L = x
   // en if sats med 4 rader VILL VI HAA, 2 med x och 2 med y
 
-  private pickUpPowerUp() {}
+  private pickUpPowerUp() {
+    for (const entity of this.entities) {
+      // Kolla om det är en power up
+      if (entity instanceof SpeedUp) {
+        // kolla om den krockar med en spelare
+        for (const player of this.entities) {
+          if (player instanceof Player) {
+            // kolla om det blir en krock mellan poerup och spelare
+            const l1 = player.x;
+            const r1 = player.x + player.size;
+            const t1 = player.y;
+            const b1 = player.y + player.size;
+  
+            const l2 = entity.x;
+            const r2 = entity.x + entity.size; 
+            const t2 = entity.y;
+            const b2 = entity.y + entity.size; 
+  
+            if (l2 < r1 && l1 < r2 && t2 < b1 && t1 < b2) {
+              // om spelaren krockar så....
+              player.increaseSpeed(); // metod som ökar hastigheten i class player
+              // sen ta bort power upen från spelplanen
+              this.entities.splice(this.entities.indexOf(entity), 1);
+              // vill lägga till en timer för hur lång tid man har denna power up!!! 
+            }
+          }
+        }
+      }
+    }
+  }
 
   public update() {
     // Loop over all entities and update them
@@ -87,6 +116,8 @@ class GameBoard {
     // for (const entity of this.entities) {
     //   entity.update();
     // }
+
+    this.pickUpPowerUp();// uppdatera powerup
 
     this.checkCollision();
   }
