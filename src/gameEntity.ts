@@ -6,9 +6,9 @@ class GameEntity {
   public bombs: Bomb[];
 
   constructor(image: p5.Image, x: number, y: number, size: number) {
-    this.image = image;
     this.x = x;
     this.y = y;
+    this.image = image;
     this.size = size;
     this.bombs = [];
   }

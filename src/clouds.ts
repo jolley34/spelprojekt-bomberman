@@ -10,13 +10,13 @@ class Clouds {
 
   constructor() {
     this.clouds = [];
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 9; i++) {
       this.clouds.push({
         image: random(assets.images.clouds),
         y: random(height),
         x: random(width),
         speed: random(0.15, 0.4),
-        size: random(125, 250),
+        size: random(180, 350),
         opacity: random(100, 140),
       });
     }

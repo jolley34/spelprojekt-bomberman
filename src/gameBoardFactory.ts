@@ -116,13 +116,19 @@ class GameBoardFactory {
           entities.push(new SpeedUp(x, y, blockSize));
         }
         if (board[i][j] === 4) {
-          const customEntityX = x + (blockSize - blockSize * 2) / 4;
-          const customEntityY = y - (blockSize * 2) / 1; // Tanken va att den skulle placeras i mitten på blocket här.
-          entities.push(
-            new CustomImageEntity(customEntityX, customEntityY, blockSize * 2)
-          );
-
           entities.push(new StaticObstacle(x, y, blockSize, 5));
+          const customEntitySize = blockSize * 2;
+          const customEntityX = x + (blockSize - customEntitySize) / 3.5;
+          const customEntityY =
+            y - blockSize + (blockSize - customEntitySize) / 2;
+
+          entities.push(
+            new CustomImageEntity(
+              customEntityX,
+              customEntityY,
+              customEntitySize
+            )
+          );
         }
 
         if (board[i][j] === 9) {
