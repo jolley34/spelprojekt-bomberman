@@ -10,14 +10,14 @@ class Flowers {
 
   constructor() {
     this.flowers = [];
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < 13; i++) {
       this.flowers.push({
         image: random(assets.images.flowers),
         y: random(height),
         x: random(width),
         speed: random(0.5, 2),
-        size: random(100, 300),
-        opacity: random(130, 200),
+        size: random(100, 200),
+        opacity: random(100, 140),
       });
     }
   }
