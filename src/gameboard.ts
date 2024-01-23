@@ -73,6 +73,10 @@ class GameBoard {
     this.drawGameBackground();
     for (let i = 0; i < this.entities.length; i++) {
       this.entities[i].draw();
+      const bombs = this.entities[i].bombs;
+      for (let j = 0; j < bombs.length; j++) {
+        bombs[j].draw();
+      }
     }
     this.clouds.draw();
     this.flowers.draw();
