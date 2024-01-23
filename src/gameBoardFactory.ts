@@ -81,7 +81,7 @@ class GameBoardFactory {
           entities.push(new RemovebleObstacle(x, y, blockSize));
         }
         if (board[i][j] === 3) {
-          entities.push(new Powerups(x, y, blockSize));
+          entities.push(new SpeedUp(x, y, blockSize));
         }
         if (board[i][j] === 4) {
           const customEntityX = x + (blockSize - blockSize * 2) / 4;
