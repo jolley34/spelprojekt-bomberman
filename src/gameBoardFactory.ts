@@ -115,22 +115,6 @@ class GameBoardFactory {
         if (board[i][j] === 3) {
           entities.push(new SpeedUp(x, y, blockSize));
         }
-        if (board[i][j] === 4) {
-          entities.push(new StaticObstacle(x, y, blockSize, 5));
-          const customEntitySize = blockSize * 2;
-          const customEntityX = x + (blockSize - customEntitySize) / 3.5;
-          const customEntityY =
-            y - blockSize + (blockSize - customEntitySize) / 2;
-
-          entities.push(
-            new CustomImageEntity(
-              customEntityX,
-              customEntityY,
-              customEntitySize
-            )
-          );
-        }
-
         if (board[i][j] === 9) {
           const player = new Player(x, y, blockSize * 1, {
             up: UP_ARROW,
