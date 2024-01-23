@@ -28,7 +28,7 @@ class GameBoard {
         // Kontrollera om spelaren krockar med något
         for (const entity2 of this.entities) {
           // Kolla inte krockar med andra spelare (inkl sig själv).
-          if (entity2 instanceof Player) continue;
+          if (entity2 instanceof Player || entity2 instanceof Bomb) continue;
           // 1. Identifiera faktiska krockar
           // Definera höger och vänster sida för varje entitet
           const l1 = entity1.x;
@@ -104,6 +104,10 @@ class GameBoard {
     this.drawGameBackground();
     for (let i = 0; i < this.entities.length; i++) {
       this.entities[i].draw();
+      const bombs = this.entities[i].bombs;
+      for (let j = 0; j < bombs.length; j++) {
+        bombs[j].draw();
+      }
     }
     this.clouds.draw();
     this.flowers.draw();
