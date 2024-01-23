@@ -33,7 +33,7 @@ function preload() {
     images: {
       bombs: [
         loadImage("../assets/bombs/bomb-v3.gif"),
-        loadImage("../assets/bombs/fire.png"),
+        loadImage("../assets/bombs/bomb-v3-fire-line.gif"),
       ],
       flowers: [loadImage("../assets/flowers/flower-v2.gif")],
       powerups: [loadImage("../assets/powerup/yy3.gif")],
