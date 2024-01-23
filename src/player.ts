@@ -44,7 +44,6 @@ class Player extends GameEntity {
 
   public update(): void {
     // Sätter hastigheten utifrån vad spelaren trycker på för knapp
-
     let horizontalSpeed = 0;
     let verticalSpeed = 0;
 
