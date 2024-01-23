@@ -31,7 +31,10 @@ function preload() {
   customFont = loadFont("../Fonts/MinecraftBold-nMK1.otf");
   assets = {
     images: {
-      bombs: [loadImage("../assets/bombs/bomb-v3.gif")],
+      bombs: [
+        loadImage("../assets/bombs/bomb-v3.gif"),
+        loadImage("../assets/bombs/fire.png"),
+      ],
       flowers: [loadImage("../assets/flowers/flower-v2.gif")],
       powerups: [loadImage("../assets/powerup/yy3.gif")],
       backgroundImages: [
