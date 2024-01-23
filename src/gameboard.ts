@@ -56,16 +56,16 @@ class GameBoard {
 
   private pickUpPowerUp() {
     for (const entity of this.entities) {
-      // Check if the entity is a PowerUp
+      // Kolla om det är en power up
       if (entity instanceof Powerups) {
-        // Check collision with players
+        // kolla om den krockar med en spelare
         for (const player of this.entities) {
           if (player instanceof Player) {
-            // Check collision between player and power-up
+            // kolla om det blir en krock mellan poerup och spelare
             const l1 = player.x;
-            const r1 = player.x + player.size / 1.75;
+            const r1 = player.x + player.size;
             const t1 = player.y;
-            const b1 = player.y + player.size / 1.25;
+            const b1 = player.y + player.size;
   
             const l2 = entity.x;
             const r2 = entity.x + entity.size; // Adjust this based on your PowerUp size
@@ -73,12 +73,11 @@ class GameBoard {
             const b2 = entity.y + entity.size; // Adjust this based on your PowerUp size
   
             if (l2 < r1 && l1 < r2 && t2 < b1 && t1 < b2) {
-              // Player collided with power-up
-              // Handle power-up effect, for example, increase player speed
-              player.increaseSpeed(); // You need to implement this method in your Player class
-              // Remove the power-up from the game entities
+              // om spelaren krockar så....
+              player.increaseSpeed(); // metod som ökar hastigheten i class player
+              // sen ta bort power upen från spelplanen
               this.entities.splice(this.entities.indexOf(entity), 1);
-              // Additional logic for power-up effects can be added here
+              // vill lägga till en timer för hur lång tid man har denna power up!!! 
             }
           }
         }
@@ -96,7 +95,7 @@ class GameBoard {
     //   entity.update();
     // }
 
-    this.pickUpPowerUp();
+    this.pickUpPowerUp();// uppdatera powerup
 
     this.checkCollision();
   }

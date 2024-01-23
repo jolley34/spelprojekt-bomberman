@@ -27,16 +27,16 @@ class Player extends GameEntity {
   public update(): void {
     // Sätter hastigheten utifrån vad spelaren trycker på för knapp
     if (keyIsDown(LEFT_ARROW)) {
-      this.speedX = -4;
+      this.speedX = -this.getEffectiveSpeed();
       this.animateLeft();
     } else if (keyIsDown(RIGHT_ARROW)) {
-      this.speedX = 4;
+      this.speedX = this.getEffectiveSpeed();
       this.animateRight();
     } else if (keyIsDown(UP_ARROW)) {
-      this.speedY = -4;
+      this.speedY = -this.getEffectiveSpeed();
       this.animateUp();
     } else if (keyIsDown(DOWN_ARROW)) {
-      this.speedY = 4;
+      this.speedY = this.getEffectiveSpeed();
       this.animateDown();
     } else if (!keyIsPressed) {
       this.speedX = 0;
@@ -100,6 +100,12 @@ class Player extends GameEntity {
       (this.downAnimationLoop.length * this.animationSpeed);
   }
 
+  // powerup "increaseSpeed" gör att spelaren ökar farten efter den har plockat upp powerup, "getEffectiveSpeed" ligger under kontrollerna högre upp i koden
+  private getEffectiveSpeed(): number {
+    return this.increasedSpeed > 0 ? this.increasedSpeed : 4;
+  }
+
+  // hur mycket farten skall öka för spelaren efter powerup
   public increaseSpeed(): void {
     this.increasedSpeed = 6;
   }
