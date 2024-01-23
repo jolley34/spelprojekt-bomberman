@@ -16,7 +16,7 @@ class Flowers {
         y: random(height),
         x: random(width),
         speed: random(0.5, 2),
-        size: random(100, 200),
+        size: random(80, 140),
         opacity: random(100, 140),
       });
     }
