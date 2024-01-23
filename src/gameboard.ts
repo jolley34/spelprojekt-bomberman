@@ -68,9 +68,9 @@ class GameBoard {
             const b1 = player.y + player.size;
   
             const l2 = entity.x;
-            const r2 = entity.x + entity.size; // Adjust this based on your PowerUp size
+            const r2 = entity.x + entity.size; 
             const t2 = entity.y;
-            const b2 = entity.y + entity.size; // Adjust this based on your PowerUp size
+            const b2 = entity.y + entity.size; 
   
             if (l2 < r1 && l1 < r2 && t2 < b1 && t1 < b2) {
               // om spelaren krockar så....
