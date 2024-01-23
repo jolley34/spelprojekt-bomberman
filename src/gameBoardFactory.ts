@@ -7,12 +7,13 @@ class GameBoardFactory {
     // 2 = borttagbara hinder
     // 3 = powerups
     // 4 = obsticle med träd
+    // 8 = Spelare
     // 9 = Spelare
     // Se till att den här innehåller fler si
     // prettier-ignore
     this.board1 = [
       [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-      [1, 4, 0, 0, 0, 2, 2, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+      [1, 4, 8, 0, 0, 2, 2, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
       [1, 0, 1, 0, 1, 3, 1, 2, 1, 0, 1, 0, 1, 0, 1, 2, 1, 3, 1, 0, 4],
       [1, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 2, 2, 2, 2, 0, 0, 0, 0, 1],
       [1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1],
@@ -94,8 +95,24 @@ class GameBoardFactory {
         }
 
         if (board[i][j] === 9) {
-          const player = new Player(x, y, blockSize * 1);
+          const player = new Player(x, y, blockSize * 1, {
+            up: UP_ARROW,
+            left: LEFT_ARROW,
+            down: DOWN_ARROW,
+            right: RIGHT_ARROW,
+            placeBomb: 80,
+          });
           entities.push(player);
+        }
+        if (board[i][j] === 8) {
+          const player2 = new Player(x, y, blockSize * 1, {
+            up: 87,
+            left: 65,
+            down: 83,
+            right: 68,
+            placeBomb: 67,
+          });
+          entities.push(player2);
         }
       }
     }
