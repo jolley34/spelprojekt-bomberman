@@ -1,7 +1,7 @@
 type PageName = "StartPage" | "ChooseBoardPage" | "GameBoard";
 
 class Game {
-  private gameBoard: GameBoard;
+  private gameBoard: GameBoard | null;
   private gameBoardFactory: GameBoardFactory;
   private startPage: StartPage;
   private chooseBoard: ChooseBoard;
@@ -9,7 +9,7 @@ class Game {
 
   constructor() {
     this.gameBoardFactory = new GameBoardFactory();
-    this.gameBoard = this.gameBoardFactory.generateGameBoard(1);
+    this.gameBoard = null; // don't generate a gameboard until we need it
     this.startPage = new StartPage(this);
     this.chooseBoard = new ChooseBoard(this);
     this.currentPage = "StartPage";
@@ -18,7 +18,12 @@ class Game {
   public changePage(page: PageName, board?: number) {
     this.currentPage = page;
     if (board) {
-      this.gameBoard = this.gameBoardFactory.generateGameBoard(board);
+      if (board !== undefined) {
+        this.gameBoard = this.gameBoardFactory.generateGameBoard(board);
+      }
+      if (this.gameBoard) {
+        this.gameBoard.startGame();
+      }
     }
   }
 
@@ -31,7 +36,9 @@ class Game {
         this.chooseBoard.update();
         break;
       case "GameBoard":
-        this.gameBoard.update();
+        if (this.gameBoard) {
+          this.gameBoard.update();
+        }
         break;
     }
   }
@@ -46,7 +53,9 @@ class Game {
         this.chooseBoard.draw();
         break;
       case "GameBoard":
-        this.gameBoard.draw();
+        if (this.gameBoard) {
+          this.gameBoard.draw();
+        }
         break;
     }
   }
