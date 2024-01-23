@@ -4,3 +4,4 @@ class Bomb extends GameEntity {
     super(assets.images.entities[3], x, y, size);
   }
 }
+///test github fungerar eller inte
