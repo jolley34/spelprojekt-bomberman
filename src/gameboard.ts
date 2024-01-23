@@ -54,7 +54,37 @@ class GameBoard {
   // L = x
   // en if sats med 4 rader VILL VI HAA, 2 med x och 2 med y
 
-  private pickUpPowerUp() {}
+  private pickUpPowerUp() {
+    for (const entity of this.entities) {
+      // Check if the entity is a PowerUp
+      if (entity instanceof Powerups) {
+        // Check collision with players
+        for (const player of this.entities) {
+          if (player instanceof Player) {
+            // Check collision between player and power-up
+            const l1 = player.x;
+            const r1 = player.x + player.size / 1.75;
+            const t1 = player.y;
+            const b1 = player.y + player.size / 1.25;
+  
+            const l2 = entity.x;
+            const r2 = entity.x + entity.size; // Adjust this based on your PowerUp size
+            const t2 = entity.y;
+            const b2 = entity.y + entity.size; // Adjust this based on your PowerUp size
+  
+            if (l2 < r1 && l1 < r2 && t2 < b1 && t1 < b2) {
+              // Player collided with power-up
+              // Handle power-up effect, for example, increase player speed
+              player.increaseSpeed(); // You need to implement this method in your Player class
+              // Remove the power-up from the game entities
+              this.entities.splice(this.entities.indexOf(entity), 1);
+              // Additional logic for power-up effects can be added here
+            }
+          }
+        }
+      }
+    }
+  }
 
   public update() {
     // Loop over all entities and update them
@@ -65,6 +95,8 @@ class GameBoard {
     // for (const entity of this.entities) {
     //   entity.update();
     // }
+
+    this.pickUpPowerUp();
 
     this.checkCollision();
   }

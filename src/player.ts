@@ -7,6 +7,7 @@ class Player extends GameEntity {
   private rightAnimationLoop: number[];
   private upAnimationLoop: number[];
   private downAnimationLoop: number[];
+  private increasedSpeed: number;
 
   constructor(x: number, y: number, size: number) {
     super(assets.images.player1Animations[0], x, y, size);
@@ -14,6 +15,7 @@ class Player extends GameEntity {
     this.speedY = 0;
     this.animationIndex = 0;
     this.animationSpeed = 0.8;
+    this.increasedSpeed = 2;
 
     // Vilka bilder jag loopar igenom när jag trycker vänster
     this.leftAnimationLoop = [7, 6, 8, 6];
@@ -96,5 +98,9 @@ class Player extends GameEntity {
     this.animationIndex =
       (this.animationIndex + this.animationSpeed) %
       (this.downAnimationLoop.length * this.animationSpeed);
+  }
+
+  public increaseSpeed(): void {
+    this.increasedSpeed = 6;
   }
 }
