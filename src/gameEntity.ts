@@ -15,7 +15,13 @@ class GameEntity {
   public addBomb(bomb: Bomb): void {
     this.bombs.push(bomb);
   }
-
+  public removeBomb(bomb: Bomb): void {
+    const index = this.bombs.indexOf(bomb);
+    if (index !== -1) {
+      this.bombs.splice(index, 1);
+    }
+  }
+  
   public update(): void {}
 
   public draw(): void {

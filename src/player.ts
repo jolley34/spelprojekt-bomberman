@@ -1,3 +1,5 @@
+/// <reference path="gameEntity.ts" />
+
 class Player extends GameEntity {
   public speedX: number;
   public speedY: number;

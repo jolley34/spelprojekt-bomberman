@@ -76,13 +76,21 @@ class GameBoard {
       const bombs = this.entities[i].bombs;
       for (let j = 0; j < bombs.length; j++) {
         bombs[j].draw();
+        
+        //kollar ifall bomben behöver tas bort
+        if (bombs[j].timer <= 0) {
+          const index = bombs[j].bombs.indexOf(bombs[j]);
+          if (index !== -1) {
+            bombs[j].bombs.splice(index, 1);
+          }
       }
     }
     this.clouds.draw();
     this.flowers.draw();
   }
 }
+}
 // const entitet = new Obstacle(0,0,10);
 // if (entitet instanceof Obstacle) {
 //   // reagera baserat på att entiteten är ett hinder...
-// }
+
