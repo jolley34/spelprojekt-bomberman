@@ -1,4 +1,12 @@
+type Controls = {
+  up: number;
+  left: number;
+  down: number;
+  right: number;
+  placeBomb: number;
+};
 class Player extends GameEntity {
+  private controls: any;
   public speedX: number;
   public speedY: number;
   private animationIndex: number;
@@ -9,8 +17,9 @@ class Player extends GameEntity {
   private downAnimationLoop: number[];
   private wasKeyPressed: boolean;
 
-  constructor(x: number, y: number, size: number) {
+  constructor(x: number, y: number, size: number, controls: Controls) {
     super(assets.images.player1Animations[0], x, y, size);
+    this.controls = controls;
     this.speedX = 0;
     this.speedY = 0;
     this.animationIndex = 0;
@@ -26,16 +35,16 @@ class Player extends GameEntity {
 
   public update(): void {
     // Sätter hastigheten utifrån vad spelaren trycker på för knapp
-    if (keyIsDown(LEFT_ARROW)) {
+    if (keyIsDown(this.controls.left)) {
       this.speedX = -4;
       this.animateLeft();
-    } else if (keyIsDown(RIGHT_ARROW)) {
+    } else if (keyIsDown(this.controls.right)) {
       this.speedX = 4;
       this.animateRight();
-    } else if (keyIsDown(UP_ARROW)) {
+    } else if (keyIsDown(this.controls.up)) {
       this.speedY = -4;
       this.animateUp();
-    } else if (keyIsDown(DOWN_ARROW)) {
+    } else if (keyIsDown(this.controls.down)) {
       this.speedY = 4;
       this.animateDown();
     } else if (!keyIsPressed) {
@@ -47,10 +56,10 @@ class Player extends GameEntity {
     this.x += this.speedX;
     this.y += this.speedY;
     //kontrollerar om man redan tryckt på p kan bara släppa en bomb i taget.
-    if (keyIsDown(80) && !this.wasKeyPressed) {
+    if (keyIsDown(this.controls.placeBomb) && !this.wasKeyPressed) {
       this.dropBomb(this.x, this.y);
       this.wasKeyPressed = true;
-    } else if (!keyIsDown(80)) {
+    } else if (!keyIsDown(this.controls.placeBomb)) {
       this.wasKeyPressed = false;
     }
   }
