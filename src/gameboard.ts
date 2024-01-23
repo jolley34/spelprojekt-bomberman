@@ -67,7 +67,23 @@ class GameBoard {
     // }
 
     this.checkCollision();
+
+ for (let i = 0; i < this.entities.length; i++) {
+      this.entities[i].draw();
+      const bombs = this.entities[i].bombs;
+      
+      for (let j = 0; j < bombs.length; j++) {
+        if (bombs[j].timer <= 0) {
+          const index = bombs[j].bombs.indexOf(bombs[j]);
+          if (index !== -1) {
+            bombs[j].bombs.splice(index, 1);
+          }
+    }
+    
   }
+
+  }
+}
 
   public draw() {
     this.drawGameBackground();
@@ -78,12 +94,6 @@ class GameBoard {
         bombs[j].draw();
         
         //kollar ifall bomben behöver tas bort
-        if (bombs[j].timer <= 0) {
-          const index = bombs[j].bombs.indexOf(bombs[j]);
-          if (index !== -1) {
-            bombs[j].bombs.splice(index, 1);
-          }
-      }
     }
     this.clouds.draw();
     this.flowers.draw();
