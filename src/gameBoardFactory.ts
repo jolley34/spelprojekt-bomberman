@@ -6,24 +6,25 @@ class GameBoardFactory {
     // 1 = Statiskt hinder
     // 2 = borttagbara hinder
     // 3 = powerups
+    // 4 = obsticle med träd
     // 9 = Spelare
     // Se till att den här innehåller fler si
     // prettier-ignore
     this.board1 = [
       [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-      [1, 0, 0, 0, 0, 2, 2, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-      [1, 0, 1, 0, 1, 3, 1, 2, 1, 0, 1, 0, 1, 0, 1, 2, 1, 3, 1, 0, 1],
+      [1, 4, 0, 0, 0, 2, 2, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+      [1, 0, 1, 0, 1, 3, 1, 2, 1, 0, 1, 0, 1, 0, 1, 2, 1, 3, 1, 0, 4],
       [1, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 2, 2, 2, 2, 0, 0, 0, 0, 1],
       [1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1],
       [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 1],
-      [1, 0, 1, 2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 3, 1, 0, 1, 0, 1, 0, 1],
+      [1, 0, 1, 2, 4, 0, 1, 0, 1, 0, 1, 0, 1, 3, 1, 0, 1, 0, 1, 0, 1],
       [1, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 1],
       [1, 0, 1, 2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
-      [1, 0, 0, 2, 2, 2, 0, 0, 3, 0, 1, 0, 0, 0, 0, 0, 2, 2, 2, 2, 1],
+      [1, 0, 0, 2, 2, 2, 0, 0, 3, 0, 1, 0, 0, 0, 0, 0, 2, 0, 2, 2, 1],
       [1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2, 1],
-      [1, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-      [1, 0, 1, 0, 1, 2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
-      [1, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 9, 1],
+      [1, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 1],
+      [4, 0, 1, 0, 1, 2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+      [1, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 9, 0, 1],
       [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     ];
   }
@@ -82,6 +83,18 @@ class GameBoardFactory {
         if (board[i][j] === 3) {
           entities.push(new Powerups(x, y, blockSize));
         }
+        if (board[i][j] === 4) {
+          // Place the obstacle
+          entities.push(new StaticObstacle(x, y, blockSize));
+
+          // Place the CustomImageEntity in the center on top of the obstacle
+          const customEntityX = x + (blockSize - blockSize * 2) / 4; // Center horizontally
+          const customEntityY = y - (blockSize * 2) / 1; // Place on top
+          entities.push(
+            new CustomImageEntity(customEntityX, customEntityY, blockSize * 2)
+          );
+        }
+
         if (board[i][j] === 9) {
           const player = new Player(x, y, blockSize * 1);
           entities.push(player);

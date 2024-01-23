@@ -52,6 +52,7 @@ function preload() {
         loadImage("../assets/maptextures/grassywall.png"),
         loadImage("../assets/maptextures/log.png"),
         loadImage("../assets/maptextures/grass-figma.png"),
+        loadImage("../assets/maptextures/tree-on-map.png"),
       ],
       entities: [
         loadImage("../assets/entities_img/image1.png"),
