@@ -6,6 +6,10 @@ class Bomb extends GameEntity {
     super(assets.images.entities[3], x, y, size);
     this.timer = 400; // bomb tiden
   }
- 
+  public removeFromGame(): void {
+    if (this.bombs instanceof GameEntity) {
+      this.bombs.removeBomb(this);
+    }
+  }
 
 }
