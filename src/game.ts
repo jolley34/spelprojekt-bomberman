@@ -6,6 +6,8 @@ class Game {
   private startPage: StartPage;
   private chooseBoard: ChooseBoard;
   private currentPage: PageName;
+  private countdownTime: number;
+  private isCountdownActive: boolean;
 
   constructor() {
     this.gameBoardFactory = new GameBoardFactory();
@@ -13,50 +15,77 @@ class Game {
     this.startPage = new StartPage(this);
     this.chooseBoard = new ChooseBoard(this);
     this.currentPage = "StartPage";
+    this.countdownTime = 3;
+    this.isCountdownActive = false;
   }
 
   public changePage(page: PageName, board?: number) {
-    this.currentPage = page;
-    if (board) {
-      if (board !== undefined) {
-        this.gameBoard = this.gameBoardFactory.generateGameBoard(board);
+    if (page === "GameBoard" && board !== undefined) {
+      this.isCountdownActive = true;
+      this.countdownTime = 3;
+      this.gameBoard = this.gameBoardFactory.generateGameBoard(board);
+    } else {
+      this.currentPage = page;
+    }
+  }
+
+  private updateCountdown() {
+    if (this.isCountdownActive) {
+      if (frameCount % 60 === 0 && this.countdownTime > 0) {
+        this.countdownTime--;
       }
-      if (this.gameBoard) {
-        this.gameBoard.startGame();
+      if (this.countdownTime === 0) {
+        this.isCountdownActive = false;
+        this.currentPage = "GameBoard";
+        if (this.gameBoard) {
+          this.gameBoard.startGame();
+        }
       }
     }
   }
 
   public update() {
-    switch (this.currentPage) {
-      case "StartPage":
-        this.startPage.update();
-        break;
-      case "ChooseBoardPage":
-        this.chooseBoard.update();
-        break;
-      case "GameBoard":
-        if (this.gameBoard) {
-          this.gameBoard.update();
-        }
-        break;
+    if (this.isCountdownActive) {
+      this.updateCountdown();
+    } else {
+      switch (this.currentPage) {
+        case "StartPage":
+          this.startPage.update();
+          break;
+        case "ChooseBoardPage":
+          this.chooseBoard.update();
+          break;
+        case "GameBoard":
+          if (this.gameBoard) {
+            this.gameBoard.update();
+          }
+          break;
+      }
     }
   }
 
   public draw() {
     background("black");
-    switch (this.currentPage) {
-      case "StartPage":
-        this.startPage.draw();
-        break;
-      case "ChooseBoardPage":
-        this.chooseBoard.draw();
-        break;
-      case "GameBoard":
-        if (this.gameBoard) {
-          this.gameBoard.draw();
-        }
-        break;
+    if (this.isCountdownActive && this.gameBoard) {
+      this.gameBoard.drawGameBackground();
+      fill("white");
+      textSize(64);
+      textAlign(CENTER, CENTER);
+      text(this.countdownTime, width / 2, height / 2);
+    } else {
+      switch (this.currentPage) {
+        case "StartPage":
+          this.startPage.draw();
+          break;
+        case "ChooseBoardPage":
+          this.chooseBoard.draw();
+          break;
+        case "GameBoard":
+          if (this.gameBoard) {
+            this.gameBoard.draw();
+          }
+          break;
+      }
     }
   }
 }
