@@ -1,15 +1,21 @@
 //---- GLOBAL VARIABLES ----//
 let game: Game;
 let assets: {
-  /*   music: {
+  playerSoundEffects: {
+    walkingsound: p5.SoundFile;
+  };
+  music: {
     ingamemusic: p5.SoundFile;
     menumusic: p5.SoundFile;
-  }; */
+  };
   images: {
+    flowers: p5.Image[];
+    powerups: p5.Image[];
     maptextures: p5.Image[];
     backgroundImages: p5.Image[];
     clouds: p5.Image[];
     entities: p5.Image[];
+    player1Animations: p5.Image[];
   };
 };
 
@@ -23,21 +29,15 @@ let customFont: p5.Font;
 function preload() {
   customFont = loadFont("../Fonts/MinecraftBold-nMK1.otf");
   assets = {
-    /*   music: {
-      ingamemusic: loadSound("/assets/music/spelprojekt-ingame-v6.mp3"),
-      menumusic: loadSound("/assets/music/spelprojekt-menu.mp3"),
-    }, */
     images: {
+      flowers: [loadImage("../assets/flowers/flower-v2.gif")],
+      powerups: [loadImage("../assets/powerup/yy3.gif")],
       backgroundImages: [
         loadImage("../assets/background/Controls.svg"),
-        loadImage("../assets/background/Map-1-blurred-shadow-v4.png"),
+        loadImage("../assets/background/Map-1-blurred-shadow-v4-copy.png"),
         loadImage("../assets/background/winter_background.png"),
         loadImage("../assets/background/cruel_nature_bg1.png"),
-      ] /*
-    music: {
-      ingamemusic: loadSound("/assets/music/spelprojekt-ingame-v6.mp3"),
-      menumusic: loadSound("/assets/music/spelprojekt-menu.mp3"),
-    }, */,
+      ],
       clouds: [
         loadImage("./assets/clouds/smoke1.png"),
         loadImage("./assets/clouds/smoke2.png"),
@@ -50,12 +50,38 @@ function preload() {
         loadImage("../assets/maptextures/brick.png"),
         loadImage("../assets/maptextures/grass.jpeg"),
         loadImage("../assets/maptextures/grassywall.png"),
+        loadImage("../assets/maptextures/log.png"),
+        loadImage("../assets/maptextures/grass-figma.png"),
+        loadImage("../assets/maptextures/tree-on-map.png"),
       ],
       entities: [
         loadImage("../assets/entities_img/image1.png"),
         loadImage("../assets/entities_img/image2.png"),
         loadImage("../assets/entities_img/image3.png"),
       ],
+      player1Animations: [
+        loadImage("../assets/player-1-animations/idle-front.png"), // 0
+        loadImage("../assets/player-1-animations/idle-front-lf.png"), // 1
+        loadImage("../assets/player-1-animations/idle-front-rf.png"), // 2
+        loadImage("../assets/player-1-animations/idle-back.png"), // 3
+        loadImage("../assets/player-1-animations/idle-back-lf.png"), // 4
+        loadImage("../assets/player-1-animations/idle-back-rf.png"), // 5
+        loadImage("../assets/player-1-animations/idle-left.png"), // 6
+        loadImage("../assets/player-1-animations/left-foot-left.png"), // 7
+        loadImage("../assets/player-1-animations/right-foot-left.png"), // 8
+        loadImage("../assets/player-1-animations/idle-right.png"), // 9
+        loadImage("../assets/player-1-animations/right-foot-right.png"), // 10
+        loadImage("../assets/player-1-animations/left-foot-right.png"), // 11
+      ],
+    },
+    music: {
+      ingamemusic: loadSound("../assets/music/spelprojekt-ingame-v6.mp3"),
+      menumusic: loadSound("..//assets/music/spelprojekt-menu.mp3"),
+    },
+    playerSoundEffects: {
+      walkingsound: loadSound(
+        "../assets/player-sound-effects/sfx_step_grass_l.mp3"
+      ),
     },
   };
 }
