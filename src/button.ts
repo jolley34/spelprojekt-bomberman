@@ -43,7 +43,6 @@ class Button {
 
     fill("#B3D917");
     textSize(20);
-    textFont("Minecraft");
     textAlign(CENTER, CENTER);
     text(this.text, this.positionX, this.positionY);
 
