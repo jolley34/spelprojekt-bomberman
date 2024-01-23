@@ -20,9 +20,9 @@ class GameBoardFactory {
       [1, 0, 1, 2, 4, 0, 1, 0, 1, 0, 1, 0, 1, 3, 1, 0, 1, 0, 1, 0, 1],
       [1, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 1],
       [1, 0, 1, 2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
-      [1, 0, 0, 2, 2, 2, 0, 0, 3, 0, 1, 0, 0, 0, 0, 0, 2, 0, 2, 2, 1],
+      [1, 0, 0, 2, 2, 2, 0, 0, 3, 0, 1, 0, 1, 0, 0, 0, 2, 0, 2, 2, 1],
       [1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2, 1],
-      [1, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 1],
+      [1, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 4, 0, 0, 0, 1, 0, 0, 0, 1],
       [4, 0, 1, 0, 1, 2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
       [1, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 9, 0, 1],
       [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -84,15 +84,13 @@ class GameBoardFactory {
           entities.push(new Powerups(x, y, blockSize));
         }
         if (board[i][j] === 4) {
-          // Place the obstacle
-          entities.push(new StaticObstacle(x, y, blockSize));
-
-          // Place the CustomImageEntity in the center on top of the obstacle
-          const customEntityX = x + (blockSize - blockSize * 2) / 4; // Center horizontally
-          const customEntityY = y - (blockSize * 2) / 1; // Place on top
+          const customEntityX = x + (blockSize - blockSize * 2) / 4;
+          const customEntityY = y - (blockSize * 2) / 1; // Tanken va att den skulle placeras i mitten på blocket här.
           entities.push(
             new CustomImageEntity(customEntityX, customEntityY, blockSize * 2)
           );
+
+          entities.push(new StaticObstacle(x, y, blockSize));
         }
 
         if (board[i][j] === 9) {
