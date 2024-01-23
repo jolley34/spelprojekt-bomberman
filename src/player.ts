@@ -49,7 +49,7 @@ class Player extends GameEntity {
     }
   }
   public dropBomb(positionX: number, positionY: number): void {
-    const bomb = new Bomb(positionX, positionY, 10);
+    const bomb = new Bomb(positionX, positionY, 50);
     this.addBomb(bomb);
   }
 
