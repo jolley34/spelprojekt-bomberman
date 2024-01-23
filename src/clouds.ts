@@ -17,7 +17,7 @@ class Clouds {
         y: 550,
         speed: 0.25,
         size: 300,
-        opacity: 180,
+        opacity: 160,
       },
       {
         image: assets.images.clouds[0],
@@ -25,7 +25,7 @@ class Clouds {
         y: 300,
         speed: 0.25,
         size: 300,
-        opacity: 180,
+        opacity: 160,
       },
       {
         image: assets.images.clouds[0],
@@ -33,7 +33,7 @@ class Clouds {
         y: 5,
         speed: 0.25,
         size: 300,
-        opacity: 180,
+        opacity: 160,
       },
       {
         image: assets.images.clouds[0],
@@ -41,7 +41,7 @@ class Clouds {
         y: 200,
         speed: 0.3,
         size: 300,
-        opacity: 180,
+        opacity: 160,
       },
       {
         image: assets.images.clouds[0],
@@ -49,7 +49,7 @@ class Clouds {
         y: 400,
         speed: 0.2,
         size: 300,
-        opacity: 180,
+        opacity: 160,
       },
       {
         image: assets.images.clouds[0],
@@ -57,7 +57,7 @@ class Clouds {
         y: 600,
         speed: 0.3,
         size: 300,
-        opacity: 180,
+        opacity: 160,
       },
       {
         image: assets.images.clouds[0],
@@ -65,7 +65,7 @@ class Clouds {
         y: 50,
         speed: 0.22,
         size: 300,
-        opacity: 180,
+        opacity: 160,
       },
       {
         image: assets.images.clouds[0],
@@ -73,7 +73,7 @@ class Clouds {
         y: 5,
         speed: 0.25,
         size: 300,
-        opacity: 180,
+        opacity: 160,
       },
       {
         image: assets.images.clouds[0],
@@ -81,7 +81,7 @@ class Clouds {
         y: 200,
         speed: 0.3,
         size: 300,
-        opacity: 180,
+        opacity: 160,
       },
       {
         image: assets.images.clouds[0],
@@ -89,7 +89,7 @@ class Clouds {
         y: 400,
         speed: 0.2,
         size: 300,
-        opacity: 180,
+        opacity: 160,
       },
       {
         image: assets.images.clouds[0],
@@ -97,7 +97,7 @@ class Clouds {
         y: 600,
         speed: 0.3,
         size: 300,
-        opacity: 180,
+        opacity: 160,
       },
       {
         image: assets.images.clouds[0],
@@ -105,7 +105,7 @@ class Clouds {
         y: 50,
         speed: 0.22,
         size: 300,
-        opacity: 180,
+        opacity: 160,
       },
     ];
   }

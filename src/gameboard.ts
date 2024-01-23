@@ -1,11 +1,13 @@
 class GameBoard {
   private clouds: Clouds;
+  private flowers: Flowers;
   private entities: GameEntity[];
   //private backgroundIndex: number; // todo: change index to the actual image
   private backgroundImage: p5.Image;
 
   constructor(entities: GameEntity[], backgroundImage: p5.Image) {
     this.clouds = new Clouds();
+    this.flowers = new Flowers();
     this.entities = entities;
     //this.backgroundIndex = backgroundIndex;
     this.backgroundImage = backgroundImage;
@@ -73,6 +75,7 @@ class GameBoard {
       this.entities[i].draw();
     }
     this.clouds.draw();
+    this.flowers.draw();
   }
 }
 // const entitet = new Obstacle(0,0,10);
