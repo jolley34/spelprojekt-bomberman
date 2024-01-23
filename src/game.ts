@@ -17,7 +17,6 @@ class Game {
 
   public changePage(page: PageName, board?: number) {
     if (this.currentPage === "GameBoard") {
-      // this.gameBoard.endGame();
     }
 
     this.currentPage = page;

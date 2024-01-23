@@ -9,7 +9,7 @@ class Timer {
     this.timerInterval = null;
   }
 
-  start() {
+  public start() {
     if (this.timerInterval) {
       clearInterval(this.timerInterval);
     }
@@ -19,7 +19,7 @@ class Timer {
     }, 1000);
   }
 
-  stop() {
+  public stop() {
     if (this.timerInterval) {
       clearInterval(this.timerInterval);
       this.timerInterval = null;
@@ -27,12 +27,12 @@ class Timer {
     }
   }
 
-  reset() {
+  public reset() {
     this.stop();
     this.elapsedTime = 0;
   }
 
-  getTime() {
+  public getTime() {
     let totalSeconds = Math.floor(this.elapsedTime / 1000);
     let minutes = Math.floor(totalSeconds / 60);
     let seconds = totalSeconds % 60;
@@ -41,26 +41,23 @@ class Timer {
 
   public drawTimer() {
     const rectPositionX = width / 2;
-    const rectPositionY = 80;
+    const rectPositionY = 65;
     const rectWidth = 200;
     const rectHeight = 70;
 
-    const padding = 2;
+    const padding = 3;
     const textX = rectPositionX;
-    const textY = rectPositionY + padding;
+    const textY = rectPositionY - padding;
 
     push();
     fill(0);
-    strokeWeight(4);
-    stroke("#B3D917");
     rectMode(CENTER);
     rect(rectPositionX, rectPositionY, rectWidth, rectHeight, 10);
     pop();
 
-    fill("#B3D917");
-    textSize(20);
+    fill("white");
+    textSize(40);
     textAlign(CENTER, CENTER);
-    //textFont("Minecraft");
     text(this.getTime(), textX, textY);
   }
 }

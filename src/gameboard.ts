@@ -1,16 +1,36 @@
 class GameBoard {
   private clouds: Clouds;
   private entities: GameEntity[];
-  //private backgroundIndex: number; // todo: change index to the actual image
   private backgroundImage: p5.Image;
   private timer: Timer;
+  private playerCard1: PlayerCard;
+  private playerCard2: PlayerCard;
+  // private player1Icon: p5.Image;
 
-  constructor(entities: GameEntity[], backgroundImage: p5.Image) {
+  constructor(
+    entities: GameEntity[],
+    backgroundImage: p5.Image
+    //player1Icon: p5.Image,
+    //player2Icon: p5.Image
+  ) {
     this.clouds = new Clouds();
     this.entities = entities;
-    //this.backgroundIndex = backgroundIndex;
     this.backgroundImage = backgroundImage;
     this.timer = new Timer();
+    this.playerCard1 = new PlayerCard(
+      "Player 1",
+      //player1Icon,
+      3,
+      width / 2 - 550,
+      50
+    );
+    this.playerCard2 = new PlayerCard(
+      "Player 2",
+      // player2Icon,
+      3,
+      width / 2 + 550,
+      50
+    );
   }
 
   public setupGameBackground() {
@@ -77,10 +97,14 @@ class GameBoard {
 
   public draw() {
     this.drawGameBackground();
+
     for (let i = 0; i < this.entities.length; i++) {
       this.entities[i].draw();
       this.timer.drawTimer();
+      this.playerCard1.draw();
+      this.playerCard2.draw();
     }
+
     this.clouds.draw();
   }
 }
