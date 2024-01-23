@@ -9,6 +9,7 @@ let assets: {
     menumusic: p5.SoundFile;
   };
   images: {
+    bombs: p5.Image[];
     flowers: p5.Image[];
     powerups: p5.Image[];
     maptextures: p5.Image[];
@@ -30,6 +31,7 @@ function preload() {
   customFont = loadFont("../Fonts/MinecraftBold-nMK1.otf");
   assets = {
     images: {
+      bombs: [loadImage("../assets/bombs/bomb-v3.gif")],
       flowers: [loadImage("../assets/flowers/flower-v2.gif")],
       powerups: [loadImage("../assets/powerup/yy3.gif")],
       backgroundImages: [
