@@ -50,7 +50,7 @@ function preload() {
         loadImage("../assets/maptextures/brick.png"),
         loadImage("../assets/maptextures/grass.jpeg"),
         loadImage("../assets/maptextures/grassywall.png"),
-        loadImage("../assets/maptextures/log.png"),
+        loadImage("../assets/maptextures/dirt.png"),
         loadImage("../assets/maptextures/grass-figma.png"),
         loadImage("../assets/maptextures/tree-on-map.png"),
         loadImage("../assets/maptextures/ice2.png"),
