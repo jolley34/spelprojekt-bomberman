@@ -19,7 +19,9 @@ class Timer {
       const currentTime = Date.now();
       const elapsedMilliseconds = currentTime - this.startTime;
       this.elapsedTime = Math.max(300000 - elapsedMilliseconds, 0);
-//
+
+// stannar tiden efter 5 min
+// lägg till logik som visar endgame med resultat efter tiden tar slut
 if (this.elapsedTime === 0) {
   this.stop();
 }
