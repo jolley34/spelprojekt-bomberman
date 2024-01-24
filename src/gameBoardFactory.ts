@@ -121,7 +121,7 @@ class GameBoardFactory {
             left: LEFT_ARROW,
             down: DOWN_ARROW,
             right: RIGHT_ARROW,
-            placeBomb: 80,
+            placeBomb: 32, // space
           });
           entities.push(player);
         }
@@ -131,7 +131,7 @@ class GameBoardFactory {
             left: 65,
             down: 83,
             right: 68,
-            placeBomb: 67,
+            placeBomb: 16, // left shift
           });
           entities.push(player2);
         }

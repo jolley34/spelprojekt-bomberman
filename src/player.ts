@@ -47,7 +47,7 @@ class Player extends GameEntity {
   public update(): void {
     // Sätter hastigheten utifrån vad spelaren trycker på för knapp
 
-    if (keyIsDown(this.controls.left) {
+    if (keyIsDown(this.controls.left)) {
       this.speedX = -this.getEffectiveSpeed();
       this.animateLeft();
     } else if (keyIsDown(this.controls.right)) {
