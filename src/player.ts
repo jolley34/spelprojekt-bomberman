@@ -42,7 +42,7 @@ class Player extends GameEntity {
     this.downAnimationLoop = [1, 0, 2, 0];
   }
 
-  public update(): void {
+  public update(gameBoard: IAddEntity): void {
     // Sätter hastigheten utifrån vad spelaren trycker på för knapp
     let horizontalSpeed = 0;
     let verticalSpeed = 0;
@@ -90,16 +90,21 @@ class Player extends GameEntity {
 
     //kontrollerar om man redan tryckt på p kan bara släppa en bomb i taget.
     if (keyIsDown(this.controls.placeBomb) && !this.wasKeyPressed) {
-      this.dropBomb(this.x, this.y);
+      this.dropBomb(this.x, this.y, gameBoard);
       this.wasKeyPressed = true;
     } else if (!keyIsDown(this.controls.placeBomb)) {
       this.wasKeyPressed = false;
     }
   }
-  public dropBomb(positionX: number, positionY: number): void {
+
+  public dropBomb(
+    positionX: number,
+    positionY: number,
+    gameBoard: IAddEntity
+  ): void {
     const bomb = new Bomb(positionX, positionY, 50);
     assets.playerSoundEffects.explosion.play();
-    this.addBomb(bomb);
+    gameBoard.addEntity(bomb);
   }
 
   private animateLeft(): void {
