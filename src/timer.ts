@@ -5,7 +5,8 @@ class Timer {
 
   constructor() {
     this.startTime = 0;
-    //
+    this.elapsedTime = 300000;
+  
     
     this.timerInterval = null;
   }
