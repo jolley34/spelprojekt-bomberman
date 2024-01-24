@@ -31,7 +31,10 @@ function preload() {
   assets = {
     images: {
       flowers: [loadImage("../assets/flowers/flower-v2.gif")],
-      powerups: [loadImage("../assets/powerup/yy3.gif")],
+      powerups: [
+        loadImage("../assets/powerup/yy3.gif"),
+        loadImage("../assets/powerup/slowdown.gif"),
+    ],
       backgroundImages: [
         loadImage("../assets/background/Controls.svg"),
         loadImage("../assets/background/Map-1-blurred-shadow-v4-copy.png"),
