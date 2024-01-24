@@ -36,7 +36,7 @@ function preload() {
   assets = {
     images: {
       bombs: [
-        loadImage("../assets/bombs/bomb-v3-before-explode.gif"),
+        loadImage("../assets/bombs/bomb-v3-before-explode-red.gif"),
         loadImage("../assets/bombs/bomb-v3-fire-line.gif"),
         loadImage("../assets/bombs/bomb-v3-fire-line-blue-player.gif"),
         loadImage("../assets/bombs/bomb-v3-fire-line-red-player.gif"),
