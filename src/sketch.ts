@@ -22,6 +22,7 @@ let assets: {
 };
 
 let customFont: p5.Font;
+let spicyFont: p5.Font;
 
 /**
  * Built in preload function in P5
@@ -30,6 +31,7 @@ let customFont: p5.Font;
  */
 function preload() {
   customFont = loadFont("../Fonts/MinecraftBold-nMK1.otf");
+  spicyFont = loadFont("../Fonts/SpicyRice-Regular.ttf");
   assets = {
     images: {
       bombs: [
@@ -108,7 +110,7 @@ function preload() {
  */
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  textFont(customFont);
+  textFont(spicyFont);
   frameRate(120);
   game = new Game();
 }

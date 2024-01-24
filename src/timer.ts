@@ -50,7 +50,11 @@ class Timer {
     const textY = rectPositionY - padding;
 
     push();
-    fill(0);
+    fill("#5A7885");
+    drawingContext.shadowOffsetX = 5;
+    drawingContext.shadowOffsetY = 10;
+    drawingContext.shadowBlur = 10;
+    drawingContext.shadowColor = "black";
     rectMode(CENTER);
     rect(rectPositionX, rectPositionY, rectWidth, rectHeight, 10);
     pop();

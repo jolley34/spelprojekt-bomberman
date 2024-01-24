@@ -36,15 +36,20 @@ class PlayerCard {
 
   public draw() {
     push();
-    fill(0);
+    fill("#5A7885");
+    drawingContext.shadowOffsetX = 5;
+    drawingContext.shadowOffsetY = 10;
+    drawingContext.shadowBlur = 10;
+    drawingContext.shadowColor = "black";
     noStroke();
     rectMode(CENTER);
     rect(this.positionX, this.positionY + 50, 250, 150, 10);
-
     fill("255");
-    textSize(20);
-    textAlign(CENTER, CENTER);
+    textSize(30);
+    textAlign(RIGHT);
     text(this.name, this.positionX, this.positionY);
+    fill("#AECDDB");
+    circle(this.positionX * 1.4, this.positionY * 2 + 50, 100);
     pop();
 
     const heartSpacing = 50;

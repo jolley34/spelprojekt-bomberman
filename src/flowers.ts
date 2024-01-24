@@ -10,7 +10,7 @@ class Flowers {
 
   constructor() {
     this.flowers = [];
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 25; i++) {
       this.flowers.push({
         image: random(assets.images.flowers),
         y: random(height),
