@@ -32,7 +32,7 @@ function preload() {
   assets = {
     images: {
       bombs: [
-        loadImage("../assets/bombs/bomb-v3.gif"),
+        loadImage("../assets/bombs/bomb-v3-before-explode.gif"),
         loadImage("../assets/bombs/bomb-v3-fire-line.gif"),
       ],
       flowers: [loadImage("../assets/flowers/flower-v2.gif")],
