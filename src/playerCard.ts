@@ -48,12 +48,12 @@ class PlayerCard {
     drawingContext.shadowOffsetY = 0;
     drawingContext.shadowBlur = 0;
     drawingContext.shadowColor = "black";
-    drawingContext.shadowOffsetX = 20;
+    drawingContext.shadowOffsetX = 0;
     drawingContext.shadowOffsetY = 20;
     drawingContext.shadowBlur = 20;
     drawingContext.shadowColor = "black";
     fill("#AECDDB");
-    circle(this.positionX * 1.38, this.positionY * 3.22, 75);
+    circle(this.positionX * 1.38, this.positionY * 3.22, 100);
 
     /*     image(
       assets.images.playerCard[0],
