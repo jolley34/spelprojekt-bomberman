@@ -6,7 +6,6 @@ class ChooseBoard {
 
   constructor(game: Game) {
     this.image = assets.images.backgroundImages[0];
-
     this.game = game;
     this.gardenBoardButton = new Button(
       width / 4 + 130,

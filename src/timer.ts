@@ -50,7 +50,7 @@ class Timer {
     const textY = rectPositionY - padding;
 
     push();
-    fill(0);
+    fill(0, 0, 0, 180);
     rectMode(CENTER);
     rect(rectPositionX, rectPositionY, rectWidth, rectHeight, 10);
     pop();

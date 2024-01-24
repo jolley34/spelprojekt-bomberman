@@ -36,7 +36,7 @@ class PlayerCard {
 
   public draw() {
     push();
-    fill(0);
+    fill(0, 0, 0, 180);
     noStroke();
     rectMode(CENTER);
     rect(this.positionX, this.positionY + 50, 250, 150, 10);

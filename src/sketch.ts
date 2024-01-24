@@ -20,6 +20,7 @@ let assets: {
 };
 
 let customFont: p5.Font;
+let endOfGameScreen: EndOfGame;
 
 /**
  * Built in preload function in P5
