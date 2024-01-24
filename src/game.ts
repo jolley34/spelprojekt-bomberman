@@ -8,6 +8,7 @@ class Game {
   private currentPage: PageName;
   private countdownTime: number;
   private isCountdownActive: boolean;
+  private showFightText: boolean;
 
   constructor() {
     this.gameBoardFactory = new GameBoardFactory();
@@ -17,12 +18,14 @@ class Game {
     this.currentPage = "StartPage";
     this.countdownTime = 3;
     this.isCountdownActive = false;
+    this.showFightText = false;
   }
 
   public changePage(page: PageName, board?: number) {
     if (page === "GameBoard" && board !== undefined) {
       this.isCountdownActive = true;
       this.countdownTime = 3;
+      this.showFightText = false;
       this.gameBoard = this.gameBoardFactory.generateGameBoard(board);
     } else {
       this.currentPage = page;
@@ -35,10 +38,16 @@ class Game {
         this.countdownTime--;
       }
       if (this.countdownTime === 0) {
-        this.isCountdownActive = false;
-        this.currentPage = "GameBoard";
-        if (this.gameBoard) {
-          this.gameBoard.startGame();
+        if (!this.showFightText) {
+          this.showFightText = true;
+          this.countdownTime = 1; // show the fight text for 1 second
+        } else {
+          this.isCountdownActive = false;
+          this.showFightText = false;
+          this.currentPage = "GameBoard";
+          if (this.gameBoard) {
+            this.gameBoard.startGame();
+          }
         }
       }
     }
@@ -71,7 +80,11 @@ class Game {
       fill("white");
       textSize(64);
       textAlign(CENTER, CENTER);
-      text(this.countdownTime, width / 2, height / 2);
+
+      let textToDisplay = this.showFightText
+        ? "F I G H T !"
+        : this.countdownTime.toString();
+      text(textToDisplay, width / 2, height / 2);
     } else {
       switch (this.currentPage) {
         case "StartPage":

@@ -48,6 +48,7 @@ class Player extends GameEntity {
     let verticalSpeed = 0;
 
     if (keyIsDown(this.controls.left)) {
+
       horizontalSpeed = -this.getEffectiveSpeed();
       this.animateLeft();
     } else if (keyIsDown(this.controls.right)) {
@@ -159,6 +160,7 @@ class Player extends GameEntity {
     return this.increasedSpeed > 0 && this.powerUpTimer > 0
       ? this.increasedSpeed
       : 2.5;
+
   }
 
   // hur mycket farten skall öka för spelaren efter powerup
