@@ -79,7 +79,7 @@ class GameBoard {
   private pickUpPowerUp() {
     for (const entity of this.entities) {
       // Kolla om det är en power up
-      if (entity instanceof SpeedUp) {
+      if (entity instanceof SpeedUp || SlowDown) {
         // kolla om den krockar med en spelare
         for (const player of this.entities) {
           if (player instanceof Player) {
