@@ -1,4 +1,8 @@
-class GameBoard {
+interface IAddEntity {
+  addEntity(entity: GameEntity): void;
+}
+
+class GameBoard implements IAddEntity {
   private clouds: Clouds;
   private flowers: Flowers;
   private entities: GameEntity[];
@@ -110,7 +114,7 @@ class GameBoard {
   public update() {
     // Loop over all entities and update them
     for (let i = 0; i < this.entities.length; i++) {
-      this.entities[i].update();
+      this.entities[i].update(this);
     }
 
     // for (const entity of this.entities) {
@@ -120,6 +124,10 @@ class GameBoard {
     this.pickUpPowerUp(); // uppdatera powerup
 
     this.checkCollision();
+  }
+
+  public addEntity(entity: GameEntity) {
+    this.entities.push(entity);
   }
 
   public startGame() {
@@ -134,10 +142,6 @@ class GameBoard {
     this.drawGameBackground();
     for (let i = 0; i < this.entities.length; i++) {
       this.entities[i].draw();
-      const bombs = this.entities[i].bombs;
-      for (let j = 0; j < bombs.length; j++) {
-        bombs[j].draw();
-      }
     }
     this.timer.drawTimer();
     this.playerCard1.draw();
