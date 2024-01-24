@@ -6,11 +6,11 @@ class StartPage implements IGamePage {
   private instructions: string;
   private highScore: string;
   private startButton: Button;
-  private game: Game;
+  private game: IGamePage;
   private playerName: string;
   private playerScore: number;
 
-  constructor(game: Game) {
+  constructor(game: IGamePage) {
     this.game = game;
     this.playerName = "Player 1";
     this.playerScore = 0;
