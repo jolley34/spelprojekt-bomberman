@@ -21,7 +21,9 @@ class Timer {
       const elapsedMilliseconds = currentTime - this.startTime;
       this.elapsedTime = Math.max(300000 - elapsedMilliseconds, 0);
 //
-      
+if (this.elapsedTime === 0) {
+  this.stop();
+}
     }, 1000);
   }
 
