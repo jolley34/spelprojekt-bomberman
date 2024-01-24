@@ -18,6 +18,7 @@ let assets: {
     clouds: p5.Image[];
     entities: p5.Image[];
     player1Animations: p5.Image[];
+    playerCard: p5.Image[];
   };
 };
 
@@ -41,6 +42,9 @@ function preload() {
         loadImage("../assets/bombs/bomb-v3-fire-line-red-player.gif"),
       ],
       flowers: [loadImage("../assets/flowers/flower-v2.gif")],
+      playerCard: [
+        loadImage("../assets/playercard/monkey-playercard-blue.png"),
+      ],
       powerups: [loadImage("../assets/powerup/yy3.gif")],
       backgroundImages: [
         loadImage("../assets/background/Controls.svg"),

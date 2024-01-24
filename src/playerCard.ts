@@ -44,19 +44,23 @@ class PlayerCard {
     noStroke();
     rectMode(CENTER);
     rect(this.positionX, this.positionY + 50, 250, 150, 10);
+
+    fill("#FF9090");
+    rect(this.positionX * 1.42, this.positionY * 3, 100, 100, 10);
+
+    /*     image(
+      assets.images.playerCard[0],
+      this.positionX * 1.38,
+      this.positionY * 2,
+      100,
+      100
+    ); */
+
     fill("255");
     textSize(30);
     textAlign(RIGHT);
     text(this.name, this.positionX, this.positionY);
-    fill("#AECDDB");
-    circle(this.positionX * 1.4, this.positionY * 2 + 50, 100);
-    image(
-      assets.images.player1Animations[0],
-      this.positionX * 1.325,
-      this.positionY * 2.55,
-      45,
-      45
-    );
+
     pop();
 
     const heartSpacing = 50;
