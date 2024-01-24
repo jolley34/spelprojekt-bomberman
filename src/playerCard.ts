@@ -23,17 +23,6 @@ class PlayerCard {
     this.lives--;
   }
 
-  private drawHeart(x: number, y: number) {
-    push();
-    fill(255, 0, 0);
-    beginShape();
-    vertex(x, y);
-    bezierVertex(x - 15, y - 15, x - 30, y + 20, x, y + 30);
-    bezierVertex(x + 30, y + 20, x + 15, y - 15, x, y);
-    endShape(CLOSE);
-    pop();
-  }
-
   public draw() {
     push();
     fill("#5A7885");
@@ -54,14 +43,17 @@ class PlayerCard {
     drawingContext.shadowColor = "black";
     fill("#AECDDB");
     circle(this.positionX * 1.38, this.positionY * 3.22, 100);
-
-    /*     image(
+    drawingContext.shadowOffsetX = 0;
+    drawingContext.shadowOffsetY = 0;
+    drawingContext.shadowBlur = 0;
+    drawingContext.shadowColor = "black";
+    image(
       assets.images.playerCard[0],
-      this.positionX * 1.38,
-      this.positionY * 2,
-      100,
-      100
-    ); */
+      this.positionX * 0.65,
+      this.positionY * 1.7,
+      40,
+      40
+    );
 
     fill("255");
     textSize(30);
@@ -69,12 +61,6 @@ class PlayerCard {
     text(this.name, this.positionX, this.positionY);
 
     pop();
-
-    const heartSpacing = 50;
-    const startX = this.positionX - (heartSpacing * this.lives) / 2;
-    for (let i = 0; i < this.lives; i++) {
-      this.drawHeart(startX + i * heartSpacing, this.positionY + 50);
-    }
   }
 
   public addPowerUp() {}
