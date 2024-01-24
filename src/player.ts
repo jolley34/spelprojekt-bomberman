@@ -98,6 +98,7 @@ class Player extends GameEntity {
   }
   public dropBomb(positionX: number, positionY: number): void {
     const bomb = new Bomb(positionX, positionY, 50);
+    assets.playerSoundEffects.explosion.play();
     this.addBomb(bomb);
   }
 

@@ -94,7 +94,7 @@ function preload() {
         "../assets/player-sound-effects/sfx_step_grass_l.mp3"
       ),
       explosion: loadSound(
-        "../assets/player-sound-effects/bomb-explosion-sound.mp3"
+        "../assets/player-sound-effects/bomb-explosion-sound.wav"
       ),
     },
   };
