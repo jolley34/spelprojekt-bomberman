@@ -50,10 +50,17 @@ class PlayerCard {
     text(this.name, this.positionX, this.positionY);
     fill("#AECDDB");
     circle(this.positionX * 1.4, this.positionY * 2 + 50, 100);
+    image(
+      assets.images.player1Animations[0],
+      this.positionX * 1.325,
+      this.positionY * 2.55,
+      45,
+      45
+    );
     pop();
 
     const heartSpacing = 50;
-    const startX = this.positionX - (heartSpacing * (this.lives - 1)) / 2;
+    const startX = this.positionX - (heartSpacing * this.lives) / 2;
     for (let i = 0; i < this.lives; i++) {
       this.drawHeart(startX + i * heartSpacing, this.positionY + 50);
     }
