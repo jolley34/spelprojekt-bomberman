@@ -5,7 +5,7 @@ class Timer {
 
   constructor() {
     this.startTime = 0;
-    this.elapsedTime = 300000;
+    this.elapsedTime = 300000; // sätter tiden till 5 min
     this.timerInterval = null;
   }
 
