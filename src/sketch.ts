@@ -4,6 +4,7 @@ let assets: {
   playerSoundEffects: {
     walkingsound: p5.SoundFile;
     explosion: p5.SoundFile;
+    powerupsound: p5.SoundFile[];
   };
   music: {
     ingamemusic: p5.SoundFile;
@@ -94,6 +95,7 @@ function preload() {
       menumusic: loadSound("..//assets/music/spelprojekt-menu.mp3"),
     },
     playerSoundEffects: {
+      powerupsound: [loadSound("../assets/player-sound-effects/monkey-1.wav")],
       walkingsound: loadSound(
         "../assets/player-sound-effects/sfx_step_grass_l.mp3"
       ),

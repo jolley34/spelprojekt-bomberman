@@ -163,6 +163,7 @@ class Player extends GameEntity {
 
   // hur mycket farten skall öka för spelaren efter powerup
   public increaseSpeed(): void {
+    assets.playerSoundEffects.powerupsound[0].play();
     this.increasedSpeed = 5.25;
     this.powerUpTimer = this.powerUpDuration;
   }
