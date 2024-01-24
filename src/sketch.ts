@@ -3,12 +3,15 @@ let game: Game;
 let assets: {
   playerSoundEffects: {
     walkingsound: p5.SoundFile;
+    explosion: p5.SoundFile;
+    powerupsound: p5.SoundFile[];
   };
   music: {
     ingamemusic: p5.SoundFile;
     menumusic: p5.SoundFile;
   };
   images: {
+    bombs: p5.Image[];
     flowers: p5.Image[];
     powerups: p5.Image[];
     maptextures: p5.Image[];
@@ -16,10 +19,12 @@ let assets: {
     clouds: p5.Image[];
     entities: p5.Image[];
     player1Animations: p5.Image[];
+    playerCard: p5.Image[];
   };
 };
 
 let customFont: p5.Font;
+let spicyFont: p5.Font;
 
 /**
  * Built in preload function in P5
@@ -28,9 +33,17 @@ let customFont: p5.Font;
  */
 function preload() {
   customFont = loadFont("../Fonts/MinecraftBold-nMK1.otf");
+  spicyFont = loadFont("../Fonts/SpicyRice-Regular.ttf");
   assets = {
     images: {
+      bombs: [
+        loadImage("../assets/bombs/bomb-v3-before-explode-red.gif"),
+        loadImage("../assets/bombs/bomb-v3-fire-line.gif"),
+        loadImage("../assets/bombs/bomb-v3-fire-line-blue-player.gif"),
+        loadImage("../assets/bombs/bomb-v3-fire-line-red-player.gif"),
+      ],
       flowers: [loadImage("../assets/flowers/flower-v2.gif")],
+      playerCard: [loadImage("../assets/playercard/heart-icon.png")],
       powerups: [loadImage("../assets/powerup/yy3.gif")],
       backgroundImages: [
         loadImage("../assets/background/Controls.svg"),
@@ -60,7 +73,7 @@ function preload() {
         loadImage("../assets/entities_img/image1.png"),
         loadImage("../assets/entities_img/image2.png"),
         loadImage("../assets/entities_img/image3.png"),
-        loadImage("../assets/entities_img/bomb.png"),
+        loadImage("../assets/entities_img/bomb-v3.gif"),
       ],
       player1Animations: [
         loadImage("../assets/player-1-animations/idle-front.png"), // 0
@@ -82,8 +95,12 @@ function preload() {
       menumusic: loadSound("..//assets/music/spelprojekt-menu.mp3"),
     },
     playerSoundEffects: {
+      powerupsound: [loadSound("../assets/player-sound-effects/monkey-1.wav")],
       walkingsound: loadSound(
         "../assets/player-sound-effects/sfx_step_grass_l.mp3"
+      ),
+      explosion: loadSound(
+        "../assets/player-sound-effects/bomb-explosion-sound.wav"
       ),
     },
   };
@@ -97,7 +114,7 @@ function preload() {
  */
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  textFont(customFont);
+  textFont(spicyFont);
   frameRate(120);
   game = new Game();
 }
