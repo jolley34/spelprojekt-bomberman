@@ -5,6 +5,7 @@ let assets: {
     walkingsound: p5.SoundFile;
     explosion: p5.SoundFile;
     powerupsound: p5.SoundFile[];
+    looselife: p5.SoundFile;
   };
   music: {
     ingamemusic: p5.SoundFile;
@@ -99,6 +100,7 @@ function preload() {
       walkingsound: loadSound(
         "../assets/player-sound-effects/sfx_step_grass_l.mp3"
       ),
+      looselife: loadSound("../assets/player-sound-effects/lose-life.mp3"),
       explosion: loadSound(
         "../assets/player-sound-effects/bomb-explosion-sound.wav"
       ),
