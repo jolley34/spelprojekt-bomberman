@@ -139,12 +139,11 @@ class GameBoard {
         bombs[j].draw();
       }
     }
-    this.clouds.draw();
-    this.flowers.draw();
     this.timer.drawTimer();
-
     this.playerCard1.draw();
     this.playerCard2.draw();
+    this.clouds.draw();
+    this.flowers.draw();
   }
 }
 // const entitet = new Obstacle(0,0,10);
