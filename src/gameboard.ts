@@ -55,7 +55,12 @@ class GameBoard implements IAddEntity {
         // Kontrollera om spelaren krockar med något
         for (const entity2 of this.entities) {
           // Kolla inte krockar med andra spelare (inkl sig själv).
-          if (entity2 instanceof Player || entity2 instanceof Bomb) continue;
+          if (
+            entity2 instanceof Player ||
+            entity2 instanceof Bomb ||
+            entity2 instanceof Explosion
+          )
+            continue;
           // 1. Identifiera faktiska krockar
           // Definera höger och vänster sida för varje entitet
           const l1 = entity1.x;
@@ -120,6 +125,11 @@ class GameBoard implements IAddEntity {
       //this.entities[i].update(this);
       if (entity instanceof Bomb) {
         if (entity.explosionTimer <= 0) {
+          this.entities.splice(i, 1);
+          i--;
+        }
+      } else if (entity instanceof Explosion) {
+        if (entity.timer <= 0) {
           this.entities.splice(i, 1);
           i--;
         }
