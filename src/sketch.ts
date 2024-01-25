@@ -78,18 +78,24 @@ function preload() {
       ],
       playerAnimations: [
         // Player 1
-        loadImage("../assets/playeranimations/idle-front.png"), // 0
-        loadImage("../assets/playeranimations/idle-front-lf.png"), // 1
-        loadImage("../assets/playeranimations/idle-front-rf.png"), // 2
-        loadImage("../assets/playeranimations/idle-back.png"), // 3
-        loadImage("../assets/playeranimations/idle-back-lf.png"), // 4
-        loadImage("../assets/playeranimations/idle-back-rf.png"), // 5
-        loadImage("../assets/playeranimations/idle-left.png"), // 6
-        loadImage("../assets/playeranimations/left-foot-left.png"), // 7
-        loadImage("../assets/playeranimations/right-foot-left.png"), // 8
-        loadImage("../assets/playeranimations/idle-right.png"), // 9
-        loadImage("../assets/playeranimations/right-foot-right.png"), // 10
-        loadImage("../assets/playeranimations/left-foot-right.png"), // 11
+        loadImage("../assets/playeranimations/player-1-red-idle-front.png"), // 0
+        loadImage("../assets/playeranimations/player-1-red-idle-front-lf.png"), // 1
+        loadImage("../assets/playeranimations/player-1-red-idle-front-rf.png"), // 2
+        loadImage("../assets/playeranimations/player-1-red-idle-back.png"), // 3
+        loadImage("../assets/playeranimations/player-1-red-idle-back-lf.png"), // 4
+        loadImage("../assets/playeranimations/player-1-red-idle-back-rf.png"), // 5
+        loadImage("../assets/playeranimations/player-1-red-idle-left.png"), // 6
+        loadImage("../assets/playeranimations/player-1-red-left-foot-left.png"), // 7
+        loadImage(
+          "../assets/playeranimations/player-1-red-right-foot-left.png" // 8
+        ),
+        loadImage("../assets/playeranimations/player-1-red-idle-right.png"), // 9
+        loadImage(
+          "../assets/playeranimations/player-1-red-right-foot-right.png" // 10
+        ),
+        loadImage(
+          "../assets/playeranimations/player-1-red-left-foot-right.png" // 11
+        ),
         //Player 2
       ],
     },
