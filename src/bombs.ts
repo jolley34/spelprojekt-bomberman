@@ -33,7 +33,7 @@ class Bomb extends GameEntity {
   private explode() {
     this.hasExploded = true;
     this.image = assets.images.bombs[2]; // 
-    // assets.playerSoundEffects.explosion.play();
+    assets.playerSoundEffects.explosion.play();
   }
 
   public draw() {
