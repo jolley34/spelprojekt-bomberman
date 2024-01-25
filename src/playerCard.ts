@@ -4,19 +4,22 @@ class PlayerCard {
   lives: number;
   positionX: number;
   positionY: number;
+  playerNumber: number;
 
   constructor(
     name: string,
     icon: p5.Image,
     lives: number,
     positionX: number,
-    positionY: number
+    positionY: number,
+    playerNumber: number
   ) {
     this.name = name;
     this.icon = icon;
     this.lives = lives;
     this.positionX = positionX;
     this.positionY = positionY;
+    this.playerNumber = playerNumber;
   }
 
   public removeLife() {
@@ -47,25 +50,23 @@ class PlayerCard {
     for (let i = 0; i < this.lives; i++) {
       image(
         assets.images.playerCard[0],
-        startX + i * heartSpacing - 20,
+        startX + i * heartSpacing - 40,
         this.positionY + 45,
         40,
         40
       );
     }
-    const startCircle = this.positionX / 2;
-    for (let i = 0; i < this.lives; i++) {
-      fill("#AECDDB");
-      circle(startCircle * 2, this.positionY * 4, 100);
-      drawingContext.shadowOffsetX = 0;
-      drawingContext.shadowOffsetY = 0;
-      drawingContext.shadowBlur = 0;
-      drawingContext.shadowColor = "black";
+
+    let circleCenterX, circleCenterY;
+    if (this.playerNumber === 1) {
+      circleCenterX = this.positionX + 100;
+      circleCenterY = this.positionY + 130;
+    } else {
+      circleCenterX = this.positionX - 100;
+      circleCenterY = this.positionY + 130;
     }
 
-    // Drawing the player icon
-    const circleCenterX = this.positionX;
-    const circleCenterY = this.positionY * 4;
+    // Draw player icon
     const circleDiameter = 100;
     fill("#AECDDB");
     circle(circleCenterX, circleCenterY, circleDiameter);
@@ -85,8 +86,8 @@ class PlayerCard {
 
     fill("255");
     textSize(30);
-    textAlign(CENTER);
-    text(this.name, this.positionX, this.positionY);
+    textAlign(RIGHT);
+    text(this.name, this.positionX + 15, this.positionY);
 
     pop();
   }

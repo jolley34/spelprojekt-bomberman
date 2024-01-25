@@ -28,7 +28,8 @@ class GameBoard implements IAddEntity {
       assets.images.player1Animations[0],
       3,
       width / 2 - 550,
-      50
+      50,
+      1
     );
     this.playerCard2 = new PlayerCard(
       "Player 2",
@@ -36,7 +37,8 @@ class GameBoard implements IAddEntity {
       assets.images.entities[2],
       3,
       width / 2 + 550,
-      50
+      50,
+      2
     );
   }
 
