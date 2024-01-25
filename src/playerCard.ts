@@ -50,7 +50,7 @@ class PlayerCard {
     for (let i = 0; i < this.lives; i++) {
       image(
         assets.images.playerCard[0],
-        startX + i * heartSpacing - 40,
+        startX + i * heartSpacing - 20,
         this.positionY + 45,
         40,
         40
@@ -86,8 +86,8 @@ class PlayerCard {
 
     fill("255");
     textSize(30);
-    textAlign(RIGHT);
-    text(this.name, this.positionX + 15, this.positionY);
+    textAlign(CENTER);
+    text(this.name, this.positionX, this.positionY);
 
     pop();
   }
