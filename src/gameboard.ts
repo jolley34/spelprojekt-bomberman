@@ -114,7 +114,15 @@ class GameBoard implements IAddEntity {
   public update() {
     // Loop over all entities and update them
     for (let i = 0; i < this.entities.length; i++) {
-      this.entities[i].update(this);
+      const entity = this.entities[i];
+      entity.update(this);
+      //this.entities[i].update(this);
+      if (entity instanceof Bomb) {
+        if (entity.timer <= 0) {
+          this.entities.splice(i, 1);
+          i--;
+        }
+      }
     }
 
     // for (const entity of this.entities) {
