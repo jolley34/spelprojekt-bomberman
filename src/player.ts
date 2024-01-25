@@ -103,9 +103,10 @@ class Player extends GameEntity {
     positionY: number,
     gameBoard: IAddEntity
   ): void {
-    const bomb = new Bomb(positionX, positionY, 50);
-    assets.playerSoundEffects.explosion.play();
-    gameBoard.addEntity(bomb);
+    if (!gameBoard.entities.filter((entity) => entity instanceof Bomb).length) {
+      const bomb = new Bomb(positionX, positionY, 50);
+      gameBoard.addEntity(bomb);
+    }
   }
 
   private animateLeft(): void {
