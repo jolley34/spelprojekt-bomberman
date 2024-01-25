@@ -10,8 +10,9 @@ class GameEntity {
     this.image = image;
     this.size = size;
   }
-
-  public update(gameBoard: IAddEntity): void {}
+  public update(gameBoard: IAddEntity): void {
+    
+  }
 
   public draw(): void {
     push();
