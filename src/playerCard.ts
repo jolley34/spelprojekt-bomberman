@@ -1,19 +1,19 @@
 class PlayerCard {
   name: string;
-  // icon: p5.Image;
+  icon: p5.Image;
   lives: number;
   positionX: number;
   positionY: number;
 
   constructor(
     name: string,
-    //icon: p5.Image,
+    icon: p5.Image,
     lives: number,
     positionX: number,
     positionY: number
   ) {
     this.name = name;
-    // this.icon = icon;
+    this.icon = icon;
     this.lives = lives;
     this.positionX = positionX;
     this.positionY = positionY;
@@ -41,23 +41,51 @@ class PlayerCard {
     drawingContext.shadowOffsetY = 20;
     drawingContext.shadowBlur = 20;
     drawingContext.shadowColor = "black";
+
+    const heartSpacing = 50;
+    const startX = this.positionX - (heartSpacing * (this.lives - 1)) / 2;
+    for (let i = 0; i < this.lives; i++) {
+      image(
+        assets.images.playerCard[0],
+        startX + i * heartSpacing - 20,
+        this.positionY + 45,
+        40,
+        40
+      );
+    }
+    const startCircle = this.positionX / 2;
+    for (let i = 0; i < this.lives; i++) {
+      fill("#AECDDB");
+      circle(startCircle * 2, this.positionY * 4, 100);
+      drawingContext.shadowOffsetX = 0;
+      drawingContext.shadowOffsetY = 0;
+      drawingContext.shadowBlur = 0;
+      drawingContext.shadowColor = "black";
+    }
+
+    // Drawing the player icon
+    const circleCenterX = this.positionX;
+    const circleCenterY = this.positionY * 4;
+    const circleDiameter = 100;
     fill("#AECDDB");
-    circle(this.positionX * 1.38, this.positionY * 3.22, 100);
+    circle(circleCenterX, circleCenterY, circleDiameter);
+    imageMode(CENTER);
+    image(
+      this.icon,
+      circleCenterX,
+      circleCenterY,
+      circleDiameter - 20,
+      circleDiameter - 20
+    );
+
     drawingContext.shadowOffsetX = 0;
     drawingContext.shadowOffsetY = 0;
     drawingContext.shadowBlur = 0;
     drawingContext.shadowColor = "black";
-    image(
-      assets.images.playerCard[0],
-      this.positionX * 0.65,
-      this.positionY * 1.7,
-      40,
-      40
-    );
 
     fill("255");
     textSize(30);
-    textAlign(RIGHT);
+    textAlign(CENTER);
     text(this.name, this.positionX, this.positionY);
 
     pop();

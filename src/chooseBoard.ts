@@ -13,14 +13,14 @@ class ChooseBoard {
       height / 2 + 270,
       250,
       50,
-      "Garden Board"
+      "GAARDEN BOARD"
     );
     this.iceBoardButton = new Button(
       width / 4 + width / 2 - 130,
       height / 2 + 270,
       250,
       50,
-      "Ice Board"
+      "ICE BOARD"
     );
   }
 

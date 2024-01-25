@@ -10,13 +10,12 @@ class GameBoard implements IAddEntity {
   private timer: Timer;
   private playerCard1: PlayerCard;
   private playerCard2: PlayerCard;
-  // private player1Icon: p5.Image;
 
   constructor(
     entities: GameEntity[],
-    backgroundImage: p5.Image
-    //player1Icon: p5.Image,
-    //player2Icon: p5.Image
+    backgroundImage: p5.Image,
+    player1Icon: p5.Image,
+    player2Icon: p5.Image
   ) {
     this.clouds = new Clouds();
     this.flowers = new Flowers();
@@ -25,14 +24,16 @@ class GameBoard implements IAddEntity {
     this.timer = new Timer();
     this.playerCard1 = new PlayerCard(
       "Player 1",
-      //player1Icon,
+      // Change the image accordingly to the player1
+      assets.images.player1Animations[0],
       3,
       width / 2 - 550,
       50
     );
     this.playerCard2 = new PlayerCard(
       "Player 2",
-      // player2Icon,
+      // Change the image accordingly to the player2
+      assets.images.entities[2],
       3,
       width / 2 + 550,
       50
