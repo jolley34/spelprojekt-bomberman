@@ -4,8 +4,11 @@ class Bomb extends GameEntity {
   private range: number;
 
   constructor(x: number, y: number, size: number) {
-    super(assets.images.bombs[2], x, y, size);
+    super(assets.images.bombs[0], x, y, size);
     this.timer = 3000;
     this.range = 50;
+  }
+  private explosionDelay(): void {
+    const startTime = this.timer;
   }
 }
