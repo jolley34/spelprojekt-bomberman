@@ -1,4 +1,4 @@
-
+/// <reference path="gameEntity.ts" />
 class Bomb extends GameEntity {
   private timer: number;
   private explosionRange: number;
