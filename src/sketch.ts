@@ -19,7 +19,7 @@ let assets: {
     backgroundImages: p5.Image[];
     clouds: p5.Image[];
     entities: p5.Image[];
-    player1Animations: p5.Image[];
+    playerAnimations: p5.Image[];
     playerCard: p5.Image[];
   };
 };
@@ -76,19 +76,21 @@ function preload() {
         loadImage("../assets/entities_img/image3.png"),
         loadImage("../assets/entities_img/bomb-v3.gif"),
       ],
-      player1Animations: [
-        loadImage("../assets/player-1-animations/idle-front.png"), // 0
-        loadImage("../assets/player-1-animations/idle-front-lf.png"), // 1
-        loadImage("../assets/player-1-animations/idle-front-rf.png"), // 2
-        loadImage("../assets/player-1-animations/idle-back.png"), // 3
-        loadImage("../assets/player-1-animations/idle-back-lf.png"), // 4
-        loadImage("../assets/player-1-animations/idle-back-rf.png"), // 5
-        loadImage("../assets/player-1-animations/idle-left.png"), // 6
-        loadImage("../assets/player-1-animations/left-foot-left.png"), // 7
-        loadImage("../assets/player-1-animations/right-foot-left.png"), // 8
-        loadImage("../assets/player-1-animations/idle-right.png"), // 9
-        loadImage("../assets/player-1-animations/right-foot-right.png"), // 10
-        loadImage("../assets/player-1-animations/left-foot-right.png"), // 11
+      playerAnimations: [
+        // Player 1
+        loadImage("../assets/playeranimations/idle-front.png"), // 0
+        loadImage("../assets/playeranimations/idle-front-lf.png"), // 1
+        loadImage("../assets/playeranimations/idle-front-rf.png"), // 2
+        loadImage("../assets/playeranimations/idle-back.png"), // 3
+        loadImage("../assets/playeranimations/idle-back-lf.png"), // 4
+        loadImage("../assets/playeranimations/idle-back-rf.png"), // 5
+        loadImage("../assets/playeranimations/idle-left.png"), // 6
+        loadImage("../assets/playeranimations/left-foot-left.png"), // 7
+        loadImage("../assets/playeranimations/right-foot-left.png"), // 8
+        loadImage("../assets/playeranimations/idle-right.png"), // 9
+        loadImage("../assets/playeranimations/right-foot-right.png"), // 10
+        loadImage("../assets/playeranimations/left-foot-right.png"), // 11
+        //Player 2
       ],
     },
     music: {

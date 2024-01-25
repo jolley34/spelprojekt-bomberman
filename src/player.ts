@@ -5,6 +5,7 @@ type Controls = {
   right: number;
   placeBomb: number;
 };
+
 class Player extends GameEntity {
   private controls: any;
   public speedX: number;
@@ -18,11 +19,20 @@ class Player extends GameEntity {
   private increasedSpeed: number;
   private powerUpDuration: number;
   private powerUpTimer: number;
-
   private wasKeyPressed: boolean;
 
-  constructor(x: number, y: number, size: number, controls: Controls) {
-    super(assets.images.player1Animations[0], x, y, size);
+  constructor(
+    x: number,
+    y: number,
+    size: number,
+    controls: Controls,
+    // Animation arrays for each player
+    leftAnimation: number[],
+    rightAnimation: number[],
+    upAnimation: number[],
+    downAnimation: number[]
+  ) {
+    super(assets.images.playerAnimations[0], x, y, size);
     this.controls = controls;
     this.speedX = 0;
     this.speedY = 0;
@@ -32,14 +42,13 @@ class Player extends GameEntity {
     this.increasedSpeed = 2;
     this.powerUpDuration = 10000;
     this.powerUpTimer = 0;
-
     this.wasKeyPressed = false;
 
-    // Vilka bilder jag loopar igenom när jag trycker vänster
-    this.leftAnimationLoop = [7, 6, 8, 6];
-    this.rightAnimationLoop = [10, 9, 11, 9];
-    this.upAnimationLoop = [4, 3, 5, 3];
-    this.downAnimationLoop = [1, 0, 2, 0];
+    // Assign animation arrays for each player
+    this.leftAnimationLoop = leftAnimation;
+    this.rightAnimationLoop = rightAnimation;
+    this.upAnimationLoop = upAnimation;
+    this.downAnimationLoop = downAnimation;
   }
 
   public update(gameBoard: IAddEntity): void {
@@ -109,7 +118,7 @@ class Player extends GameEntity {
 
   private animateLeft(): void {
     this.image =
-      assets.images.player1Animations[
+      assets.images.playerAnimations[
         this.leftAnimationLoop[
           Math.floor(this.animationIndex) % this.leftAnimationLoop.length
         ]
@@ -122,7 +131,7 @@ class Player extends GameEntity {
 
   private animateRight(): void {
     this.image =
-      assets.images.player1Animations[
+      assets.images.playerAnimations[
         this.rightAnimationLoop[
           Math.floor(this.animationIndex) % this.rightAnimationLoop.length
         ]
@@ -135,7 +144,7 @@ class Player extends GameEntity {
 
   private animateUp(): void {
     this.image =
-      assets.images.player1Animations[
+      assets.images.playerAnimations[
         this.upAnimationLoop[
           Math.floor(this.animationIndex) % this.upAnimationLoop.length
         ]
@@ -148,7 +157,7 @@ class Player extends GameEntity {
 
   private animateDown(): void {
     this.image =
-      assets.images.player1Animations[
+      assets.images.playerAnimations[
         this.downAnimationLoop[
           Math.floor(this.animationIndex) % this.downAnimationLoop.length
         ]
