@@ -83,7 +83,7 @@ class GameBoard implements IAddEntity {
   private pickUpPowerUp() {
     for (const entity of this.entities) {
       // Kolla om det är en power up
-      if (entity instanceof SpeedUp) {
+      if (entity instanceof SpeedUp || entity instanceof Slowdown) {
         // kolla om den krockar med en spelare
         for (const player of this.entities) {
           if (player instanceof Player) {
@@ -100,7 +100,12 @@ class GameBoard implements IAddEntity {
 
             if (l2 < r1 && l1 < r2 && t2 < b1 && t1 < b2) {
               // om spelaren krockar så....
-              player.increaseSpeed(); // metod som ökar hastigheten i class player
+              if (entity instanceof SpeedUp) {
+                player.increaseSpeed(); // metod som ökar hastigheten i class player
+              }
+              if (entity instanceof Slowdown){
+                player.decreaseSpeed(); //metod för att minska hastigheten
+              }
               // sen ta bort power upen från spelplanen
               this.entities.splice(this.entities.indexOf(entity), 1);
               // vill lägga till en timer för hur lång tid man har denna power up!!!
@@ -125,6 +130,7 @@ class GameBoard implements IAddEntity {
 
     this.checkCollision();
   }
+
 
   public addEntity(entity: GameEntity) {
     this.entities.push(entity);

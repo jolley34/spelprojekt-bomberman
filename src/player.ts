@@ -1,3 +1,4 @@
+/// <reference path="gameEntity.ts" />
 type Controls = {
   up: number;
   left: number;
@@ -16,6 +17,7 @@ class Player extends GameEntity {
   private upAnimationLoop: number[];
   private downAnimationLoop: number[];
   private increasedSpeed: number;
+  private decreasedSpeed: number;
   private powerUpDuration: number;
   private powerUpTimer: number;
 
@@ -30,8 +32,10 @@ class Player extends GameEntity {
     this.animationSpeed = 0.8;
 
     this.increasedSpeed = 2;
+    this.decreasedSpeed = 2;
     this.powerUpDuration = 10000;
     this.powerUpTimer = 0;
+   
 
     this.wasKeyPressed = false;
 
@@ -159,22 +163,32 @@ class Player extends GameEntity {
       (this.downAnimationLoop.length * this.animationSpeed);
   }
 
+
   // powerup "increaseSpeed" gör att spelaren ökar farten efter den har plockat upp powerup, "getEffectiveSpeed" ligger under kontrollerna högre upp i koden
   private getEffectiveSpeed(): number {
-    return this.increasedSpeed > 0 && this.powerUpTimer > 0
+    return this.increasedSpeed > 0
       ? this.increasedSpeed
-      : 2.5;
+      : this.decreasedSpeed > 0 && this.powerUpTimer > 0
+      ? this.decreasedSpeed
+      : 2.5; // Standardhastighet om ingen powerup är aktiv
   }
-
+    // powerup "decreaseSpeed" gör att spelaren minskar farten efter den har plockat upp powerup
+    public decreaseSpeed(): void {
+      assets.playerSoundEffects.powerupsound[0].play(); // Spela ljud för powerup
+      this.decreasedSpeed = -10.25; // Ange den minskade hastigheten
+      this.powerUpTimer = this.powerUpDuration; // Starta timern för powerup
+    }
+  
   // hur mycket farten skall öka för spelaren efter powerup
   public increaseSpeed(): void {
     assets.playerSoundEffects.powerupsound[0].play();
     this.increasedSpeed = 5.25;
     this.powerUpTimer = this.powerUpDuration;
   }
-
+  
   private resetPowerUp(): void {
     this.increasedSpeed = 0;
+    this.decreasedSpeed = 0;
     this.powerUpTimer = 0;
   }
 }
