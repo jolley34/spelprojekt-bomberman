@@ -41,7 +41,7 @@ function preload() {
         loadImage("../assets/bombs/bomb-v3-before-explode-red.gif"),
         loadImage("../assets/bombs/bomb-v3-fire-line.gif"),
         loadImage("../assets/bombs/bomb-v3-fire-line-blue-player.gif"),
-        loadImage("../assets/bombs/bomb-v3-fire-line-red-player.gif"),
+        loadImage("../assets/bombs/bomb.png"),
       ],
       flowers: [loadImage("../assets/flowers/flower-v2.gif")],
       playerCard: [loadImage("../assets/playercard/heart-icon.png")],
@@ -135,5 +135,5 @@ function draw() {
  *  Built in windowResize listener function in P5
  */
 function windowResized() {
-  /*   resizeCanvas(windowWidth, windowHeight); */
+  //  resizeCanvas(windowWidth, windowHeight); 
 }
