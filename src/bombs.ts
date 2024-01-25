@@ -27,21 +27,28 @@ class Bomb extends GameEntity {
     if (this.hasExploaded) {
       console.log("jag är här");
       this.image = assets.images.bombs[3];
-
+      this.explosionTimer--;
       for (let xOffset = -this.range; xOffset <= this.range; xOffset += 25) {
-        for (let yOffset = -this.range; yOffset <= this.range; yOffset += 25) {
-          // Create a new GameEntity with the explosion image
+        const explosionImage = assets.images.bombs[3];
+        const explosion = new GameEntity(
+          explosionImage,
+          this.x + xOffset,
+          this.y,
+          25
+        );
+        gameBoard.addEntity(explosion);
+      }
+      for (let yOffset = -this.range; yOffset <= this.range; yOffset += 25) {
+        if (yOffset !== 0) {
           const explosionImage = assets.images.bombs[3];
-          gameBoard.addEntity(
-            new GameEntity(
-              explosionImage,
-              this.x + xOffset,
-              this.y + yOffset,
-              25
-            )
+          const explosion = new GameEntity(
+            explosionImage,
+            this.x,
+            this.y + yOffset,
+            25
           );
+          gameBoard.addEntity(explosion);
         }
-        this.explosionTimer--;
       }
     }
   }
