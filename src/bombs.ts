@@ -1,12 +1,14 @@
 /// <reference path="gameEntity.ts" />
 class Bomb extends GameEntity {
-  public timer: number;
+  public bombTimer: number;
+  public explosionTimer: number;
   private range: number;
   private hasExploaded: boolean;
 
   constructor(x: number, y: number, size: number) {
     super(assets.images.bombs[0], x, y, size);
-    this.timer = 200;
+    this.bombTimer = 200;
+    this.explosionTimer = 200;
     this.range = 50;
     this.hasExploaded = false;
   }
@@ -14,9 +16,18 @@ class Bomb extends GameEntity {
     this.explosionDelay();
   }
   private explosionDelay(): void {
-    if (!this.hasExploaded) {
-      this.timer--;
+    this.bombTimer--;
+
+    if (this.bombTimer <= 0) {
+      this.explosion();
+      this.hasExploaded = true;
     }
   }
-  private explosion(hasExploaded: boolean) {}
+  private explosion() {
+    if (this.hasExploaded) {
+      console.log("jag är här");
+      this.image = assets.images.bombs[3];
+      this.explosionTimer--;
+    }
+  }
 }

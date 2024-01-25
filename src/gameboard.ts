@@ -119,7 +119,7 @@ class GameBoard implements IAddEntity {
       entity.update(this);
       //this.entities[i].update(this);
       if (entity instanceof Bomb) {
-        if (entity.timer <= 0) {
+        if (entity.explosionTimer <= 0) {
           this.entities.splice(i, 1);
           i--;
         }
