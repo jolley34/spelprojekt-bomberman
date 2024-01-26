@@ -1,4 +1,3 @@
-/// <reference path="gameEntity.ts" />
 type Controls = {
   up: number;
   left: number;
@@ -6,6 +5,7 @@ type Controls = {
   right: number;
   placeBomb: number;
 };
+
 class Player extends GameEntity {
   private controls: any;
   public speedX: number;
@@ -17,11 +17,8 @@ class Player extends GameEntity {
   private upAnimationLoop: number[];
   private downAnimationLoop: number[];
   private increasedSpeed: number;
-  private decreasedSpeed: number;
   private powerUpDuration: number;
   private powerUpTimer: number;
-  private id: number;
-
   private wasKeyPressed: boolean;
   private lastDirection: string;
   private idleAnimations: any;
@@ -31,7 +28,6 @@ class Player extends GameEntity {
     y: number,
     size: number,
     controls: Controls,
-    id: number,
     leftAnimation: number[],
     rightAnimation: number[],
     upAnimation: number[],
