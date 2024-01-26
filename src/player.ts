@@ -31,7 +31,18 @@ class Player extends GameEntity {
     y: number,
     size: number,
     controls: Controls,
-    id: number
+    id: number,
+    leftAnimation: number[],
+    rightAnimation: number[],
+    upAnimation: number[],
+    downAnimation: number[],
+    idleAnimations: {
+      playerLeftIdle: number[];
+      playerRightIdle: number[];
+      playerUpIdle: number[];
+      playerDownIdle: number[];
+      playerDefaultIdle: number[];
+    }
   ) {
     super(assets.images.player1Animations[0], x, y, size);
 
