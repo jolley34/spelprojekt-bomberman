@@ -61,10 +61,10 @@ class EndOfGame {
     pop();
 
     fill(255);
-    textSize(32);
+    textSize(50);
     textAlign(CENTER, CENTER);
     text("WINNER", width / 2, height / 2 - 100);
-    textSize(24);
+    textSize(40);
     text(this.displayWinner, width / 2, height / 2 - 60);
     text(`SCORE: ${this.displayScore}`, width / 2, height / 2 - 20);
     pop();
