@@ -116,7 +116,7 @@ class GameBoardFactory {
           entities.push(new SpeedUp(x, y, blockSize));
         }
         if (board[i][j] === 9) {
-          const player = new Player(x, y, blockSize * 1, {
+          const player = new Player(x, y, blockSize * 0.8, {
             up: UP_ARROW,
             left: LEFT_ARROW,
             down: DOWN_ARROW,
@@ -126,7 +126,7 @@ class GameBoardFactory {
           entities.push(player);
         }
         if (board[i][j] === 8) {
-          const player2 = new Player(x, y, blockSize * 1, {
+          const player2 = new Player(x, y, blockSize * 0.8, {
             up: 87,
             left: 65,
             down: 83,
