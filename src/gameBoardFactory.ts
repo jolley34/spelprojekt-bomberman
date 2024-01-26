@@ -86,10 +86,10 @@ class GameBoardFactory {
     };
 
     const player2Animations = {
-      left: [20, 19, 24, 19],
+      left: [20, 19, 18, 19],
       right: [23, 22, 21, 22],
-      up: [17, 16, 18, 16],
-      down: [14, 12, 15, 12],
+      up: [17, 16, 15, 16],
+      down: [14, 12, 13, 12],
     };
 
     const staticObstacleTextureIndex = boardNumber === 1 ? 0 : 9;
@@ -139,6 +139,7 @@ class GameBoardFactory {
               right: RIGHT_ARROW,
               placeBomb: 80,
             },
+
             player1Animations.left,
             player1Animations.right,
             player1Animations.up,

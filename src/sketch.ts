@@ -108,15 +108,15 @@ function preload() {
           "../assets/playeranimations/player-2-blue-left-foot-left.png"
         ), // 20
         loadImage(
-          "../assets/playeranimations/player-2-blue-right-foot-left.png" // 21
-        ),
+          "../assets/playeranimations/player-2-blue-right-foot-left.png"
+        ), // 21
         loadImage("../assets/playeranimations/player-2-blue-idle-right.png"), // 22
         loadImage(
-          "../assets/playeranimations/player-2-blue-right-foot-right.png" // 23
-        ),
+          "../assets/playeranimations/player-2-blue-right-foot-right.png"
+        ), // 23
         loadImage(
-          "../assets/playeranimations/player-2-blue-left-foot-right.png" // 24
-        ),
+          "../assets/playeranimations/player-2-blue-left-foot-right.png"
+        ), // 24
       ],
     },
     music: {
