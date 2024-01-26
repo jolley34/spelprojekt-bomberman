@@ -26,6 +26,7 @@ class Player extends GameEntity {
     y: number,
     size: number,
     controls: Controls,
+
     leftAnimation: number[],
     rightAnimation: number[],
     upAnimation: number[],
@@ -43,7 +44,6 @@ class Player extends GameEntity {
     this.powerUpTimer = 0;
     this.wasKeyPressed = false;
 
-    // Assign animation arrays for each player
     this.leftAnimationLoop = leftAnimation;
     this.rightAnimationLoop = rightAnimation;
     this.upAnimationLoop = upAnimation;
