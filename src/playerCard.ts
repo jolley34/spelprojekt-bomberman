@@ -47,6 +47,8 @@ class PlayerCard {
     drawingContext.shadowOffsetY = 0;
     drawingContext.shadowBlur = 0;
     drawingContext.shadowColor = "black";
+
+    // Loops through the lives and draws them
     image(
       assets.images.playerCard[0],
       this.positionX * 0.65,
