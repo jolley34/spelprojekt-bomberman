@@ -52,7 +52,7 @@ class Player extends GameEntity {
     this.powerUpDuration = 10000;
     this.powerUpTimer = 0;
     this.wasKeyPressed = false;
-    this.lastDirection = ""; // Initialize lastDirection
+    this.lastDirection = "";
 
     this.leftAnimationLoop = leftAnimation;
     this.rightAnimationLoop = rightAnimation;
