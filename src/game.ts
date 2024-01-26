@@ -74,6 +74,9 @@ class Game {
             }
           }
           break;
+        case "EndOfGame":
+          this.endOfGame.update();
+          break;
       }
     }
   }

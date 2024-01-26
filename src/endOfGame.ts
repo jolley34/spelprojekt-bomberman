@@ -61,7 +61,7 @@ class EndOfGame {
     }
     if (this.playAgainButton.isButtonPressed()) {
       console.log("I play again");
-      this.game.changePage("GameBoard");
+      this.game.changePage("ChooseBoardPage");
       // assets.music.ingamemusic.play();
     }
   }
