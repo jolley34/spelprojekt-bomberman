@@ -58,14 +58,14 @@ class Player extends GameEntity {
     this.rightAnimationLoop = rightAnimation;
     this.upAnimationLoop = upAnimation;
     this.downAnimationLoop = downAnimation;
-    this.idleAnimations = idleAnimations; // Assign idleAnimations to class property
+    this.idleAnimations = idleAnimations;
   }
 
   public update(gameBoard: IAddEntity): void {
     // Sätter hastigheten utifrån vad spelaren trycker på för knapp
     let horizontalSpeed = 0;
     let verticalSpeed = 0;
-    let isMoving = false; // Track if player is moving
+    let isMoving = false;
 
     if (keyIsDown(this.controls.left)) {
       horizontalSpeed = -this.getEffectiveSpeed();
@@ -92,7 +92,6 @@ class Player extends GameEntity {
     }
 
     if (!isMoving) {
-      // If the player is not moving, play idle animation based on last direction
       switch (this.lastDirection) {
         case "left":
           this.animateLeftIdle();
@@ -107,7 +106,6 @@ class Player extends GameEntity {
           this.animateDownIdle();
           break;
         default:
-          // If no last direction is set, play default idle animation
           this.animateDefaultIdle();
           break;
       }
