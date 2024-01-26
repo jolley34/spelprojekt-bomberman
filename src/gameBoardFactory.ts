@@ -92,14 +92,12 @@ class GameBoardFactory {
       down: [14, 12, 15, 12],
     };
 
-    // Choose the correct texture index for the board
     const staticObstacleTextureIndex = boardNumber === 1 ? 0 : 9;
     const removableObstacleTextureIndex = boardNumber === 1 ? 6 : 8;
 
     const numRows = board.length;
     const numCols = board[0].length;
 
-    // Adjust the scaling (0.6 for 60% size)
     const scalingGameboard = 0.6;
     const blockSize = min(width / numCols, height / numRows) * scalingGameboard;
 
