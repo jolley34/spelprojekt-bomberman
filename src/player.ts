@@ -44,7 +44,7 @@ class Player extends GameEntity {
       playerDefaultIdle: number[];
     }
   ) {
-    super(assets.images.player1Animations[0], x, y, size);
+    super(assets.images.playerAnimations[0], x, y, size);
 
     this.id = id;
     this.controls = controls;
