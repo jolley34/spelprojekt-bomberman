@@ -113,9 +113,6 @@ class GameBoard implements IAddEntity {
       }
     }
   }
-  public getBackgroundImage(): p5.Image {
-    return this.backgroundImage;
-  }
 
   public update() {
     // Loop over all entities and update them

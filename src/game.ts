@@ -29,9 +29,6 @@ class Game {
       this.countdownTime = 3;
       this.showFightText = false;
       this.gameBoard = this.gameBoardFactory.generateGameBoard(board);
-    } else if (page === "EndOfGame" && this.gameBoard) {
-      this.endOfGame.setupGameBackground(this.gameBoard.getBackgroundImage());
-      this.currentPage = page;
     } else {
       this.currentPage = page;
     }

@@ -2,7 +2,7 @@ class EndOfGame {
   private game: IGamePage;
   private displayWinner: string;
   private displayScore: number;
-  private backgroundImage: p5.Image | null;
+  // private backgroundImage: p5.Image;
   private quitButton: Button;
   private playAgainButton: Button;
 
@@ -11,7 +11,7 @@ class EndOfGame {
     // Todo: Setup the logic for displaying the winner and score
     this.displayWinner = "";
     this.displayScore = 0;
-    this.backgroundImage = null;
+    //  this.backgroundImage = backgroundImage;
 
     // Todo: Choose the right position fot the buttons
     this.quitButton = new Button(
@@ -30,15 +30,8 @@ class EndOfGame {
     );
   }
 
-  public setupGameBackground(image: p5.Image) {
-    this.backgroundImage = image;
-  }
-
   public draw(): void {
-    //Utility.drawBackgroundImage(assets.images.backgroundImages[3], 150);
-    if (this.backgroundImage) {
-      image(this.backgroundImage, 0, 0, width, height);
-    }
+    Utility.drawBackgroundImage(assets.images.backgroundImages[3], 150);
     this.drawBanner();
     this.quitButton.draw();
     this.playAgainButton.draw();
