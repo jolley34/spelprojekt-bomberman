@@ -138,6 +138,11 @@ class GameBoardFactory {
       }
     }
 
-    return new GameBoard(entities, assets.images.backgroundImages[boardNumber]);
+    return new GameBoard(
+      entities,
+      assets.images.backgroundImages[boardNumber],
+      assets.images.player1Animations[0],
+      assets.images.entities[2]
+    );
   }
 }
