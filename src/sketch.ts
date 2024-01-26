@@ -101,25 +101,25 @@ function preload() {
         ),
         //Player 2
         loadImage("../assets/playeranimations/player-2-blue-idle-front.png"), // 12
-        loadImage("../assets/playeranimations/player-2-blue-idle-front-lf.png"), // 14
-        loadImage("../assets/playeranimations/player-2-blue-idle-front-rf.png"), // 15
-        loadImage("../assets/playeranimations/player-2-blue-idle-back.png"), // 16
-        loadImage("../assets/playeranimations/player-2-blue-idle-back-lf.png"), // 17
-        loadImage("../assets/playeranimations/player-2-blue-idle-back-rf.png"), // 18
-        loadImage("../assets/playeranimations/player-2-blue-idle-left.png"), // 19
+        loadImage("../assets/playeranimations/player-2-blue-idle-front-lf.png"), // 13
+        loadImage("../assets/playeranimations/player-2-blue-idle-front-rf.png"), // 14
+        loadImage("../assets/playeranimations/player-2-blue-idle-back.png"), // 15
+        loadImage("../assets/playeranimations/player-2-blue-idle-back-lf.png"), // 16
+        loadImage("../assets/playeranimations/player-2-blue-idle-back-rf.png"), // 17
+        loadImage("../assets/playeranimations/player-2-blue-idle-left.png"), // 18
         loadImage(
           "../assets/playeranimations/player-2-blue-left-foot-left.png"
-        ), // 20
+        ), // 19
         loadImage(
           "../assets/playeranimations/player-2-blue-right-foot-left.png"
-        ), // 21
-        loadImage("../assets/playeranimations/player-2-blue-idle-right.png"), // 22
+        ), // 20
+        loadImage("../assets/playeranimations/player-2-blue-idle-right.png"), // 21
         loadImage(
           "../assets/playeranimations/player-2-blue-right-foot-right.png"
-        ), // 23
+        ), // 22
         loadImage(
           "../assets/playeranimations/player-2-blue-left-foot-right.png"
-        ), // 24
+        ), // 23
       ],
     },
     music: {

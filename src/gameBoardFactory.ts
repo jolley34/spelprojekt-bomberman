@@ -86,9 +86,9 @@ class GameBoardFactory {
     };
 
     const player2Animations = {
-      left: [20, 19, 18, 19],
-      right: [23, 22, 21, 22],
-      up: [17, 16, 15, 16],
+      left: [20, 18, 19, 18],
+      right: [23, 21, 22, 21],
+      up: [17, 15, 16, 15],
       down: [14, 12, 13, 12],
     };
 
@@ -101,9 +101,9 @@ class GameBoardFactory {
     };
 
     const player2AnimationsIdle = {
-      playerLeftIdle: [19],
-      playerRightIdle: [22],
-      playerUpIdle: [16],
+      playerLeftIdle: [18],
+      playerRightIdle: [21],
+      playerUpIdle: [15],
       playerDownIdle: [12],
       playerDefaultIdle: [12],
     };
