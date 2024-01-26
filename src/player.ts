@@ -23,6 +23,8 @@ class Player extends GameEntity {
   private id: number;
 
   private wasKeyPressed: boolean;
+  private lastDirection: string;
+  private idleAnimations: any;
 
   constructor(
     x: number,
