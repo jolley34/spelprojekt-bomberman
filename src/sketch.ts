@@ -97,6 +97,26 @@ function preload() {
           "../assets/playeranimations/player-1-red-left-foot-right.png" // 11
         ),
         //Player 2
+        loadImage("../assets/playeranimations/player-2-blue-idle-front.png"), // 12
+        loadImage("../assets/playeranimations/player-2-blue-idle-front-lf.png"), // 14
+        loadImage("../assets/playeranimations/player-2-blue-idle-front-rf.png"), // 15
+        loadImage("../assets/playeranimations/player-2-blue-idle-back.png"), // 16
+        loadImage("../assets/playeranimations/player-2-blue-idle-back-lf.png"), // 17
+        loadImage("../assets/playeranimations/player-2-blue-idle-back-rf.png"), // 18
+        loadImage("../assets/playeranimations/player-2-blue-idle-left.png"), // 19
+        loadImage(
+          "../assets/playeranimations/player-2-blue-left-foot-left.png"
+        ), // 20
+        loadImage(
+          "../assets/playeranimations/player-2-blue-right-foot-left.png" // 21
+        ),
+        loadImage("../assets/playeranimations/player-2-blue-idle-right.png"), // 22
+        loadImage(
+          "../assets/playeranimations/player-2-blue-right-foot-right.png" // 23
+        ),
+        loadImage(
+          "../assets/playeranimations/player-2-blue-left-foot-right.png" // 24
+        ),
       ],
     },
     music: {

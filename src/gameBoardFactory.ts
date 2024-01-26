@@ -86,18 +86,10 @@ class GameBoardFactory {
     };
 
     const player2Animations = {
-      left: [
-        /* Define player 2 left animation here */
-      ],
-      right: [
-        /* Define player 2 right animation here */
-      ],
-      up: [
-        /* Define player 2 up animation here */
-      ],
-      down: [
-        /* Define player 2 down animation here */
-      ],
+      left: [20, 19, 24, 19],
+      right: [23, 22, 21, 22],
+      up: [17, 16, 18, 16],
+      down: [14, 12, 15, 12],
     };
 
     // Choose the correct texture index for the board
