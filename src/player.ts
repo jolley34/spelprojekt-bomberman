@@ -1,3 +1,12 @@
+/// <reference path="gameEntity.ts" />
+type Controls = {
+  up: number;
+  left: number;
+  down: number;
+  right: number;
+  placeBomb: number;
+};
+
 class Player extends GameEntity {
   private controls: any;
   public speedX: number;
