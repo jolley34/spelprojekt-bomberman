@@ -78,6 +78,36 @@ class GameBoardFactory {
     const board = boardNumber === 1 ? this.board1 : this.board2;
     const entities: GameEntity[] = [];
 
+    const player1Animations = {
+      left: [7, 6, 8, 6],
+      right: [10, 9, 11, 9],
+      up: [4, 3, 5, 3],
+      down: [1, 0, 2, 0],
+    };
+
+    const player2Animations = {
+      left: [20, 19, 18, 19],
+      right: [23, 22, 21, 22],
+      up: [17, 16, 15, 16],
+      down: [14, 12, 13, 12],
+    };
+
+    const player1AnimationsIdle = {
+      playerLeftIdle: [6],
+      playerRightIdle: [9],
+      playerUpIdle: [3],
+      playerDownIdle: [0],
+      playerDefaultIdle: [0],
+    };
+
+    const player2AnimationsIdle = {
+      playerLeftIdle: [19],
+      playerRightIdle: [22],
+      playerUpIdle: [16],
+      playerDownIdle: [12],
+      playerDefaultIdle: [12],
+    };
+
     // Choose the correct texture index for the board
     const staticObstacleTextureIndex = boardNumber === 1 ? 0 : 9;
     const removableObstacleTextureIndex = boardNumber === 1 ? 6 : 8;
@@ -115,27 +145,39 @@ class GameBoardFactory {
         if (board[i][j] === 3) {
           entities.push(new SpeedUp(x, y, blockSize));
         }
-        if (board[i][j] === 4 ) {
+        if (board[i][j] === 4) {
           entities.push(new SlowDownOpponent(x, y, blockSize));
         }
         if (board[i][j] === 9) {
-          const player = new Player(x, y, blockSize * 0.8, {
-            up: UP_ARROW,
-            left: LEFT_ARROW,
-            down: DOWN_ARROW,
-            right: RIGHT_ARROW,
-            placeBomb: 80,
-          }, 1, );
+          const player = new Player(
+            x,
+            y,
+            blockSize * 0.8,
+            {
+              up: UP_ARROW,
+              left: LEFT_ARROW,
+              down: DOWN_ARROW,
+              right: RIGHT_ARROW,
+              placeBomb: 80,
+            },
+            1
+          );
           entities.push(player);
         }
         if (board[i][j] === 8) {
-          const player2 = new Player(x, y, blockSize * 0.8, {
-            up: 87,
-            left: 65,
-            down: 83,
-            right: 68,
-            placeBomb: 67,
-          }, 2 );
+          const player2 = new Player(
+            x,
+            y,
+            blockSize * 0.8,
+            {
+              up: 87,
+              left: 65,
+              down: 83,
+              right: 68,
+              placeBomb: 67,
+            },
+            2
+          );
           entities.push(player2);
         }
       }
