@@ -19,7 +19,8 @@ class Player extends GameEntity {
   private increasedSpeed: number;
   private powerUpDuration: number;
   private powerUpTimer: number;
-
+  private activeBombs: number = 0;
+  private maxBombs: number = 1;
   private wasKeyPressed: boolean;
 
   constructor(x: number, y: number, size: number, controls: Controls) {
@@ -47,7 +48,13 @@ class Player extends GameEntity {
     // Sätter hastigheten utifrån vad spelaren trycker på för knapp
     let horizontalSpeed = 0;
     let verticalSpeed = 0;
-
+    if (keyIsDown(this.controls.placeBomb) && !this.wasKeyPressed && this.activeBombs < this.maxBombs) {
+      this.dropBomb(this.x, this.y, gameBoard);
+      this.wasKeyPressed = true;
+      this.activeBombs++; // 
+    } else if (!keyIsDown(this.controls.placeBomb)) {
+      this.wasKeyPressed = false;
+    }
     if (keyIsDown(this.controls.left)) {
       horizontalSpeed = -this.getEffectiveSpeed();
       this.animateLeft();
@@ -103,10 +110,8 @@ class Player extends GameEntity {
     positionY: number,
     gameBoard: IAddEntity
   ): void {
-    if (!gameBoard.entities.filter((entity) => entity instanceof Bomb).length) {
-      const bomb = new Bomb(positionX, positionY, 50);
-      gameBoard.addEntity(bomb);
-    }
+    const bomb = new Bomb(positionX, positionY, 50, this);
+    gameBoard.addEntity(bomb);
   }
 
   private animateLeft(): void {
@@ -178,5 +183,10 @@ class Player extends GameEntity {
   private resetPowerUp(): void {
     this.increasedSpeed = 0;
     this.powerUpTimer = 0;
+  }
+  public bombExploded(): void {
+    if (this.activeBombs > 0) {
+      this.activeBombs--;
+    }
   }
 }

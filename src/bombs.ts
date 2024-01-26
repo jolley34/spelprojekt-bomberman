@@ -3,11 +3,13 @@
 class Bomb extends GameEntity {
   private bombTimer: number;
   private range: number;
+  private owner: Player; // 
 
-  constructor(x: number, y: number, size: number) {
+  constructor(x: number, y: number, size: number, owner: Player) {
     super(assets.images.bombs[0], x, y, size);
     this.bombTimer = 200;
     this.range = 50;
+    this.owner = owner; // 
   }
 
   public update(gameBoard: IAddEntity): void {
@@ -30,5 +32,8 @@ class Bomb extends GameEntity {
         gameBoard.addEntity(new Explosion(this.x, this.y + yOffset, 25));
       }
     }
+
+    this.owner.bombExploded(); // 
+    
   }
 }
