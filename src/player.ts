@@ -17,6 +17,7 @@ class Player extends GameEntity {
   private upAnimationLoop: number[];
   private downAnimationLoop: number[];
   private increasedSpeed: number;
+  private decreasedSpeed: number;
   private powerUpDuration: number;
   private powerUpTimer: number;
 
@@ -31,6 +32,7 @@ class Player extends GameEntity {
     this.animationSpeed = 0.8;
 
     this.increasedSpeed = 2;
+    this.decreasedSpeed = 1.5;
     this.powerUpDuration = 10000;
     this.powerUpTimer = 0;
 
@@ -163,9 +165,14 @@ class Player extends GameEntity {
 
   // powerup "increaseSpeed" gör att spelaren ökar farten efter den har plockat upp powerup, "getEffectiveSpeed" ligger under kontrollerna högre upp i koden
   private getEffectiveSpeed(): number {
-    return this.increasedSpeed > 0 && this.powerUpTimer > 0
-      ? this.increasedSpeed
-      : 2.5;
+    // Kontrollera om ökad hastighet (increasedSpeed) är större än 0 och powerUpTimer är större än 0
+    if (this.increasedSpeed > 0 && this.powerUpTimer > 0) {
+      return this.increasedSpeed; // Returnera ökad hastighet om villkoren är uppfyllda
+    } else if (this.decreasedSpeed > 0 && this.powerUpTimer > 0) {
+      return this.decreasedSpeed; // Returnera minskad hastighet om ökad hastighet inte är aktiv men minskad hastighet är det
+    } else {
+      return 2.5; // Returnera standardhastighet om inga powerups är aktiva
+    }
   }
 
   // hur mycket farten skall öka för spelaren efter powerup
@@ -174,9 +181,16 @@ class Player extends GameEntity {
     this.increasedSpeed = 5.25;
     this.powerUpTimer = this.powerUpDuration;
   }
+  public decreaseSpeed(): void {
+    assets.playerSoundEffects.powerupsound[0].play();
+    this.decreasedSpeed = 0.2;
+    this.increasedSpeed = 0;
+    this.powerUpTimer = this.powerUpDuration;
+  }
 
   private resetPowerUp(): void {
     this.increasedSpeed = 0;
+    this.decreasedSpeed = 0;
     this.powerUpTimer = 0;
   }
 }

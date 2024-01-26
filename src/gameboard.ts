@@ -88,6 +88,10 @@ class GameBoard implements IAddEntity {
       entity1.increaseSpeed();
       entity2.shouldBeRemoved = true;
     }
+    if (entity1 instanceof Player && entity2 instanceof SlowDownOpponent) {
+      entity1.decreaseSpeed();
+      entity2.shouldBeRemoved = true;
+    }
 
     if (entity1 instanceof Player && entity2 instanceof Explosion) {
       // entity1.id
