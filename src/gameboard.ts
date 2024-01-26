@@ -153,6 +153,7 @@ class GameBoard implements IAddEntity {
     this.flowers.draw();
   }
 }
+
 // const entitet = new Obstacle(0,0,10);
 // if (entitet instanceof Obstacle) {
 //   // reagera baserat på att entiteten är ett hinder...
