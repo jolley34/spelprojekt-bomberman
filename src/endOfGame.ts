@@ -56,7 +56,7 @@ class EndOfGame {
   private mousePressed(): void {
     if (this.quitButton.isButtonPressed()) {
       console.log("I quit");
-      this.game.changePage("ChooseBoardPage");
+      this.game.changePage("StartPage");
       // assets.music.menumusic.play();
     }
     if (this.playAgainButton.isButtonPressed()) {
