@@ -3,12 +3,14 @@ class GameEntity {
   public y: number;
   public image: p5.Image;
   public size: number;
+  public shouldBeRemoved: boolean;
 
   constructor(image: p5.Image, x: number, y: number, size: number) {
     this.x = x;
     this.y = y;
     this.image = image;
     this.size = size;
+    this.shouldBeRemoved = false;
   }
 
   public update(gameBoard: IAddEntity): void {}
