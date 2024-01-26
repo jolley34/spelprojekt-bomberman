@@ -17,6 +17,7 @@ class Player extends GameEntity {
   private upAnimationLoop: number[];
   private downAnimationLoop: number[];
   private increasedSpeed: number;
+  private decreasedSpeed: number;
   private powerUpDuration: number;
   private powerUpTimer: number;
   private wasKeyPressed: boolean;
