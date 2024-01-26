@@ -81,17 +81,25 @@ class Player extends GameEntity {
     if (keyIsDown(this.controls.left)) {
       horizontalSpeed = -this.getEffectiveSpeed();
       this.animateLeft();
+      this.lastDirection = "left";
+      isMoving = true;
     } else if (keyIsDown(this.controls.right)) {
       horizontalSpeed = this.getEffectiveSpeed();
       this.animateRight();
+      this.lastDirection = "right";
+      isMoving = true;
     }
 
     if (keyIsDown(this.controls.up)) {
       verticalSpeed = -this.getEffectiveSpeed();
       this.animateUp();
+      this.lastDirection = "up";
+      isMoving = true;
     } else if (keyIsDown(this.controls.down)) {
       verticalSpeed = this.getEffectiveSpeed();
       this.animateDown();
+      this.lastDirection = "down";
+      isMoving = true;
     }
 
     if (horizontalSpeed !== 0 && verticalSpeed !== 0) {
