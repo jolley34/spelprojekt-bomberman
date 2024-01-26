@@ -1,11 +1,3 @@
-type Controls = {
-  up: number;
-  left: number;
-  down: number;
-  right: number;
-  placeBomb: number;
-};
-
 class Player extends GameEntity {
   private controls: any;
   public speedX: number;
@@ -20,6 +12,8 @@ class Player extends GameEntity {
   private powerUpDuration: number;
   private powerUpTimer: number;
   private wasKeyPressed: boolean;
+  private lastDirection: string;
+  private idleAnimations: any; // Define idleAnimations property
 
   constructor(
     x: number,
@@ -29,7 +23,14 @@ class Player extends GameEntity {
     leftAnimation: number[],
     rightAnimation: number[],
     upAnimation: number[],
-    downAnimation: number[]
+    downAnimation: number[],
+    idleAnimations: {
+      playerLeftIdle: number[];
+      playerRightIdle: number[];
+      playerUpIdle: number[];
+      playerDownIdle: number[];
+      playerDefaultIdle: number[];
+    } // Adjust type of idleAnimations parameter
   ) {
     super(assets.images.playerAnimations[0], x, y, size);
     this.controls = controls;
@@ -42,32 +43,65 @@ class Player extends GameEntity {
     this.powerUpDuration = 10000;
     this.powerUpTimer = 0;
     this.wasKeyPressed = false;
+    this.lastDirection = ""; // Initialize lastDirection
 
     this.leftAnimationLoop = leftAnimation;
     this.rightAnimationLoop = rightAnimation;
     this.upAnimationLoop = upAnimation;
     this.downAnimationLoop = downAnimation;
+    this.idleAnimations = idleAnimations; // Assign idleAnimations to class property
   }
 
   public update(gameBoard: IAddEntity): void {
     // Sätter hastigheten utifrån vad spelaren trycker på för knapp
     let horizontalSpeed = 0;
     let verticalSpeed = 0;
+    let isMoving = false; // Track if player is moving
 
     if (keyIsDown(this.controls.left)) {
       horizontalSpeed = -this.getEffectiveSpeed();
       this.animateLeft();
+      this.lastDirection = "left";
+      isMoving = true;
     } else if (keyIsDown(this.controls.right)) {
       horizontalSpeed = this.getEffectiveSpeed();
       this.animateRight();
+      this.lastDirection = "right";
+      isMoving = true;
     }
 
     if (keyIsDown(this.controls.up)) {
       verticalSpeed = -this.getEffectiveSpeed();
       this.animateUp();
+      this.lastDirection = "up";
+      isMoving = true;
     } else if (keyIsDown(this.controls.down)) {
       verticalSpeed = this.getEffectiveSpeed();
       this.animateDown();
+      this.lastDirection = "down";
+      isMoving = true;
+    }
+
+    if (!isMoving) {
+      // If the player is not moving, play idle animation based on last direction
+      switch (this.lastDirection) {
+        case "left":
+          this.animateLeftIdle();
+          break;
+        case "right":
+          this.animateRightIdle();
+          break;
+        case "up":
+          this.animateUpIdle();
+          break;
+        case "down":
+          this.animateDownIdle();
+          break;
+        default:
+          // If no last direction is set, play default idle animation
+          this.animateDefaultIdle();
+          break;
+      }
     }
 
     if (horizontalSpeed !== 0 && verticalSpeed !== 0) {
@@ -164,6 +198,56 @@ class Player extends GameEntity {
     this.animationIndex =
       (this.animationIndex + this.animationSpeed) %
       (this.downAnimationLoop.length * this.animationSpeed);
+  }
+
+  private animateLeftIdle(): void {
+    this.image =
+      assets.images.playerAnimations[
+        this.idleAnimations.playerLeftIdle[
+          Math.floor(this.animationIndex) %
+            this.idleAnimations.playerLeftIdle.length
+        ]
+      ];
+  }
+
+  private animateRightIdle(): void {
+    this.image =
+      assets.images.playerAnimations[
+        this.idleAnimations.playerRightIdle[
+          Math.floor(this.animationIndex) %
+            this.idleAnimations.playerRightIdle.length
+        ]
+      ];
+  }
+
+  private animateUpIdle(): void {
+    this.image =
+      assets.images.playerAnimations[
+        this.idleAnimations.playerUpIdle[
+          Math.floor(this.animationIndex) %
+            this.idleAnimations.playerUpIdle.length
+        ]
+      ];
+  }
+
+  private animateDownIdle(): void {
+    this.image =
+      assets.images.playerAnimations[
+        this.idleAnimations.playerDownIdle[
+          Math.floor(this.animationIndex) %
+            this.idleAnimations.playerDownIdle.length
+        ]
+      ];
+  }
+
+  private animateDefaultIdle(): void {
+    this.image =
+      assets.images.playerAnimations[
+        this.idleAnimations.playerDefaultIdle[
+          Math.floor(this.animationIndex) %
+            this.idleAnimations.playerDefaultIdle.length
+        ]
+      ];
   }
 
   // powerup "increaseSpeed" gör att spelaren ökar farten efter den har plockat upp powerup, "getEffectiveSpeed" ligger under kontrollerna högre upp i koden

@@ -92,6 +92,22 @@ class GameBoardFactory {
       down: [14, 12, 13, 12],
     };
 
+    const player1AnimationsIdle = {
+      playerLeftIdle: [6],
+      playerRightIdle: [9],
+      playerUpIdle: [3],
+      playerDownIdle: [0],
+      playerDefaultIdle: [0],
+    };
+
+    const player2AnimationsIdle = {
+      playerLeftIdle: [19],
+      playerRightIdle: [22],
+      playerUpIdle: [16],
+      playerDownIdle: [12],
+      playerDefaultIdle: [12],
+    };
+
     const staticObstacleTextureIndex = boardNumber === 1 ? 0 : 9;
     const removableObstacleTextureIndex = boardNumber === 1 ? 6 : 8;
 
@@ -143,7 +159,8 @@ class GameBoardFactory {
             player1Animations.left,
             player1Animations.right,
             player1Animations.up,
-            player1Animations.down
+            player1Animations.down,
+            player1AnimationsIdle
           );
           entities.push(player);
         }
@@ -162,7 +179,8 @@ class GameBoardFactory {
             player2Animations.left,
             player2Animations.right,
             player2Animations.up,
-            player2Animations.down
+            player2Animations.down,
+            player2AnimationsIdle
           );
           entities.push(player2);
         }
