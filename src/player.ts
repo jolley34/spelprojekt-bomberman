@@ -22,7 +22,7 @@ class Player extends GameEntity {
   private powerUpTimer: number;
   private wasKeyPressed: boolean;
   private lastDirection: string;
-  private idleAnimations: any; // Define idleAnimations property
+  private idleAnimations: any;
 
   constructor(
     x: number,
