@@ -60,6 +60,7 @@ class GameBoard implements IAddEntity {
         if (entity1 instanceof Bomb || entity2 instanceof Bomb) continue;
         if (entity1 instanceof Player && entity2 instanceof Player) continue;
 
+       
         // Kolla om entitierna överlappar varandra
         // 1. Identifiera faktiska krockar
         // Definera höger och vänster sida för varje entitet
@@ -83,7 +84,6 @@ class GameBoard implements IAddEntity {
     if (entity1 instanceof Explosion && entity2 instanceof RemovebleObstacle) {
       entity2.shouldBeRemoved = true;
     }
-
     if (entity1 instanceof Player && entity2 instanceof SpeedUp) {
       entity1.increaseSpeed();
       entity2.shouldBeRemoved = true;
