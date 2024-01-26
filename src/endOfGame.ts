@@ -2,16 +2,16 @@ class EndOfGame {
   private game: IGamePage;
   private displayWinner: string;
   private displayScore: number;
-  // private backgroundImage: p5.Image;
+  private backgroundImage: p5.Image;
   private quitButton: Button;
   private playAgainButton: Button;
 
-  constructor(game: IGamePage) {
+  constructor(game: IGamePage, backgroundImage: p5.Image) {
     this.game = game;
     // Todo: Setup the logic for displaying the winner and score
     this.displayWinner = "";
     this.displayScore = 0;
-    //  this.backgroundImage = backgroundImage;
+    this.backgroundImage = backgroundImage;
 
     // Todo: Choose the right position fot the buttons
     this.quitButton = new Button(

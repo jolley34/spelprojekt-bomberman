@@ -15,7 +15,7 @@ class Game {
     this.gameBoardFactory = new GameBoardFactory();
     this.gameBoard = null; // don't generate a gameboard until we need it
     this.startPage = new StartPage(this);
-    this.endOfGame = new EndOfGame(this);
+    this.endOfGame = new EndOfGame(this, assets.images.backgroundImages[3]);
     this.chooseBoard = new ChooseBoard(this);
     this.currentPage = "StartPage";
     this.countdownTime = 3;
