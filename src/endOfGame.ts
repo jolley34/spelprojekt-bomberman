@@ -9,7 +9,7 @@ class EndOfGame {
   constructor(game: IGamePage) {
     this.game = game;
     // Todo: Setup the logic for displaying the winner and score
-    this.displayWinner = "";
+    this.displayWinner = "Player 1";
     this.displayScore = 0;
     this.backgroundImage = null;
 
@@ -48,7 +48,7 @@ class EndOfGame {
     push();
     fill(0, 0, 0, 180);
     rectMode(CENTER);
-    rect(width / 2, height / 2 - 50, 370, 200);
+    rect(width / 2, height / 2 - 50, 500, 200, 10);
 
     fill(255);
     textSize(32);
@@ -68,7 +68,7 @@ class EndOfGame {
     }
     if (this.playAgainButton.isButtonPressed()) {
       console.log("I play again");
-      this.game.changePage("GameBoard");
+      this.game.changePage("ChooseBoardPage");
       // assets.music.ingamemusic.play();
     }
   }

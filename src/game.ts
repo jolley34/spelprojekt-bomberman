@@ -45,7 +45,6 @@ class Game {
       if (this.countdownTime === 0) {
         if (!this.showFightText) {
           this.showFightText = true;
-          this.countdownTime = 1; // show the fight text for 1 second
         } else {
           this.isCountdownActive = false;
           this.showFightText = false;
@@ -76,6 +75,9 @@ class Game {
               this.changePage("EndOfGame");
             }
           }
+          break;
+        case "EndOfGame":
+          this.endOfGame.update();
           break;
       }
     }
