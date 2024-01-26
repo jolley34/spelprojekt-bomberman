@@ -169,7 +169,7 @@ class Player extends GameEntity {
 
   private animateLeft(): void {
     this.image =
-      assets.images.player1Animations[
+      assets.images.playerAnimations[
         this.leftAnimationLoop[
           Math.floor(this.animationIndex) % this.leftAnimationLoop.length
         ]
@@ -182,7 +182,7 @@ class Player extends GameEntity {
 
   private animateRight(): void {
     this.image =
-      assets.images.player1Animations[
+      assets.images.playerAnimations[
         this.rightAnimationLoop[
           Math.floor(this.animationIndex) % this.rightAnimationLoop.length
         ]
@@ -195,7 +195,7 @@ class Player extends GameEntity {
 
   private animateUp(): void {
     this.image =
-      assets.images.player1Animations[
+      assets.images.playerAnimations[
         this.upAnimationLoop[
           Math.floor(this.animationIndex) % this.upAnimationLoop.length
         ]
@@ -208,7 +208,7 @@ class Player extends GameEntity {
 
   private animateDown(): void {
     this.image =
-      assets.images.player1Animations[
+      assets.images.playerAnimations[
         this.downAnimationLoop[
           Math.floor(this.animationIndex) % this.downAnimationLoop.length
         ]
