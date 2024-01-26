@@ -45,10 +45,20 @@ class EndOfGame {
   }
 
   private drawBanner(): void {
+    const rectPositionX = width / 2;
+    const rectPositionY = height / 2 - 50;
+    const rectWidth = 500;
+    const rectHeight = 200;
+
     push();
-    fill(0, 0, 0, 180);
+    fill("#30444C");
+    drawingContext.shadowOffsetX = 5;
+    drawingContext.shadowOffsetY = 10;
+    drawingContext.shadowBlur = 10;
+    drawingContext.shadowColor = "black";
     rectMode(CENTER);
-    rect(width / 2, height / 2 - 50, 500, 200, 10);
+    rect(rectPositionX, rectPositionY, rectWidth, rectHeight, 10);
+    pop();
 
     fill(255);
     textSize(32);
