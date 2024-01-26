@@ -39,9 +39,9 @@ class EndOfGame {
 
   private drawBanner(): void {
     push();
-    fill(0, 0, 0, 180);
+    fill(0);
     rectMode(CENTER);
-    rect(width / 2, height / 2 - 50, 370, 200);
+    rect(width / 2, height / 2 - 50, 370, 200, 10);
 
     fill(255);
     textSize(32);
