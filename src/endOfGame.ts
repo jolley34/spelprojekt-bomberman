@@ -9,7 +9,7 @@ class EndOfGame {
   constructor(game: IGamePage, backgroundImage: p5.Image) {
     this.game = game;
     // Todo: Setup the logic for displaying the winner and score
-    this.displayWinner = "";
+    this.displayWinner = "Player 1";
     this.displayScore = 0;
     this.backgroundImage = backgroundImage;
 
@@ -41,7 +41,7 @@ class EndOfGame {
     push();
     fill(0);
     rectMode(CENTER);
-    rect(width / 2, height / 2 - 50, 370, 200, 10);
+    rect(width / 2, height / 2 - 50, 500, 200, 10);
 
     fill(255);
     textSize(32);
