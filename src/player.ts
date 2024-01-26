@@ -59,12 +59,13 @@ class Player extends GameEntity {
     this.powerUpTimer = 0;
 
     this.wasKeyPressed = false;
+    this.lastDirection = "";
 
-    // Vilka bilder jag loopar igenom när jag trycker vänster
-    this.leftAnimationLoop = [7, 6, 8, 6];
-    this.rightAnimationLoop = [10, 9, 11, 9];
-    this.upAnimationLoop = [4, 3, 5, 3];
-    this.downAnimationLoop = [1, 0, 2, 0];
+    this.leftAnimationLoop = leftAnimation;
+    this.rightAnimationLoop = rightAnimation;
+    this.upAnimationLoop = upAnimation;
+    this.downAnimationLoop = downAnimation;
+    this.idleAnimations = idleAnimations;
   }
 
   getID(): number {
