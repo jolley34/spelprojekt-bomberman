@@ -39,7 +39,7 @@ class Player extends GameEntity {
       playerUpIdle: number[];
       playerDownIdle: number[];
       playerDefaultIdle: number[];
-    } // Adjust type of idleAnimations parameter
+    }
   ) {
     super(assets.images.playerAnimations[0], x, y, size);
     this.controls = controls;
