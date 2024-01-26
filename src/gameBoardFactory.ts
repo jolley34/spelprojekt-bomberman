@@ -188,6 +188,7 @@ class GameBoardFactory {
             player2Animations.down,
             player2AnimationsIdle
           );
+
           entities.push(player2);
         }
       }
