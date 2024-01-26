@@ -20,11 +20,14 @@ class Player extends GameEntity {
   private decreasedSpeed: number;
   private powerUpDuration: number;
   private powerUpTimer: number;
+  private id: number;
 
   private wasKeyPressed: boolean;
 
-  constructor(x: number, y: number, size: number, controls: Controls) {
+  constructor(x: number, y: number, size: number, controls: Controls, id: number) {
     super(assets.images.player1Animations[0], x, y, size);
+    
+    this.id = id;
     this.controls = controls;
     this.speedX = 0;
     this.speedY = 0;
@@ -44,6 +47,11 @@ class Player extends GameEntity {
     this.upAnimationLoop = [4, 3, 5, 3];
     this.downAnimationLoop = [1, 0, 2, 0];
   }
+
+  getID(): number{
+    return this.id;
+  }
+  
 
   public update(gameBoard: IAddEntity): void {
     // Sätter hastigheten utifrån vad spelaren trycker på för knapp

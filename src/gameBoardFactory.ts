@@ -125,7 +125,7 @@ class GameBoardFactory {
             down: DOWN_ARROW,
             right: RIGHT_ARROW,
             placeBomb: 80,
-          });
+          }, 1, );
           entities.push(player);
         }
         if (board[i][j] === 8) {
@@ -135,7 +135,7 @@ class GameBoardFactory {
             down: 83,
             right: 68,
             placeBomb: 67,
-          });
+          }, 2 );
           entities.push(player2);
         }
       }
