@@ -1,10 +1,11 @@
-type PageName = "StartPage" | "ChooseBoardPage" | "GameBoard";
+type PageName = "StartPage" | "ChooseBoardPage" | "GameBoard" | "EndOfGame";
 
 class Game {
   private gameBoard: GameBoard | null;
   private gameBoardFactory: GameBoardFactory;
   private startPage: StartPage;
   private chooseBoard: ChooseBoard;
+  private endOfGame: EndOfGame;
   private currentPage: PageName;
   private countdownTime: number;
   private isCountdownActive: boolean;
@@ -14,6 +15,7 @@ class Game {
     this.gameBoardFactory = new GameBoardFactory();
     this.gameBoard = null; // don't generate a gameboard until we need it
     this.startPage = new StartPage(this);
+    this.endOfGame = new EndOfGame(this);
     this.chooseBoard = new ChooseBoard(this);
     this.currentPage = "StartPage";
     this.countdownTime = 3;
@@ -27,6 +29,9 @@ class Game {
       this.countdownTime = 3;
       this.showFightText = false;
       this.gameBoard = this.gameBoardFactory.generateGameBoard(board);
+    } else if (page === "EndOfGame" && this.gameBoard) {
+      this.endOfGame.setupGameBackground(this.gameBoard.getBackgroundImage());
+      this.currentPage = page;
     } else {
       this.currentPage = page;
     }
@@ -67,6 +72,9 @@ class Game {
         case "GameBoard":
           if (this.gameBoard) {
             this.gameBoard.update();
+            if (this.gameBoard.isGameOver()) {
+              this.changePage("EndOfGame");
+            }
           }
           break;
       }
@@ -97,6 +105,9 @@ class Game {
           if (this.gameBoard) {
             this.gameBoard.draw();
           }
+          break;
+        case "EndOfGame":
+          this.endOfGame.draw();
           break;
       }
     }

@@ -113,6 +113,9 @@ class GameBoard implements IAddEntity {
       }
     }
   }
+  public getBackgroundImage(): p5.Image {
+    return this.backgroundImage;
+  }
 
   public update() {
     // Loop over all entities and update them
@@ -139,6 +142,10 @@ class GameBoard implements IAddEntity {
 
   public endGame() {
     this.timer.stop();
+  }
+
+  public isGameOver(): boolean {
+    return this.timer.getTime() === "00:00";
   }
 
   public draw() {
