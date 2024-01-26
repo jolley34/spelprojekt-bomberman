@@ -30,6 +30,7 @@ class Player extends GameEntity {
     y: number,
     size: number,
     controls: Controls,
+    id: number,
     leftAnimation: number[],
     rightAnimation: number[],
     upAnimation: number[],
