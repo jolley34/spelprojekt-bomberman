@@ -102,6 +102,26 @@ class Player extends GameEntity {
       isMoving = true;
     }
 
+    if (!isMoving) {
+      switch (this.lastDirection) {
+        case "left":
+          this.animateLeftIdle();
+          break;
+        case "right":
+          this.animateRightIdle();
+          break;
+        case "up":
+          this.animateUpIdle();
+          break;
+        case "down":
+          this.animateDownIdle();
+          break;
+        default:
+          this.animateDefaultIdle();
+          break;
+      }
+    }
+
     if (horizontalSpeed !== 0 && verticalSpeed !== 0) {
       const diagonalSpeed = Math.sqrt(
         Math.pow(horizontalSpeed, 2) + Math.pow(verticalSpeed, 2)
