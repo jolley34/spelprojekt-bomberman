@@ -74,7 +74,7 @@ class GameBoardFactory {
   //   }
   // }
 
-  public generateGameBoard(boardNumber: number): GameBoard {
+  public generateGameBoard(boardNumber: number, ): GameBoard {
     const board = boardNumber === 1 ? this.board1 : this.board2;
     const entities: GameEntity[] = [];
 

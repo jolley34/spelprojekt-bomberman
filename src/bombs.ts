@@ -1,8 +1,11 @@
 /// <reference path="gameEntity.ts" />
+
+
+
 class Bomb extends GameEntity {
   private timer: number;
   private explosionRange: number;
-  private bombExploded: boolean;
+  public bombExploded: boolean;
   private displayBombExplosion: number;
   private isBombVisible: boolean;
 

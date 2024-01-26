@@ -5,7 +5,7 @@ interface IAddEntity {
 class GameBoard implements IAddEntity {
   private clouds: Clouds;
   private flowers: Flowers;
-  private entities: GameEntity[];
+  public entities: GameEntity[];
   private backgroundImage: p5.Image;
   private timer: Timer;
   private playerCard1: PlayerCard;
