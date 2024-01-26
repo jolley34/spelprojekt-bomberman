@@ -24,9 +24,15 @@ class Player extends GameEntity {
 
   private wasKeyPressed: boolean;
 
-  constructor(x: number, y: number, size: number, controls: Controls, id: number) {
+  constructor(
+    x: number,
+    y: number,
+    size: number,
+    controls: Controls,
+    id: number
+  ) {
     super(assets.images.player1Animations[0], x, y, size);
-    
+
     this.id = id;
     this.controls = controls;
     this.speedX = 0;
@@ -48,10 +54,9 @@ class Player extends GameEntity {
     this.downAnimationLoop = [1, 0, 2, 0];
   }
 
-  getID(): number{
+  getID(): number {
     return this.id;
   }
-  
 
   public update(gameBoard: IAddEntity): void {
     // Sätter hastigheten utifrån vad spelaren trycker på för knapp
@@ -169,6 +174,56 @@ class Player extends GameEntity {
     this.animationIndex =
       (this.animationIndex + this.animationSpeed) %
       (this.downAnimationLoop.length * this.animationSpeed);
+  }
+
+  private animateLeftIdle(): void {
+    this.image =
+      assets.images.playerAnimations[
+        this.idleAnimations.playerLeftIdle[
+          Math.floor(this.animationIndex) %
+            this.idleAnimations.playerLeftIdle.length
+        ]
+      ];
+  }
+
+  private animateRightIdle(): void {
+    this.image =
+      assets.images.playerAnimations[
+        this.idleAnimations.playerRightIdle[
+          Math.floor(this.animationIndex) %
+            this.idleAnimations.playerRightIdle.length
+        ]
+      ];
+  }
+
+  private animateUpIdle(): void {
+    this.image =
+      assets.images.playerAnimations[
+        this.idleAnimations.playerUpIdle[
+          Math.floor(this.animationIndex) %
+            this.idleAnimations.playerUpIdle.length
+        ]
+      ];
+  }
+
+  private animateDownIdle(): void {
+    this.image =
+      assets.images.playerAnimations[
+        this.idleAnimations.playerDownIdle[
+          Math.floor(this.animationIndex) %
+            this.idleAnimations.playerDownIdle.length
+        ]
+      ];
+  }
+
+  private animateDefaultIdle(): void {
+    this.image =
+      assets.images.playerAnimations[
+        this.idleAnimations.playerDefaultIdle[
+          Math.floor(this.animationIndex) %
+            this.idleAnimations.playerDefaultIdle.length
+        ]
+      ];
   }
 
   // powerup "increaseSpeed" gör att spelaren ökar farten efter den har plockat upp powerup, "getEffectiveSpeed" ligger under kontrollerna högre upp i koden
