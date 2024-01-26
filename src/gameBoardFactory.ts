@@ -160,13 +160,12 @@ class GameBoardFactory {
               right: RIGHT_ARROW,
               placeBomb: 80,
             },
-
+            1,
             player1Animations.left,
             player1Animations.right,
             player1Animations.up,
             player1Animations.down,
-            player1AnimationsIdle,
-            1
+            player1AnimationsIdle
           );
           entities.push(player);
         }
@@ -182,13 +181,12 @@ class GameBoardFactory {
               right: 68,
               placeBomb: 67,
             },
-
+            2,
             player2Animations.left,
             player2Animations.right,
             player2Animations.up,
             player2Animations.down,
-            player2AnimationsIdle,
-            2
+            player2AnimationsIdle
           );
           entities.push(player2);
         }
