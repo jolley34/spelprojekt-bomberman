@@ -32,7 +32,7 @@ class Timer {
     if (this.timerInterval) {
       clearInterval(this.timerInterval);
       this.timerInterval = null;
-      this.elapsedTime = Date.now() - this.startTime;
+      // this.elapsedTime = Date.now() - this.startTime;
     }
   }
 
