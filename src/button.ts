@@ -48,7 +48,7 @@ class Button {
     rect(this.positionX, this.positionY, this.width, this.height, 10);
 
     fill(this.textColor);
-    textSize(20);
+    textSize(25);
     textAlign(CENTER, CENTER);
     text(this.text, this.positionX, this.positionY);
 

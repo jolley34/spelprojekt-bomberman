@@ -27,7 +27,7 @@ class StartPage implements IGamePage {
       width / 2,
       height / 2 + 200,
       250,
-      50,
+      60,
       "START  GAME",
       "black",
       "#B3D917"

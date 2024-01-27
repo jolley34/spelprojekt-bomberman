@@ -15,10 +15,10 @@ class EndOfGame {
     this.icon = assets.images.entities[2];
     // Todo: Choose the right position fot the buttons
     this.quitButton = new Button(
-      width / 2 - 120,
+      width / 2 - 100,
       height / 2 + 100,
-      170,
-      50,
+      160,
+      60,
       "QUIT",
       "#5A7885",
       "white"
@@ -26,8 +26,8 @@ class EndOfGame {
     this.playAgainButton = new Button(
       width / 2 + 120,
       height / 2 + 100,
-      170,
-      50,
+      160,
+      60,
       "PLAY AGAIN",
       "#5A7885",
       "white"
@@ -54,7 +54,7 @@ class EndOfGame {
     drawingContext.shadowColor = "black";
     noStroke();
     rectMode(CENTER);
-    rect(width / 2 + padding, height / 2, 550, 400, 10);
+    rect(width / 2 + padding, height / 2, 550, 330, 10);
     drawingContext.shadowOffsetX = 0;
     drawingContext.shadowOffsetY = 0;
     drawingContext.shadowBlur = 0;
@@ -65,7 +65,7 @@ class EndOfGame {
     drawingContext.shadowColor = "black";
 
     const circleCenterX = width / 2 + 200;
-    const circleCenterY = height / 2 - 110;
+    const circleCenterY = height / 2 - 100;
 
     // Draw player icon
     const circleDiameter = 100;
@@ -90,8 +90,8 @@ class EndOfGame {
     textAlign(CENTER, CENTER);
     text("WINNER", width / 2 + padding, height / 2 - 120);
     textSize(40);
-    text(this.displayWinner, width / 2 + padding, height / 2 - 70);
-    text(`SCORE: ${this.displayScore}`, width / 2 + padding, height / 2 - 20);
+    text(this.displayWinner, width / 2 + padding, height / 2 - 60);
+    text(`SCORE: ${this.displayScore}`, width / 2 + padding, height / 2);
     pop();
 
     this.quitButton.draw();

@@ -12,7 +12,7 @@ class ChooseBoard {
       width / 4 + 130,
       height / 2 + 270,
       250,
-      50,
+      60,
       "GARDEN  BOARD",
       "black",
       "#B3D917"
@@ -21,7 +21,7 @@ class ChooseBoard {
       width / 4 + width / 2 - 130,
       height / 2 + 270,
       250,
-      50,
+      60,
       "ICE  BOARD",
       "black",
       "#B3D917"
