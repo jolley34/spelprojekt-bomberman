@@ -120,6 +120,7 @@ function preload() {
         loadImage(
           "../assets/playeranimations/player-2-blue-left-foot-right.png"
         ), // 23
+        loadImage("../assets/playeranimations/stop-dirt.gif"), // 24
       ],
     },
     music: {
