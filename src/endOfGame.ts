@@ -1,79 +1,101 @@
 class EndOfGame {
   private game: IGamePage;
+  private isVisible: boolean;
   private displayWinner: string;
   private displayScore: number;
-  private title: string;
-
+  private icon: p5.Image;
   private quitButton: Button;
   private playAgainButton: Button;
 
   constructor(game: IGamePage) {
     this.game = game;
-    this.title = "Cruel Nature";
-    // Todo: Setup the logic for displaying the winner and score
+    this.isVisible = false;
     this.displayWinner = "Player 1";
-    this.displayScore = 0;
-
+    this.displayScore = 5000;
+    this.icon = assets.images.entities[2];
     // Todo: Choose the right position fot the buttons
     this.quitButton = new Button(
-      width / 2 - 100,
+      width / 2 - 120,
       height / 2 + 100,
       170,
       50,
-      "QUIT"
+      "QUIT",
+      "#5A7885",
+      "white"
     );
     this.playAgainButton = new Button(
-      width / 2 + 100,
+      width / 2 + 120,
       height / 2 + 100,
       170,
       50,
-      "PLAY AGAIN"
+      "PLAY AGAIN",
+      "#5A7885",
+      "white"
     );
   }
 
-  public draw(): void {
-    Utility.drawBackgroundImage(assets.images.backgroundImages[3], 150);
-    this.drawBanner();
-    this.quitButton.draw();
-    this.playAgainButton.draw();
-    this.drawTitle();
+  public show() {
+    this.isVisible = true;
   }
 
-  private drawTitle(): void {
-    textSize(64);
-    const padding = 100;
-    const rectHeight = 100;
-    const offsetY = 140;
-    const rectWidth = textWidth(this.title) + padding * 2;
+  public draw() {
+    if (!this.isVisible) return;
 
-    const rectX = width / 2 - rectWidth / 2;
-    const rectY = height / 4 - rectHeight / 2 - offsetY;
+    this.drawEndGameBanner();
+  }
 
-    fill(0);
+  private drawEndGameBanner() {
+    const padding = 20;
+    push();
+    fill("#30444C");
+    drawingContext.shadowOffsetX = 5;
+    drawingContext.shadowOffsetY = 10;
+    drawingContext.shadowBlur = 10;
+    drawingContext.shadowColor = "black";
     noStroke();
-    rect(rectX, rectY, rectWidth, rectHeight, 10);
-
-    push();
-    fill("#B3D917");
-    textAlign(CENTER, CENTER);
-    text(this.title, width / 2, height / 4 - offsetY);
-    pop();
-  }
-
-  private drawBanner(): void {
-    push();
-    fill(0);
     rectMode(CENTER);
-    rect(width / 2, height / 2 - 50, 500, 200, 10);
+    rect(width / 2 + padding, height / 2, 550, 400, 10);
+    drawingContext.shadowOffsetX = 0;
+    drawingContext.shadowOffsetY = 0;
+    drawingContext.shadowBlur = 0;
+    drawingContext.shadowColor = "black";
+    drawingContext.shadowOffsetX = 0;
+    drawingContext.shadowOffsetY = 20;
+    drawingContext.shadowBlur = 20;
+    drawingContext.shadowColor = "black";
 
-    fill("#B3D917");
+    const circleCenterX = width / 2 + 200;
+    const circleCenterY = height / 2 - 110;
+
+    // Draw player icon
+    const circleDiameter = 100;
+    fill("#AECDDB");
+    circle(circleCenterX, circleCenterY, circleDiameter);
+    imageMode(CENTER);
+    image(
+      this.icon,
+      circleCenterX,
+      circleCenterY,
+      circleDiameter - 20,
+      circleDiameter - 20
+    );
+
+    drawingContext.shadowOffsetX = 0;
+    drawingContext.shadowOffsetY = 0;
+    drawingContext.shadowBlur = 0;
+    drawingContext.shadowColor = "black";
+
+    fill(255);
     textSize(50);
     textAlign(CENTER, CENTER);
-    text("WINNER", width / 2, height / 2 - 100);
+    text("WINNER", width / 2 + padding, height / 2 - 120);
     textSize(40);
-    text(this.displayWinner, width / 2, height / 2 - 60);
-    text(`SCORE: ${this.displayScore}`, width / 2, height / 2 - 20);
+    text(this.displayWinner, width / 2 + padding, height / 2 - 70);
+    text(`SCORE: ${this.displayScore}`, width / 2 + padding, height / 2 - 20);
     pop();
+
+    this.quitButton.draw();
+    this.playAgainButton.draw();
   }
 
   private mousePressed(): void {

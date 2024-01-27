@@ -5,7 +5,7 @@ class Game {
   private gameBoardFactory: GameBoardFactory;
   private startPage: StartPage;
   private chooseBoard: ChooseBoard;
-  private endOfGame: EndOfGame;
+  // private endOfGame: EndOfGame;
   private currentPage: PageName;
   private countdownTime: number;
   private isCountdownActive: boolean;
@@ -15,8 +15,8 @@ class Game {
     this.gameBoardFactory = new GameBoardFactory();
     this.gameBoard = null; // don't generate a gameboard until we need it
     this.startPage = new StartPage(this);
-    this.endOfGame = new EndOfGame(this, assets.images.backgroundImages[3]);
     this.chooseBoard = new ChooseBoard(this);
+    //this.endOfGame = new EndOfGame(this);
     this.currentPage = "StartPage";
     this.countdownTime = 3;
     this.isCountdownActive = false;
@@ -70,12 +70,9 @@ class Game {
           if (this.gameBoard) {
             this.gameBoard.update();
             if (this.gameBoard.isGameOver()) {
-              this.changePage("EndOfGame");
+              this.gameBoard.endGame();
             }
           }
-          break;
-        case "EndOfGame":
-          this.endOfGame.update();
           break;
       }
     }
@@ -105,9 +102,6 @@ class Game {
           if (this.gameBoard) {
             this.gameBoard.draw();
           }
-          break;
-        case "EndOfGame":
-          this.endOfGame.draw();
           break;
       }
     }

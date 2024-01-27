@@ -10,6 +10,7 @@ class GameBoard implements IAddEntity {
   private timer: Timer;
   private playerCard1: PlayerCard;
   private playerCard2: PlayerCard;
+  private endOfGame: EndOfGame;
 
   constructor(
     entities: GameEntity[],
@@ -22,6 +23,7 @@ class GameBoard implements IAddEntity {
     this.entities = entities;
     this.backgroundImage = backgroundImage;
     this.timer = new Timer();
+    this.endOfGame = new EndOfGame(game);
     this.playerCard1 = new PlayerCard(
       "Player 1",
       // Change the image accordingly to the player1
@@ -127,6 +129,7 @@ class GameBoard implements IAddEntity {
     this.pickUpPowerUp(); // uppdatera powerup
 
     this.checkCollision();
+    this.endOfGame.update();
   }
 
   public addEntity(entity: GameEntity) {
@@ -139,6 +142,7 @@ class GameBoard implements IAddEntity {
 
   public endGame() {
     this.timer.stop();
+    this.endOfGame.show();
   }
 
   public isGameOver(): boolean {
@@ -155,6 +159,7 @@ class GameBoard implements IAddEntity {
     this.playerCard2.draw();
     this.clouds.draw();
     this.flowers.draw();
+    this.endOfGame.draw();
   }
 }
 // const entitet = new Obstacle(0,0,10);

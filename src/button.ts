@@ -4,19 +4,25 @@ class Button {
   private width: number;
   private height: number;
   private text: string;
+  private color: string;
+  private textColor: string;
   private image?: p5.Image;
   constructor(
     positionX: number,
     positionY: number,
     width: number,
     height: number,
-    text: string
+    text: string,
+    color: string,
+    textColor: string
   ) {
     this.positionX = positionX;
     this.positionY = positionY;
     this.width = width;
     this.height = height;
     this.text = text;
+    this.color = color;
+    this.textColor = textColor;
   }
 
   public isButtonPressed() {
@@ -36,12 +42,12 @@ class Button {
 
   public draw(): void {
     push();
-    fill(0);
+    fill(this.color);
     noStroke();
     rectMode(CENTER);
     rect(this.positionX, this.positionY, this.width, this.height, 10);
 
-    fill("#B3D917");
+    fill(this.textColor);
     textSize(20);
     textAlign(CENTER, CENTER);
     text(this.text, this.positionX, this.positionY);
