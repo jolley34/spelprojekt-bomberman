@@ -2,16 +2,17 @@ class EndOfGame {
   private game: IGamePage;
   private displayWinner: string;
   private displayScore: number;
-  private backgroundImage: p5.Image;
+  private title: string;
+
   private quitButton: Button;
   private playAgainButton: Button;
 
-  constructor(game: IGamePage, backgroundImage: p5.Image) {
+  constructor(game: IGamePage) {
     this.game = game;
+    this.title = "Cruel Nature";
     // Todo: Setup the logic for displaying the winner and score
     this.displayWinner = "Player 1";
     this.displayScore = 0;
-    this.backgroundImage = backgroundImage;
 
     // Todo: Choose the right position fot the buttons
     this.quitButton = new Button(
@@ -35,6 +36,28 @@ class EndOfGame {
     this.drawBanner();
     this.quitButton.draw();
     this.playAgainButton.draw();
+    this.drawTitle();
+  }
+
+  private drawTitle(): void {
+    textSize(64);
+    const padding = 100;
+    const rectHeight = 100;
+    const offsetY = 140;
+    const rectWidth = textWidth(this.title) + padding * 2;
+
+    const rectX = width / 2 - rectWidth / 2;
+    const rectY = height / 4 - rectHeight / 2 - offsetY;
+
+    fill(0);
+    noStroke();
+    rect(rectX, rectY, rectWidth, rectHeight, 10);
+
+    push();
+    fill("#B3D917");
+    textAlign(CENTER, CENTER);
+    text(this.title, width / 2, height / 4 - offsetY);
+    pop();
   }
 
   private drawBanner(): void {
