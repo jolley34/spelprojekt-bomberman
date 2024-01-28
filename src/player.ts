@@ -21,6 +21,8 @@ class Player extends GameEntity {
   private powerUpTimer: number;
   public playerId: number;
   public isHit: boolean;
+  private hitCooldown: number;
+  private lastHitTime: number;
 
   private wasKeyPressed: boolean;
 
@@ -43,6 +45,8 @@ class Player extends GameEntity {
     this.powerUpTimer = 0;
     this.playerId = playerId;
     this.isHit = false;
+    this.hitCooldown = 30000;
+    this.lastHitTime = 0;
 
     this.wasKeyPressed = false;
 
@@ -107,7 +111,11 @@ class Player extends GameEntity {
       this.wasKeyPressed = false;
     }
     if (this.isHit) {
-      this.isHit = false;
+      const currentTime = millis();
+      if (currentTime - this.lastHitTime >= this.hitCooldown) {
+        this.lastHitTime = currentTime;
+        this.isHit = false;
+      }
     }
   }
 
