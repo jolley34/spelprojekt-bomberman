@@ -22,10 +22,8 @@ class Player extends GameEntity {
   private powerUpDuration: number;
   private powerUpTimer: number;
   private id: number;
-
   private wasKeyPressed: boolean;
-  
-  private lastBombDropTime: number;
+  private lastBombDropTime: number; 
 
   constructor(x: number, y: number, size: number, controls: Controls, id: number) {
     super(assets.images.player1Animations[0], x, y, size);
@@ -83,6 +81,7 @@ class Player extends GameEntity {
     const currentTime = millis();
     const timeSinceLastDrop = currentTime - this.lastBombDropTime;
 
+    // kollar ifall det har gått 4sek since last dropbombtime
     if (keyIsDown(this.controls.placeBomb) && !this.wasKeyPressed && timeSinceLastDrop >= 4000) {
       this.dropBomb(this.x, this.y, gameBoard);
       this.lastBombDropTime = currentTime; // Update the lastBombDropTime
