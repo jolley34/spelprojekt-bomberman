@@ -69,9 +69,7 @@ class Player extends GameEntity {
       this.animateRight();
     }
 
-    const currentTime = millis();
-    const timeSinceLastDrop = currentTime - this.lastBombDropTime;
-
+    
     if (keyIsDown(this.controls.up)) {
       verticalSpeed = -this.getEffectiveSpeed();
       this.animateUp();
@@ -79,7 +77,10 @@ class Player extends GameEntity {
       verticalSpeed = this.getEffectiveSpeed();
       this.animateDown();
     }
-
+    
+    const currentTime = millis();
+    const timeSinceLastDrop = currentTime - this.lastBombDropTime;
+    
     // kollar ifall det har gått 4sek since last dropbombtime
     if (keyIsDown(this.controls.placeBomb) && !this.wasKeyPressed && timeSinceLastDrop >= 4000) {
       this.dropBomb(this.x, this.y, gameBoard);
