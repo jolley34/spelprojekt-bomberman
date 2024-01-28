@@ -90,7 +90,6 @@ class Player extends GameEntity {
       this.wasKeyPressed = false;
     }
 
-
     if (horizontalSpeed !== 0 && verticalSpeed !== 0) {
       const diagonalSpeed = Math.sqrt(
         Math.pow(horizontalSpeed, 2) + Math.pow(verticalSpeed, 2)
@@ -214,7 +213,5 @@ class Player extends GameEntity {
     this.decreasedSpeed = 0;
     this.powerUpTimer = 0;
   }
-  public resetBombDropState(): void {
-    this.wasKeyPressed = false;
-  }
+ 
 }
