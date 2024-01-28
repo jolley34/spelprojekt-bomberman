@@ -106,7 +106,9 @@ class Player extends GameEntity {
     } else if (!keyIsDown(this.controls.placeBomb)) {
       this.wasKeyPressed = false;
     }
-    this.isHit = false;
+    if (this.isHit) {
+      this.isHit = false;
+    }
   }
 
   public dropBomb(
