@@ -17,7 +17,7 @@ class PlayerCard {
     this.lives = 3;
     this.positionX = positionX;
     this.positionY = positionY;
-    this.distance = 2;
+    this.distance = 10;
   }
 
   public removeLife() {
