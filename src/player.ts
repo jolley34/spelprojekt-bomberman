@@ -19,10 +19,17 @@ class Player extends GameEntity {
   private increasedSpeed: number;
   private powerUpDuration: number;
   private powerUpTimer: number;
+  public playerId: number;
 
   private wasKeyPressed: boolean;
 
-  constructor(x: number, y: number, size: number, controls: Controls) {
+  constructor(
+    x: number,
+    y: number,
+    size: number,
+    playerId: number,
+    controls: Controls
+  ) {
     super(assets.images.player1Animations[0], x, y, size);
     this.controls = controls;
     this.speedX = 0;
@@ -33,6 +40,7 @@ class Player extends GameEntity {
     this.increasedSpeed = 2;
     this.powerUpDuration = 10000;
     this.powerUpTimer = 0;
+    this.playerId = playerId;
 
     this.wasKeyPressed = false;
 

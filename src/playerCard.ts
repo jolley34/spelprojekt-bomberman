@@ -4,19 +4,20 @@ class PlayerCard {
   lives: number;
   positionX: number;
   positionY: number;
+  distance: number;
 
   constructor(
     name: string,
     //icon: p5.Image,
-    lives: number,
     positionX: number,
     positionY: number
   ) {
     this.name = name;
     // this.icon = icon;
-    this.lives = lives;
+    this.lives = 3;
     this.positionX = positionX;
     this.positionY = positionY;
+    this.distance = 40;
   }
 
   public removeLife() {
@@ -49,13 +50,17 @@ class PlayerCard {
     drawingContext.shadowColor = "black";
 
     // Loops through the lives and draws them
-    image(
-      assets.images.playerCard[0],
-      this.positionX * 0.65,
-      this.positionY * 1.7,
-      40,
-      40
-    );
+    for (let i = 0; i < this.lives; i++) {
+      this.positionX = i * (40 + this.distance) * 0.65;
+      this.positionY = 40 * 1.7;
+      image(
+        assets.images.playerCard[0],
+        this.positionX,
+        this.positionY,
+        40,
+        40
+      );
+    }
 
     fill("255");
     textSize(30);

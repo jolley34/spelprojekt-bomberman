@@ -27,14 +27,12 @@ class GameBoard implements IAddEntity {
     this.playerCard1 = new PlayerCard(
       "Player 1",
       //player1Icon,
-      3,
       width / 2 - 550,
       50
     );
     this.playerCard2 = new PlayerCard(
       "Player 2",
       // player2Icon,
-      3,
       width / 2 + 550,
       50
     );
