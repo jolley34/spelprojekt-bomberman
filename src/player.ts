@@ -1,4 +1,5 @@
 /// <reference path="gameEntity.ts" />
+
 type Controls = {
   up: number;
   left: number;
@@ -23,6 +24,8 @@ class Player extends GameEntity {
   private id: number;
 
   private wasKeyPressed: boolean;
+  
+  private lastBombDropTime: number;
 
   constructor(x: number, y: number, size: number, controls: Controls, id: number) {
     super(assets.images.player1Animations[0], x, y, size);
@@ -40,6 +43,7 @@ class Player extends GameEntity {
     this.powerUpTimer = 0;
 
     this.wasKeyPressed = false;
+    this.lastBombDropTime = 0;
 
     // Vilka bilder jag loopar igenom när jag trycker vänster
     this.leftAnimationLoop = [7, 6, 8, 6];
@@ -58,6 +62,8 @@ class Player extends GameEntity {
     let horizontalSpeed = 0;
     let verticalSpeed = 0;
 
+
+
     if (keyIsDown(this.controls.left)) {
       horizontalSpeed = -this.getEffectiveSpeed();
       this.animateLeft();
@@ -73,6 +79,18 @@ class Player extends GameEntity {
       verticalSpeed = this.getEffectiveSpeed();
       this.animateDown();
     }
+
+    const currentTime = millis();
+    const timeSinceLastDrop = currentTime - this.lastBombDropTime;
+
+    if (keyIsDown(this.controls.placeBomb) && !this.wasKeyPressed && timeSinceLastDrop >= 4000) {
+      this.dropBomb(this.x, this.y, gameBoard);
+      this.lastBombDropTime = currentTime; // Update the lastBombDropTime
+      this.wasKeyPressed = true;
+    } else if (!keyIsDown(this.controls.placeBomb)) {
+      this.wasKeyPressed = false;
+    }
+
 
     if (horizontalSpeed !== 0 && verticalSpeed !== 0) {
       const diagonalSpeed = Math.sqrt(
@@ -98,24 +116,20 @@ class Player extends GameEntity {
         this.resetPowerUp();
       }
     }
+  }
 
     //kontrollerar om man redan tryckt på p kan bara släppa en bomb i taget.
-    if (keyIsDown(this.controls.placeBomb) && !this.wasKeyPressed) {
-      this.dropBomb(this.x, this.y, gameBoard);
-      this.wasKeyPressed = true;
-    } else if (!keyIsDown(this.controls.placeBomb)) {
-      this.wasKeyPressed = false;
-    }
-  }
+   
 
   public dropBomb(
     positionX: number,
     positionY: number,
     gameBoard: IAddEntity
   ): void {
-    if (!gameBoard.entities.filter((entity) => entity instanceof Bomb).length) {
+    if (!gameBoard.entities.some((entity) => entity instanceof Bomb)) {
       const bomb = new Bomb(positionX, positionY, 50);
       gameBoard.addEntity(bomb);
+      this.wasKeyPressed = false;
     }
   }
 
@@ -200,5 +214,8 @@ class Player extends GameEntity {
     this.increasedSpeed = 0;
     this.decreasedSpeed = 0;
     this.powerUpTimer = 0;
+  }
+  public resetBombDropState(): void {
+    this.wasKeyPressed = false;
   }
 }
