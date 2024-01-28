@@ -15,7 +15,8 @@ class ChooseBoard {
       60,
       "GARDEN  BOARD",
       "black",
-      "#B3D917"
+      "#B3D917",
+      "#302f2f"
     );
     this.iceBoardButton = new Button(
       width / 4 + width / 2 - 130,
@@ -24,7 +25,8 @@ class ChooseBoard {
       60,
       "ICE  BOARD",
       "black",
-      "#B3D917"
+      "#B3D917",
+      "#302f2f"
     );
   }
 

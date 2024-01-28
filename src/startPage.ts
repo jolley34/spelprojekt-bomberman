@@ -30,7 +30,8 @@ class StartPage implements IGamePage {
       60,
       "START  GAME",
       "black",
-      "#B3D917"
+      "#B3D917",
+      "#302f2f"
     );
   }
 

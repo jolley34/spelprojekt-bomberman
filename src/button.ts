@@ -6,6 +6,7 @@ class Button {
   private text: string;
   private color: string;
   private textColor: string;
+  private hoverColor: string;
   private image?: p5.Image;
   constructor(
     positionX: number,
@@ -14,7 +15,8 @@ class Button {
     height: number,
     text: string,
     color: string,
-    textColor: string
+    textColor: string,
+    hoverColor: string
   ) {
     this.positionX = positionX;
     this.positionY = positionY;
@@ -23,6 +25,7 @@ class Button {
     this.text = text;
     this.color = color;
     this.textColor = textColor;
+    this.hoverColor = hoverColor;
   }
 
   public isButtonPressed() {
@@ -38,11 +41,18 @@ class Button {
     return false;
   }
 
-  public update(): void {}
+  private isHovering(): boolean {
+    return (
+      mouseX > this.positionX - this.width / 2 &&
+      mouseX < this.positionX + this.width / 2 &&
+      mouseY > this.positionY - this.height / 2 &&
+      mouseY < this.positionY + this.height / 2
+    );
+  }
 
   public draw(): void {
     push();
-    fill(this.color);
+    fill(this.isHovering() ? this.hoverColor : this.color);
     noStroke();
     rectMode(CENTER);
     rect(this.positionX, this.positionY, this.width, this.height, 10);

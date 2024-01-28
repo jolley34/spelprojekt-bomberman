@@ -21,7 +21,8 @@ class EndOfGame {
       60,
       "QUIT",
       "#5A7885",
-      "white"
+      "white",
+      "#302f2f"
     );
     this.playAgainButton = new Button(
       width / 2 + 120,
@@ -30,7 +31,8 @@ class EndOfGame {
       60,
       "PLAY AGAIN",
       "#5A7885",
-      "white"
+      "white",
+      "#302f2f"
     );
   }
 
