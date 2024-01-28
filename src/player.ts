@@ -7,6 +7,7 @@ type Controls = {
   right: number;
   placeBomb: number;
 };
+
 class Player extends GameEntity {
   private controls: any;
   public speedX: number;
@@ -34,12 +35,10 @@ class Player extends GameEntity {
     this.speedY = 0;
     this.animationIndex = 0;
     this.animationSpeed = 0.8;
-
     this.increasedSpeed = 2;
     this.decreasedSpeed = 1.5;
     this.powerUpDuration = 10000;
     this.powerUpTimer = 0;
-
     this.wasKeyPressed = false;
     this.lastBombDropTime = 0;
 
@@ -70,6 +69,9 @@ class Player extends GameEntity {
       this.animateRight();
     }
 
+    const currentTime = millis();
+    const timeSinceLastDrop = currentTime - this.lastBombDropTime;
+
     if (keyIsDown(this.controls.up)) {
       verticalSpeed = -this.getEffectiveSpeed();
       this.animateUp();
@@ -77,9 +79,6 @@ class Player extends GameEntity {
       verticalSpeed = this.getEffectiveSpeed();
       this.animateDown();
     }
-
-    const currentTime = millis();
-    const timeSinceLastDrop = currentTime - this.lastBombDropTime;
 
     // kollar ifall det har gått 4sek since last dropbombtime
     if (keyIsDown(this.controls.placeBomb) && !this.wasKeyPressed && timeSinceLastDrop >= 4000) {
@@ -115,8 +114,6 @@ class Player extends GameEntity {
       }
     }
   }
-
-    //kontrollerar om man redan tryckt på p kan bara släppa en bomb i taget.
    
 
   public dropBomb(
