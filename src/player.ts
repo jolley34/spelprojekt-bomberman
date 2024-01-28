@@ -20,6 +20,7 @@ class Player extends GameEntity {
   private powerUpDuration: number;
   private powerUpTimer: number;
   public playerId: number;
+  public isHit: boolean;
 
   private wasKeyPressed: boolean;
 
@@ -41,6 +42,7 @@ class Player extends GameEntity {
     this.powerUpDuration = 10000;
     this.powerUpTimer = 0;
     this.playerId = playerId;
+    this.isHit = false;
 
     this.wasKeyPressed = false;
 
@@ -104,6 +106,7 @@ class Player extends GameEntity {
     } else if (!keyIsDown(this.controls.placeBomb)) {
       this.wasKeyPressed = false;
     }
+    this.isHit = false;
   }
 
   public dropBomb(

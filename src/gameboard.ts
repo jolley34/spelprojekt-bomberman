@@ -89,9 +89,15 @@ class GameBoard implements IAddEntity {
 
     if (entity1 instanceof Player && entity2 instanceof Explosion) {
       if (entity1.playerId === 1) {
-        this.playerCard1.removeLife();
+        if (!entity1.isHit) {
+          entity1.isHit = true;
+          this.playerCard1.removeLife();
+        }
       } else if (entity1.playerId === 2) {
-        this.playerCard2.removeLife();
+        if (!entity1.isHit) {
+          entity1.isHit = true;
+          this.playerCard2.removeLife();
+        }
       }
     }
 
