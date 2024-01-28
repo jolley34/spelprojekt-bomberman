@@ -7,7 +7,7 @@ class Bomb extends GameEntity {
   constructor(x: number, y: number, size: number) {
     super(assets.images.bombs[0], x, y, size);
     this.bombTimer = 50;
-    this.range = 50;
+    this.range = 40;
   }
 
   public update(gameBoard: IAddEntity): void {

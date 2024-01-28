@@ -84,7 +84,7 @@ class Player extends GameEntity {
     // kollar ifall det har gått 4sek since last dropbombtime
     if (keyIsDown(this.controls.placeBomb) && !this.wasKeyPressed && timeSinceLastDrop >= 4000) {
       this.dropBomb(this.x, this.y, gameBoard);
-      this.lastBombDropTime = currentTime; // Update the lastBombDropTime
+      this.lastBombDropTime = currentTime; // Updaterar lastdropbombtime
       this.wasKeyPressed = true;
     } else if (!keyIsDown(this.controls.placeBomb)) {
       this.wasKeyPressed = false;
