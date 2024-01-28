@@ -17,7 +17,7 @@ class PlayerCard {
     this.lives = 3;
     this.positionX = positionX;
     this.positionY = positionY;
-    this.distance = 40;
+    this.distance = 2;
   }
 
   public removeLife() {
@@ -51,15 +51,9 @@ class PlayerCard {
 
     // Loops through the lives and draws them
     for (let i = 0; i < this.lives; i++) {
-      this.positionX = i * (40 + this.distance) * 0.65;
-      this.positionY = 40 * 1.7;
-      image(
-        assets.images.playerCard[0],
-        this.positionX,
-        this.positionY,
-        40,
-        40
-      );
+      let lifeX = this.positionX * 0.65 + i * (40 + this.distance * 2);
+      let lifeY = this.positionY * 1.7;
+      image(assets.images.playerCard[0], lifeX, lifeY, 40, 40);
     }
 
     fill("255");
