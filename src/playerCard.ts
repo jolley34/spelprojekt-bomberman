@@ -23,7 +23,9 @@ class PlayerCard {
   }
 
   public removeLife() {
-    this.lives--;
+    if (this.lives > 0) {
+      this.lives--;
+    }
   }
 
   public draw() {

@@ -22,11 +22,21 @@ class Player extends GameEntity {
   private powerUpTimer: number;
   private id: number;
 
+  public isProtectd: boolean = false;
+  public protectionDuration: number = 3000;
+  public protectionTimer: number;
+
   private wasKeyPressed: boolean;
 
-  constructor(x: number, y: number, size: number, controls: Controls, id: number) {
+  constructor(
+    x: number,
+    y: number,
+    size: number,
+    controls: Controls,
+    id: number
+  ) {
     super(assets.images.player1Animations[0], x, y, size);
-    
+
     this.id = id;
     this.controls = controls;
     this.speedX = 0;
@@ -39,6 +49,10 @@ class Player extends GameEntity {
     this.powerUpDuration = 10000;
     this.powerUpTimer = 0;
 
+    this.isProtectd = false;
+    this.protectionDuration = 3000;
+    this.protectionTimer = 0;
+
     this.wasKeyPressed = false;
 
     // Vilka bilder jag loopar igenom när jag trycker vänster
@@ -48,15 +62,21 @@ class Player extends GameEntity {
     this.downAnimationLoop = [1, 0, 2, 0];
   }
 
-  getID(): number{
+  getID(): number {
     return this.id;
   }
-  
 
   public update(gameBoard: IAddEntity): void {
-    // Sätter hastigheten utifrån vad spelaren trycker på för knapp
     let horizontalSpeed = 0;
     let verticalSpeed = 0;
+
+    // checking if player is protected and if the time has run out
+    if (this.isProtectd) {
+      this.protectionTimer -= deltaTime;
+      if (this.protectionTimer <= 0) {
+        this.isProtectd = false;
+      }
+    }
 
     if (keyIsDown(this.controls.left)) {
       horizontalSpeed = -this.getEffectiveSpeed();
