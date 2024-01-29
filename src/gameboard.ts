@@ -105,7 +105,7 @@ class GameBoard implements IAddEntity {
     }
 
     if (entity1 instanceof Player && entity2 instanceof Explosion) {
-      if (!entity1.isProtectd) {
+      if (!entity1.isProtected) {
         // Remove a life from the appropriate player card
         if (entity1.getID() === this.playerCard1.playerNumber) {
           this.playerCard1.removeLife();
@@ -114,7 +114,7 @@ class GameBoard implements IAddEntity {
         }
 
         // Set the player to be protected
-        entity1.isProtectd = true;
+        entity1.isProtected = true;
         entity1.protectionTimer = entity1.protectionDuration;
       }
     }

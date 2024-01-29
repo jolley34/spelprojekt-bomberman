@@ -25,10 +25,9 @@ class Player extends GameEntity {
   private idleAnimations: any;
   private id: number;
 
-  public isProtectd: boolean = false;
+  public isProtected: boolean = false;
   public protectionDuration: number = 3000;
   public protectionTimer: number;
-
 
   constructor(
     x: number,
@@ -50,7 +49,6 @@ class Player extends GameEntity {
   ) {
     super(assets.images.playerAnimations[0], x, y, size);
 
-
     this.id = id;
     this.controls = controls;
     this.speedX = 0;
@@ -63,7 +61,7 @@ class Player extends GameEntity {
     this.powerUpDuration = 10000;
     this.powerUpTimer = 0;
 
-    this.isProtectd = false;
+    this.isProtected = false;
     this.protectionDuration = 3000;
     this.protectionTimer = 0;
 
@@ -87,10 +85,10 @@ class Player extends GameEntity {
     let isMoving = false;
 
     // checking if player is protected and if the time has run out
-    if (this.isProtectd) {
+    if (this.isProtected) {
       this.protectionTimer -= deltaTime;
       if (this.protectionTimer <= 0) {
-        this.isProtectd = false;
+        this.isProtected = false;
       }
     }
 
