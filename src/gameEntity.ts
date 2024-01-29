@@ -17,7 +17,7 @@ class GameEntity {
 		let hitBoxSize = this.size;
 
 		// Check if the object is the player, and adjust the hitbox size accordingly
-		if (this instanceof Player || this instanceof SpeedUp) {
+		if (this instanceof Player || this instanceof SpeedUp) { // lägg till här powerups på samma sätt
 			hitBoxSize *= 0.8; // You can adjust the multiplier as needed for the player
 		}
 
