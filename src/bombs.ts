@@ -17,6 +17,7 @@ class Bomb extends GameEntity {
       this.explode(gameBoard);
     }
   }
+  
 
   private explode(gameBoard: IAddEntity) {
     this.shouldBeRemoved = true;

@@ -126,6 +126,14 @@ class GameBoard implements IAddEntity {
       }
       entity2.shouldBeRemoved = true;
     }
+    if (entity1 instanceof Player && entity2 instanceof LongerBombRange) {
+      // fixa reaktion 
+      entity2.shouldBeRemoved = true;
+    }
+    if (entity1 instanceof Player && entity2 instanceof MoreBomb) {
+      //fixa reaktion
+      entity2.shouldBeRemoved = true;
+    }
 
     if (
       entity1 instanceof Player &&
