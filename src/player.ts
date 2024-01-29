@@ -1,3 +1,5 @@
+/// <reference path="gameEntity.ts" />
+
 type Controls = {
   up: number;
   left: number;
@@ -16,6 +18,7 @@ class Player extends GameEntity {
   private rightAnimationLoop: number[];
   private upAnimationLoop: number[];
   private downAnimationLoop: number[];
+  private dropBombAnimation: any;
   private increasedSpeed: number;
   private decreasedSpeed: number;
   private powerUpDuration: number;
@@ -35,6 +38,9 @@ class Player extends GameEntity {
     size: number,
     controls: Controls,
     id: number,
+    dropBombAnimation: {
+      dropBomb: number[];
+    },
     leftAnimation: number[],
     rightAnimation: number[],
     upAnimation: number[],
@@ -68,6 +74,7 @@ class Player extends GameEntity {
     this.wasKeyPressed = false;
     this.lastDirection = "";
 
+    this.dropBombAnimation = dropBombAnimation;
     this.leftAnimationLoop = leftAnimation;
     this.rightAnimationLoop = rightAnimation;
     this.upAnimationLoop = upAnimation;
@@ -174,6 +181,16 @@ class Player extends GameEntity {
     }
   }
 
+  private animateDropbomb(): void {
+    this.image =
+      assets.images.bombs[
+        this.dropBombAnimation.dropBomb[
+          Math.floor(this.animationIndex) %
+            this.dropBombAnimation.dropBomb.length
+        ]
+      ];
+  }
+
   public dropBomb(
     positionX: number,
     positionY: number,
@@ -181,6 +198,7 @@ class Player extends GameEntity {
   ): void {
     if (!gameBoard.entities.filter((entity) => entity instanceof Bomb).length) {
       const bomb = new Bomb(positionX, positionY, 50);
+      this.animateDropbomb();
       gameBoard.addEntity(bomb);
     }
   }

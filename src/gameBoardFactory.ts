@@ -57,6 +57,7 @@ class GameBoardFactory {
       right: [10, 9, 11, 9],
       up: [4, 3, 5, 3],
       down: [1, 0, 2, 0],
+      drop: { dropBomb: [0] },
     };
 
     const player2Animations = {
@@ -64,6 +65,7 @@ class GameBoardFactory {
       right: [23, 21, 22, 21],
       up: [17, 15, 16, 15],
       down: [14, 12, 13, 12],
+      drop: { dropBomb: [1] },
     };
 
     const player1AnimationsIdle = {
@@ -136,6 +138,7 @@ class GameBoardFactory {
             },
 
             1,
+            player1Animations.drop,
             player1Animations.left,
             player1Animations.right,
             player1Animations.up,
@@ -157,6 +160,7 @@ class GameBoardFactory {
               placeBomb: 67,
             },
             2,
+            player2Animations.drop,
             player2Animations.left,
             player2Animations.right,
             player2Animations.up,
