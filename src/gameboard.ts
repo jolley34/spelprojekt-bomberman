@@ -11,32 +11,37 @@ class GameBoard implements IAddEntity {
   private timer: Timer;
   private playerCard1: PlayerCard;
   private playerCard2: PlayerCard;
-  // private player1Icon: p5.Image;
+  private endOfGame: EndOfGame;
 
   constructor(
     entities: GameEntity[],
-    backgroundImage: p5.Image
-    //player1Icon: p5.Image,
-    //player2Icon: p5.Image
+    backgroundImage: p5.Image,
+    player1Icon: p5.Image,
+    player2Icon: p5.Image
   ) {
     this.clouds = new Clouds();
     this.flowers = new Flowers();
     this.entities = entities;
     this.backgroundImage = backgroundImage;
     this.timer = new Timer();
+    this.endOfGame = new EndOfGame(game);
     this.playerCard1 = new PlayerCard(
       "Player 1",
-      //player1Icon,
+      // Change the image accordingly to the player1
+      assets.images.player1Animations[0],
       3,
       width / 2 - 550,
       50,
+      1
     );
     this.playerCard2 = new PlayerCard(
       "Player 2",
-      // player2Icon,
+      // Change the image accordingly to the player2
+      assets.images.entities[2],
       3,
       width / 2 + 550,
       50,
+      2
     );
   }
 
@@ -60,7 +65,6 @@ class GameBoard implements IAddEntity {
         if (entity1 instanceof Bomb || entity2 instanceof Bomb) continue;
         if (entity1 instanceof Player && entity2 instanceof Player) continue;
 
-       
         // Kolla om entitierna överlappar varandra
         // 1. Identifiera faktiska krockar
         // Definera höger och vänster sida för varje entitet
@@ -90,8 +94,8 @@ class GameBoard implements IAddEntity {
     }
     if (entity1 instanceof Player && entity2 instanceof SlowDownOpponent) {
       const opponent = this.getOpponent(entity1);
-    if (opponent) {
-      opponent.decreaseSpeed();
+      if (opponent) {
+        opponent.decreaseSpeed();
       }
       entity2.shouldBeRemoved = true;
     }
@@ -112,10 +116,10 @@ class GameBoard implements IAddEntity {
   }
   private getOpponent(currentPlayer: Player): Player | null {
     // Assuming there are only two players
-    return this.entities.find((entity) => entity instanceof Player && entity !== currentPlayer) as Player | null;
+    return this.entities.find(
+      (entity) => entity instanceof Player && entity !== currentPlayer
+    ) as Player | null;
   }
-
-
 
   // om R1 är mindre än L2 så är det ingen krock men om L2 är mindre än R1 har vi KANSKE en krock.
   // R2 är mindre än L1 = ingen krock, men L1 är mindre än R2 är en krock
@@ -140,6 +144,7 @@ class GameBoard implements IAddEntity {
         i--;
       }
     }
+    this.endOfGame.update();
   }
 
   public addEntity(entity: GameEntity) {
@@ -152,6 +157,11 @@ class GameBoard implements IAddEntity {
 
   public endGame() {
     this.timer.stop();
+    this.endOfGame.show();
+  }
+
+  public isGameOver(): boolean {
+    return this.timer.getTime() === "00:00";
   }
 
   public draw() {
@@ -164,6 +174,7 @@ class GameBoard implements IAddEntity {
     this.playerCard2.draw();
     this.clouds.draw();
     this.flowers.draw();
+    this.endOfGame.draw();
   }
 }
 

@@ -48,32 +48,6 @@ class GameBoardFactory {
     ];
   }
 
-  /* public playInGameMusic() {
-    assets.music.ingamemusic.play(); // Spela musik ingame, kallas ej någonstans
-  } */
-
-  // public drawFloor() {
-  //   const numRows = this.board1.length;
-  //   const numCols = this.board1[0].length;
-
-  //   // Adjust the scaling (0.6 for 60% size)
-  //   const scalingGameboard = 0.6;
-  //   const blockSize = min(width / numCols, height / numRows) * scalingGameboard;
-
-  //   const centerX = width / 2 - (numCols * blockSize) / 2.142;
-  //   const centerY = height / 2 - (numRows * blockSize) / 1.89;
-
-  //   for (let i = 0; i < numRows; i++) {
-  //     for (let j = 0; j < numCols; j++) {
-  //       const x = centerX + j * blockSize;
-  //       const y = centerY + i * blockSize;
-
-  //       fill(144, 238, 144);
-  //       rect(x, y, blockSize, blockSize);
-  //     }
-  //   }
-  // }
-
   public generateGameBoard(boardNumber: number): GameBoard {
     const board = boardNumber === 1 ? this.board1 : this.board2;
     const entities: GameEntity[] = [];
@@ -141,6 +115,11 @@ class GameBoardFactory {
       }
     }
 
-    return new GameBoard(entities, assets.images.backgroundImages[boardNumber]);
+    return new GameBoard(
+      entities,
+      assets.images.backgroundImages[boardNumber],
+      assets.images.player1Animations[0],
+      assets.images.entities[2]
+    );
   }
 }

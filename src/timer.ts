@@ -5,7 +5,8 @@ class Timer {
 
   constructor() {
     this.startTime = 0;
-    this.elapsedTime = 300000; // sätter tiden till 5 min
+    // todo: set the time back to 5 min (30000) after testing
+    this.elapsedTime = 3000; // sätter tiden till 5 min
     this.timerInterval = null;
   }
 
@@ -18,13 +19,14 @@ class Timer {
     this.timerInterval = setInterval(() => {
       const currentTime = Date.now();
       const elapsedMilliseconds = currentTime - this.startTime;
-      this.elapsedTime = Math.max(300000 - elapsedMilliseconds, 0);
+      // todo: set the time back to 5 min (30000) after testing
+      this.elapsedTime = Math.max(3000 - elapsedMilliseconds, 0);
 
-// stannar tiden efter 5 min
-// lägg till logik som visar endgame med resultat efter tiden tar slut
-if (this.elapsedTime === 0) {
-  this.stop();
-}
+      // stannar tiden efter 5 min
+      // lägg till logik som visar endgame med resultat efter tiden tar slut
+      if (this.elapsedTime === 0) {
+        this.stop();
+      }
     }, 1000);
   }
 
@@ -32,13 +34,14 @@ if (this.elapsedTime === 0) {
     if (this.timerInterval) {
       clearInterval(this.timerInterval);
       this.timerInterval = null;
-      this.elapsedTime = Date.now() - this.startTime;
+      //this.elapsedTime = Date.now() - this.startTime;
     }
   }
 
   public reset() {
     this.stop();
-    this.elapsedTime = 300000;
+    // todo: set the time back to 5 min
+    this.elapsedTime = 3000;
   }
 
   public getTime() {
@@ -47,7 +50,7 @@ if (this.elapsedTime === 0) {
     let seconds = totalSeconds % 60;
     const padZero = (num: number) => (num < 10 ? `0${num}` : `${num}`);
 
-  return `${padZero(minutes)}:${padZero(seconds)}`;
+    return `${padZero(minutes)}:${padZero(seconds)}`;
   }
 
   public drawTimer() {
