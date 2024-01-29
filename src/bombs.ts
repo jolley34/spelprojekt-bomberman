@@ -2,7 +2,7 @@
 
 class Bomb extends GameEntity {
   private bombTimer: number;
-  private range: number;
+  public range: number;
 
   constructor(x: number, y: number, size: number) {
     super(assets.images.bombs[0], x, y, size / 2.25);

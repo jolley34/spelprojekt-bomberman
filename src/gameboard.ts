@@ -60,6 +60,8 @@ class GameBoard implements IAddEntity {
         if (entity1 instanceof Bomb || entity2 instanceof Bomb) continue;
         if (entity1 instanceof Player && entity2 instanceof Player) continue;
 
+    
+
        
         // Kolla om entitierna överlappar varandra
         // 1. Identifiera faktiska krockar
@@ -109,6 +111,7 @@ class GameBoard implements IAddEntity {
       entity1.x -= entity1.speedX;
       entity1.y -= entity1.speedY;
     }
+    
   }
   private getOpponent(currentPlayer: Player): Player | null {
     // Assuming there are only two players
