@@ -124,7 +124,7 @@ function preload() {
       ],
     },
     music: {
-      ingamemusic: loadSound("../assets/music/spelprojekt-ingame-v6.mp3"),
+      ingamemusic: loadSound("../assets/music/timecop1983-on-the-run.mp3"),
       menumusic: loadSound("..//assets/music/spelprojekt-menu.mp3"),
     },
     playerSoundEffects: {
