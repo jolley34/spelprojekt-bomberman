@@ -134,6 +134,7 @@ class GameBoard implements IAddEntity {
   }
 
   private handleGameOver() {
+    const score = this.calculateScore();
     if (this.playerCard1.lives <= 0) {
       this.endOfGame.setWinner("Player 2");
       this.endOfGame.setWinnerIcon(this.playerCard2.icon);
@@ -142,7 +143,13 @@ class GameBoard implements IAddEntity {
       this.endOfGame.setWinnerIcon(this.playerCard1.icon);
     }
 
+    this.endOfGame.setScore(score);
     this.endGame();
+  }
+
+  private calculateScore(): number {
+    const remainingTime = this.timer.getRemainingTime();
+    return Math.floor(remainingTime / 1000);
   }
 
   private getOpponent(currentPlayer: Player): Player | null {
@@ -221,8 +228,3 @@ class GameBoard implements IAddEntity {
     this.endOfGame.draw();
   }
 }
-
-// const entitet = new Obstacle(0,0,10);
-// if (entitet instanceof Obstacle) {
-//   // reagera baserat på att entiteten är ett hinder...
-// }

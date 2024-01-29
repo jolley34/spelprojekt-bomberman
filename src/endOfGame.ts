@@ -54,6 +54,10 @@ class EndOfGame {
     this.icon = icon;
   }
 
+  public setScore(score: number) {
+    this.displayScore = score;
+  }
+
   private drawEndGameBanner() {
     const padding = 20;
     push();
