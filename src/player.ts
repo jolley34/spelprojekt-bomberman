@@ -24,7 +24,7 @@ class Player extends GameEntity {
   private powerUpTimer: number;
   private id: number;
   private wasKeyPressed: boolean;
-  private lastBombDropTime: number; 
+  private bombDropTimer: number; 
 
   constructor(x: number, y: number, size: number, controls: Controls, id: number) {
     super(assets.images.player1Animations[0], x, y, size);
@@ -40,7 +40,7 @@ class Player extends GameEntity {
     this.powerUpDuration = 10000;
     this.powerUpTimer = 0;
     this.wasKeyPressed = false;
-    this.lastBombDropTime = 0;
+    this.bombDropTimer = 0;
 
     // Vilka bilder jag loopar igenom när jag trycker vänster
     this.leftAnimationLoop = [7, 6, 8, 6];
@@ -55,6 +55,7 @@ class Player extends GameEntity {
   
 
   public update(gameBoard: IAddEntity): void {
+    this.bombDropTimer -= deltaTime
     // Sätter hastigheten utifrån vad spelaren trycker på för knapp
     let horizontalSpeed = 0;
     let verticalSpeed = 0;
@@ -78,13 +79,11 @@ class Player extends GameEntity {
       this.animateDown();
     }
     
-    const currentTime = millis();
-    const timeSinceLastDrop = currentTime - this.lastBombDropTime;
     
     // kollar ifall det har gått 4sek since last dropbombtime
-    if (keyIsDown(this.controls.placeBomb) && !this.wasKeyPressed && timeSinceLastDrop >= 4000) {
+    if (keyIsDown(this.controls.placeBomb) && !this.wasKeyPressed) {
       this.dropBomb(this.x, this.y, gameBoard);
-      this.lastBombDropTime = currentTime; // Updaterar lastdropbombtime
+      
       this.wasKeyPressed = true;
     } else if (!keyIsDown(this.controls.placeBomb)) {
       this.wasKeyPressed = false;
@@ -122,8 +121,10 @@ class Player extends GameEntity {
     positionY: number,
     gameBoard: IAddEntity
   ): void {
-    if (!gameBoard.entities.some((entity) => entity instanceof Bomb)) {
+    
+    if (this.bombDropTimer <0 ) {
       const bomb = new Bomb(positionX, positionY, 50);
+      this.bombDropTimer = 4000;
       gameBoard.addEntity(bomb);
       this.wasKeyPressed = false;
     }
