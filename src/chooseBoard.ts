@@ -12,15 +12,21 @@ class ChooseBoard {
       width / 4 + 130,
       height / 2 + 270,
       250,
-      50,
-      "Garden Board"
+      60,
+      "GARDEN  BOARD",
+      "black",
+      "#B3D917",
+      "#302f2f"
     );
     this.iceBoardButton = new Button(
       width / 4 + width / 2 - 130,
       height / 2 + 270,
       250,
-      50,
-      "Ice Board"
+      60,
+      "ICE  BOARD",
+      "black",
+      "#B3D917",
+      "#302f2f"
     );
   }
 

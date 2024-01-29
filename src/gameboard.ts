@@ -11,32 +11,41 @@ class GameBoard implements IAddEntity {
   private timer: Timer;
   private playerCard1: PlayerCard;
   private playerCard2: PlayerCard;
-  // private player1Icon: p5.Image;
+  private endOfGame: EndOfGame;
+  private icon: p5.Image;
+
+  private isGameActive: boolean;
 
   constructor(
     entities: GameEntity[],
-    backgroundImage: p5.Image
-    //player1Icon: p5.Image,
-    //player2Icon: p5.Image
+    backgroundImage: p5.Image,
+    icon: p5.Image
   ) {
     this.clouds = new Clouds();
     this.flowers = new Flowers();
     this.entities = entities;
     this.backgroundImage = backgroundImage;
     this.timer = new Timer();
+    this.icon = icon;
+    this.endOfGame = new EndOfGame(game, this.icon);
+    this.isGameActive = true;
     this.playerCard1 = new PlayerCard(
       "Player 1",
-      //player1Icon,
+      // Change the image accordingly to the player1
+      assets.images.player1Animations[0],
       3,
       width / 2 - 550,
       50,
+      1
     );
     this.playerCard2 = new PlayerCard(
       "Player 2",
-      // player2Icon,
+      // Change the image accordingly to the player2
+      assets.images.entities[2],
       3,
       width / 2 + 550,
       50,
+      2
     );
   }
 
@@ -60,7 +69,6 @@ class GameBoard implements IAddEntity {
         if (entity1 instanceof Bomb || entity2 instanceof Bomb) continue;
         if (entity1 instanceof Player && entity2 instanceof Player) continue;
 
-       
         // Kolla om entitierna överlappar varandra
         // 1. Identifiera faktiska krockar
         // Definera höger och vänster sida för varje entitet
@@ -90,15 +98,29 @@ class GameBoard implements IAddEntity {
     }
     if (entity1 instanceof Player && entity2 instanceof SlowDownOpponent) {
       const opponent = this.getOpponent(entity1);
-    if (opponent) {
-      opponent.decreaseSpeed();
+      if (opponent) {
+        opponent.decreaseSpeed();
       }
       entity2.shouldBeRemoved = true;
     }
 
     if (entity1 instanceof Player && entity2 instanceof Explosion) {
-      // entity1.id
-      this.playerCard1.removeLife();
+      if (!entity1.isProtectd) {
+        // Remove a life from the appropriate player card
+        if (entity1.getID() === this.playerCard1.playerNumber) {
+          this.playerCard1.removeLife();
+        } else if (entity1.getID() === this.playerCard2.playerNumber) {
+          this.playerCard2.removeLife();
+        }
+
+        // Set the player to be protected
+        entity1.isProtectd = true;
+        entity1.protectionTimer = entity1.protectionDuration;
+      }
+    }
+
+    if (this.playerCard1.lives <= 0 || this.playerCard2.lives <= 0) {
+      this.handleGameOver();
     }
 
     if (
@@ -110,12 +132,25 @@ class GameBoard implements IAddEntity {
       entity1.y -= entity1.speedY;
     }
   }
-  private getOpponent(currentPlayer: Player): Player | null {
-    // Assuming there are only two players
-    return this.entities.find((entity) => entity instanceof Player && entity !== currentPlayer) as Player | null;
+
+  private handleGameOver() {
+    if (this.playerCard1.lives <= 0) {
+      this.endOfGame.setWinner("Player 2");
+      this.endOfGame.setWinnerIcon(this.playerCard2.icon);
+    } else if (this.playerCard2.lives <= 0) {
+      this.endOfGame.setWinner("Player 1");
+      this.endOfGame.setWinnerIcon(this.playerCard1.icon);
+    }
+
+    this.endGame();
   }
 
-
+  private getOpponent(currentPlayer: Player): Player | null {
+    // Assuming there are only two players
+    return this.entities.find(
+      (entity) => entity instanceof Player && entity !== currentPlayer
+    ) as Player | null;
+  }
 
   // om R1 är mindre än L2 så är det ingen krock men om L2 är mindre än R1 har vi KANSKE en krock.
   // R2 är mindre än L1 = ingen krock, men L1 är mindre än R2 är en krock
@@ -124,11 +159,16 @@ class GameBoard implements IAddEntity {
   // en if sats med 4 rader VILL VI HAA, 2 med x och 2 med y
 
   public update() {
-    // Loop over all entities and update them
+    if (!this.isGameActive) {
+      this.endOfGame.update();
+      return;
+    }
     for (const entity of this.entities) {
       entity.update(this);
     }
-
+    if (this.isGameOver()) {
+      this.endGame();
+    }
     this.checkCollision();
     this.removeEntities();
   }
@@ -140,6 +180,7 @@ class GameBoard implements IAddEntity {
         i--;
       }
     }
+    this.endOfGame.update();
   }
 
   public addEntity(entity: GameEntity) {
@@ -151,7 +192,20 @@ class GameBoard implements IAddEntity {
   }
 
   public endGame() {
+    this.isGameActive = false;
     this.timer.stop();
+    this.endOfGame.show();
+  }
+
+  public isGameOver(): boolean {
+    // Handle the case when the time is over
+    const isTimeOver = this.timer.getTime() === "00:00";
+
+    // Hndle the case when one of the players has no lives left
+    const isLifeOver =
+      this.playerCard1.lives <= 0 || this.playerCard2.lives <= 0;
+
+    return isTimeOver || isLifeOver;
   }
 
   public draw() {
@@ -164,6 +218,7 @@ class GameBoard implements IAddEntity {
     this.playerCard2.draw();
     this.clouds.draw();
     this.flowers.draw();
+    this.endOfGame.draw();
   }
 }
 

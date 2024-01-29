@@ -25,6 +25,11 @@ class Player extends GameEntity {
   private idleAnimations: any;
   private id: number;
 
+  public isProtectd: boolean = false;
+  public protectionDuration: number = 3000;
+  public protectionTimer: number;
+
+
   constructor(
     x: number,
     y: number,
@@ -45,6 +50,7 @@ class Player extends GameEntity {
   ) {
     super(assets.images.playerAnimations[0], x, y, size);
 
+
     this.id = id;
     this.controls = controls;
     this.speedX = 0;
@@ -56,6 +62,10 @@ class Player extends GameEntity {
     this.decreasedSpeed = 1.5;
     this.powerUpDuration = 10000;
     this.powerUpTimer = 0;
+
+    this.isProtectd = false;
+    this.protectionDuration = 3000;
+    this.protectionTimer = 0;
 
     this.wasKeyPressed = false;
     this.lastDirection = "";
@@ -72,10 +82,17 @@ class Player extends GameEntity {
   }
 
   public update(gameBoard: IAddEntity): void {
-    // Sätter hastigheten utifrån vad spelaren trycker på för knapp
     let horizontalSpeed = 0;
     let verticalSpeed = 0;
     let isMoving = false;
+
+    // checking if player is protected and if the time has run out
+    if (this.isProtectd) {
+      this.protectionTimer -= deltaTime;
+      if (this.protectionTimer <= 0) {
+        this.isProtectd = false;
+      }
+    }
 
     if (keyIsDown(this.controls.left)) {
       horizontalSpeed = -this.getEffectiveSpeed();

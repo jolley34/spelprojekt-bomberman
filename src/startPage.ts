@@ -17,7 +17,7 @@ class StartPage implements IGamePage {
     this.title = "Cruel Nature";
 
     this.instructions =
-      "HOW TO PLAY  \n \n Lorem ipsum dolor sit amet,  sed do eiusmod \n \n tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim sint\n \n  ea commodo consequat. Duis aute irure dolor in reprehenderit in \n \n voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur\n \n Press START GAME to begin";
+      "Your  goal  is  to  navigate  through  the lush  garden  or  the  frosty  ice,  collect  \n the  power-ups,  avoid obstacles,  and  reach  the  end  before  time  runs  out. \n Eliminate  your  opponent  by  placing  bombs  to  demolish  blocks  and  pave \n  your  path  towards  your  victory. \n\n Press  START  GAME  to begin";
 
     this.highScore = `High Score\n${this.playerName}\n${this.playerScore}`;
 
@@ -27,8 +27,11 @@ class StartPage implements IGamePage {
       width / 2,
       height / 2 + 200,
       250,
-      50,
-      "START GAME"
+      60,
+      "START  GAME",
+      "black",
+      "#B3D917",
+      "#302f2f"
     );
   }
 
@@ -64,7 +67,6 @@ class StartPage implements IGamePage {
     push();
     fill("#B3D917");
     textAlign(CENTER, CENTER);
-    // textFont("Minecraft");
     text(this.title, width / 2, height / 4 - offsetY);
     pop();
   }
@@ -87,9 +89,8 @@ class StartPage implements IGamePage {
     pop();
 
     fill("#B3D917");
-    textSize(20);
+    textSize(30);
     textAlign(CENTER, CENTER);
-    //textFont("Minecraft");
     text(this.highScore, textX, textY);
   }
 
@@ -110,10 +111,11 @@ class StartPage implements IGamePage {
     rect(rectPositionX, rectPositionY, rectWidth, rectHeight, 10);
 
     fill(255);
-    textSize(16);
-    // textFont("Minecraft");
+    textSize(25);
     textAlign(CENTER, CENTER);
-    text(this.instructions, textX, textY, rectWidth - padding * 2);
+    text("HOW TO PLAY", textX, textY - 100);
+    textSize(18);
+    text(this.instructions, textX, textY);
     pop();
   }
 
