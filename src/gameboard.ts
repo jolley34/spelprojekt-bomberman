@@ -13,6 +13,8 @@ class GameBoard implements IAddEntity {
   private playerCard2: PlayerCard;
   private endOfGame: EndOfGame;
 
+  private isGameActive: boolean;
+
   constructor(
     entities: GameEntity[],
     backgroundImage: p5.Image,
@@ -25,6 +27,7 @@ class GameBoard implements IAddEntity {
     this.backgroundImage = backgroundImage;
     this.timer = new Timer();
     this.endOfGame = new EndOfGame(game);
+    this.isGameActive = true;
     this.playerCard1 = new PlayerCard(
       "Player 1",
       // Change the image accordingly to the player1
@@ -138,11 +141,16 @@ class GameBoard implements IAddEntity {
   // en if sats med 4 rader VILL VI HAA, 2 med x och 2 med y
 
   public update() {
-    // Loop over all entities and update them
+    if (!this.isGameActive) {
+      this.endOfGame.update();
+      return;
+    }
     for (const entity of this.entities) {
       entity.update(this);
     }
-
+    if (this.isGameOver()) {
+      this.endGame();
+    }
     this.checkCollision();
     this.removeEntities();
   }
@@ -166,6 +174,7 @@ class GameBoard implements IAddEntity {
   }
 
   public endGame() {
+    this.isGameActive = false;
     this.timer.stop();
     this.endOfGame.show();
   }
