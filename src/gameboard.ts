@@ -171,7 +171,14 @@ class GameBoard implements IAddEntity {
   }
 
   public isGameOver(): boolean {
-    return this.timer.getTime() === "00:00";
+    // Handle the case when the time is over
+    const isTimeOver = this.timer.getTime() === "00:00";
+
+    // Hndle the case when one of the players has no lives left
+    const isLifeOver =
+      this.playerCard1.lives <= 0 || this.playerCard2.lives <= 0;
+
+    return isTimeOver || isLifeOver;
   }
 
   public draw() {
