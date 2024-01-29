@@ -125,7 +125,9 @@ function preload() {
     },
     music: {
       ingamemusic: loadSound("../assets/music/timecop1983-on-the-run.mp3"),
-      menumusic: loadSound("..//assets/music/spelprojekt-menu.mp3"),
+      menumusic: loadSound(
+        "..//assets/music/timecop1983-it-was-only-a-dream.mp3"
+      ),
     },
     playerSoundEffects: {
       powerupsound: [loadSound("../assets/player-sound-effects/monkey-1.wav")],
