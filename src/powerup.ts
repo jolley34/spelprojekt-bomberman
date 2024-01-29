@@ -8,3 +8,10 @@ class SlowDownOpponent extends GameEntity {
     super(assets.images.powerups[1], x, y, size);
   }
 }
+
+class LongerBombRange extends GameEntity {
+  constructor(x: number, y: number, size: number) {
+    super(assets.images.powerups[1], x, y, size);
+
+  }
+}
