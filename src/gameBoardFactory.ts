@@ -89,27 +89,39 @@ class GameBoardFactory {
         if (board[i][j] === 3) {
           entities.push(new SpeedUp(x, y, blockSize));
         }
-        if (board[i][j] === 4 ) {
+        if (board[i][j] === 4) {
           entities.push(new SlowDownOpponent(x, y, blockSize));
         }
         if (board[i][j] === 9) {
-          const player = new Player(x, y, blockSize * 0.8, {
-            up: UP_ARROW,
-            left: LEFT_ARROW,
-            down: DOWN_ARROW,
-            right: RIGHT_ARROW,
-            placeBomb: 80,
-          }, 1, );
+          const player = new Player(
+            x,
+            y,
+            blockSize * 0.8,
+            {
+              up: UP_ARROW,
+              left: LEFT_ARROW,
+              down: DOWN_ARROW,
+              right: RIGHT_ARROW,
+              placeBomb: 80,
+            },
+            1
+          );
           entities.push(player);
         }
         if (board[i][j] === 8) {
-          const player2 = new Player(x, y, blockSize * 0.8, {
-            up: 87,
-            left: 65,
-            down: 83,
-            right: 68,
-            placeBomb: 67,
-          }, 2 );
+          const player2 = new Player(
+            x,
+            y,
+            blockSize * 0.8,
+            {
+              up: 87,
+              left: 65,
+              down: 83,
+              right: 68,
+              placeBomb: 67,
+            },
+            2
+          );
           entities.push(player2);
         }
       }
@@ -118,8 +130,7 @@ class GameBoardFactory {
     return new GameBoard(
       entities,
       assets.images.backgroundImages[boardNumber],
-      assets.images.player1Animations[0],
-      assets.images.entities[2]
+      assets.images.player1Animations[0]
     );
   }
 }

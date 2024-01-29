@@ -12,21 +12,22 @@ class GameBoard implements IAddEntity {
   private playerCard1: PlayerCard;
   private playerCard2: PlayerCard;
   private endOfGame: EndOfGame;
+  private icon: p5.Image;
 
   private isGameActive: boolean;
 
   constructor(
     entities: GameEntity[],
     backgroundImage: p5.Image,
-    player1Icon: p5.Image,
-    player2Icon: p5.Image
+    icon: p5.Image
   ) {
     this.clouds = new Clouds();
     this.flowers = new Flowers();
     this.entities = entities;
     this.backgroundImage = backgroundImage;
     this.timer = new Timer();
-    this.endOfGame = new EndOfGame(game);
+    this.icon = icon;
+    this.endOfGame = new EndOfGame(game, this.icon);
     this.isGameActive = true;
     this.playerCard1 = new PlayerCard(
       "Player 1",
@@ -118,6 +119,10 @@ class GameBoard implements IAddEntity {
       }
     }
 
+    if (this.playerCard1.lives <= 0 || this.playerCard2.lives <= 0) {
+      this.handleGameOver();
+    }
+
     if (
       entity1 instanceof Player &&
       (entity2 instanceof StaticObstacle ||
@@ -127,6 +132,19 @@ class GameBoard implements IAddEntity {
       entity1.y -= entity1.speedY;
     }
   }
+
+  private handleGameOver() {
+    if (this.playerCard1.lives <= 0) {
+      this.endOfGame.setWinner("Player 2");
+      this.endOfGame.setWinnerIcon(this.playerCard2.icon);
+    } else if (this.playerCard2.lives <= 0) {
+      this.endOfGame.setWinner("Player 1");
+      this.endOfGame.setWinnerIcon(this.playerCard1.icon);
+    }
+
+    this.endGame();
+  }
+
   private getOpponent(currentPlayer: Player): Player | null {
     // Assuming there are only two players
     return this.entities.find(

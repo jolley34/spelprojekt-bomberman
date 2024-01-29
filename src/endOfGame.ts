@@ -7,16 +7,16 @@ class EndOfGame {
   private quitButton: Button;
   private playAgainButton: Button;
 
-  constructor(game: IGamePage) {
+  constructor(game: IGamePage, icon: p5.Image) {
     this.game = game;
     this.isVisible = false;
-    this.displayWinner = "Player 1";
+    this.displayWinner = "";
     this.displayScore = 5000;
-    this.icon = assets.images.entities[2];
+    this.icon = icon;
     // Todo: Choose the right position fot the buttons
     this.quitButton = new Button(
       width / 2 - 100,
-      height / 2 + 100,
+      height / 2 + 150,
       160,
       60,
       "QUIT",
@@ -26,7 +26,7 @@ class EndOfGame {
     );
     this.playAgainButton = new Button(
       width / 2 + 120,
-      height / 2 + 100,
+      height / 2 + 150,
       160,
       60,
       "PLAY AGAIN",
@@ -46,6 +46,14 @@ class EndOfGame {
     this.drawEndGameBanner();
   }
 
+  public setWinner(winner: string) {
+    this.displayWinner = winner;
+  }
+
+  public setWinnerIcon(icon: p5.Image) {
+    this.icon = icon;
+  }
+
   private drawEndGameBanner() {
     const padding = 20;
     push();
@@ -56,7 +64,7 @@ class EndOfGame {
     drawingContext.shadowColor = "black";
     noStroke();
     rectMode(CENTER);
-    rect(width / 2 + padding, height / 2, 550, 330, 10);
+    rect(width / 2 + padding, height / 2, 560, 440, 10);
     drawingContext.shadowOffsetX = 0;
     drawingContext.shadowOffsetY = 0;
     drawingContext.shadowBlur = 0;
@@ -66,8 +74,15 @@ class EndOfGame {
     drawingContext.shadowBlur = 20;
     drawingContext.shadowColor = "black";
 
-    const circleCenterX = width / 2 + 200;
-    const circleCenterY = height / 2 - 100;
+    push();
+    textSize(100);
+    fill(255);
+    textAlign(CENTER, CENTER);
+    text("Game Over", width / 2, height / 2 - 170);
+    pop();
+
+    const circleCenterX = width / 2 + 220;
+    const circleCenterY = height / 2 - 90;
 
     // Draw player icon
     const circleDiameter = 100;
@@ -90,10 +105,10 @@ class EndOfGame {
     fill(255);
     textSize(50);
     textAlign(CENTER, CENTER);
-    text("WINNER", width / 2 + padding, height / 2 - 120);
+    text("WINNER", width / 2 + padding, height / 2 - 80);
     textSize(40);
-    text(this.displayWinner, width / 2 + padding, height / 2 - 60);
-    text(`SCORE: ${this.displayScore}`, width / 2 + padding, height / 2);
+    text(this.displayWinner, width / 2 + padding, height / 2 - 20);
+    text(`SCORE: ${this.displayScore}`, width / 2 + padding, height / 2 + 40);
     pop();
 
     this.quitButton.draw();
