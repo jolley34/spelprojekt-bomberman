@@ -186,7 +186,7 @@ class Player extends GameEntity {
     gameBoard: IAddEntity
   ): void {
     if (this.bombDropTimer < 0) {
-      const bomb = new Bomb(positionX, positionY, 50);
+      const bomb = new Bomb(positionX, positionY, 50, this.id);
       this.bombDropTimer = 2800;
       gameBoard.addEntity(bomb);
       this.wasKeyPressed = false;
