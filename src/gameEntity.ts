@@ -17,7 +17,12 @@ class GameEntity {
 		let hitBoxSize = this.size;
 
 		// Check if the object is the player, and adjust the hitbox size accordingly
-		if (this instanceof Player || this instanceof SpeedUp) { // lägg till här powerups på samma sätt
+		if (
+			this instanceof Player ||
+			this instanceof SpeedUp ||
+			this instanceof SlowDownOpponent
+		) {
+			// lägg till här powerups på samma sätt
 			hitBoxSize *= 0.8; // You can adjust the multiplier as needed for the player
 		}
 
@@ -36,7 +41,7 @@ class GameEntity {
 		image(this.image, this.x, this.y, this.size, this.size);
 
 		const hitBox = this.getHitBox();
-		stroke("red");
+		stroke("red"); // comment or delete this to remove red lines
 		noFill();
 		rect(hitBox.left, hitBox.top, hitBox.width, hitBox.height);
 		pop();
