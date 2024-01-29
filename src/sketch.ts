@@ -19,7 +19,7 @@ let assets: {
     backgroundImages: p5.Image[];
     clouds: p5.Image[];
     entities: p5.Image[];
-    player1Animations: p5.Image[];
+    playerAnimations: p5.Image[];
     playerCard: p5.Image[];
   };
 };
@@ -45,7 +45,10 @@ function preload() {
       ],
       flowers: [loadImage("../assets/flowers/flower-v2.gif")],
       playerCard: [loadImage("../assets/playercard/heart-icon.png")],
-      powerups: [loadImage("../assets/powerup/yy3.gif")],
+      powerups: [
+        loadImage("../assets/powerup/yy3.gif"),
+        loadImage("../assets/powerup/slowdown.gif"),
+      ],
       backgroundImages: [
         loadImage("../assets/background/Controls.svg"),
         loadImage("../assets/background/Map-1-blurred-shadow-v4-copy.png"),
@@ -76,24 +79,55 @@ function preload() {
         loadImage("../assets/entities_img/image3.png"),
         loadImage("../assets/entities_img/bomb-v3.gif"),
       ],
-      player1Animations: [
-        loadImage("../assets/player-1-animations/idle-front.png"), // 0
-        loadImage("../assets/player-1-animations/idle-front-lf.png"), // 1
-        loadImage("../assets/player-1-animations/idle-front-rf.png"), // 2
-        loadImage("../assets/player-1-animations/idle-back.png"), // 3
-        loadImage("../assets/player-1-animations/idle-back-lf.png"), // 4
-        loadImage("../assets/player-1-animations/idle-back-rf.png"), // 5
-        loadImage("../assets/player-1-animations/idle-left.png"), // 6
-        loadImage("../assets/player-1-animations/left-foot-left.png"), // 7
-        loadImage("../assets/player-1-animations/right-foot-left.png"), // 8
-        loadImage("../assets/player-1-animations/idle-right.png"), // 9
-        loadImage("../assets/player-1-animations/right-foot-right.png"), // 10
-        loadImage("../assets/player-1-animations/left-foot-right.png"), // 11
+      playerAnimations: [
+        // Player 1
+        loadImage("../assets/playeranimations/player-1-red-idle-front.png"), // 0
+        loadImage("../assets/playeranimations/player-1-red-idle-front-lf.png"), // 1
+        loadImage("../assets/playeranimations/player-1-red-idle-front-rf.png"), // 2
+        loadImage("../assets/playeranimations/player-1-red-idle-back.png"), // 3
+        loadImage("../assets/playeranimations/player-1-red-idle-back-lf.png"), // 4
+        loadImage("../assets/playeranimations/player-1-red-idle-back-rf.png"), // 5
+        loadImage("../assets/playeranimations/player-1-red-idle-left.png"), // 6
+        loadImage("../assets/playeranimations/player-1-red-left-foot-left.png"), // 7
+        loadImage(
+          "../assets/playeranimations/player-1-red-right-foot-left.png" // 8
+        ),
+        loadImage("../assets/playeranimations/player-1-red-idle-right.png"), // 9
+        loadImage(
+          "../assets/playeranimations/player-1-red-right-foot-right.png" // 10
+        ),
+        loadImage(
+          "../assets/playeranimations/player-1-red-left-foot-right.png" // 11
+        ),
+        //Player 2
+        loadImage("../assets/playeranimations/player-2-blue-idle-front.png"), // 12
+        loadImage("../assets/playeranimations/player-2-blue-idle-front-lf.png"), // 13
+        loadImage("../assets/playeranimations/player-2-blue-idle-front-rf.png"), // 14
+        loadImage("../assets/playeranimations/player-2-blue-idle-back.png"), // 15
+        loadImage("../assets/playeranimations/player-2-blue-idle-back-lf.png"), // 16
+        loadImage("../assets/playeranimations/player-2-blue-idle-back-rf.png"), // 17
+        loadImage("../assets/playeranimations/player-2-blue-idle-left.png"), // 18
+        loadImage(
+          "../assets/playeranimations/player-2-blue-left-foot-left.png"
+        ), // 19
+        loadImage(
+          "../assets/playeranimations/player-2-blue-right-foot-left.png"
+        ), // 20
+        loadImage("../assets/playeranimations/player-2-blue-idle-right.png"), // 21
+        loadImage(
+          "../assets/playeranimations/player-2-blue-right-foot-right.png"
+        ), // 22
+        loadImage(
+          "../assets/playeranimations/player-2-blue-left-foot-right.png"
+        ), // 23
+        loadImage("../assets/playeranimations/stop-dirt.gif"), // 24
       ],
     },
     music: {
-      ingamemusic: loadSound("../assets/music/spelprojekt-ingame-v6.mp3"),
-      menumusic: loadSound("..//assets/music/spelprojekt-menu.mp3"),
+      ingamemusic: loadSound("../assets/music/timecop1983-on-the-run.mp3"),
+      menumusic: loadSound(
+        "..//assets/music/timecop1983-it-was-only-a-dream.mp3"
+      ),
     },
     playerSoundEffects: {
       powerupsound: [loadSound("../assets/player-sound-effects/monkey-1.wav")],

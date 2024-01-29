@@ -29,14 +29,14 @@ class GameBoard implements IAddEntity {
       //player1Icon,
       3,
       width / 2 - 550,
-      50
+      50,
     );
     this.playerCard2 = new PlayerCard(
       "Player 2",
       // player2Icon,
       3,
       width / 2 + 550,
-      50
+      50,
     );
   }
 
@@ -80,9 +80,15 @@ class GameBoard implements IAddEntity {
     if (entity1 instanceof Explosion && entity2 instanceof RemovebleObstacle) {
       entity2.shouldBeRemoved = true;
     }
-
     if (entity1 instanceof Player && entity2 instanceof SpeedUp) {
       entity1.increaseSpeed();
+      entity2.shouldBeRemoved = true;
+    }
+    if (entity1 instanceof Player && entity2 instanceof SlowDownOpponent) {
+      const opponent = this.getOpponent(entity1);
+    if (opponent) {
+      opponent.decreaseSpeed();
+      }
       entity2.shouldBeRemoved = true;
     }
 
@@ -100,6 +106,12 @@ class GameBoard implements IAddEntity {
       entity1.y -= entity1.speedY;
     }
   }
+  private getOpponent(currentPlayer: Player): Player | null {
+    // Assuming there are only two players
+    return this.entities.find((entity) => entity instanceof Player && entity !== currentPlayer) as Player | null;
+  }
+
+
 
   // om R1 är mindre än L2 så är det ingen krock men om L2 är mindre än R1 har vi KANSKE en krock.
   // R2 är mindre än L1 = ingen krock, men L1 är mindre än R2 är en krock
