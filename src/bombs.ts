@@ -23,6 +23,7 @@ class Bomb extends GameEntity {
   private explode(gameBoard: IAddEntity) {
     this.shouldBeRemoved = true;
     this.image = assets.images.bombs[3];
+    assets.playerSoundEffects.explosion.play();
 
     for (let xOffset = -this.range; xOffset <= this.range; xOffset += 25) {
       gameBoard.addEntity(new Explosion(this.x + xOffset, this.y, 25));
