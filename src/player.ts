@@ -1,4 +1,3 @@
-/// <reference path="gameEntity.ts" />
 type Controls = {
   up: number;
   left: number;
@@ -6,6 +5,7 @@ type Controls = {
   right: number;
   placeBomb: number;
 };
+
 class Player extends GameEntity {
   private controls: any;
   public speedX: number;
@@ -20,22 +20,36 @@ class Player extends GameEntity {
   private decreasedSpeed: number;
   private powerUpDuration: number;
   private powerUpTimer: number;
+  private wasKeyPressed: boolean;
+  private lastDirection: string;
+  private idleAnimations: any;
   private id: number;
 
   public isProtectd: boolean = false;
   public protectionDuration: number = 3000;
   public protectionTimer: number;
 
-  private wasKeyPressed: boolean;
 
   constructor(
     x: number,
     y: number,
     size: number,
     controls: Controls,
-    id: number
+    id: number,
+    leftAnimation: number[],
+    rightAnimation: number[],
+    upAnimation: number[],
+    downAnimation: number[],
+    idleAnimations: {
+      playerLeftIdle: number[];
+      playerRightIdle: number[];
+      playerUpIdle: number[];
+      playerDownIdle: number[];
+      playerDefaultIdle: number[];
+    }
   ) {
-    super(assets.images.player1Animations[0], x, y, size);
+    super(assets.images.playerAnimations[0], x, y, size);
+
 
     this.id = id;
     this.controls = controls;
@@ -54,12 +68,13 @@ class Player extends GameEntity {
     this.protectionTimer = 0;
 
     this.wasKeyPressed = false;
+    this.lastDirection = "";
 
-    // Vilka bilder jag loopar igenom när jag trycker vänster
-    this.leftAnimationLoop = [7, 6, 8, 6];
-    this.rightAnimationLoop = [10, 9, 11, 9];
-    this.upAnimationLoop = [4, 3, 5, 3];
-    this.downAnimationLoop = [1, 0, 2, 0];
+    this.leftAnimationLoop = leftAnimation;
+    this.rightAnimationLoop = rightAnimation;
+    this.upAnimationLoop = upAnimation;
+    this.downAnimationLoop = downAnimation;
+    this.idleAnimations = idleAnimations;
   }
 
   getID(): number {
@@ -69,6 +84,7 @@ class Player extends GameEntity {
   public update(gameBoard: IAddEntity): void {
     let horizontalSpeed = 0;
     let verticalSpeed = 0;
+    let isMoving = false;
 
     // checking if player is protected and if the time has run out
     if (this.isProtectd) {
@@ -81,17 +97,45 @@ class Player extends GameEntity {
     if (keyIsDown(this.controls.left)) {
       horizontalSpeed = -this.getEffectiveSpeed();
       this.animateLeft();
+      this.lastDirection = "left";
+      isMoving = true;
     } else if (keyIsDown(this.controls.right)) {
       horizontalSpeed = this.getEffectiveSpeed();
       this.animateRight();
+      this.lastDirection = "right";
+      isMoving = true;
     }
 
     if (keyIsDown(this.controls.up)) {
       verticalSpeed = -this.getEffectiveSpeed();
       this.animateUp();
+      this.lastDirection = "up";
+      isMoving = true;
     } else if (keyIsDown(this.controls.down)) {
       verticalSpeed = this.getEffectiveSpeed();
       this.animateDown();
+      this.lastDirection = "down";
+      isMoving = true;
+    }
+
+    if (!isMoving) {
+      switch (this.lastDirection) {
+        case "left":
+          this.animateLeftIdle();
+          break;
+        case "right":
+          this.animateRightIdle();
+          break;
+        case "up":
+          this.animateUpIdle();
+          break;
+        case "down":
+          this.animateDownIdle();
+          break;
+        default:
+          this.animateDefaultIdle();
+          break;
+      }
     }
 
     if (horizontalSpeed !== 0 && verticalSpeed !== 0) {
@@ -141,7 +185,7 @@ class Player extends GameEntity {
 
   private animateLeft(): void {
     this.image =
-      assets.images.player1Animations[
+      assets.images.playerAnimations[
         this.leftAnimationLoop[
           Math.floor(this.animationIndex) % this.leftAnimationLoop.length
         ]
@@ -154,7 +198,7 @@ class Player extends GameEntity {
 
   private animateRight(): void {
     this.image =
-      assets.images.player1Animations[
+      assets.images.playerAnimations[
         this.rightAnimationLoop[
           Math.floor(this.animationIndex) % this.rightAnimationLoop.length
         ]
@@ -167,7 +211,7 @@ class Player extends GameEntity {
 
   private animateUp(): void {
     this.image =
-      assets.images.player1Animations[
+      assets.images.playerAnimations[
         this.upAnimationLoop[
           Math.floor(this.animationIndex) % this.upAnimationLoop.length
         ]
@@ -180,7 +224,7 @@ class Player extends GameEntity {
 
   private animateDown(): void {
     this.image =
-      assets.images.player1Animations[
+      assets.images.playerAnimations[
         this.downAnimationLoop[
           Math.floor(this.animationIndex) % this.downAnimationLoop.length
         ]
@@ -189,6 +233,56 @@ class Player extends GameEntity {
     this.animationIndex =
       (this.animationIndex + this.animationSpeed) %
       (this.downAnimationLoop.length * this.animationSpeed);
+  }
+
+  private animateLeftIdle(): void {
+    this.image =
+      assets.images.playerAnimations[
+        this.idleAnimations.playerLeftIdle[
+          Math.floor(this.animationIndex) %
+            this.idleAnimations.playerLeftIdle.length
+        ]
+      ];
+  }
+
+  private animateRightIdle(): void {
+    this.image =
+      assets.images.playerAnimations[
+        this.idleAnimations.playerRightIdle[
+          Math.floor(this.animationIndex) %
+            this.idleAnimations.playerRightIdle.length
+        ]
+      ];
+  }
+
+  private animateUpIdle(): void {
+    this.image =
+      assets.images.playerAnimations[
+        this.idleAnimations.playerUpIdle[
+          Math.floor(this.animationIndex) %
+            this.idleAnimations.playerUpIdle.length
+        ]
+      ];
+  }
+
+  private animateDownIdle(): void {
+    this.image =
+      assets.images.playerAnimations[
+        this.idleAnimations.playerDownIdle[
+          Math.floor(this.animationIndex) %
+            this.idleAnimations.playerDownIdle.length
+        ]
+      ];
+  }
+
+  private animateDefaultIdle(): void {
+    this.image =
+      assets.images.playerAnimations[
+        this.idleAnimations.playerDefaultIdle[
+          Math.floor(this.animationIndex) %
+            this.idleAnimations.playerDefaultIdle.length
+        ]
+      ];
   }
 
   // powerup "increaseSpeed" gör att spelaren ökar farten efter den har plockat upp powerup, "getEffectiveSpeed" ligger under kontrollerna högre upp i koden

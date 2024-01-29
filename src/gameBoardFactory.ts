@@ -13,19 +13,19 @@ class GameBoardFactory {
     // prettier-ignore
     this.board1 = [
       [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-      [1, 0, 8, 0, 0, 2, 2, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-      [1, 0, 0, 0, 0, 3, 1, 2, 1, 0, 1, 0, 1, 0, 1, 2, 1, 3, 0, 0, 1],
-      [1, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 2, 2, 2, 2, 0, 0, 0, 0, 1],
-      [1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1],
-      [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 1],
-      [1, 0, 1, 2, 0, 4, 1, 0, 1, 0, 1, 0, 1, 3, 1, 0, 1, 0, 1, 0, 1],
-      [1, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 1],
-      [1, 0, 1, 2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
-      [1, 0, 0, 2, 2, 2, 0, 0, 3, 0, 1, 0, 1, 0, 0, 0, 2, 0, 2, 2, 1],
-      [1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2, 1],
-      [1, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 1],
-      [1, 0, 0, 0, 1, 2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1],
-      [1, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 1],
+      [1, 0, 8, 0, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+      [1, 0, 0, 0, 2, 3, 1, 2, 1, 0, 1, 0, 1, 0, 1, 2, 1, 3, 0, 0, 1],
+      [1, 2, 0, 2, 2, 0, 0, 2, 0, 0, 0, 0, 2, 2, 2, 2, 0, 0, 0, 0, 1],
+      [1, 2, 1, 1, 1, 2, 1, 0, 1, 2, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1],
+      [1, 2, 1, 2, 2, 2, 0, 2, 2, 2, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 1],
+      [1, 0, 1, 2, 2, 4, 1, 0, 1, 0, 1, 0, 1, 3, 1, 0, 1, 0, 1, 0, 1],
+      [1, 2, 0, 2, 2, 2, 2, 0, 0, 2, 0, 0, 2, 2, 0, 0, 3, 0, 0, 0, 1],
+      [1, 2, 1, 2, 1, 0, 1, 0, 1, 2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+      [1, 2, 2, 2, 2, 2, 0, 0, 3, 2, 1, 0, 1, 0, 2, 2, 2, 2, 2, 2, 1],
+      [1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 2, 1, 2, 1, 2, 1],
+      [1, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 4, 0, 0, 2, 2, 2, 2, 2, 1],
+      [1, 0, 0, 0, 1, 2, 1, 2, 1, 0, 1, 0, 1, 2, 1, 0, 2, 0, 0, 0, 1],
+      [1, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 2, 2, 0, 2, 0, 9, 0, 1],
       [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     ];
 
@@ -51,6 +51,36 @@ class GameBoardFactory {
   public generateGameBoard(boardNumber: number): GameBoard {
     const board = boardNumber === 1 ? this.board1 : this.board2;
     const entities: GameEntity[] = [];
+
+    const player1Animations = {
+      left: [7, 6, 8, 6],
+      right: [10, 9, 11, 9],
+      up: [4, 3, 5, 3],
+      down: [1, 0, 2, 0],
+    };
+
+    const player2Animations = {
+      left: [20, 18, 19, 18],
+      right: [23, 21, 22, 21],
+      up: [17, 15, 16, 15],
+      down: [14, 12, 13, 12],
+    };
+
+    const player1AnimationsIdle = {
+      playerLeftIdle: [6],
+      playerRightIdle: [9],
+      playerUpIdle: [3],
+      playerDownIdle: [0],
+      playerDefaultIdle: [0],
+    };
+
+    const player2AnimationsIdle = {
+      playerLeftIdle: [18],
+      playerRightIdle: [21],
+      playerUpIdle: [15],
+      playerDownIdle: [12],
+      playerDefaultIdle: [12],
+    };
 
     // Choose the correct texture index for the board
     const staticObstacleTextureIndex = boardNumber === 1 ? 0 : 9;
@@ -104,7 +134,14 @@ class GameBoardFactory {
               right: RIGHT_ARROW,
               placeBomb: 80,
             },
-            1
+
+            1,
+            player1Animations.left,
+            player1Animations.right,
+            player1Animations.up,
+            player1Animations.down,
+            player1AnimationsIdle
+
           );
           entities.push(player);
         }
@@ -120,8 +157,15 @@ class GameBoardFactory {
               right: 68,
               placeBomb: 67,
             },
-            2
+            2,
+            player2Animations.left,
+            player2Animations.right,
+            player2Animations.up,
+            player2Animations.down,
+            player2AnimationsIdle
           );
+
+
           entities.push(player2);
         }
       }
