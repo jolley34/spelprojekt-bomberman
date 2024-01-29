@@ -119,12 +119,14 @@ class EndOfGame {
     if (this.quitButton.isButtonPressed()) {
       console.log("I quit");
       this.game.changePage("StartPage");
-      // assets.music.menumusic.play();
+      assets.music.ingamemusic.stop();
     }
     if (this.playAgainButton.isButtonPressed()) {
       console.log("I play again");
       this.game.changePage("ChooseBoardPage");
-      // assets.music.ingamemusic.play();
+      assets.music.ingamemusic.stop();
+      assets.music.menumusic.setVolume(0.5);
+      assets.music.menumusic.play();
     }
   }
 
