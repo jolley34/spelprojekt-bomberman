@@ -166,6 +166,10 @@ class Player extends GameEntity {
     //kontrollerar om man redan tryckt på p kan bara släppa en bomb i taget.
     if (keyIsDown(this.controls.placeBomb) && !this.wasKeyPressed) {
       this.dropBomb(this.x, this.y, gameBoard);
+      // Resetar bomb gifsen
+      for (let i = 0; i < assets.images.bombs.length; i++) {
+        assets.images.bombs[i].reset();
+      }
       this.wasKeyPressed = true;
     } else if (!keyIsDown(this.controls.placeBomb)) {
       this.wasKeyPressed = false;
