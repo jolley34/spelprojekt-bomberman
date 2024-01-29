@@ -42,7 +42,7 @@ class GameEntity {
 
 		const hitBox = this.getHitBox();
 		stroke("red"); // comment or delete this to remove red lines
-		noFill();
+		noFill(); // comment or delete this to remove red lines
 		rect(hitBox.left, hitBox.top, hitBox.width, hitBox.height);
 		pop();
 	}
