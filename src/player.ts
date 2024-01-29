@@ -29,7 +29,6 @@ class Player extends GameEntity {
   public protectionDuration: number = 3000;
   public protectionTimer: number;
 
-
   constructor(
     x: number,
     y: number,
@@ -49,7 +48,6 @@ class Player extends GameEntity {
     }
   ) {
     super(assets.images.playerAnimations[0], x, y, size);
-
 
     this.id = id;
     this.controls = controls;
@@ -303,12 +301,14 @@ class Player extends GameEntity {
 
   // hur mycket farten skall öka för spelaren efter powerup
   public increaseSpeed(): void {
+    assets.playerSoundEffects.powerupsound[0].setVolume(0.7);
     assets.playerSoundEffects.powerupsound[0].play();
     this.increasedSpeed = 5.25;
     this.powerUpTimer = this.powerUpDuration;
   }
   public decreaseSpeed(): void {
-    assets.playerSoundEffects.powerupsound[0].play();
+    assets.playerSoundEffects.powerupsound[1].setVolume(0.7);
+    assets.playerSoundEffects.powerupsound[1].play();
     this.decreasedSpeed = 0.2;
     this.increasedSpeed = 0;
     this.powerUpTimer = this.powerUpDuration;
