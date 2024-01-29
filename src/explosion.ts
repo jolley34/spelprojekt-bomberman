@@ -5,11 +5,11 @@ class Explosion extends GameEntity {
 
   constructor(x: number, y: number, size: number) {
     super(assets.images.bombs[3], x, y, size);
-    this.timer = 15;
+    this.timer = 500;
   }
 
   public update() {
-    this.timer--;
+    this.timer -= deltaTime;
 
     if (this.timer <= 0) {
       this.shouldBeRemoved = true;
