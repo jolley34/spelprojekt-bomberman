@@ -1,3 +1,5 @@
+/// <reference path="gameEntity.ts" />
+
 type Controls = {
   up: number;
   left: number;
@@ -24,6 +26,7 @@ class Player extends GameEntity {
   private lastDirection: string;
   private idleAnimations: any;
   private id: number;
+  private bombDropTimer: number; 
 
   public isProtectd: boolean = false;
   public protectionDuration: number = 3000;
@@ -57,11 +60,11 @@ class Player extends GameEntity {
     this.speedY = 0;
     this.animationIndex = 0;
     this.animationSpeed = 0.8;
-
     this.increasedSpeed = 2;
     this.decreasedSpeed = 1.5;
     this.powerUpDuration = 10000;
     this.powerUpTimer = 0;
+    this.bombDropTimer = 0;
 
     this.isProtectd = false;
     this.protectionDuration = 3000;
@@ -82,6 +85,8 @@ class Player extends GameEntity {
   }
 
   public update(gameBoard: IAddEntity): void {
+    this.bombDropTimer -= deltaTime
+
     let horizontalSpeed = 0;
     let verticalSpeed = 0;
     let isMoving = false;
@@ -93,6 +98,8 @@ class Player extends GameEntity {
         this.isProtectd = false;
       }
     }
+
+
 
     if (keyIsDown(this.controls.left)) {
       horizontalSpeed = -this.getEffectiveSpeed();
@@ -106,6 +113,7 @@ class Player extends GameEntity {
       isMoving = true;
     }
 
+    
     if (keyIsDown(this.controls.up)) {
       verticalSpeed = -this.getEffectiveSpeed();
       this.animateUp();
@@ -137,6 +145,20 @@ class Player extends GameEntity {
           break;
       }
     }
+    
+    
+    // kollar ifall det har gått 4sek since last dropbombtime
+    if (keyIsDown(this.controls.placeBomb) && !this.wasKeyPressed) {
+      // Resetar bomb gifsen
+      for (let i = 0; i < assets.images.bombs.length; i++) {
+        assets.images.bombs[i].reset();
+      }
+      this.dropBomb(this.x, this.y, gameBoard);
+      
+      this.wasKeyPressed = true;
+    } else if (!keyIsDown(this.controls.placeBomb)) {
+      this.wasKeyPressed = false;
+    }
 
     if (horizontalSpeed !== 0 && verticalSpeed !== 0) {
       const diagonalSpeed = Math.sqrt(
@@ -162,28 +184,20 @@ class Player extends GameEntity {
         this.resetPowerUp();
       }
     }
-
-    //kontrollerar om man redan tryckt på p kan bara släppa en bomb i taget.
-    if (keyIsDown(this.controls.placeBomb) && !this.wasKeyPressed) {
-      this.dropBomb(this.x, this.y, gameBoard);
-      // Resetar bomb gifsen
-      for (let i = 0; i < assets.images.bombs.length; i++) {
-        assets.images.bombs[i].reset();
-      }
-      this.wasKeyPressed = true;
-    } else if (!keyIsDown(this.controls.placeBomb)) {
-      this.wasKeyPressed = false;
-    }
   }
+   
 
   public dropBomb(
     positionX: number,
     positionY: number,
     gameBoard: IAddEntity
   ): void {
-    if (!gameBoard.entities.filter((entity) => entity instanceof Bomb).length) {
+    
+    if (this.bombDropTimer <0 ) {
       const bomb = new Bomb(positionX, positionY, 50);
+      this.bombDropTimer = 4000;
       gameBoard.addEntity(bomb);
+      this.wasKeyPressed = false;
     }
   }
 
@@ -319,4 +333,5 @@ class Player extends GameEntity {
     this.decreasedSpeed = 0;
     this.powerUpTimer = 0;
   }
+ 
 }
