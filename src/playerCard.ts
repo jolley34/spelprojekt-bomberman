@@ -1,26 +1,31 @@
 class PlayerCard {
   name: string;
-  // icon: p5.Image;
+  icon: p5.Image;
   lives: number;
   positionX: number;
   positionY: number;
+  playerNumber: number;
 
   constructor(
     name: string,
-    //icon: p5.Image,
+    icon: p5.Image,
     lives: number,
     positionX: number,
-    positionY: number
+    positionY: number,
+    playerNumber: number
   ) {
     this.name = name;
-    // this.icon = icon;
+    this.icon = icon;
     this.lives = lives;
     this.positionX = positionX;
     this.positionY = positionY;
+    this.playerNumber = playerNumber;
   }
 
   public removeLife() {
-    this.lives--;
+    if (this.lives > 0) {
+      this.lives--;
+    }
   }
 
   public draw() {
@@ -41,25 +46,49 @@ class PlayerCard {
     drawingContext.shadowOffsetY = 20;
     drawingContext.shadowBlur = 20;
     drawingContext.shadowColor = "black";
+
+    const heartSpacing = 50;
+    const startX = this.positionX - (heartSpacing * (this.lives - 1)) / 2;
+    for (let i = 0; i < this.lives; i++) {
+      image(
+        assets.images.playerCard[0],
+        startX + i * heartSpacing - 20,
+        this.positionY + 45,
+        40,
+        40
+      );
+    }
+
+    let circleCenterX, circleCenterY;
+    if (this.playerNumber === 1) {
+      circleCenterX = this.positionX + 100;
+      circleCenterY = this.positionY + 130;
+    } else {
+      circleCenterX = this.positionX - 100;
+      circleCenterY = this.positionY + 130;
+    }
+
+    // Draw player icon
+    const circleDiameter = 100;
     fill("#AECDDB");
-    circle(this.positionX * 1.38, this.positionY * 3.22, 100);
+    circle(circleCenterX, circleCenterY, circleDiameter);
+    imageMode(CENTER);
+    image(
+      this.icon,
+      circleCenterX,
+      circleCenterY,
+      circleDiameter - 20,
+      circleDiameter - 20
+    );
+
     drawingContext.shadowOffsetX = 0;
     drawingContext.shadowOffsetY = 0;
     drawingContext.shadowBlur = 0;
     drawingContext.shadowColor = "black";
 
-    // Loops through the lives and draws them
-    image(
-      assets.images.playerCard[0],
-      this.positionX * 0.65,
-      this.positionY * 1.7,
-      40,
-      40
-    );
-
     fill("255");
     textSize(30);
-    textAlign(RIGHT);
+    textAlign(CENTER);
     text(this.name, this.positionX, this.positionY);
 
     pop();

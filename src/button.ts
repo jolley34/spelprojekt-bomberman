@@ -4,19 +4,28 @@ class Button {
   private width: number;
   private height: number;
   private text: string;
+  private color: string;
+  private textColor: string;
+  private hoverColor: string;
   private image?: p5.Image;
   constructor(
     positionX: number,
     positionY: number,
     width: number,
     height: number,
-    text: string
+    text: string,
+    color: string,
+    textColor: string,
+    hoverColor: string
   ) {
     this.positionX = positionX;
     this.positionY = positionY;
     this.width = width;
     this.height = height;
     this.text = text;
+    this.color = color;
+    this.textColor = textColor;
+    this.hoverColor = hoverColor;
   }
 
   public isButtonPressed() {
@@ -32,17 +41,24 @@ class Button {
     return false;
   }
 
-  public update(): void {}
+  private isHovering(): boolean {
+    return (
+      mouseX > this.positionX - this.width / 2 &&
+      mouseX < this.positionX + this.width / 2 &&
+      mouseY > this.positionY - this.height / 2 &&
+      mouseY < this.positionY + this.height / 2
+    );
+  }
 
   public draw(): void {
     push();
-    fill(0);
+    fill(this.isHovering() ? this.hoverColor : this.color);
     noStroke();
     rectMode(CENTER);
     rect(this.positionX, this.positionY, this.width, this.height, 10);
 
-    fill("#B3D917");
-    textSize(20);
+    fill(this.textColor);
+    textSize(25);
     textAlign(CENTER, CENTER);
     text(this.text, this.positionX, this.positionY);
 

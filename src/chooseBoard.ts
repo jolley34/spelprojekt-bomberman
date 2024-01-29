@@ -12,15 +12,21 @@ class ChooseBoard {
       width / 4 + 130,
       height / 2 + 270,
       250,
-      50,
-      "Garden Board"
+      60,
+      "GARDEN  BOARD",
+      "black",
+      "#B3D917",
+      "#302f2f"
     );
     this.iceBoardButton = new Button(
       width / 4 + width / 2 - 130,
       height / 2 + 270,
       250,
-      50,
-      "Ice Board"
+      60,
+      "ICE  BOARD",
+      "black",
+      "#B3D917",
+      "#302f2f"
     );
   }
 
@@ -37,7 +43,7 @@ class ChooseBoard {
   private handleGardenBoardSelection() {
     const gardenBoardNumber = this.chooseGardenBoard();
     this.game.changePage("GameBoard", gardenBoardNumber);
-    assets.music.ingamemusic.setVolume(0.1);
+    assets.music.ingamemusic.setVolume(0.2);
     assets.music.ingamemusic.play();
     assets.music.menumusic.stop();
   }
