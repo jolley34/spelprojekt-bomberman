@@ -141,7 +141,6 @@ class GameBoardFactory {
             player1Animations.up,
             player1Animations.down,
             player1AnimationsIdle
-
           );
           entities.push(player);
         }
@@ -165,7 +164,6 @@ class GameBoardFactory {
             player2AnimationsIdle
           );
 
-
           entities.push(player2);
         }
       }
@@ -174,7 +172,7 @@ class GameBoardFactory {
     return new GameBoard(
       entities,
       assets.images.backgroundImages[boardNumber],
-      assets.images.player1Animations[0]
+      assets.images.playerAnimations[0]
     );
   }
 }

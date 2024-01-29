@@ -32,7 +32,7 @@ class GameBoard implements IAddEntity {
     this.playerCard1 = new PlayerCard(
       "Player 1",
       // Change the image accordingly to the player1
-      assets.images.player1Animations[0],
+      assets.images.playerAnimations[0],
       3,
       width / 2 - 550,
       50,
