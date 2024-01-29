@@ -26,12 +26,11 @@ class Player extends GameEntity {
   private lastDirection: string;
   private idleAnimations: any;
   private id: number;
-  private bombDropTimer: number; 
+  private bombDropTimer: number;
 
   public isProtectd: boolean = false;
   public protectionDuration: number = 3000;
   public protectionTimer: number;
-
 
   constructor(
     x: number,
@@ -52,7 +51,6 @@ class Player extends GameEntity {
     }
   ) {
     super(assets.images.playerAnimations[0], x, y, size);
-
 
     this.id = id;
     this.controls = controls;
@@ -85,7 +83,7 @@ class Player extends GameEntity {
   }
 
   public update(gameBoard: IAddEntity): void {
-    this.bombDropTimer -= deltaTime
+    this.bombDropTimer -= deltaTime;
 
     let horizontalSpeed = 0;
     let verticalSpeed = 0;
@@ -99,8 +97,6 @@ class Player extends GameEntity {
       }
     }
 
-
-
     if (keyIsDown(this.controls.left)) {
       horizontalSpeed = -this.getEffectiveSpeed();
       this.animateLeft();
@@ -113,7 +109,6 @@ class Player extends GameEntity {
       isMoving = true;
     }
 
-    
     if (keyIsDown(this.controls.up)) {
       verticalSpeed = -this.getEffectiveSpeed();
       this.animateUp();
@@ -145,8 +140,7 @@ class Player extends GameEntity {
           break;
       }
     }
-    
-    
+
     // kollar ifall det har gått 4sek since last dropbombtime
     if (keyIsDown(this.controls.placeBomb) && !this.wasKeyPressed) {
       // Resetar bomb gifsen
@@ -154,7 +148,7 @@ class Player extends GameEntity {
         assets.images.bombs[i].reset();
       }
       this.dropBomb(this.x, this.y, gameBoard);
-      
+
       this.wasKeyPressed = true;
     } else if (!keyIsDown(this.controls.placeBomb)) {
       this.wasKeyPressed = false;
@@ -185,16 +179,14 @@ class Player extends GameEntity {
       }
     }
   }
-   
 
   public dropBomb(
     positionX: number,
     positionY: number,
     gameBoard: IAddEntity
   ): void {
-    
-    if (this.bombDropTimer <0 ) {
-      const bomb = new Bomb(positionX, positionY, 50);
+    if (this.bombDropTimer < 0) {
+      const bomb = new Bomb(this.bombImage, positionX, positionY, 50);
       this.bombDropTimer = 4000;
       gameBoard.addEntity(bomb);
       this.wasKeyPressed = false;
@@ -333,5 +325,4 @@ class Player extends GameEntity {
     this.decreasedSpeed = 0;
     this.powerUpTimer = 0;
   }
- 
 }
