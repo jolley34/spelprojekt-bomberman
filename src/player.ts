@@ -31,6 +31,8 @@ class Player extends GameEntity {
   public isProtected: boolean = false;
   public protectionDuration: number = 3000;
   public protectionTimer: number;
+  public pickedUpMooreBombs: boolean; 
+  public pickedUpLongerRange: boolean
 
   constructor(
     x: number,
@@ -76,6 +78,8 @@ class Player extends GameEntity {
     this.upAnimationLoop = upAnimation;
     this.downAnimationLoop = downAnimation;
     this.idleAnimations = idleAnimations;
+    this.pickedUpMooreBombs = false;
+    this.pickedUpLongerRange = false;
   }
 
   getID(): number {
@@ -179,6 +183,13 @@ class Player extends GameEntity {
       }
     }
   }
+  public handleBombTimer(): any{
+    if(!this.pickedUpMooreBombs){
+      return this.bombDropTimer = 2800;
+    }else if(this.pickedUpMooreBombs){
+      return this.bombDropTimer = 1000;
+    }
+  }
 
   public dropBomb(
     positionX: number,
@@ -187,11 +198,17 @@ class Player extends GameEntity {
   ): void {
     if (this.bombDropTimer < 0) {
       const bomb = new Bomb(positionX, positionY, 50, this.id);
-      this.bombDropTimer = 2800;
+      this.bombDropTimer = this.handleBombTimer();
+      if(this.pickedUpLongerRange){
+        bomb.range = 100;
+        
+      }
       gameBoard.addEntity(bomb);
       this.wasKeyPressed = false;
     }
-  }
+    
+  }  
+
   private animateLeft(): void {
     this.image =
       assets.images.playerAnimations[
@@ -321,5 +338,6 @@ class Player extends GameEntity {
     this.increasedSpeed = 0;
     this.decreasedSpeed = 0;
     this.powerUpTimer = 0;
+   
   }
 }
