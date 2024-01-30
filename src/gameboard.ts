@@ -1,6 +1,5 @@
 interface IAddEntity {
   addEntity(entity: GameEntity): void;
-
 }
 
 class GameBoard implements IAddEntity {
@@ -152,14 +151,17 @@ class GameBoard implements IAddEntity {
       entity2.shouldBeRemoved = true;
     }
     if (entity1 instanceof Player && entity2 instanceof LongerBombRange) {
+      assets.playerSoundEffects.powerupsound[2].setVolume(0.7);
+      assets.playerSoundEffects.powerupsound[2].play();
       entity1.pickedUpLongerRange = true;
       entity2.shouldBeRemoved = true;
     }
     if (entity1 instanceof Player && entity2 instanceof MoreBomb) {
+      assets.playerSoundEffects.powerupsound[3].setVolume(0.7);
+      assets.playerSoundEffects.powerupsound[3].play();
       entity1.pickedUpMooreBombs = true;
       entity2.shouldBeRemoved = true;
     }
-
 
     if (
       entity1 instanceof Player &&
