@@ -41,7 +41,7 @@ class GameBoard implements IAddEntity {
     this.playerCard2 = new PlayerCard(
       "Player 2",
       // Change the image accordingly to the player2
-      assets.images.entities[2],
+      assets.images.playerAnimations[12],
       3,
       width / 2 + 550,
       50,
@@ -156,6 +156,7 @@ class GameBoard implements IAddEntity {
       entity2.shouldBeRemoved = true;
     }
 
+
     if (
       entity1 instanceof Player &&
       entity2 instanceof Explosion &&
@@ -170,7 +171,7 @@ class GameBoard implements IAddEntity {
         }
 
         // Set the player to be protected
-        entity1.isProtectd = true;
+        entity1.isProtected = true;
         entity1.protectionTimer = entity1.protectionDuration;
       }
     }
@@ -190,10 +191,15 @@ class GameBoard implements IAddEntity {
   }
 
   private handleGameOver() {
-    if (this.playerCard1.lives <= 0) {
+    if (this.playerCard1.lives <= 0 && this.playerCard2.lives <= 0) {
+      // Case where both players have no lives left
+      this.endOfGame.setWinner("You Both Lost!");
+    } else if (this.playerCard1.lives <= 0) {
+      // Case where player 1 has no lives left
       this.endOfGame.setWinner("Player 2");
       this.endOfGame.setWinnerIcon(this.playerCard2.icon);
     } else if (this.playerCard2.lives <= 0) {
+      // Case where player 2 has no lives left
       this.endOfGame.setWinner("Player 1");
       this.endOfGame.setWinnerIcon(this.playerCard1.icon);
     }
@@ -261,6 +267,12 @@ class GameBoard implements IAddEntity {
     const isLifeOver =
       this.playerCard1.lives <= 0 || this.playerCard2.lives <= 0;
 
+    if (isTimeOver) {
+      this.endOfGame.setWinner("Time is up!");
+    } else if (isLifeOver) {
+      this.handleGameOver();
+    }
+
     return isTimeOver || isLifeOver;
   }
 
@@ -277,8 +289,3 @@ class GameBoard implements IAddEntity {
     this.endOfGame.draw();
   }
 }
-
-// const entitet = new Obstacle(0,0,10);
-// if (entitet instanceof Obstacle) {
-//   // reagera baserat på att entiteten är ett hinder...
-// }

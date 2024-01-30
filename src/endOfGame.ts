@@ -2,7 +2,6 @@ class EndOfGame {
   private game: IGamePage;
   private isVisible: boolean;
   private displayWinner: string;
-  private displayScore: number;
   private icon: p5.Image;
   private quitButton: Button;
   private playAgainButton: Button;
@@ -11,7 +10,6 @@ class EndOfGame {
     this.game = game;
     this.isVisible = false;
     this.displayWinner = "";
-    this.displayScore = 5000;
     this.icon = icon;
     // Todo: Choose the right position fot the buttons
     this.quitButton = new Button(
@@ -74,41 +72,52 @@ class EndOfGame {
     drawingContext.shadowBlur = 20;
     drawingContext.shadowColor = "black";
 
-    push();
     textSize(100);
     fill(255);
     textAlign(CENTER, CENTER);
     text("Game Over", width / 2, height / 2 - 170);
-    pop();
-
-    const circleCenterX = width / 2 + 220;
-    const circleCenterY = height / 2 - 90;
-
-    // Draw player icon
-    const circleDiameter = 100;
-    fill("#AECDDB");
-    circle(circleCenterX, circleCenterY, circleDiameter);
-    imageMode(CENTER);
-    image(
-      this.icon,
-      circleCenterX,
-      circleCenterY,
-      circleDiameter - 20,
-      circleDiameter - 20
-    );
-
-    drawingContext.shadowOffsetX = 0;
-    drawingContext.shadowOffsetY = 0;
-    drawingContext.shadowBlur = 0;
-    drawingContext.shadowColor = "black";
 
     fill(255);
     textSize(50);
     textAlign(CENTER, CENTER);
-    text("WINNER", width / 2 + padding, height / 2 - 80);
-    textSize(40);
-    text(this.displayWinner, width / 2 + padding, height / 2 - 20);
-    text(`SCORE: ${this.displayScore}`, width / 2 + padding, height / 2 + 40);
+
+    if (
+      this.displayWinner === "Time is up!" ||
+      this.displayWinner === "You Both Lost!"
+    ) {
+      text(this.displayWinner, width / 2 + padding, height / 2 + 20);
+    } else if (
+      this.displayWinner === "Player 1" ||
+      this.displayWinner === "Player 2"
+    ) {
+      const circleCenterX = width / 2 + 220;
+      const circleCenterY = height / 2 - 70;
+
+      // Draw player icon
+      const circleDiameter = 100;
+      fill("#AECDDB");
+      circle(circleCenterX, circleCenterY, circleDiameter);
+      imageMode(CENTER);
+      image(
+        this.icon,
+        circleCenterX,
+        circleCenterY,
+        circleDiameter - 20,
+        circleDiameter - 20
+      );
+
+      drawingContext.shadowOffsetX = 0;
+      drawingContext.shadowOffsetY = 0;
+      drawingContext.shadowBlur = 0;
+      drawingContext.shadowColor = "black";
+
+      fill(255);
+      textSize(50);
+      textAlign(CENTER, CENTER);
+      text("WINNER", width / 2 + padding, height / 2 - 50);
+      textSize(40);
+      text(this.displayWinner, width / 2 + padding, height / 2 + 20);
+    }
     pop();
 
     this.quitButton.draw();

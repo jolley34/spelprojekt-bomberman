@@ -83,7 +83,7 @@ class Game {
     if (this.isCountdownActive && this.gameBoard) {
       this.gameBoard.drawGameBackground();
       fill("white");
-      textSize(64);
+      textSize(120);
       textAlign(CENTER, CENTER);
 
       let textToDisplay = this.showFightText

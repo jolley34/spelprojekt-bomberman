@@ -1,31 +1,21 @@
 ///<reference path="iGamePage.ts" />
 
 class StartPage implements IGamePage {
-  private buttons: Boolean;
   private title: string;
   private instructions: string;
-  private highScore: string;
   private startButton: Button;
   private game: IGamePage;
-  private playerName: string;
-  private playerScore: number;
 
   constructor(game: IGamePage) {
     this.game = game;
-    this.playerName = "Player 1";
-    this.playerScore = 0;
     this.title = "Cruel Nature";
 
     this.instructions =
-      "Your  goal  is  to  navigate  through  the lush  garden  or  the  frosty  ice,  collect  \n the  power-ups,  avoid obstacles,  and  reach  the  end  before  time  runs  out. \n Eliminate  your  opponent  by  placing  bombs  to  demolish  blocks  and  pave \n  your  path  towards  your  victory. \n\n Press  START  GAME  to begin";
-
-    this.highScore = `High Score\n${this.playerName}\n${this.playerScore}`;
-
-    this.buttons = false;
+      "Your  goal  is  to  navigate  through  the  lush  garden  or  the  frosty  ice,  collect  \n \nthe  power-ups,  avoid obstacles,  and  reach  the  end  before  time  runs  out.    Eliminate  your \n \n  opponent  by  placing  bombs  to  demolish  blocks  and  pave  your  path  towards  your  victory. \n\n Press  START  GAME  to begin";
 
     this.startButton = new Button(
       width / 2,
-      height / 2 + 200,
+      height / 2 + 250,
       250,
       60,
       "START  GAME",
@@ -37,16 +27,10 @@ class StartPage implements IGamePage {
 
   public changePage(page: string): void {}
 
-  public setHighScore(playerName: string, playerScore: number): void {
-    this.playerName = playerName;
-    this.playerScore = playerScore;
-  }
-
   public draw(): void {
     Utility.drawBackgroundImage(assets.images.backgroundImages[3], 150);
     this.drawTitle();
     this.drawInstructions();
-    this.drawHighScore();
     this.startButton.draw();
   }
 
@@ -70,35 +54,12 @@ class StartPage implements IGamePage {
     text(this.title, width / 2, height / 4 - offsetY);
     pop();
   }
-  private drawHighScore() {
-    const rectPositionX = 250;
-    const rectPositionY = 130;
-    const rectWidth = 200;
-    const rectHeight = 130;
-
-    const padding = 2;
-    const textX = rectPositionX;
-    const textY = rectPositionY + padding;
-
-    push();
-    fill(0);
-    strokeWeight(4);
-    stroke("#B3D917");
-    rectMode(CENTER);
-    rect(rectPositionX, rectPositionY, rectWidth, rectHeight, 10);
-    pop();
-
-    fill("#B3D917");
-    textSize(30);
-    textAlign(CENTER, CENTER);
-    text(this.highScore, textX, textY);
-  }
 
   private drawInstructions(): void {
     const rectPositionX = width / 2;
     const rectPositionY = height / 2;
     const rectWidth = width / 2;
-    const rectHeight = 270;
+    const rectHeight = 330;
 
     const padding = 10;
     const textX = rectPositionX;
@@ -113,7 +74,7 @@ class StartPage implements IGamePage {
     fill(255);
     textSize(25);
     textAlign(CENTER, CENTER);
-    text("HOW TO PLAY", textX, textY - 100);
+    text("HOW TO PLAY", textX, textY - 140);
     textSize(18);
     text(this.instructions, textX, textY);
     pop();
@@ -121,7 +82,6 @@ class StartPage implements IGamePage {
 
   private mousePressed(): void {
     if (this.startButton.isButtonPressed()) {
-      console.log("I was pressed");
       this.game.changePage("ChooseBoardPage");
       assets.music.ingamemusic.setVolume(0.5);
       assets.music.menumusic.play();

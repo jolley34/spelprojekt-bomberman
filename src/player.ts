@@ -28,7 +28,7 @@ class Player extends GameEntity {
   private id: number;
   private bombDropTimer: number;
 
-  public isProtectd: boolean = false;
+  public isProtected: boolean = false;
   public protectionDuration: number = 3000;
   public protectionTimer: number;
 
@@ -64,7 +64,7 @@ class Player extends GameEntity {
     this.powerUpTimer = 0;
     this.bombDropTimer = 0;
 
-    this.isProtectd = false;
+    this.isProtected = false;
     this.protectionDuration = 3000;
     this.protectionTimer = 0;
 
@@ -90,10 +90,10 @@ class Player extends GameEntity {
     let isMoving = false;
 
     // checking if player is protected and if the time has run out
-    if (this.isProtectd) {
+    if (this.isProtected) {
       this.protectionTimer -= deltaTime;
       if (this.protectionTimer <= 0) {
-        this.isProtectd = false;
+        this.isProtected = false;
       }
     }
 
@@ -186,6 +186,7 @@ class Player extends GameEntity {
     gameBoard: IAddEntity
   ): void {
     if (this.bombDropTimer < 0) {
+
       const bomb = new Bomb(positionX, positionY, 50, this.id);
       this.bombDropTimer = 2800;
       gameBoard.addEntity(bomb);
