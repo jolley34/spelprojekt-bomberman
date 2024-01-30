@@ -28,7 +28,7 @@ class StartPage implements IGamePage {
   public changePage(page: string): void {}
 
   public draw(): void {
-    Utility.drawBackgroundImage(assets.images.backgroundImages[3], 150);
+    Utility.drawBackgroundImage(assets.images.backgroundImages[3], 120);
     this.drawTitle();
     this.drawInstructions();
     this.startButton.draw();
@@ -58,7 +58,7 @@ class StartPage implements IGamePage {
   private drawInstructions(): void {
     const rectPositionX = width / 2;
     const rectPositionY = height / 2;
-    const rectWidth = width / 2;
+    const rectWidth = width / 2 + 50;
     const rectHeight = 330;
 
     const padding = 10;
