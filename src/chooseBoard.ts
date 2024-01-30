@@ -10,7 +10,7 @@ class ChooseBoard {
     this.game = game;
     this.gardenBoardButton = new Button(
       width / 4 + 130,
-      height / 2 + 270,
+      height / 2 + 300,
       250,
       60,
       "GARDEN  BOARD",
@@ -20,7 +20,7 @@ class ChooseBoard {
     );
     this.iceBoardButton = new Button(
       width / 4 + width / 2 - 130,
-      height / 2 + 270,
+      height / 2 + 300,
       250,
       60,
       "ICE  BOARD",
