@@ -11,6 +11,8 @@ class Game {
   private isCountdownActive: boolean;
   private showFightText: boolean;
 
+  private isBoardSelected: boolean;
+
   constructor() {
     this.gameBoardFactory = new GameBoardFactory();
     this.gameBoard = null; // don't generate a gameboard until we need it
@@ -21,16 +23,16 @@ class Game {
     this.countdownTime = 3;
     this.isCountdownActive = false;
     this.showFightText = false;
+
+    this.isBoardSelected = false;
   }
 
   public changePage(page: PageName, board?: number) {
+    this.currentPage = page;
     if (page === "GameBoard" && board !== undefined) {
-      this.isCountdownActive = true;
-      this.countdownTime = 3;
-      this.showFightText = false;
+      this.isBoardSelected = true;
+      this.isCountdownActive = false; // Countdown starts only after the board is shown
       this.gameBoard = this.gameBoardFactory.generateGameBoard(board);
-    } else {
-      this.currentPage = page;
     }
   }
 
@@ -46,7 +48,6 @@ class Game {
         } else {
           this.isCountdownActive = false;
           this.showFightText = false;
-          this.currentPage = "GameBoard";
           if (this.gameBoard) {
             this.gameBoard.startGame();
           }
@@ -56,6 +57,13 @@ class Game {
   }
 
   public update() {
+    if (this.isBoardSelected && !this.isCountdownActive) {
+      // Start the countdown only after the board is displayed
+      this.isCountdownActive = true;
+      this.countdownTime = 3;
+      this.showFightText = false;
+      this.isBoardSelected = false;
+    }
     if (this.isCountdownActive) {
       this.updateCountdown();
     } else {
@@ -80,16 +88,17 @@ class Game {
 
   public draw() {
     background("black");
-    if (this.isCountdownActive && this.gameBoard) {
-      this.gameBoard.drawGameBackground();
-      fill("white");
-      textSize(120);
-      textAlign(CENTER, CENTER);
-
-      let textToDisplay = this.showFightText
-        ? "F I G H T !"
-        : this.countdownTime.toString();
-      text(textToDisplay, width / 2, height / 2);
+    if (this.currentPage === "GameBoard" && this.gameBoard) {
+      this.gameBoard.draw();
+      if (this.isCountdownActive) {
+        fill("#FFF48F");
+        textSize(120);
+        textAlign(CENTER, CENTER);
+        let textToDisplay = this.showFightText
+          ? "F I G H T !"
+          : this.countdownTime.toString();
+        text(textToDisplay, width / 2, height / 2 - 50);
+      }
     } else {
       switch (this.currentPage) {
         case "StartPage":

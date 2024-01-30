@@ -13,6 +13,8 @@ class LongerBombRange extends GameEntity {
     super(assets.images.powerups[2], x, y, size);
 
   }
+  
+
 }
 class MoreBomb extends GameEntity {
   constructor(x: number, y: number, size: number) {

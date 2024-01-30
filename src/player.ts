@@ -31,6 +31,8 @@ class Player extends GameEntity {
   public isProtected: boolean = false;
   public protectionDuration: number = 3000;
   public protectionTimer: number;
+  public pickedUpMooreBombs: boolean; 
+  public pickedUpLongerRange: boolean
 
   constructor(
     x: number,
@@ -76,6 +78,8 @@ class Player extends GameEntity {
     this.upAnimationLoop = upAnimation;
     this.downAnimationLoop = downAnimation;
     this.idleAnimations = idleAnimations;
+    this.pickedUpMooreBombs = false;
+    this.pickedUpLongerRange = false;
   }
 
   getID(): number {
@@ -179,6 +183,13 @@ class Player extends GameEntity {
       }
     }
   }
+  public handleBombTimer(): any{
+    if(!this.pickedUpMooreBombs){
+      return this.bombDropTimer = 2800;
+    }else if(this.pickedUpMooreBombs){
+      return this.bombDropTimer = 1000;
+    }
+  }
 
   public dropBomb(
     positionX: number,
@@ -186,13 +197,18 @@ class Player extends GameEntity {
     gameBoard: IAddEntity
   ): void {
     if (this.bombDropTimer < 0) {
-
       const bomb = new Bomb(positionX, positionY, 50, this.id);
-      this.bombDropTimer = 2800;
+      this.bombDropTimer = this.handleBombTimer();
+      if(this.pickedUpLongerRange){
+        bomb.range = 100;
+        
+      }
       gameBoard.addEntity(bomb);
       this.wasKeyPressed = false;
     }
+    
   }  
+
   private animateLeft(): void {
     this.image =
       assets.images.playerAnimations[
@@ -309,14 +325,10 @@ class Player extends GameEntity {
 
   // hur mycket farten skall öka för spelaren efter powerup
   public increaseSpeed(): void {
-    assets.playerSoundEffects.powerupsound[0].setVolume(0.7);
-    assets.playerSoundEffects.powerupsound[0].play();
     this.increasedSpeed = 5.25;
     this.powerUpTimer = this.powerUpDuration;
   }
   public decreaseSpeed(): void {
-    assets.playerSoundEffects.powerupsound[1].setVolume(0.7);
-    assets.playerSoundEffects.powerupsound[1].play();
     this.decreasedSpeed = 0.2;
     this.increasedSpeed = 0;
     this.powerUpTimer = this.powerUpDuration;
@@ -326,5 +338,6 @@ class Player extends GameEntity {
     this.increasedSpeed = 0;
     this.decreasedSpeed = 0;
     this.powerUpTimer = 0;
+   
   }
 }
