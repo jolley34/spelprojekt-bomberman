@@ -48,6 +48,8 @@ function preload() {
       powerups: [
         loadImage("../assets/powerup/yy3.gif"),
         loadImage("../assets/powerup/slowdown.gif"),
+        loadImage("../assets/powerup/range.gif"),
+        loadImage("../assets/powerup/morebombs.gif"),
       ],
       backgroundImages: [
         loadImage("../assets/background/controls_img.png"),
@@ -130,7 +132,12 @@ function preload() {
       ),
     },
     playerSoundEffects: {
-      powerupsound: [loadSound("../assets/player-sound-effects/monkey-1.wav")],
+      powerupsound: [
+        loadSound("../assets/player-sound-effects/speedboost-sound.mp3"),
+        loadSound("../assets/player-sound-effects/slowdown-sound.mp3"),
+        loadSound("../assets/player-sound-effects/bombrange-sound.mp3"),
+        loadSound("../assets/player-sound-effects/morebombs-sound.mp3"),
+      ],
       walkingsound: loadSound(
         "../assets/player-sound-effects/sfx_step_grass_l.mp3"
       ),

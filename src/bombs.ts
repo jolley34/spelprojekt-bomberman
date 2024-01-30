@@ -3,20 +3,23 @@
 class Bomb extends GameEntity {
   private bombTimer: number;
   private range: number;
+  public ownerId: number;
 
-  constructor(x: number, y: number, size: number) {
+  constructor(x: number, y: number, size: number, ownerId: number) {
     super(assets.images.bombs[0], x, y, size / 2.25);
-    this.bombTimer = 60;
+    this.bombTimer = 2300;
     this.range = 50;
+    this.ownerId = ownerId;
   }
 
   public update(gameBoard: IAddEntity): void {
-    this.bombTimer--;
+    this.bombTimer -= deltaTime;
 
     if (this.bombTimer <= 0) {
       this.explode(gameBoard);
     }
   }
+  
 
   private explode(gameBoard: IAddEntity) {
     this.shouldBeRemoved = true;

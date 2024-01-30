@@ -27,7 +27,7 @@ class Timer {
       if (this.elapsedTime === 0) {
         this.stop();
       }
-    }, 1000);
+    }, 500);
   }
 
   public stop() {
