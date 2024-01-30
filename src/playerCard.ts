@@ -23,6 +23,7 @@ class PlayerCard {
   }
 
   public removeLife() {
+    assets.playerSoundEffects.looselife.play();
     if (this.lives > 0) {
       this.lives--;
     }

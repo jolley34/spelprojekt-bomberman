@@ -60,6 +60,46 @@ class GameBoard implements IAddEntity {
   private checkCollision() {
     for (const entity1 of this.entities) {
       for (const entity2 of this.entities) {
+        // Collision mellan andra spelaren och motspelares bomb
+        if (
+          entity1 instanceof Player &&
+          entity2 instanceof Bomb &&
+          entity1.getID() !== entity2.ownerId
+        ) {
+          const l1 = entity1.x;
+          const r1 = entity1.x + entity1.size;
+          const t1 = entity1.y;
+          const b1 = entity1.y + entity1.size;
+
+          const l2 = entity2.x;
+          const r2 = entity2.x + entity2.size;
+          const t2 = entity2.y;
+          const b2 = entity2.y + entity2.size;
+
+          if (r1 > l2 && l1 < r2 && b1 > t2 && t1 < b2) {
+            entity1.x -= entity1.speedX;
+            entity1.y -= entity1.speedY;
+          }
+        }
+        if (entity1 instanceof Explosion && entity2 instanceof StaticObstacle) {
+          const l1 = entity1.x;
+          const r1 = entity1.x + entity1.size;
+          const l2 = entity2.x;
+          const r2 = entity2.x + entity2.size;
+          const t1 = entity1.y;
+          const b1 = entity1.y + entity1.size;
+          const t2 = entity2.y;
+          const b2 = entity2.y + entity2.size;
+
+          if (l2 < r1 && l1 < r2 && t2 < b1 && t1 < b2) {
+            entity1.shouldBeRemoved = true;
+          }
+        }
+      }
+    }
+
+    for (const entity1 of this.entities) {
+      for (const entity2 of this.entities) {
         if (entity1 === entity2) continue;
 
         // Bomben ska inte krocka med något
@@ -89,7 +129,11 @@ class GameBoard implements IAddEntity {
   }
 
   private reactToCollision(entity1: GameEntity, entity2: GameEntity) {
-    if (entity1 instanceof Explosion && entity2 instanceof RemovebleObstacle) {
+    if (
+      entity1 instanceof Explosion &&
+      entity2 instanceof RemovebleObstacle &&
+      !entity1.shouldBeRemoved
+    ) {
       entity2.shouldBeRemoved = true;
     }
     if (entity1 instanceof Player && entity2 instanceof SpeedUp) {
@@ -104,7 +148,11 @@ class GameBoard implements IAddEntity {
       entity2.shouldBeRemoved = true;
     }
 
-    if (entity1 instanceof Player && entity2 instanceof Explosion) {
+    if (
+      entity1 instanceof Player &&
+      entity2 instanceof Explosion &&
+      !entity2.shouldBeRemoved
+    ) {
       if (!entity1.isProtectd) {
         // Remove a life from the appropriate player card
         if (entity1.getID() === this.playerCard1.playerNumber) {

@@ -26,12 +26,11 @@ class Player extends GameEntity {
   private lastDirection: string;
   private idleAnimations: any;
   private id: number;
-  private bombDropTimer: number; 
+  private bombDropTimer: number;
 
   public isProtectd: boolean = false;
   public protectionDuration: number = 3000;
   public protectionTimer: number;
-
 
   constructor(
     x: number,
@@ -52,7 +51,6 @@ class Player extends GameEntity {
     }
   ) {
     super(assets.images.playerAnimations[0], x, y, size);
-
 
     this.id = id;
     this.controls = controls;
@@ -85,7 +83,7 @@ class Player extends GameEntity {
   }
 
   public update(gameBoard: IAddEntity): void {
-    this.bombDropTimer -= deltaTime
+    this.bombDropTimer -= deltaTime;
 
     let horizontalSpeed = 0;
     let verticalSpeed = 0;
@@ -99,8 +97,6 @@ class Player extends GameEntity {
       }
     }
 
-
-
     if (keyIsDown(this.controls.left)) {
       horizontalSpeed = -this.getEffectiveSpeed();
       this.animateLeft();
@@ -113,7 +109,6 @@ class Player extends GameEntity {
       isMoving = true;
     }
 
-    
     if (keyIsDown(this.controls.up)) {
       verticalSpeed = -this.getEffectiveSpeed();
       this.animateUp();
@@ -145,8 +140,7 @@ class Player extends GameEntity {
           break;
       }
     }
-    
-    
+
     // kollar ifall det har gått 4sek since last dropbombtime
     if (keyIsDown(this.controls.placeBomb) && !this.wasKeyPressed) {
       // Resetar bomb gifsen
@@ -154,7 +148,7 @@ class Player extends GameEntity {
         assets.images.bombs[i].reset();
       }
       this.dropBomb(this.x, this.y, gameBoard);
-      
+
       this.wasKeyPressed = true;
     } else if (!keyIsDown(this.controls.placeBomb)) {
       this.wasKeyPressed = false;
@@ -185,17 +179,15 @@ class Player extends GameEntity {
       }
     }
   }
-   
 
   public dropBomb(
     positionX: number,
     positionY: number,
     gameBoard: IAddEntity
   ): void {
-    
-    if (this.bombDropTimer <0 ) {
-      const bomb = new Bomb(positionX, positionY, 50);
-      this.bombDropTimer = 4000;
+    if (this.bombDropTimer < 0) {
+      const bomb = new Bomb(positionX, positionY, 50, this.id);
+      this.bombDropTimer = 2800;
       gameBoard.addEntity(bomb);
       this.wasKeyPressed = false;
     }
@@ -317,12 +309,14 @@ class Player extends GameEntity {
 
   // hur mycket farten skall öka för spelaren efter powerup
   public increaseSpeed(): void {
+    assets.playerSoundEffects.powerupsound[0].setVolume(0.7);
     assets.playerSoundEffects.powerupsound[0].play();
     this.increasedSpeed = 5.25;
     this.powerUpTimer = this.powerUpDuration;
   }
   public decreaseSpeed(): void {
-    assets.playerSoundEffects.powerupsound[0].play();
+    assets.playerSoundEffects.powerupsound[1].setVolume(0.7);
+    assets.playerSoundEffects.powerupsound[1].play();
     this.decreasedSpeed = 0.2;
     this.increasedSpeed = 0;
     this.powerUpTimer = this.powerUpDuration;
@@ -333,5 +327,4 @@ class Player extends GameEntity {
     this.decreasedSpeed = 0;
     this.powerUpTimer = 0;
   }
- 
 }
