@@ -111,18 +111,18 @@ class GameBoard implements IAddEntity {
         // Kolla om entitierna överlappar varandra
         // 1. Identifiera faktiska krockar
         // Definera höger och vänster sida för varje entitet
-        const l1 = entity1.x;
-        const r1 = entity1.x + entity1.size;
-        const l2 = entity2.x;
-        const r2 = entity2.x + entity2.size;
-        const t1 = entity1.y;
-        const b1 = entity1.y + entity1.size;
-        const t2 = entity2.y;
-        const b2 = entity2.y + entity2.size;
+      		const hitBox1 = entity1.getHitBox();
+				const hitBox2 = entity2.getHitBox();
 
-        if (l2 < r1 && l1 < r2 && t2 < b1 && t1 < b2) {
-          this.reactToCollision(entity1, entity2);
-        }
+				// checks hitbox for collisions
+				if (
+					hitBox1.left < hitBox2.left + hitBox2.width &&
+					hitBox1.left + hitBox1.width > hitBox2.left &&
+					hitBox1.top < hitBox2.top + hitBox2.height &&
+					hitBox1.top + hitBox1.height > hitBox2.top
+				) {
+					this.reactToCollision(entity1, entity2);
+				}
       }
     }
   }
