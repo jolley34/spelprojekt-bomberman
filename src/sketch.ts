@@ -48,6 +48,8 @@ function preload() {
       powerups: [
         loadImage("../assets/powerup/yy3.gif"),
         loadImage("../assets/powerup/slowdown.gif"),
+        loadImage("../assets/powerup/range.gif"),
+        loadImage("../assets/powerup/morebombs.gif"),
       ],
       backgroundImages: [
         loadImage("../assets/background/controls_img.png"),

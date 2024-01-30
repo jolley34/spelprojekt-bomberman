@@ -191,8 +191,7 @@ class Player extends GameEntity {
       gameBoard.addEntity(bomb);
       this.wasKeyPressed = false;
     }
-  }
-
+  }  
   private animateLeft(): void {
     this.image =
       assets.images.playerAnimations[
