@@ -148,7 +148,9 @@ class GameBoard implements IAddEntity {
       entity2.shouldBeRemoved = true;
     }
     if (entity1 instanceof Player && entity2 instanceof LongerBombRange) {
-      // fixa reaktion 
+      entity1.pickedUpPowerUp = true;
+      
+      //entity1.increaseRange();
       entity2.shouldBeRemoved = true;
     }
     if (entity1 instanceof Player && entity2 instanceof MoreBomb) {

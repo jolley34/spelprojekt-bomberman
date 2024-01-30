@@ -11,9 +11,13 @@ class Bomb extends GameEntity {
     this.range = 50;
     this.ownerId = ownerId;
   }
+  public increaseRange():number{
+    return this.range = 100;
+  }
 
   public update(gameBoard: IAddEntity): void {
     this.bombTimer -= deltaTime;
+    
 
     if (this.bombTimer <= 0) {
       this.explode(gameBoard);

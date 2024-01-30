@@ -31,6 +31,7 @@ class Player extends GameEntity {
   public isProtected: boolean = false;
   public protectionDuration: number = 3000;
   public protectionTimer: number;
+  public pickedUpPowerUp: boolean; 
 
   constructor(
     x: number,
@@ -76,6 +77,7 @@ class Player extends GameEntity {
     this.upAnimationLoop = upAnimation;
     this.downAnimationLoop = downAnimation;
     this.idleAnimations = idleAnimations;
+    this.pickedUpPowerUp = false;
   }
 
   getID(): number {
@@ -179,6 +181,13 @@ class Player extends GameEntity {
       }
     }
   }
+  public handleBombTimer(): any{
+    if(!this.pickedUpPowerUp){
+      return this.bombDropTimer = 2800;
+    }else if(this.pickedUpPowerUp){
+      return this.bombDropTimer = 1000;
+    }
+  }
 
   public dropBomb(
     positionX: number,
@@ -188,7 +197,8 @@ class Player extends GameEntity {
     if (this.bombDropTimer < 0) {
 
       const bomb = new Bomb(positionX, positionY, 50, this.id);
-      this.bombDropTimer = 2800;
+      this.bombDropTimer = this.handleBombTimer();
+      
       gameBoard.addEntity(bomb);
       this.wasKeyPressed = false;
     }
@@ -326,5 +336,7 @@ class Player extends GameEntity {
     this.increasedSpeed = 0;
     this.decreasedSpeed = 0;
     this.powerUpTimer = 0;
+  
+
   }
 }
