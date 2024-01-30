@@ -111,18 +111,18 @@ class GameBoard implements IAddEntity {
         // Kolla om entitierna överlappar varandra
         // 1. Identifiera faktiska krockar
         // Definera höger och vänster sida för varje entitet
-      		const hitBox1 = entity1.getHitBox();
-				const hitBox2 = entity2.getHitBox();
+        const hitBox1 = entity1.getHitBox();
+        const hitBox2 = entity2.getHitBox();
 
-				// checks hitbox for collisions
-				if (
-					hitBox1.left < hitBox2.left + hitBox2.width &&
-					hitBox1.left + hitBox1.width > hitBox2.left &&
-					hitBox1.top < hitBox2.top + hitBox2.height &&
-					hitBox1.top + hitBox1.height > hitBox2.top
-				) {
-					this.reactToCollision(entity1, entity2);
-				}
+        // checks hitbox for collisions
+        if (
+          hitBox1.left < hitBox2.left + hitBox2.width &&
+          hitBox1.left + hitBox1.width > hitBox2.left &&
+          hitBox1.top < hitBox2.top + hitBox2.height &&
+          hitBox1.top + hitBox1.height > hitBox2.top
+        ) {
+          this.reactToCollision(entity1, entity2);
+        }
       }
     }
   }
@@ -191,8 +191,28 @@ class GameBoard implements IAddEntity {
       (entity2 instanceof StaticObstacle ||
         entity2 instanceof RemovebleObstacle)
     ) {
-      entity1.x -= entity1.speedX;
-      entity1.y -= entity1.speedY;
+      const overlapX = Math.min(
+        entity1.x + entity1.size - entity2.x,
+        entity2.x + entity2.size - entity1.x
+      );
+      const overlapY = Math.min(
+        entity1.y + entity1.size - entity2.y,
+        entity2.y + entity2.size - entity1.y
+      );
+
+      if (overlapX < overlapY) {
+        if (entity1.x + entity1.size / 2 < entity2.x + entity2.size / 2) {
+          entity1.x = entity2.x - entity1.size;
+        } else {
+          entity1.x = entity2.x + entity2.size;
+        }
+      } else {
+        if (entity1.y + entity1.size / 2 < entity2.y + entity2.size / 2) {
+          entity1.y = entity2.y - entity1.size;
+        } else {
+          entity1.y = entity2.y + entity2.size;
+        }
+      }
     }
   }
 
