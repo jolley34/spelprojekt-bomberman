@@ -62,7 +62,7 @@ class ChooseBoard {
   }
 
   public draw() {
-    Utility.drawBackgroundImage(assets.images.backgroundImages[3], 150);
+    Utility.drawBackgroundImage(assets.images.backgroundImages[3], 120);
     push();
     textSize(64);
     const padding = 100;
@@ -82,7 +82,7 @@ class ChooseBoard {
     text("Cruel Nature", width / 2, height / 4 - offsetY);
     pop();
 
-    image(this.image, width / 4, height / 4, width / 2, height / 2);
+    image(this.image, width / 4 - 50, height / 4, width / 2 + 100, height / 2);
 
     this.gardenBoardButton.draw();
     this.iceBoardButton.draw();

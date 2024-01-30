@@ -62,7 +62,7 @@ class EndOfGame {
     drawingContext.shadowColor = "black";
     noStroke();
     rectMode(CENTER);
-    rect(width / 2 + padding, height / 2, 560, 440, 10);
+    rect(width / 2 + padding, height / 2, 580, 440, 10);
     drawingContext.shadowOffsetX = 0;
     drawingContext.shadowOffsetY = 0;
     drawingContext.shadowBlur = 0;
