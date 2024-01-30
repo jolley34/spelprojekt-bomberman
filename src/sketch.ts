@@ -137,6 +137,10 @@ function preload() {
         loadSound("../assets/player-sound-effects/slowdown-sound.mp3"),
         loadSound("../assets/player-sound-effects/bombrange-sound.mp3"),
         loadSound("../assets/player-sound-effects/morebombs-sound.mp3"),
+        loadSound("../assets/player-sound-effects/3.mp3"),
+        loadSound("../assets/player-sound-effects/2.mp3"),
+        loadSound("../assets/player-sound-effects/1.mp3"),
+        loadSound("../assets/player-sound-effects/fight.mp3"),
       ],
       walkingsound: loadSound(
         "../assets/player-sound-effects/sfx_step_grass_l.mp3"
