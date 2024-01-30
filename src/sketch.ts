@@ -54,7 +54,7 @@ function preload() {
       backgroundImages: [
         loadImage("../assets/background/controls_img.png"),
         loadImage("../assets/background/Map-1-blurred-shadow-v4-copy.png"),
-        loadImage("../assets/background/Map-2-blurred-3 1.png"),
+        loadImage("../assets/background/Group 27.png"),
         loadImage("../assets/background/cruel_nature_bg1.png"),
       ],
       clouds: [
