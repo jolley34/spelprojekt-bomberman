@@ -6,7 +6,7 @@ class Timer {
   constructor() {
     this.startTime = 0;
     // todo: set the time back to 5 min (300000) after testing
-    this.elapsedTime = 30000; // sätter tiden till 5 min
+    this.elapsedTime = 300000; // sätter tiden till 5 min
     this.timerInterval = null;
   }
 
@@ -20,7 +20,7 @@ class Timer {
       const currentTime = Date.now();
       const elapsedMilliseconds = currentTime - this.startTime;
       // todo: set the time back to 5 min (300000) after testing
-      this.elapsedTime = Math.max(30000 - elapsedMilliseconds, 0);
+      this.elapsedTime = Math.max(300000 - elapsedMilliseconds, 0);
 
       // stannar tiden efter 5 min
       // lägg till logik som visar endgame med resultat efter tiden tar slut
@@ -41,7 +41,7 @@ class Timer {
   public reset() {
     this.stop();
     // todo: set the time back to 5 min
-    this.elapsedTime = 30000;
+    this.elapsedTime = 300000;
   }
 
   public getTime() {

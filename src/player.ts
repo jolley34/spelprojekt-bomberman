@@ -26,12 +26,11 @@ class Player extends GameEntity {
   private lastDirection: string;
   private idleAnimations: any;
   private id: number;
-  private bombDropTimer: number; 
+  private bombDropTimer: number;
 
-  public isProtectd: boolean = false;
+  public isProtected: boolean = false;
   public protectionDuration: number = 3000;
   public protectionTimer: number;
-
 
   constructor(
     x: number,
@@ -53,7 +52,6 @@ class Player extends GameEntity {
   ) {
     super(assets.images.playerAnimations[0], x, y, size);
 
-
     this.id = id;
     this.controls = controls;
     this.speedX = 0;
@@ -66,7 +64,7 @@ class Player extends GameEntity {
     this.powerUpTimer = 0;
     this.bombDropTimer = 0;
 
-    this.isProtectd = false;
+    this.isProtected = false;
     this.protectionDuration = 3000;
     this.protectionTimer = 0;
 
@@ -85,21 +83,19 @@ class Player extends GameEntity {
   }
 
   public update(gameBoard: IAddEntity): void {
-    this.bombDropTimer -= deltaTime
+    this.bombDropTimer -= deltaTime;
 
     let horizontalSpeed = 0;
     let verticalSpeed = 0;
     let isMoving = false;
 
     // checking if player is protected and if the time has run out
-    if (this.isProtectd) {
+    if (this.isProtected) {
       this.protectionTimer -= deltaTime;
       if (this.protectionTimer <= 0) {
-        this.isProtectd = false;
+        this.isProtected = false;
       }
     }
-
-
 
     if (keyIsDown(this.controls.left)) {
       horizontalSpeed = -this.getEffectiveSpeed();
@@ -113,7 +109,6 @@ class Player extends GameEntity {
       isMoving = true;
     }
 
-    
     if (keyIsDown(this.controls.up)) {
       verticalSpeed = -this.getEffectiveSpeed();
       this.animateUp();
@@ -145,8 +140,7 @@ class Player extends GameEntity {
           break;
       }
     }
-    
-    
+
     // kollar ifall det har gått 4sek since last dropbombtime
     if (keyIsDown(this.controls.placeBomb) && !this.wasKeyPressed) {
       // Resetar bomb gifsen
@@ -154,7 +148,7 @@ class Player extends GameEntity {
         assets.images.bombs[i].reset();
       }
       this.dropBomb(this.x, this.y, gameBoard);
-      
+
       this.wasKeyPressed = true;
     } else if (!keyIsDown(this.controls.placeBomb)) {
       this.wasKeyPressed = false;
@@ -185,15 +179,13 @@ class Player extends GameEntity {
       }
     }
   }
-   
 
   public dropBomb(
     positionX: number,
     positionY: number,
     gameBoard: IAddEntity
   ): void {
-    
-    if (this.bombDropTimer <0 ) {
+    if (this.bombDropTimer < 0) {
       const bomb = new Bomb(positionX, positionY, 50);
       this.bombDropTimer = 4000;
       gameBoard.addEntity(bomb);
@@ -333,5 +325,4 @@ class Player extends GameEntity {
     this.decreasedSpeed = 0;
     this.powerUpTimer = 0;
   }
- 
 }
