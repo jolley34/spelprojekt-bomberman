@@ -197,7 +197,6 @@ class Player extends GameEntity {
     gameBoard: IAddEntity
   ): void {
     if (this.bombDropTimer < 0) {
-
       const bomb = new Bomb(positionX, positionY, 50, this.id);
       this.bombDropTimer = this.handleBombTimer();
       if(this.pickedUpLongerRange){
@@ -209,6 +208,7 @@ class Player extends GameEntity {
     }
     
   }  
+
   private animateLeft(): void {
     this.image =
       assets.images.playerAnimations[
@@ -325,14 +325,10 @@ class Player extends GameEntity {
 
   // hur mycket farten skall öka för spelaren efter powerup
   public increaseSpeed(): void {
-    assets.playerSoundEffects.powerupsound[0].setVolume(0.7);
-    assets.playerSoundEffects.powerupsound[0].play();
     this.increasedSpeed = 5.25;
     this.powerUpTimer = this.powerUpDuration;
   }
   public decreaseSpeed(): void {
-    assets.playerSoundEffects.powerupsound[1].setVolume(0.7);
-    assets.playerSoundEffects.powerupsound[1].play();
     this.decreasedSpeed = 0.2;
     this.increasedSpeed = 0;
     this.powerUpTimer = this.powerUpDuration;
