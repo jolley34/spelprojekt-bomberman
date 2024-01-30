@@ -202,13 +202,10 @@ class Player extends GameEntity {
       this.bombDropTimer = this.handleBombTimer();
       if(this.pickedUpLongerRange){
         bomb.range = 100;
-        this.powerUpTimer = this.powerUpDuration;
-
+        
       }
       gameBoard.addEntity(bomb);
       this.wasKeyPressed = false;
-      
-      
     }
     
   }  
@@ -345,7 +342,6 @@ class Player extends GameEntity {
     this.increasedSpeed = 0;
     this.decreasedSpeed = 0;
     this.powerUpTimer = 0;
-  
-
+   
   }
 }
