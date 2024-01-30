@@ -33,7 +33,7 @@ class GameBoard implements IAddEntity {
       // Change the image accordingly to the player1
       assets.images.playerAnimations[0],
       3,
-      width / 2 - 300,
+      width / 2 - 550,
       50,
       1
     );
