@@ -137,10 +137,14 @@ class GameBoard implements IAddEntity {
       entity2.shouldBeRemoved = true;
     }
     if (entity1 instanceof Player && entity2 instanceof SpeedUp) {
+      assets.playerSoundEffects.powerupsound[0].setVolume(0.7);
+      assets.playerSoundEffects.powerupsound[0].play();
       entity1.increaseSpeed();
       entity2.shouldBeRemoved = true;
     }
     if (entity1 instanceof Player && entity2 instanceof SlowDownOpponent) {
+      assets.playerSoundEffects.powerupsound[1].setVolume(0.7);
+      assets.playerSoundEffects.powerupsound[1].play();
       const opponent = this.getOpponent(entity1);
       if (opponent) {
         opponent.decreaseSpeed();
@@ -148,14 +152,17 @@ class GameBoard implements IAddEntity {
       entity2.shouldBeRemoved = true;
     }
     if (entity1 instanceof Player && entity2 instanceof LongerBombRange) {
-      // fixa reaktion 
+      assets.playerSoundEffects.powerupsound[2].setVolume(0.7);
+      assets.playerSoundEffects.powerupsound[2].play();
+      // fixa reaktion
       entity2.shouldBeRemoved = true;
     }
     if (entity1 instanceof Player && entity2 instanceof MoreBomb) {
+      assets.playerSoundEffects.powerupsound[3].setVolume(0.7);
+      assets.playerSoundEffects.powerupsound[3].play();
       //fixa reaktion
       entity2.shouldBeRemoved = true;
     }
-
 
     if (
       entity1 instanceof Player &&
