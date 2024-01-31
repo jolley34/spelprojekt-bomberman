@@ -83,7 +83,7 @@ class EndOfGame {
 
     if (
       this.displayWinner === "Time is up!" ||
-      this.displayWinner === "You Both Lost!"
+      this.displayWinner === "You both suck, try again!"
     ) {
       text(this.displayWinner, width / 2 + padding, height / 2 + 20);
     } else if (
