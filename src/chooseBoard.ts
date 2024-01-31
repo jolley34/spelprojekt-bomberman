@@ -4,10 +4,13 @@ class ChooseBoard {
   private gardenBoardButton: Button;
   private iceBoardButton: Button;
 
+  private snowfall: Snowfall;
+
   constructor(game: Game) {
     this.image = assets.images.backgroundImages[0];
 
     this.game = game;
+    this.snowfall = new Snowfall();
     this.gardenBoardButton = new Button(
       width / 4 + 130,
       height / 2 + 300,
@@ -28,6 +31,7 @@ class ChooseBoard {
       "#B3D917",
       "#302f2f"
     );
+    
   }
 
   public update() {
@@ -38,6 +42,7 @@ class ChooseBoard {
     if (this.iceBoardButton.isButtonPressed()) {
       this.handleIceBoardSelection();
     }
+    this.snowfall.update();
   }
 
   private handleGardenBoardSelection() {
@@ -86,5 +91,6 @@ class ChooseBoard {
 
     this.gardenBoardButton.draw();
     this.iceBoardButton.draw();
+    this.snowfall.draw();
   }
 }
