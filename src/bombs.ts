@@ -2,38 +2,47 @@
 
 class Bomb extends GameEntity {
   private bombTimer: number;
- public range: number;
+  public range: number;
   public ownerId: number;
 
   constructor(x: number, y: number, size: number, ownerId: number) {
     super(assets.images.bombs[0], x, y, size / 2.25);
     this.bombTimer = 2300;
-    this.range = 50;
+    this.range = 2;
     this.ownerId = ownerId;
   }
 
   public update(gameBoard: IAddEntity): void {
     this.bombTimer -= deltaTime;
-    
 
     if (this.bombTimer <= 0) {
       this.explode(gameBoard);
     }
   }
-  
 
   private explode(gameBoard: IAddEntity) {
     this.shouldBeRemoved = true;
     this.image = assets.images.bombs[3];
     assets.playerSoundEffects.explosion.play();
 
-    for (let xOffset = -this.range; xOffset <= this.range; xOffset += 25) {
-      gameBoard.addEntity(new Explosion(this.x + xOffset, this.y, 25));
+    // Middle
+    gameBoard.addEntity(new Explosion(this.x, this.y, 25));
+
+    // Right
+    for (let xOffset = 0; xOffset <= this.range; xOffset++) {
+      gameBoard.addEntity(new Explosion(this.x + xOffset * 25, this.y, 25));
     }
-    for (let yOffset = -this.range; yOffset <= this.range; yOffset += 25) {
-      if (yOffset !== 0) {
-        gameBoard.addEntity(new Explosion(this.x, this.y + yOffset, 25));
-      }
+    // Left
+    for (let xOffset = 0; xOffset >= -this.range; xOffset--) {
+      gameBoard.addEntity(new Explosion(this.x + xOffset * 25, this.y, 25));
+    }
+    // Down
+    for (let yOffset = 0; yOffset <= this.range; yOffset++) {
+      gameBoard.addEntity(new Explosion(this.x, this.y + yOffset * 25, 25));
+    }
+    // Up
+    for (let yOffset = 0; yOffset >= -this.range; yOffset--) {
+      gameBoard.addEntity(new Explosion(this.x, this.y + yOffset * 25, 25));
     }
   }
 }
