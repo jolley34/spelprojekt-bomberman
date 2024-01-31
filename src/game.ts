@@ -12,6 +12,7 @@ class Game {
   private showFightText: boolean;
 
   private isBoardSelected: boolean;
+  private countdownSoundsPlayed: boolean[] = [false, false, false, false];
 
   constructor() {
     this.gameBoardFactory = new GameBoardFactory();
@@ -40,6 +41,32 @@ class Game {
     if (this.isCountdownActive) {
       if (frameCount % 60 === 0 && this.countdownTime > 0) {
         this.countdownTime--;
+      }
+      switch (this.countdownTime) {
+        case 3:
+          if (!this.countdownSoundsPlayed[0]) {
+            assets.playerSoundEffects.powerupsound[4].play();
+            this.countdownSoundsPlayed[0] = true;
+          }
+          break;
+        case 2:
+          if (!this.countdownSoundsPlayed[1]) {
+            assets.playerSoundEffects.powerupsound[5].play();
+            this.countdownSoundsPlayed[1] = true;
+          }
+          break;
+        case 1:
+          if (!this.countdownSoundsPlayed[2]) {
+            assets.playerSoundEffects.powerupsound[6].play();
+            this.countdownSoundsPlayed[2] = true;
+          }
+          break;
+        case 0:
+          if (!this.countdownSoundsPlayed[3]) {
+            assets.playerSoundEffects.powerupsound[7].play();
+            this.countdownSoundsPlayed[3] = true;
+          }
+          break;
       }
       if (this.countdownTime === 0) {
         if (!this.showFightText) {
