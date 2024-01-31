@@ -55,7 +55,6 @@ class Player extends GameEntity {
     }
   ) {
     super(assets.images.playerAnimations[0], x, y, size);
-
     this.id = id;
     this.controls = controls;
     this.speedX = 0;
