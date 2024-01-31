@@ -83,7 +83,7 @@ class StartPage implements IGamePage {
   private mousePressed(): void {
     if (this.startButton.isButtonPressed()) {
       this.game.changePage("ChooseBoardPage");
-      assets.music.ingamemusic.setVolume(0.3);
+      assets.music.menumusic.setVolume(0.5);
       assets.music.menumusic.play();
     }
   }
