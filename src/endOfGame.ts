@@ -95,7 +95,7 @@ class EndOfGame {
 
       // Draw player icon
       const circleDiameter = 100;
-      const imageOffset = 55;
+      const imageOffset = 50;
       fill("#AECDDB");
       circle(circleCenterX, circleCenterY, circleDiameter);
       imageMode(CENTER);
@@ -135,8 +135,8 @@ class EndOfGame {
       console.log("I play again");
       this.game.changePage("ChooseBoardPage");
       assets.music.ingamemusic.stop();
-      //assets.music.menumusic.setVolume(0.5);
-      //assets.music.menumusic.play();
+      assets.music.menumusic.setVolume(0.5);
+      assets.music.menumusic.play();
     }
   }
 
