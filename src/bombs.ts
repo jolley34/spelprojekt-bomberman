@@ -10,9 +10,10 @@ class Bomb extends GameEntity {
     y: number,
     size: number,
     ownerId: number,
-    range: number
+    range: number,
+    image: p5.Image
   ) {
-    super(assets.images.bombs[0], x, y, size / 2.25);
+    super(image, x, y, size / 2.25);
     this.bombTimer = 2300;
     this.range = range;
     this.ownerId = ownerId;
@@ -28,33 +29,33 @@ class Bomb extends GameEntity {
 
   private explode(gameBoard: IAddEntity) {
     this.shouldBeRemoved = true;
-    this.image = assets.images.bombs[3];
+    const image = assets.images.bombs[this.ownerId + 1];
     assets.playerSoundEffects.explosion.play();
 
     // Middle
-    gameBoard.addEntity(new Explosion(this.x, this.y, 25));
+    gameBoard.addEntity(new Explosion(this.x, this.y, 25, image));
 
     // Right
     for (let xOffset = 0; xOffset <= this.range; xOffset++) {
-      const explosion = new Explosion(this.x + xOffset * 25, this.y, 25);
+      const explosion = new Explosion(this.x + xOffset * 25, this.y, 25, image);
       if (!this.isOkToSpawnExplosion(explosion, gameBoard.entities)) break;
       gameBoard.addEntity(explosion);
     }
     // Left
     for (let xOffset = 0; xOffset >= -this.range; xOffset--) {
-      const explosion = new Explosion(this.x + xOffset * 25, this.y, 25);
+      const explosion = new Explosion(this.x + xOffset * 25, this.y, 25, image);
       if (!this.isOkToSpawnExplosion(explosion, gameBoard.entities)) break;
       gameBoard.addEntity(explosion);
     }
     // Down
     for (let yOffset = 0; yOffset <= this.range; yOffset++) {
-      const explosion = new Explosion(this.x, this.y + yOffset * 25, 25);
+      const explosion = new Explosion(this.x, this.y + yOffset * 25, 25, image);
       if (!this.isOkToSpawnExplosion(explosion, gameBoard.entities)) break;
       gameBoard.addEntity(explosion);
     }
     // Up
     for (let yOffset = 0; yOffset >= -this.range; yOffset--) {
-      const explosion = new Explosion(this.x, this.y + yOffset * 25, 25);
+      const explosion = new Explosion(this.x, this.y + yOffset * 25, 25, image);
       if (!this.isOkToSpawnExplosion(explosion, gameBoard.entities)) break;
       gameBoard.addEntity(explosion);
     }

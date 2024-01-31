@@ -3,8 +3,8 @@
 class Explosion extends GameEntity {
   private timer: number;
 
-  constructor(x: number, y: number, size: number) {
-    super(assets.images.bombs[3], x, y, size);
+  constructor(x: number, y: number, size: number, image: p5.Image) {
+    super(image, x, y, size);
     this.timer = 500;
   }
 

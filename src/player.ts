@@ -55,7 +55,12 @@ class Player extends GameEntity {
       };
     }
   ) {
-    super(assets.images.playerAnimations[0], x, y, size);
+    super(
+      assets.images.playerAnimations[animations.idle.default[0]],
+      x,
+      y,
+      size
+    );
     this.id = id;
     this.controls = controls;
     this.speedX = 0;
@@ -200,7 +205,14 @@ class Player extends GameEntity {
     gameBoard: IAddEntity
   ): void {
     if (this.bombDropTimer < 0) {
-      const bomb = new Bomb(positionX, positionY, 50, this.id, this.bombRange);
+      const bomb = new Bomb(
+        positionX,
+        positionY,
+        50,
+        this.id,
+        this.bombRange,
+        assets.images.bombs[this.id - 1]
+      );
       this.bombDropTimer = this.handleBombTimer();
       gameBoard.addEntity(bomb);
       this.wasKeyPressed = false;
