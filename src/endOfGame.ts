@@ -130,10 +130,12 @@ class EndOfGame {
       console.log("I quit");
       this.game.changePage("StartPage");
       assets.music.ingamemusic.stop();
+      assets.music.ingamemusic2.stop();
     }
     if (this.playAgainButton.isButtonPressed()) {
       console.log("I play again");
       this.game.changePage("ChooseBoardPage");
+      assets.music.ingamemusic2.stop();
       assets.music.ingamemusic.stop();
       assets.music.menumusic.setVolume(0.5);
       assets.music.menumusic.play();

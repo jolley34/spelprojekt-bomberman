@@ -51,8 +51,8 @@ class ChooseBoard {
   private handleIceBoardSelection() {
     const iceBoardNumber = this.chooseIceBoard();
     this.game.changePage("GameBoard", iceBoardNumber);
-    assets.music.ingamemusic.setVolume(0.2);
-    assets.music.ingamemusic.play();
+    assets.music.ingamemusic2.setVolume(0.2);
+    assets.music.ingamemusic2.play();
     assets.music.menumusic.stop();
   }
 
