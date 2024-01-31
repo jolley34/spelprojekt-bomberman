@@ -170,7 +170,8 @@ class GameBoardFactory {
     return new GameBoard(
       entities,
       assets.images.backgroundImages[boardNumber],
-      assets.images.playerAnimations[0]
+      assets.images.playerAnimations[0],
+      boardNumber
     );
   }
 }
