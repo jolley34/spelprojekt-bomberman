@@ -31,8 +31,8 @@ class Player extends GameEntity {
   public isProtected: boolean = false;
   public protectionDuration: number = 3000;
   public protectionTimer: number;
-  public pickedUpMooreBombs: boolean; 
-  public pickedUpLongerRange: boolean
+  public pickedUpMooreBombs: boolean;
+  public pickedUpLongerRange: boolean;
 
   constructor(
     x: number,
@@ -40,16 +40,18 @@ class Player extends GameEntity {
     size: number,
     controls: Controls,
     id: number,
-    leftAnimation: number[],
-    rightAnimation: number[],
-    upAnimation: number[],
-    downAnimation: number[],
-    idleAnimations: {
-      playerLeftIdle: number[];
-      playerRightIdle: number[];
-      playerUpIdle: number[];
-      playerDownIdle: number[];
-      playerDefaultIdle: number[];
+    animations: {
+      left: number[];
+      right: number[];
+      up: number[];
+      down: number[];
+      idle: {
+        left: number[];
+        right: number[];
+        up: number[];
+        down: number[];
+        default: number[];
+      };
     }
   ) {
     super(assets.images.playerAnimations[0], x, y, size);
@@ -73,11 +75,11 @@ class Player extends GameEntity {
     this.wasKeyPressed = false;
     this.lastDirection = "";
 
-    this.leftAnimationLoop = leftAnimation;
-    this.rightAnimationLoop = rightAnimation;
-    this.upAnimationLoop = upAnimation;
-    this.downAnimationLoop = downAnimation;
-    this.idleAnimations = idleAnimations;
+    this.leftAnimationLoop = animations.left;
+    this.rightAnimationLoop = animations.right;
+    this.upAnimationLoop = animations.up;
+    this.downAnimationLoop = animations.down;
+    this.idleAnimations = animations.idle;
     this.pickedUpMooreBombs = false;
     this.pickedUpLongerRange = false;
   }
@@ -183,11 +185,11 @@ class Player extends GameEntity {
       }
     }
   }
-  public handleBombTimer(): any{
-    if(!this.pickedUpMooreBombs){
-      return this.bombDropTimer = 2800;
-    }else if(this.pickedUpMooreBombs){
-      return this.bombDropTimer = 1000;
+  public handleBombTimer(): any {
+    if (!this.pickedUpMooreBombs) {
+      return (this.bombDropTimer = 2800);
+    } else if (this.pickedUpMooreBombs) {
+      return (this.bombDropTimer = 1000);
     }
   }
 
@@ -199,118 +201,133 @@ class Player extends GameEntity {
     if (this.bombDropTimer < 0) {
       const bomb = new Bomb(positionX, positionY, 50, this.id);
       this.bombDropTimer = this.handleBombTimer();
-      if(this.pickedUpLongerRange){
+      if (this.pickedUpLongerRange) {
         bomb.range = 100;
-        
       }
       gameBoard.addEntity(bomb);
       this.wasKeyPressed = false;
     }
-    
-  }  
+  }
 
   private animateLeft(): void {
-    this.image =
-      assets.images.playerAnimations[
-        this.leftAnimationLoop[
-          Math.floor(this.animationIndex) % this.leftAnimationLoop.length
-        ]
-      ];
+    if (this.leftAnimationLoop) {
+      this.image =
+        assets.images.playerAnimations[
+          this.leftAnimationLoop[
+            Math.floor(this.animationIndex) % this.leftAnimationLoop.length
+          ]
+        ];
 
-    this.animationIndex =
-      (this.animationIndex + this.animationSpeed) %
-      (this.leftAnimationLoop.length * this.animationSpeed);
+      this.animationIndex =
+        (this.animationIndex + this.animationSpeed) %
+        (this.leftAnimationLoop.length * this.animationSpeed);
+    }
   }
 
   private animateRight(): void {
-    this.image =
-      assets.images.playerAnimations[
-        this.rightAnimationLoop[
-          Math.floor(this.animationIndex) % this.rightAnimationLoop.length
-        ]
-      ];
+    if (this.rightAnimationLoop) {
+      this.image =
+        assets.images.playerAnimations[
+          this.rightAnimationLoop[
+            Math.floor(this.animationIndex) % this.rightAnimationLoop.length
+          ]
+        ];
 
-    this.animationIndex =
-      (this.animationIndex + this.animationSpeed) %
-      (this.rightAnimationLoop.length * this.animationSpeed);
+      this.animationIndex =
+        (this.animationIndex + this.animationSpeed) %
+        (this.rightAnimationLoop.length * this.animationSpeed);
+    }
   }
 
   private animateUp(): void {
-    this.image =
-      assets.images.playerAnimations[
-        this.upAnimationLoop[
-          Math.floor(this.animationIndex) % this.upAnimationLoop.length
-        ]
-      ];
+    if (this.upAnimationLoop) {
+      this.image =
+        assets.images.playerAnimations[
+          this.upAnimationLoop[
+            Math.floor(this.animationIndex) % this.upAnimationLoop.length
+          ]
+        ];
 
-    this.animationIndex =
-      (this.animationIndex + this.animationSpeed) %
-      (this.upAnimationLoop.length * this.animationSpeed);
+      this.animationIndex =
+        (this.animationIndex + this.animationSpeed) %
+        (this.upAnimationLoop.length * this.animationSpeed);
+    }
   }
 
   private animateDown(): void {
-    this.image =
-      assets.images.playerAnimations[
-        this.downAnimationLoop[
-          Math.floor(this.animationIndex) % this.downAnimationLoop.length
-        ]
-      ];
+    if (this.downAnimationLoop) {
+      this.image =
+        assets.images.playerAnimations[
+          this.downAnimationLoop[
+            Math.floor(this.animationIndex) % this.downAnimationLoop.length
+          ]
+        ];
 
-    this.animationIndex =
-      (this.animationIndex + this.animationSpeed) %
-      (this.downAnimationLoop.length * this.animationSpeed);
+      this.animationIndex =
+        (this.animationIndex + this.animationSpeed) %
+        (this.downAnimationLoop.length * this.animationSpeed);
+    }
   }
 
   private animateLeftIdle(): void {
-    this.image =
-      assets.images.playerAnimations[
-        this.idleAnimations.playerLeftIdle[
-          Math.floor(this.animationIndex) %
-            this.idleAnimations.playerLeftIdle.length
-        ]
-      ];
+    if (this.idleAnimations.playerLeftIdle) {
+      this.image =
+        assets.images.playerAnimations[
+          this.idleAnimations.playerLeftIdle[
+            Math.floor(this.animationIndex) %
+              this.idleAnimations.playerLeftIdle.length
+          ]
+        ];
+    }
   }
 
   private animateRightIdle(): void {
-    this.image =
-      assets.images.playerAnimations[
-        this.idleAnimations.playerRightIdle[
-          Math.floor(this.animationIndex) %
-            this.idleAnimations.playerRightIdle.length
-        ]
-      ];
+    if (this.idleAnimations.playerRightIdle) {
+      this.image =
+        assets.images.playerAnimations[
+          this.idleAnimations.playerRightIdle[
+            Math.floor(this.animationIndex) %
+              this.idleAnimations.playerRightIdle.length
+          ]
+        ];
+    }
   }
 
   private animateUpIdle(): void {
-    this.image =
-      assets.images.playerAnimations[
-        this.idleAnimations.playerUpIdle[
-          Math.floor(this.animationIndex) %
-            this.idleAnimations.playerUpIdle.length
-        ]
-      ];
+    if (this.idleAnimations.playerUpIdle) {
+      this.image =
+        assets.images.playerAnimations[
+          this.idleAnimations.playerUpIdle[
+            Math.floor(this.animationIndex) %
+              this.idleAnimations.playerUpIdle.length
+          ]
+        ];
+    }
   }
 
   private animateDownIdle(): void {
-    this.image =
-      assets.images.playerAnimations[
-        this.idleAnimations.playerDownIdle[
-          Math.floor(this.animationIndex) %
-            this.idleAnimations.playerDownIdle.length
-        ]
-      ];
+    if (this.idleAnimations.playerDownIdle) {
+      this.image =
+        assets.images.playerAnimations[
+          this.idleAnimations.playerDownIdle[
+            Math.floor(this.animationIndex) %
+              this.idleAnimations.playerDownIdle.length
+          ]
+        ];
+    }
   }
 
   private animateDefaultIdle(): void {
-    this.image =
-      assets.images.playerAnimations[
-        this.idleAnimations.playerDefaultIdle[
-          Math.floor(this.animationIndex) %
-            this.idleAnimations.playerDefaultIdle.length
-        ]
-      ];
+    if (this.idleAnimations.playerDefaultIdle) {
+      this.image =
+        assets.images.playerAnimations[
+          this.idleAnimations.playerDefaultIdle[
+            Math.floor(this.animationIndex) %
+              this.idleAnimations.playerDefaultIdle.length
+          ]
+        ];
+    }
   }
-
   // powerup "increaseSpeed" gör att spelaren ökar farten efter den har plockat upp powerup, "getEffectiveSpeed" ligger under kontrollerna högre upp i koden
   private getEffectiveSpeed(): number {
     // Kontrollera om ökad hastighet (increasedSpeed) är större än 0 och powerUpTimer är större än 0
@@ -338,6 +355,5 @@ class Player extends GameEntity {
     this.increasedSpeed = 0;
     this.decreasedSpeed = 0;
     this.powerUpTimer = 0;
-   
   }
 }
