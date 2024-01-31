@@ -5,12 +5,10 @@ class Game {
   private gameBoardFactory: GameBoardFactory;
   private startPage: StartPage;
   private chooseBoard: ChooseBoard;
-  // private endOfGame: EndOfGame;
   private currentPage: PageName;
   private countdownTime: number;
   private isCountdownActive: boolean;
   private showFightText: boolean;
-
   private isBoardSelected: boolean;
 
   constructor() {
@@ -27,7 +25,7 @@ class Game {
     this.isBoardSelected = false;
   }
 
-  public changePage(page: PageName, board?: number) {
+  public changePage(page: PageName, board?: number): void {
     this.currentPage = page;
     if (page === "GameBoard" && board !== undefined) {
       this.isBoardSelected = true;
@@ -36,7 +34,7 @@ class Game {
     }
   }
 
-  private updateCountdown() {
+  private updateCountdown(): void {
     if (this.isCountdownActive) {
       if (frameCount % 60 === 0 && this.countdownTime > 0) {
         this.countdownTime--;
@@ -56,7 +54,7 @@ class Game {
     }
   }
 
-  public update() {
+  public update(): void {
     if (this.isBoardSelected && !this.isCountdownActive) {
       // Start the countdown only after the board is displayed
       this.isCountdownActive = true;
@@ -86,7 +84,7 @@ class Game {
     }
   }
 
-  public draw() {
+  public draw(): void {
     background("black");
     if (this.currentPage === "GameBoard" && this.gameBoard) {
       this.gameBoard.draw();

@@ -30,7 +30,7 @@ class ChooseBoard {
     );
   }
 
-  public update() {
+  public update(): void {
     if (this.gardenBoardButton.isButtonPressed()) {
       this.handleGardenBoardSelection();
     }
@@ -40,7 +40,7 @@ class ChooseBoard {
     }
   }
 
-  private handleGardenBoardSelection() {
+  private handleGardenBoardSelection(): void {
     const gardenBoardNumber = this.chooseGardenBoard();
     this.game.changePage("GameBoard", gardenBoardNumber);
     assets.music.ingamemusic.setVolume(0.2);
@@ -48,7 +48,7 @@ class ChooseBoard {
     assets.music.menumusic.stop();
   }
 
-  private handleIceBoardSelection() {
+  private handleIceBoardSelection(): void {
     const iceBoardNumber = this.chooseIceBoard();
     this.game.changePage("GameBoard", iceBoardNumber);
     assets.music.ingamemusic.setVolume(0.2);
@@ -56,7 +56,7 @@ class ChooseBoard {
     assets.music.menumusic.stop();
   }
 
-  public chooseGardenBoard() {
+  public chooseGardenBoard(): number {
     return 1;
   }
 
@@ -64,7 +64,7 @@ class ChooseBoard {
     return 2;
   }
 
-  public draw() {
+  public draw(): void {
     Utility.drawBackgroundImage(assets.images.backgroundImages[3], 120);
     push();
     textSize(64);

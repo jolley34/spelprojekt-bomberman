@@ -10,7 +10,7 @@ class Timer {
     this.timerInterval = null;
   }
 
-  public start() {
+  public start(): void {
     if (this.timerInterval) {
       clearInterval(this.timerInterval);
     }
@@ -30,7 +30,7 @@ class Timer {
     }, 500);
   }
 
-  public stop() {
+  public stop(): void {
     if (this.timerInterval) {
       clearInterval(this.timerInterval);
       this.timerInterval = null;
@@ -38,13 +38,13 @@ class Timer {
     }
   }
 
-  public reset() {
+  public reset(): void {
     this.stop();
     // todo: set the time back to 5 min
     this.elapsedTime = 300000;
   }
 
-  public getTime() {
+  public getTime(): string {
     let totalSeconds = Math.floor(this.elapsedTime / 1000);
     let minutes = Math.floor(totalSeconds / 60);
     let seconds = totalSeconds % 60;
@@ -53,7 +53,7 @@ class Timer {
     return `${padZero(minutes)}:${padZero(seconds)}`;
   }
 
-  public drawTimer() {
+  public drawTimer(): void {
     const rectPositionX = width / 2;
     const rectPositionY = 65;
     const rectWidth = 200;

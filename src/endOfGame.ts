@@ -34,25 +34,25 @@ class EndOfGame {
     );
   }
 
-  public show() {
+  public show(): void {
     this.isVisible = true;
   }
 
-  public draw() {
+  public draw(): void {
     if (!this.isVisible) return;
 
     this.drawEndGameBanner();
   }
 
-  public setWinner(winner: string) {
+  public setWinner(winner: string): void {
     this.displayWinner = winner;
   }
 
-  public setWinnerIcon(icon: p5.Image) {
+  public setWinnerIcon(icon: p5.Image): void {
     this.icon = icon;
   }
 
-  private drawEndGameBanner() {
+  private drawEndGameBanner(): void {
     const padding = 20;
     push();
     fill("#30444C");

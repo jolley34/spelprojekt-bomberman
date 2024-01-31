@@ -2,7 +2,7 @@
 
 class Bomb extends GameEntity {
   private bombTimer: number;
- public range: number;
+  public range: number;
   public ownerId: number;
 
   constructor(x: number, y: number, size: number, ownerId: number) {
@@ -14,13 +14,11 @@ class Bomb extends GameEntity {
 
   public update(gameBoard: IAddEntity): void {
     this.bombTimer -= deltaTime;
-    
 
     if (this.bombTimer <= 0) {
       this.explode(gameBoard);
     }
   }
-  
 
   private explode(gameBoard: IAddEntity) {
     this.shouldBeRemoved = true;
