@@ -14,7 +14,7 @@ class Snowfall {
           image: random(assets.images.bombs), // använd bomb bilder som snö
           y: random(-height, 0),
           x: random(width),
-          speed: random(1.5, 2.5),
+          speed: random(2, 4),
           size: random(12, 22),
         });
       }
