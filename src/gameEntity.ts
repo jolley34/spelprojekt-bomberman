@@ -22,11 +22,14 @@ class GameEntity {
       this instanceof SpeedUp ||
       this instanceof SlowDownOpponent ||
       this instanceof MoreBomb ||
-      this instanceof LongerBombRange ||
-      this instanceof Explosion
+      this instanceof LongerBombRange
     ) {
       // lägg till här powerups på samma sätt
       hitBoxSize *= 0.75; // You can adjust the multiplier as needed for the player
+    }
+    if (this instanceof Explosion) {
+      // lägg till här powerups på samma sätt
+      hitBoxSize *= 0.71; // You can adjust the multiplier as needed for the player
     }
 
     return {
