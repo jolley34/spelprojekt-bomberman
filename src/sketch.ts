@@ -72,8 +72,8 @@ function preload() {
         loadImage("../assets/maptextures/dirt.png"),
         loadImage("../assets/maptextures/grass-figma.png"),
         loadImage("../assets/maptextures/tree-on-map.png"),
-        loadImage("../assets/maptextures/ice2.png"),
-        loadImage("../assets/maptextures/ice3.png"),
+        loadImage("../assets/maptextures/snowman.png"),
+        loadImage("../assets/maptextures/winter-tile1.png"),
       ],
       entities: [
         loadImage("../assets/entities_img/image1.png"),

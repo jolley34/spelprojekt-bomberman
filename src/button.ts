@@ -51,6 +51,8 @@ class Button {
   }
 
   public draw(): void {
+    const padding = 4;
+
     push();
     fill(this.isHovering() ? this.hoverColor : this.color);
     noStroke();
@@ -60,7 +62,7 @@ class Button {
     fill(this.textColor);
     textSize(25);
     textAlign(CENTER, CENTER);
-    text(this.text, this.positionX, this.positionY);
+    text(this.text, this.positionX, this.positionY - padding);
 
     pop();
   }
