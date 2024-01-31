@@ -30,7 +30,7 @@ class GameEntity {
     }
     if (this instanceof Explosion) {
       // lägg till här powerups på samma sätt
-      hitBoxSize *= 0.7; // You can adjust the multiplier as needed for the player
+      hitBoxSize *= 0.71; // You can adjust the multiplier as needed for the player
     }
 
     return {
