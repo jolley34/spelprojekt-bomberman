@@ -14,6 +14,7 @@ class Player extends GameEntity {
   public speedY: number;
   private animationIndex: number;
   private animationSpeed: number;
+  private idleAnimations: any;
   private leftAnimationLoop: number[];
   private rightAnimationLoop: number[];
   private upAnimationLoop: number[];
@@ -24,7 +25,6 @@ class Player extends GameEntity {
   private powerUpTimer: number;
   private wasKeyPressed: boolean;
   private lastDirection: string;
-  private idleAnimations: any;
   private id: number;
   private bombDropTimer: number;
 
