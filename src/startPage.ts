@@ -11,7 +11,7 @@ class StartPage implements IGamePage {
     this.title = "Cruel Nature";
 
     this.instructions =
-      "Your  goal  is  to  navigate  through  the  lush  garden  or  the  frosty  ice,  collect  \n \nthe  power-ups,  avoid obstacles,  and  reach  the  end  before  time  runs  out.    Eliminate  your \n \n  opponent  by  placing  bombs  to  demolish  blocks  and  pave  your  path  towards  your  victory. \n\n Press  START  GAME  to begin";
+      "The goal is to bomb your opponent within the timeframe. To get to your opponent,\n \n  bomb your way through the Cruel Nature  and pickup powerups \n \n  for extra juice to sabotage for your opponent. \n \n First player to lose all their lives dies. If no one dies before the time runs out you both lose,\n \n  Good luck suckers! ";
 
     this.startButton = new Button(
       width / 2,
