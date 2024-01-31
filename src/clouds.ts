@@ -22,7 +22,7 @@ class Clouds {
     }
   }
 
-  draw() {
+  public draw(): void {
     for (let i = 0; i < this.clouds.length; i++) {
       const clouds = this.clouds[i];
       clouds.x += clouds.speed;

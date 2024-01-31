@@ -11,7 +11,7 @@ class StartPage implements IGamePage {
     this.title = "Cruel Nature";
 
     this.instructions =
-      "The goal is to bomb your opponent within the timeframe. To get to your opponent,\n \n  bomb your way through the Cruel Nature and pickup powerups \n \n  for extra juice or sabotage for your opponent. \n \n First player to lose all their lives dies. If no one dies before the time runs out you both lose,\n \n  Good luck suckers! ";
+      "The  goal  is  to  bomb  your  opponent  within  the  timeframe.  To  get  to  your\n \n   opponent,  bomb  your  way  through  the  Cruel  Nature  and  pickup powerups \n \n  for  extra  juice  or  sabotage  for  your  opponent.  First player  to  lose\n \n   all  their  lives  dies.   If  no  one  dies  before  the  time  runs  out  you  both  lose,\n \n  Good  luck  suckers! ";
 
     this.startButton = new Button(
       width / 2,
@@ -38,9 +38,8 @@ class StartPage implements IGamePage {
     textSize(64);
     const padding = 100;
     const rectHeight = 100;
-    const offsetY = 140;
+    const offsetY = 170;
     const rectWidth = textWidth(this.title) + padding * 2;
-
     const rectX = width / 2 - rectWidth / 2;
     const rectY = height / 4 - rectHeight / 2 - offsetY;
 
@@ -60,7 +59,6 @@ class StartPage implements IGamePage {
     const rectPositionY = height / 2;
     const rectWidth = width / 2 + 50;
     const rectHeight = 330;
-
     const padding = 10;
     const textX = rectPositionX;
     const textY = rectPositionY + padding;

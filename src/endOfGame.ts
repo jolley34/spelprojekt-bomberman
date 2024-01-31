@@ -11,7 +11,6 @@ class EndOfGame {
     this.isVisible = false;
     this.displayWinner = "";
     this.icon = icon;
-    // Todo: Choose the right position fot the buttons
     this.quitButton = new Button(
       width / 2 - 100,
       height / 2 + 140,
@@ -34,25 +33,25 @@ class EndOfGame {
     );
   }
 
-  public show() {
+  public show(): void {
     this.isVisible = true;
   }
 
-  public draw() {
+  public draw(): void {
     if (!this.isVisible) return;
 
     this.drawEndGameBanner();
   }
 
-  public setWinner(winner: string) {
+  public setWinner(winner: string): void {
     this.displayWinner = winner;
   }
 
-  public setWinnerIcon(icon: p5.Image) {
+  public setWinnerIcon(icon: p5.Image): void {
     this.icon = icon;
   }
 
-  private drawEndGameBanner() {
+  private drawEndGameBanner(): void {
     const padding = 20;
     push();
     fill("#30444C");
@@ -85,7 +84,7 @@ class EndOfGame {
       this.displayWinner === "Time is up!" ||
       this.displayWinner === "You both suck, try again!"
     ) {
-      text(this.displayWinner, width / 2 + padding, height / 2 + 20);
+      text(this.displayWinner, width / 2 + padding, height / 2);
     } else if (
       this.displayWinner === "Player 1" ||
       this.displayWinner === "Player 2"

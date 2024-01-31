@@ -10,7 +10,7 @@ class Explosion extends GameEntity {
     assets.images.bombs[3].reset();
   }
 
-  public update() {
+  public update(): void {
     this.timer -= deltaTime;
 
     if (this.timer <= 0) {

@@ -1,10 +1,10 @@
 class PlayerCard {
-  name: string;
-  icon: p5.Image;
-  lives: number;
-  positionX: number;
-  positionY: number;
-  playerNumber: number;
+  private name: string;
+  public icon: p5.Image;
+  public lives: number;
+  private positionX: number;
+  private positionY: number;
+  public playerNumber: number;
 
   constructor(
     name: string,
@@ -22,14 +22,14 @@ class PlayerCard {
     this.playerNumber = playerNumber;
   }
 
-  public removeLife() {
+  public removeLife(): void {
     assets.playerSoundEffects.looselife.play();
     if (this.lives > 0) {
       this.lives--;
     }
   }
 
-  public draw() {
+  public draw(): void {
     push();
     fill("#5A7885");
     drawingContext.shadowOffsetX = 5;
@@ -95,6 +95,4 @@ class PlayerCard {
 
     pop();
   }
-
-  public addPowerUp() {}
 }

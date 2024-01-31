@@ -5,12 +5,10 @@ class Game {
   private gameBoardFactory: GameBoardFactory;
   private startPage: StartPage;
   private chooseBoard: ChooseBoard;
-  // private endOfGame: EndOfGame;
   private currentPage: PageName;
   private countdownTime: number;
   private isCountdownActive: boolean;
   private showFightText: boolean;
-
   private isBoardSelected: boolean;
 
   constructor() {
@@ -18,16 +16,14 @@ class Game {
     this.gameBoard = null; // don't generate a gameboard until we need it
     this.startPage = new StartPage(this);
     this.chooseBoard = new ChooseBoard(this);
-    //this.endOfGame = new EndOfGame(this);
     this.currentPage = "StartPage";
     this.countdownTime = 3;
     this.isCountdownActive = false;
     this.showFightText = false;
-
     this.isBoardSelected = false;
   }
 
-  public changePage(page: PageName, board?: number) {
+  public changePage(page: PageName, board?: number): void {
     this.currentPage = page;
     if (page === "GameBoard" && board !== undefined) {
       this.isBoardSelected = true;
@@ -36,7 +32,7 @@ class Game {
     }
   }
 
-  private updateCountdown() {
+  private updateCountdown(): void {
     if (this.isCountdownActive) {
       if (frameCount % 60 === 0 && this.countdownTime > 0) {
         this.countdownTime--;
@@ -56,9 +52,8 @@ class Game {
     }
   }
 
-  public update() {
+  public update(): void {
     if (this.isBoardSelected && !this.isCountdownActive) {
-      // Start the countdown only after the board is displayed
       this.isCountdownActive = true;
       this.countdownTime = 3;
       this.showFightText = false;
@@ -86,7 +81,7 @@ class Game {
     }
   }
 
-  public draw() {
+  public draw(): void {
     background("black");
     if (this.currentPage === "GameBoard" && this.gameBoard) {
       this.gameBoard.draw();
@@ -97,7 +92,7 @@ class Game {
         let textToDisplay = this.showFightText
           ? "F I G H T !"
           : this.countdownTime.toString();
-        text(textToDisplay, width / 2 + 20, height / 2 - 50);
+        text(textToDisplay, width / 2 + 25, height / 2 - 50);
       }
     } else {
       switch (this.currentPage) {
