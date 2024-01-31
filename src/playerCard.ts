@@ -71,6 +71,7 @@ class PlayerCard {
 
     // Draw player icon
     const circleDiameter = 100;
+    const imageOffset = 50;
     fill("#AECDDB");
     circle(circleCenterX, circleCenterY, circleDiameter);
     imageMode(CENTER);
@@ -78,8 +79,8 @@ class PlayerCard {
       this.icon,
       circleCenterX,
       circleCenterY,
-      circleDiameter - 20,
-      circleDiameter - 20
+      circleDiameter - imageOffset,
+      circleDiameter - imageOffset
     );
 
     drawingContext.shadowOffsetX = 0;

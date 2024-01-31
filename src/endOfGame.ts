@@ -14,7 +14,7 @@ class EndOfGame {
     // Todo: Choose the right position fot the buttons
     this.quitButton = new Button(
       width / 2 - 100,
-      height / 2 + 150,
+      height / 2 + 140,
       160,
       60,
       "QUIT",
@@ -24,7 +24,7 @@ class EndOfGame {
     );
     this.playAgainButton = new Button(
       width / 2 + 120,
-      height / 2 + 150,
+      height / 2 + 140,
       160,
       60,
       "PLAY AGAIN",
@@ -62,7 +62,7 @@ class EndOfGame {
     drawingContext.shadowColor = "black";
     noStroke();
     rectMode(CENTER);
-    rect(width / 2 + padding, height / 2, 580, 440, 10);
+    rect(width / 2 + padding, height / 2 - padding, 580, 420, 10);
     drawingContext.shadowOffsetX = 0;
     drawingContext.shadowOffsetY = 0;
     drawingContext.shadowBlur = 0;
@@ -95,6 +95,7 @@ class EndOfGame {
 
       // Draw player icon
       const circleDiameter = 100;
+      const imageOffset = 50;
       fill("#AECDDB");
       circle(circleCenterX, circleCenterY, circleDiameter);
       imageMode(CENTER);
@@ -102,8 +103,8 @@ class EndOfGame {
         this.icon,
         circleCenterX,
         circleCenterY,
-        circleDiameter - 20,
-        circleDiameter - 20
+        circleDiameter - imageOffset,
+        circleDiameter - imageOffset
       );
 
       drawingContext.shadowOffsetX = 0;

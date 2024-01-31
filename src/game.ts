@@ -97,7 +97,7 @@ class Game {
         let textToDisplay = this.showFightText
           ? "F I G H T !"
           : this.countdownTime.toString();
-        text(textToDisplay, width / 2, height / 2 - 50);
+        text(textToDisplay, width / 2 + 20, height / 2 - 50);
       }
     } else {
       switch (this.currentPage) {
