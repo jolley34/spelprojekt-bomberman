@@ -33,6 +33,7 @@ class Player extends GameEntity {
   public protectionTimer: number;
   public pickedUpMooreBombs: boolean;
   public pickedUpLongerRange: boolean;
+  public bombRange: number;
 
   constructor(
     x: number,
@@ -66,6 +67,7 @@ class Player extends GameEntity {
     this.powerUpDuration = 10000;
     this.powerUpTimer = 0;
     this.bombDropTimer = 0;
+    this.bombRange = 2;
 
     this.isProtected = false;
     this.protectionDuration = 3000;
@@ -198,11 +200,8 @@ class Player extends GameEntity {
     gameBoard: IAddEntity
   ): void {
     if (this.bombDropTimer < 0) {
-      const bomb = new Bomb(positionX, positionY, 50, this.id);
+      const bomb = new Bomb(positionX, positionY, 50, this.id, this.bombRange);
       this.bombDropTimer = this.handleBombTimer();
-      if (this.pickedUpLongerRange) {
-        bomb.range *= 2;
-      }
       gameBoard.addEntity(bomb);
       this.wasKeyPressed = false;
     }

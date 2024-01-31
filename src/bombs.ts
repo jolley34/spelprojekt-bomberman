@@ -5,10 +5,16 @@ class Bomb extends GameEntity {
   public range: number;
   public ownerId: number;
 
-  constructor(x: number, y: number, size: number, ownerId: number) {
+  constructor(
+    x: number,
+    y: number,
+    size: number,
+    ownerId: number,
+    range: number
+  ) {
     super(assets.images.bombs[0], x, y, size / 2.25);
     this.bombTimer = 2300;
-    this.range = 2;
+    this.range = range;
     this.ownerId = ownerId;
   }
 

@@ -120,7 +120,7 @@ class GameBoard implements IAddEntity {
     if (entity1 instanceof Player && entity2 instanceof LongerBombRange) {
       assets.playerSoundEffects.powerupsound[2].setVolume(0.7);
       assets.playerSoundEffects.powerupsound[2].play();
-      entity1.pickedUpLongerRange = true;
+      entity1.bombRange += 2;
       entity2.shouldBeRemoved = true;
     }
     if (entity1 instanceof Player && entity2 instanceof MoreBomb) {
