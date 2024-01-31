@@ -21,7 +21,15 @@ class Snowfall {
     }
   
     public update() {
-      
+        for (let i = 0; i < this.snowflakes.length; i++) {
+            const snowflake = this.snowflakes[i];
+            snowflake.y += snowflake.speed;
+            //resettar till 0 så att det inte samlas
+            if (snowflake.y > height) {
+              snowflake.y = 0;
+              snowflake.x = random(width);
+            }
+          }
     }
   
     public draw() {
