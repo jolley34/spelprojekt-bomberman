@@ -29,7 +29,7 @@ class GameEntity {
     }
     if (this instanceof Explosion) {
       // lägg till här powerups på samma sätt
-      hitBoxSize *= 0.71; // You can adjust the multiplier as needed for the player
+      hitBoxSize *= 0.3; // You can adjust the multiplier as needed for the player
     }
 
     return {
@@ -47,7 +47,7 @@ class GameEntity {
     image(this.image, this.x, this.y, this.size, this.size);
 
     const hitBox = this.getHitBox();
-    /*  stroke("red"); // comment or delete this to remove red lines */
+    stroke("red"); // comment or delete this to remove red lines
     noFill(); // comment or delete this to remove red lines
     rect(hitBox.left, hitBox.top, hitBox.width, hitBox.height);
     pop();
