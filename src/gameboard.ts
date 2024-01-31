@@ -1,5 +1,6 @@
 interface IAddEntity {
   addEntity(entity: GameEntity): void;
+  entities: GameEntity[];
 }
 
 class GameBoard implements IAddEntity {
