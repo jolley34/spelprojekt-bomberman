@@ -40,8 +40,8 @@ function preload() {
       bombs: [
         loadImage("../assets/bombs/bomb-v3-before-explode-red-v3.gif"),
         loadImage("../assets/bombs/bomb-v3-before-explode-blue-v2.gif"),
-        loadImage("../assets/bombs/bomb-v3-fire-line-blue-player.gif"),
         loadImage("../assets/bombs/bomb-v3-fire-line-red-player.gif"),
+        loadImage("../assets/bombs/bomb-v3-fire-line-blue-player.gif"),
       ],
       flowers: [loadImage("../assets/flowers/flower-v2.gif")],
       playerCard: [loadImage("../assets/playercard/heart-icon.png")],
@@ -137,6 +137,10 @@ function preload() {
         loadSound("../assets/player-sound-effects/slowdown-sound.mp3"),
         loadSound("../assets/player-sound-effects/bombrange-sound.mp3"),
         loadSound("../assets/player-sound-effects/morebombs-sound.mp3"),
+        loadSound("../assets/player-sound-effects/3.mp3"),
+        loadSound("../assets/player-sound-effects/2.mp3"),
+        loadSound("../assets/player-sound-effects/1.mp3"),
+        loadSound("../assets/player-sound-effects/fight.mp3"),
       ],
       walkingsound: loadSound(
         "../assets/player-sound-effects/sfx_step_grass_l.mp3"

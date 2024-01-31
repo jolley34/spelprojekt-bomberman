@@ -22,7 +22,8 @@ class GameEntity {
       this instanceof SpeedUp ||
       this instanceof SlowDownOpponent ||
       this instanceof MoreBomb ||
-      this instanceof LongerBombRange
+      this instanceof LongerBombRange ||
+      this instanceof Explosion
     ) {
       // lägg till här powerups på samma sätt
       hitBoxSize *= 0.75; // You can adjust the multiplier as needed for the player
@@ -43,7 +44,7 @@ class GameEntity {
     image(this.image, this.x, this.y, this.size, this.size);
 
     const hitBox = this.getHitBox();
-    stroke("red"); // comment or delete this to remove red lines
+    /*  stroke("red"); // comment or delete this to remove red lines */
     noFill(); // comment or delete this to remove red lines
     rect(hitBox.left, hitBox.top, hitBox.width, hitBox.height);
     pop();

@@ -59,6 +59,13 @@ class GameBoardFactory {
       right: [10, 9, 11, 9],
       up: [4, 3, 5, 3],
       down: [1, 0, 2, 0],
+      idle: {
+        left: [6],
+        right: [9],
+        up: [3],
+        down: [0],
+        default: [0],
+      },
     };
 
     const player2Animations = {
@@ -66,22 +73,13 @@ class GameBoardFactory {
       right: [23, 21, 22, 21],
       up: [17, 15, 16, 15],
       down: [14, 12, 13, 12],
-    };
-
-    const player1AnimationsIdle = {
-      playerLeftIdle: [6],
-      playerRightIdle: [9],
-      playerUpIdle: [3],
-      playerDownIdle: [0],
-      playerDefaultIdle: [0],
-    };
-
-    const player2AnimationsIdle = {
-      playerLeftIdle: [18],
-      playerRightIdle: [21],
-      playerUpIdle: [15],
-      playerDownIdle: [12],
-      playerDefaultIdle: [12],
+      idle: {
+        left: [18],
+        right: [21],
+        up: [15],
+        down: [12],
+        default: [12],
+      },
     };
 
     // Choose the correct texture index for the board
@@ -124,10 +122,10 @@ class GameBoardFactory {
         if (board[i][j] === 4) {
           entities.push(new SlowDownOpponent(x, y, blockSize));
         }
-        if (board [i][j] === 5) {
+        if (board[i][j] === 5) {
           entities.push(new LongerBombRange(x, y, blockSize));
         }
-        if (board [i][j] === 6) {
+        if (board[i][j] === 6) {
           entities.push(new MoreBomb(x, y, blockSize));
         }
         if (board[i][j] === 9) {
@@ -144,11 +142,7 @@ class GameBoardFactory {
             },
 
             1,
-            player1Animations.left,
-            player1Animations.right,
-            player1Animations.up,
-            player1Animations.down,
-            player1AnimationsIdle
+            player1Animations
           );
           entities.push(player);
         }
@@ -165,11 +159,7 @@ class GameBoardFactory {
               placeBomb: 67,
             },
             2,
-            player2Animations.left,
-            player2Animations.right,
-            player2Animations.up,
-            player2Animations.down,
-            player2AnimationsIdle
+            player2Animations
           );
 
           entities.push(player2);
