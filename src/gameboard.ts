@@ -5,6 +5,7 @@ interface IAddEntity {
 
 class GameBoard implements IAddEntity {
   private boardNumber: number;
+  private snow: Snow;
   private clouds: Clouds;
   private flowers: Flowers;
   public entities: GameEntity[];
@@ -23,6 +24,7 @@ class GameBoard implements IAddEntity {
     icon: p5.Image,
     boardNumber: number
   ) {
+    this.snow = new Snow();
     this.boardNumber = boardNumber;
     this.clouds = new Clouds();
     this.flowers = new Flowers();
@@ -283,6 +285,10 @@ class GameBoard implements IAddEntity {
 
     if (this.boardNumber === 1) {
       this.flowers.draw();
+    }
+
+    if (this.boardNumber === 2) {
+      this.snow.draw();
     }
 
     this.endOfGame.draw();
