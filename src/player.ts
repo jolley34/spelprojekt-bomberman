@@ -155,10 +155,6 @@ class Player extends GameEntity {
 
     // kollar ifall det har gått 4sek since last dropbombtime
     if (keyIsDown(this.controls.placeBomb) && !this.wasKeyPressed) {
-      // Resetar bomb gifsen
-      for (let i = 0; i < assets.images.bombs.length; i++) {
-        assets.images.bombs[i].reset();
-      }
       this.dropBomb(this.x, this.y, gameBoard);
 
       this.wasKeyPressed = true;

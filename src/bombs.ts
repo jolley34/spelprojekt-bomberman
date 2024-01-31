@@ -17,6 +17,8 @@ class Bomb extends GameEntity {
     this.bombTimer = 2300;
     this.range = range;
     this.ownerId = ownerId;
+    assets.images.bombs[0].reset();
+    assets.images.bombs[1].reset();
   }
 
   public update(gameBoard: IAddEntity): void {

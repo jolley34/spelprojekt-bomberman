@@ -6,6 +6,8 @@ class Explosion extends GameEntity {
   constructor(x: number, y: number, size: number, image: p5.Image) {
     super(image, x, y, size);
     this.timer = 500;
+    assets.images.bombs[2].reset();
+    assets.images.bombs[3].reset();
   }
 
   public update() {
