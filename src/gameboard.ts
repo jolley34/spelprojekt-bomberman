@@ -264,7 +264,7 @@ class GameBoard implements IAddEntity {
       this.playerCard1.lives <= 0 || this.playerCard2.lives <= 0;
 
     if (isTimeOver) {
-      this.endOfGame.setWinner("Time is up!");
+      this.endOfGame.setWinner("Time's up losers!");
     } else if (isLifeOver) {
       this.handleGameOver();
     }

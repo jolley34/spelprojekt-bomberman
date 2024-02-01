@@ -81,7 +81,7 @@ class EndOfGame {
     textAlign(CENTER, CENTER);
 
     if (
-      this.displayWinner === "Time is up!" ||
+      this.displayWinner === "Time's up losers!" ||
       this.displayWinner === "You both suck, try again!"
     ) {
       text(this.displayWinner, width / 2 + padding, height / 2);
