@@ -8,6 +8,7 @@ let assets: {
     looselife: p5.SoundFile;
   };
   music: {
+    ingamemusic2: p5.SoundFile;
     ingamemusic: p5.SoundFile;
     menumusic: p5.SoundFile;
   };
@@ -130,6 +131,7 @@ function preload() {
       menumusic: loadSound(
         "..//assets/music/timecop1983-it-was-only-a-dream.mp3"
       ),
+      ingamemusic2: loadSound("../assets/music/Merry-xmas-synthwave.mp3"),
     },
     playerSoundEffects: {
       powerupsound: [

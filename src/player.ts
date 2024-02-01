@@ -99,7 +99,7 @@ class Player extends GameEntity {
 
     let horizontalSpeed = 0;
     let verticalSpeed = 0;
-    let isMoving = false;
+    let isMoving = false; // Track if player is moving
 
     // checking if player is protected and if the time has run out
     if (this.isProtected) {
@@ -134,6 +134,7 @@ class Player extends GameEntity {
     }
 
     if (!isMoving) {
+      // Player is not moving, use last direction for idle animation
       switch (this.lastDirection) {
         case "left":
           this.animateLeftIdle();
@@ -276,60 +277,55 @@ class Player extends GameEntity {
   }
 
   private animateLeftIdle(): void {
-    if (this.idleAnimations.playerLeftIdle) {
+    if (this.idleAnimations.left) {
       this.image =
         assets.images.playerAnimations[
-          this.idleAnimations.playerLeftIdle[
-            Math.floor(this.animationIndex) %
-              this.idleAnimations.playerLeftIdle.length
+          this.idleAnimations.left[
+            Math.floor(this.animationIndex) % this.idleAnimations.left.length
           ]
         ];
     }
   }
 
   private animateRightIdle(): void {
-    if (this.idleAnimations.playerRightIdle) {
+    if (this.idleAnimations.right) {
       this.image =
         assets.images.playerAnimations[
-          this.idleAnimations.playerRightIdle[
-            Math.floor(this.animationIndex) %
-              this.idleAnimations.playerRightIdle.length
+          this.idleAnimations.right[
+            Math.floor(this.animationIndex) % this.idleAnimations.right.length
           ]
         ];
     }
   }
 
   private animateUpIdle(): void {
-    if (this.idleAnimations.playerUpIdle) {
+    if (this.idleAnimations.up) {
       this.image =
         assets.images.playerAnimations[
-          this.idleAnimations.playerUpIdle[
-            Math.floor(this.animationIndex) %
-              this.idleAnimations.playerUpIdle.length
+          this.idleAnimations.up[
+            Math.floor(this.animationIndex) % this.idleAnimations.up.length
           ]
         ];
     }
   }
 
   private animateDownIdle(): void {
-    if (this.idleAnimations.playerDownIdle) {
+    if (this.idleAnimations.down) {
       this.image =
         assets.images.playerAnimations[
-          this.idleAnimations.playerDownIdle[
-            Math.floor(this.animationIndex) %
-              this.idleAnimations.playerDownIdle.length
+          this.idleAnimations.down[
+            Math.floor(this.animationIndex) % this.idleAnimations.down.length
           ]
         ];
     }
   }
 
   private animateDefaultIdle(): void {
-    if (this.idleAnimations.playerDefaultIdle) {
+    if (this.idleAnimations.default) {
       this.image =
         assets.images.playerAnimations[
-          this.idleAnimations.playerDefaultIdle[
-            Math.floor(this.animationIndex) %
-              this.idleAnimations.playerDefaultIdle.length
+          this.idleAnimations.default[
+            Math.floor(this.animationIndex) % this.idleAnimations.default.length
           ]
         ];
     }
