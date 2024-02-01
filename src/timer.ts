@@ -5,12 +5,11 @@ class Timer {
 
   constructor() {
     this.startTime = 0;
-    // todo: set the time back to 5 min (300000) after testing
     this.elapsedTime = 300000; // sätter tiden till 5 min
     this.timerInterval = null;
   }
 
-  public start() {
+  public start(): void {
     if (this.timerInterval) {
       clearInterval(this.timerInterval);
     }
@@ -19,32 +18,28 @@ class Timer {
     this.timerInterval = setInterval(() => {
       const currentTime = Date.now();
       const elapsedMilliseconds = currentTime - this.startTime;
-      // todo: set the time back to 5 min (300000) after testing
       this.elapsedTime = Math.max(300000 - elapsedMilliseconds, 0);
 
       // stannar tiden efter 5 min
-      // lägg till logik som visar endgame med resultat efter tiden tar slut
       if (this.elapsedTime === 0) {
         this.stop();
       }
     }, 500);
   }
 
-  public stop() {
+  public stop(): void {
     if (this.timerInterval) {
       clearInterval(this.timerInterval);
       this.timerInterval = null;
-      //this.elapsedTime = Date.now() - this.startTime;
     }
   }
 
-  public reset() {
+  public reset(): void {
     this.stop();
-    // todo: set the time back to 5 min
     this.elapsedTime = 300000;
   }
 
-  public getTime() {
+  public getTime(): string {
     let totalSeconds = Math.floor(this.elapsedTime / 1000);
     let minutes = Math.floor(totalSeconds / 60);
     let seconds = totalSeconds % 60;
@@ -53,12 +48,11 @@ class Timer {
     return `${padZero(minutes)}:${padZero(seconds)}`;
   }
 
-  public drawTimer() {
+  public drawTimer(): void {
     const rectPositionX = width / 2;
     const rectPositionY = 65;
     const rectWidth = 200;
     const rectHeight = 70;
-
     const padding = 3;
     const textX = rectPositionX;
     const textY = rectPositionY - padding;

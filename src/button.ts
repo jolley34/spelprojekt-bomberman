@@ -28,7 +28,7 @@ class Button {
     this.hoverColor = hoverColor;
   }
 
-  public isButtonPressed() {
+  public isButtonPressed(): boolean {
     const isHovering =
       mouseX > this.positionX - this.width / 2 &&
       mouseX < this.positionX + this.width / 2 &&

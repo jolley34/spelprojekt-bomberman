@@ -29,7 +29,7 @@ class Bomb extends GameEntity {
     }
   }
 
-  private explode(gameBoard: IAddEntity) {
+  private explode(gameBoard: IAddEntity): void {
     this.shouldBeRemoved = true;
     const image = assets.images.bombs[this.ownerId + 1];
     assets.playerSoundEffects.explosion.play();
@@ -63,7 +63,10 @@ class Bomb extends GameEntity {
     }
   }
 
-  private isOkToSpawnExplosion(explosion: Explosion, entities: GameEntity[]) {
+  private isOkToSpawnExplosion(
+    explosion: Explosion,
+    entities: GameEntity[]
+  ): boolean {
     const hitBox1 = explosion.getHitBox();
 
     for (const entity of entities) {

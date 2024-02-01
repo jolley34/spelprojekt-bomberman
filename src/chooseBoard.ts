@@ -8,7 +8,6 @@ class ChooseBoard {
 
   constructor(game: Game) {
     this.image = assets.images.backgroundImages[0];
-
     this.game = game;
     this.bombfall = new bombfall();
     this.gardenBoardButton = new Button(
@@ -31,10 +30,9 @@ class ChooseBoard {
       "#B3D917",
       "#302f2f"
     );
-    
   }
 
-  public update() {
+  public update(): void {
     if (this.gardenBoardButton.isButtonPressed()) {
       this.handleGardenBoardSelection();
     }
@@ -45,7 +43,7 @@ class ChooseBoard {
     this.bombfall.update();
   }
 
-  private handleGardenBoardSelection() {
+  private handleGardenBoardSelection(): void {
     const gardenBoardNumber = this.chooseGardenBoard();
     this.game.changePage("GameBoard", gardenBoardNumber);
     assets.music.ingamemusic.setVolume(0.1);
@@ -53,7 +51,7 @@ class ChooseBoard {
     assets.music.menumusic.stop();
   }
 
-  private handleIceBoardSelection() {
+  private handleIceBoardSelection(): void {
     const iceBoardNumber = this.chooseIceBoard();
     this.game.changePage("GameBoard", iceBoardNumber);
     assets.music.ingamemusic2.setVolume(0.2);
@@ -61,7 +59,7 @@ class ChooseBoard {
     assets.music.menumusic.stop();
   }
 
-  public chooseGardenBoard() {
+  public chooseGardenBoard(): number {
     return 1;
   }
 
@@ -69,13 +67,13 @@ class ChooseBoard {
     return 2;
   }
 
-  public draw() {
+  public draw(): void {
     Utility.drawBackgroundImage(assets.images.backgroundImages[3], 120);
     push();
     textSize(64);
     const padding = 100;
     const rectHeight = 100;
-    const offsetY = 140;
+    const offsetY = 170;
     const rectWidth = textWidth("Cruel Nature") + padding * 2;
 
     const rectX = width / 2 - rectWidth / 2;

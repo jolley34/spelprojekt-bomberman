@@ -22,7 +22,7 @@ class Flowers {
     }
   }
 
-  draw() {
+  public draw(): void {
     for (let i = 0; i < this.flowers.length; i++) {
       const flower = this.flowers[i];
       flower.x += flower.speed;

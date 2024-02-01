@@ -2,7 +2,7 @@
 
 class Utility {
   // The static methods can be used in different parts of the code without having to create an instance of the class. It's used to avoid code duplication and to make the code more readable. It can be called directly using the class name.
-  static drawBorder(borderSize: number) {
+  static drawBorder(borderSize: number): any {
     fill(0);
     rect(0, 0, windowWidth, windowHeight);
 
@@ -14,7 +14,7 @@ class Utility {
     };
   }
 
-  static drawBackgroundImage(img: p5.Image, borderSize: number) {
+  static drawBackgroundImage(img: p5.Image, borderSize: number): void {
     const { innerWidth, innerHeight, offsetX, offsetY } =
       Utility.drawBorder(borderSize);
     const scaleFactor = Utility.calculateScaleFactor(

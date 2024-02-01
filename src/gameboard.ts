@@ -15,7 +15,6 @@ class GameBoard implements IAddEntity {
   private playerCard2: PlayerCard;
   private endOfGame: EndOfGame;
   private icon: p5.Image;
-
   private isGameActive: boolean;
 
   constructor(
@@ -52,15 +51,15 @@ class GameBoard implements IAddEntity {
     );
   }
 
-  public setupGameBackground() {
+  public setupGameBackground(): void {
     createCanvas(windowWidth, windowHeight);
   }
 
-  public drawGameBackground() {
+  public drawGameBackground(): void {
     image(this.backgroundImage, 0, 0, width, height);
   }
 
-  private checkCollision() {
+  private checkCollision(): void {
     for (const entity1 of this.entities) {
       for (const entity2 of this.entities) {
         if (entity1 === entity2) continue;
@@ -90,7 +89,7 @@ class GameBoard implements IAddEntity {
     }
   }
 
-  private reactToCollision(entity1: GameEntity, entity2: GameEntity) {
+  private reactToCollision(entity1: GameEntity, entity2: GameEntity): void {
     if (
       entity1 instanceof Player &&
       entity2 instanceof Bomb &&
@@ -187,10 +186,10 @@ class GameBoard implements IAddEntity {
     }
   }
 
-  private handleGameOver() {
+  private handleGameOver(): void {
     if (this.playerCard1.lives <= 0 && this.playerCard2.lives <= 0) {
       // Case where both players have no lives left
-      this.endOfGame.setWinner("You Both Lost!");
+      this.endOfGame.setWinner("You both suck, try again!");
     } else if (this.playerCard1.lives <= 0) {
       // Case where player 1 has no lives left
       this.endOfGame.setWinner("Player 2");
@@ -217,7 +216,7 @@ class GameBoard implements IAddEntity {
   // L = x
   // en if sats med 4 rader VILL VI HAA, 2 med x och 2 med y
 
-  public update() {
+  public update(): void {
     if (!this.isGameActive) {
       this.endOfGame.update();
       return;
@@ -232,7 +231,7 @@ class GameBoard implements IAddEntity {
     this.removeEntities();
   }
 
-  private removeEntities() {
+  private removeEntities(): void {
     for (let i = 0; i < this.entities.length; i++) {
       if (this.entities[i].shouldBeRemoved) {
         this.entities.splice(i, 1);
@@ -273,7 +272,7 @@ class GameBoard implements IAddEntity {
     return isTimeOver || isLifeOver;
   }
 
-  public draw() {
+  public draw(): void {
     this.drawGameBackground();
     for (let i = 0; i < this.entities.length; i++) {
       this.entities[i].draw();
