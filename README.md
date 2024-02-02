@@ -15,16 +15,20 @@ We have been able to produce 4 different power-up's;
 
 Good luck and have fun!
 
+[Play] https://cruel-nature.vercel.app/
+
 ## how to install and play
 
 To install you need to type the command "npm install" followed by "npm run dev" to play the game.
+
+works best in chrome, loads slow in Safari
 
 
 ### Thanks
 We've had an awesome time doing this project and hopefully we will find the time to add more gameboards to the game.
 It turned out better than we imagined it to be and we are proud of our result, a special thanks to our teacher David, who helped us through this project and also thanks to the school "Medieinstitutet" that makes learning fun!
 
-Anna Alehed, Joel Erlandsson, Malin Sundberg, Maryamo Salad, Catalina Avadani
+Anna Alehed @annamedie , Joel Erlandsson @jolley34 , Malin Sundberg @malinsund , Maryamo Salad @mariamakeyf , Catalina Avadani @CatAvadani
 
 
 
