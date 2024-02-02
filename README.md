@@ -6,6 +6,8 @@ It´s a two player game, player one uses W, A, S, D to move around and C to drop
 Try to bomb your way through the gameboard to clear the way towards your opponent, your goal is to win the game by bombing you opponent within the time limit.
 First player to loose all their lives looses the game, try to catch as many power-up's as possible to increase your chance to win!
 
+Good luck and have fun!
+
 
 
 
