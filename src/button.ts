@@ -7,7 +7,7 @@ class Button {
   private color: string;
   private textColor: string;
   private hoverColor: string;
-  private image?: p5.Image;
+  
   constructor(
     positionX: number,
     positionY: number,

@@ -40,7 +40,7 @@ class GameEntity {
     };
   }
 
-  public update(gameBoard: IAddEntity): void {}
+  public update(_gameBoard: IAddEntity): void {}
 
   public draw(): void {
     push();
