@@ -1,3 +1,37 @@
+# Cruel Nature
+
+This is a School project where we did a remake of the classic game Bomber Man.
+We have used JS.p5 and TypeScript OOP to make this game and it has been a 4 week projekt.
+
+It´s a two player game, player one uses W, A, S, D to move around and C to drop the bombs, player 2 uses the arrowkeys to move around and P to drop the bombs.
+Try to bomb your way through the gameboard to clear the way towards your opponent, your goal is to win the game by bombing you opponent within the time limit. there are removable obsticals which is the ones that will be destroyed if the bomb range collides with it, there's also static obsticals that will stop the explosion range, you can not go past this obstacles.
+First player to lose all their lives looses the game, if the time runs out you both lose try to catch as many power-up's as possible to increase your chance to win! 
+
+We have been able to produce 4 different power-up's;
+* Longer bomb range - Makes the explosion range longer for the player that takes it, the range increases for every power-up the player collect and has no time limit.
+* More bombs - Lets the player drop more bombs as the default is to only drop one bob at the time.
+* Speed Boozt - Increases the speed for the player that collected the power-up for 10 sek.
+* Slow down opponent - Slows down the speed for the other player in 10 sek.
+
+Good luck and have fun!
+
+## how to install and play
+
+To install you need to type the command "npm install" followed by "npm run dev" to play the game.
+
+
+### Thanks
+We've had an awesome time doing this project and hopefully we will find the time to add more gameboards to the game.
+It turned out better than we imagined it to be and we are proud of our result, a special thanks to our teacher David, who helped us through this project and also thanks to the school "Medieinstitutet" that makes learning fun!
+
+Anna Alehed, Joel Erlandsson, Malin Sundberg, Maryamo Salad, Catalina Avadani
+
+
+
+
+
+
+
 # Slutprojektet
 
 Välkommen till den förinställda kodbasen för slutprojektet.
